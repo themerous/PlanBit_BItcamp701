@@ -1,0 +1,16 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "frontend for semi project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "themerous",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "jquery": "^3.7.0"
+  }
+}

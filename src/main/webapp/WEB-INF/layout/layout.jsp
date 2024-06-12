@@ -8,10 +8,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Home</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-   		<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+		<link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+   		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 	<body>
 		<header>
 			<tiles:insertAttribute name="header"/>
