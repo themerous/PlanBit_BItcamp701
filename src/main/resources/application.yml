@@ -1,0 +1,17 @@
+#Port Setting
+server:
+  port: 8080
+  
+#JSP Setting
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-n9jfu-kr.vpc-pub-cdb.ntruss.com:3306/studydb?serverTimezone=Asia/Seoul
+    username: study
+    password: mike@1430
+
+#Mybatis Setting
+mybatis:
+  type-aliases-package: data.dto
+  mapper-locations: 
+  - /mapper/**/*.xml
