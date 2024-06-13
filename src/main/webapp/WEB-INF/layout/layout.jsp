@@ -12,6 +12,13 @@
 		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 		<link rel="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
    		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+   		<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+   		<style>
+   			#editor>img {
+   				width: 100px;
+   			}
+   			
+   		</style>
 	<body>
 		<header>
 			<tiles:insertAttribute name="header"/>
