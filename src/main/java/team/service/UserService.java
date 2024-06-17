@@ -20,4 +20,9 @@ public class UserService {
 	{
 		return uInter.logincheck(id, pw)==1?true:false;
 	}
+	//아이디 중복확인
+	public int idcheckcount(String searchid)
+	{
+		return uInter.idcheckcount(searchid);
+	}
 }

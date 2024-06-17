@@ -26,50 +26,59 @@ public class HomeController {
 
 	// main
 	@GetMapping("/")
-	public String home() {
+	public String home()
+	{
 		return "layout/main";
 	}
 
 	// 로그인
 	@GetMapping("bit/login")
-	public String login() {
+	public String login() 
+	{
 		return "loginform/login";
 	}
 
 	// 회원가입
 	@GetMapping("bit/form")
-	public String form() {
+	public String form() 
+	{
 		return "loginform/form";
 	}
 
 	// 회원가입 insert 이벤트
 	@PostMapping("bit/insert")
-	public String insert(@ModelAttribute UserDto dto, HttpServletRequest request) {
+	public String insert(@ModelAttribute UserDto dto, HttpServletRequest request) 
+	{
 		userService.insertUser(dto);
 		// 회원가입하고 로그인페이지로감
 		return "loginform/login";
 	}
 
 	// 로그인 이벤트
-	@GetMapping("bit/loginon")
-	public String loginon(@RequestParam String id, @RequestParam String pw, HttpSession session, Model model) {
-		// 로그인 상태
-		boolean loginStatus = userService.logincheck(id, pw);
-		String move;
-
-		if (loginStatus) {
-			// 아이디와 비번이 맞는 경우
-			move = "redirect:/";
-			model.addAttribute("status", "success");
+	@ResponseBody
+	@PostMapping("bit/loginon")
+	public Map<String, String> loginon(
+			@RequestParam String id,
+			@RequestParam String pw, 
+			HttpSession session
+			) 
+	{
+		Map<String, String> map = new HashMap<>();
+		//로그인 상태
+		boolean loginstatus = userService.logincheck(id, pw);
+		if(loginstatus)
+		{
+			//아이디와 비번이 맞는 경우
+			map.put("status","success");
 			session.setAttribute("loginok", "yes");
-			session.setAttribute("loginok", id);
-		} else {
-			// 아이디와 비번이 틀린 경우
-			move = "loginform/login";
-			model.addAttribute("status", "fail");
+			session.setAttribute("loginid", id);
 		}
-
-		return move;
+		else
+		{
+			//아이디와 비번이 틀린 경우
+			map.put("status", "fail");
+		}
+		return map;
 	}
 
 	// 로그아웃 이벤트
@@ -79,5 +88,18 @@ public class HomeController {
 	{
 		session.removeAttribute("loginok");
 	}
-
+	
+	//아이디 중복확인
+	@ResponseBody
+	@GetMapping("bit/idcheck")
+	public Map<String, Integer> idcheck(@RequestParam String searchid)
+	{
+		Map<String, Integer> map = new HashMap<>();
+		int count = userService.idcheckcount(searchid);
+		map.put("count", count);
+		
+		return map;
+	}
+	
+	
 }

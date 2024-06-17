@@ -14,4 +14,7 @@ public interface UserMapperInter {
 	//로그인 이벤트
 	@Select("select count(*) from testuser where id=#{id} and pw=#{pw}")
 	public int logincheck(String id, String pw);
+	//아이디 중복체크 이벤트
+	@Select("select count(*) from testuser where id=#{searchid}")
+	public int idcheckcount(String searchid);
 }

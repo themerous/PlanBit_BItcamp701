@@ -69,7 +69,7 @@
         }
 
         main{
-            background-image: url("../image/p2.jpg");
+            background-image: url("../images/p2.jpg");
             background-size: cover; /* 이미지를 비율에 맞게 늘리거나 축소합니다. */
             background-position: center; /* 이미지를 수평 및 수직으로 가운데로 정렬합니다. */
             width: 100%;
