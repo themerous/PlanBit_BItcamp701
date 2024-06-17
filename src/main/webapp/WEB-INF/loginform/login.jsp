@@ -3,30 +3,59 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
 <script type="text/javascript">
-	/* $(function(){
-		$("#login").submit(function(e){
+	$(function(){
+		$("#loginon").submit(function(e){
 			//기본 이벤트 무효화
 			e.preventDefault();
 			//폼안의 입력값 읽기
 			let fdata = $(this).serialize();
 			$.ajax({
-				type:"get",
+				type:"post",
 				dataType:"json",
-				url:"bit/login",
+				url:"./loginon",
 				data:fdata,
 				success:function(data){
+					console.log("hello");
 					if(data.status=='success')
 					{
 						//로그인 성공시
+						location.href="/";
 					}
 					else
 					{
 						//로그인 실패시
+						alert("아이디나 비밀번호가 틀렸습니다!");
 					}
 				}
 			});
 		});
-	}); */
+		//id 이벤트
+		$("#id").on("focusout",function(){
+			if($("#id").val()=='')
+			{
+				//비밀번호 칸이 비웠을때 롤백
+				$("#id").css("border-color","red");
+				$("#id-msg").text("정확한 아이디를 입력하세요.").css("color","red");
+			}
+		});
+		$("#id").on("focusin",function(){
+			$("#id").css("border-color","#eee");
+			$("#id-msg").text("");
+		});
+		//pw 이벤트
+		$("#pw").on("focusout",function(){
+			if($("#pw").val()=='')
+			{
+				//비밀번호 칸이 비웠을때 롤백
+				$("#pw").css("border-color","red");
+				$("#pw-msg").text("비밀번호는 8-20자로 입력하세요.").css("color","red");
+			}
+		});
+		$("#pw").on("focusin",function(){
+			$("#pw").css("border-color","#eee");
+			$("#pw-msg").text("");
+		});
+	});//exit
 </script>
 	<%-- login
 	<form id="login">
@@ -65,8 +94,10 @@
     		<form id="loginon">
 	            <h1>로그인</h1>
 	            <span>or use your account</span>
-	            <input type="text" name="id" placeholder="아이디을 입력하세요" />
-	            <input type="password" name="pw" placeholder="비밀번호를 입력하세요" />
+	            <input type="text" name="id" id="id" placeholder="아이디을 입력하세요" />
+	            <small class="help-block" id="id-msg"></small>
+	            <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력하세요" />
+	            <small class="help-block" id="pw-msg"></small>
 	            <a href="#">Forgot your password?</a>
 	            <button type="submit">로그인</button>
             </form>

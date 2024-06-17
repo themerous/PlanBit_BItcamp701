@@ -21,7 +21,7 @@
 
         body {
             background-size: cover; /* 이미지를 비율에 맞게 늘리거나 축소합니다. */
-            background-image: url("../image/p1.jpg");
+            background-image: url("../images/p1.jpg");
 
         }
 
@@ -74,7 +74,8 @@
 
         .container input {
             background-color: #eee;
-            border: none;
+            border: 1px solid #eee;
+            border-radius: 5px;
             padding: 12px 15px;
             margin: 8px 0;
             width: 100%;
@@ -188,6 +189,7 @@
 
         .form-group {
             margin-bottom: 15px;
+            position: relative;
         }
 
         .form-group label {
@@ -234,6 +236,21 @@
             top: 50%;
             transform: translateY(-50%);
             pointer-events: none; /* 아이콘 클릭 불가 */
+        }
+        
+        /* 중복확인 버튼 */
+        #info__id button {
+            position: absolute;
+            width: 90px;
+            height: 40px;
+            top: 5px;
+            bottom: 0;
+            right: 3px;
+            margin: auto 0;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #51e3d4;
+            border: none;
         }
     </style>
 </head>
