@@ -1,4 +1,4 @@
-package team.dto;
+package data.dto;
 
 import org.apache.ibatis.type.Alias;
 

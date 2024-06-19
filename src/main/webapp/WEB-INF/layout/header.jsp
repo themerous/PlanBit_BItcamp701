@@ -12,7 +12,7 @@
    <div class="sidebar-content">
       <button id="closeSidebar"><i class="bi bi-x"></i></button>
       <p onclick="location.href='bit/login'">로그인</p>
-      <p>마이페이지</p>
+      <p onclick="location.href='bit/chat'">마이페이지</p>
       <p>플래너</p>
    </div>
 </aside>

@@ -57,38 +57,6 @@
 		});
 	});//exit
 </script>
-	<%-- login
-	<form id="login">
-		<div>
-			<div>
-				<h4>회원 로그인</h4>
-			</div>
-			<div>
-				<table>
-					<caption align="top">
-						<input type="checkbox" name=saveid
-						${sessionScope.saveid==null or sessionScope.saveid=='no'?"":"checked"}>&nbsp;아이디저장
-					</caption>
-					<tr>
-						<th width="80">아이디</th>
-						<td>
-							<input type="text" name="id" value="${sessionScope.saveid!=null and sessionScope.saveid=='yes'?sessionScope.loginid:''}">
-						</td>
-					</tr>
-					<tr>
-						<th width="80">비밀번호</th>
-						<td>
-							<input type="password" name="passwd">
-						</td>
-					</tr>
-				</table>
-				<div>
-					<button type="submit">로그인</button>
-				</div>
-			</div>
-		</div>
-	</form> --%>
-	
 	<div class="container" id="container">
     	<div class="form-container log-in-container">
     		<form id="loginon">

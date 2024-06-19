@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"naver.ncloud", "com.semi.planbit", "tiles.config","team.*"})
-@MapperScan("team.mapper")
+@ComponentScan({"naver.ncloud", "com.semi.planbit", "tiles.config","data.*"})
+@MapperScan("data.mapper")
 public class Project2Bit701Application {
 
 	public static void main(String[] args) {

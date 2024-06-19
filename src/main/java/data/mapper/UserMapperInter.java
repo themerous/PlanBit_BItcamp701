@@ -1,10 +1,10 @@
-package team.mapper;
+package data.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import team.dto.UserDto;
+import data.dto.UserDto;
 
 @Mapper
 public interface UserMapperInter {
@@ -12,7 +12,7 @@ public interface UserMapperInter {
 	@Insert("insert into testuser (id,pw,name,email) value (#{id},#{pw},#{name},#{email})")
 	public void insertUser(UserDto dto);
 	//로그인 이벤트
-	@Select("select count(*) from testuser where id=#{id} and pw=#{pw}")
+	@Select("select count(*) from user where id=#{id} and pw=#{pw}")
 	public int logincheck(String id, String pw);
 	//아이디 중복체크 이벤트
 	@Select("select count(*) from testuser where id=#{searchid}")

@@ -1,10 +1,10 @@
-package team.service;
+package data.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import team.dto.UserDto;
-import team.mapper.UserMapperInter;
+import data.dto.UserDto;
+import data.mapper.UserMapperInter;
 
 @Service
 public class UserService {

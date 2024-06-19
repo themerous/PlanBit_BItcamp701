@@ -1,4 +1,4 @@
-package com.semi.planbit;
+package data.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import team.dto.UserDto;
-import team.service.UserService;
+import data.dto.UserDto;
+import data.service.UserService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
