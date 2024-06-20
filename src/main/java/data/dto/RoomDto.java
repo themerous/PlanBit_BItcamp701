@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +17,7 @@ import lombok.Setter;
 @Setter
 @Builder
 @Alias("RoomDto")
+@ToString
 public class RoomDto {
 	private int room_num;
 	private String room_title;

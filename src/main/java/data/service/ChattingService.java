@@ -23,4 +23,12 @@ public class ChattingService {
 	public List<MessageDto> getAllMessage(int room_num) {
 		return mapper.getAllMessage(room_num);
 	}
+	
+	public void insertChat(MessageDto dto) {
+		mapper.insertChat(dto);
+	}
+	
+	public void insertChatroom(RoomDto dto) {
+		mapper.insertChatroom(dto);
+	}
 }

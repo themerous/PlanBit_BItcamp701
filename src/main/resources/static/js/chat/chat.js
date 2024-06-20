@@ -14,3 +14,13 @@ function loadChatRooms() {
 		$("#chatrooms").html(s);
 	});
 }
+
+$("#chatroomform").submit(function(e) {
+	e.preventDefault();
+	const fdata = $(this).serialize();
+	console.log(fdata);
+
+	$.post("./createChatroom", fdata, function() {
+		loadChatRooms();
+	}, 'json');
+});

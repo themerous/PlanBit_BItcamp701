@@ -2,51 +2,6 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
-	<%-- form입니다!
-	<form action="./insert" method="post" enctype="multipart/form-data" onsubmit="return check()">
-		<table class="table table-bordered" style="width: 500px;">
-			<caption align="top">
-				<h3><b>회원 가입</b></h3>
-			</caption>
-			<tr>
-				<th width="100" class="table-info">이름</th>
-				<td colspan="2">
-					<input type="text" name="name" class="form-control" required="required">
-				</td>
-			</tr>
-			<tr>
-				<th width="100" class="table-info">아이디</th>
-				<td colspan="2">
-					<div class="input-group">
-						<input type="text" name="id" id="id" class="form-control" required="required">
-						&nbsp;
-						<button type="button" class="btn btn-sm btn-danger" id="btncheckid">중복확인</button>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th width="100" class="table-info">비밀번호</th>
-				<td width="200">
-					<!--maxlength : 글자 최대  -->
-					<input type="password" name="pw" class="form-control" required="required" maxlength="8">
-				</td>
-			</tr>
-			<tr>
-				<th width="100" class="table-info">이메일</th>
-				<td width="200">
-					<!--maxlength : 글자 최대  -->
-					<input type="text" name="emall" class="form-control" required="required">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3" align="center">
-					<button type="reset" class="btn btn-sm btn-outline-danger" style="width: 100px;">초기화</button>
-					<button type="submit" class="btn btn-sm btn-outline-danger" style="width: 100px;">회원가입</button>
-				</td>
-			</tr>
-		</table>
-	</form> --%>
-
 <script type="text/javascript">
 	let jungbok = false;	
 	$(function(){	
@@ -208,7 +163,6 @@
 		}
 	}
 </script>
-
 	<div class="container2" id="container2">
           <div class="register-container">
               <div class="register-title">회원가입</div>
@@ -243,9 +197,9 @@
                       <div class="select-container">
                           <select id="question" name="question" class="form-control">
                               <option value="" disabled selected>보안 질문을 선택하세요</option>
-                              <option value="question1">어린 시절 가장 친한 친구의 이름은 무엇인가요?</option>
-                              <option value="question2">첫 번째 애완동물의 이름은 무엇인가요?</option>
-                              <option value="question3">출생지는 어디인가요?</option>
+                              <option value="1">어린 시절 가장 친한 친구의 이름은 무엇인가요?</option>
+                              <option value="2">첫 번째 애완동물의 이름은 무엇인가요?</option>
+                              <option value="3">출생지는 어디인가요?</option>
                           </select>
                           <i class="fa fa-chevron-down"></i>
                       </div>

@@ -20,7 +20,6 @@ function connect() {
         let messages = document.getElementById('myChatRoom');
         let mo = JSON.parse(event.data);
         messages.innerHTML += '<p>' + mo.id + '님: ' + mo.content + '</p>';
-        $.post("", )
         messages.scrollTop = messages.scrollHeight;
     }
 

@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import data.dto.MessageDto;
 import data.dto.RoomDto;
 import data.service.ChattingService;
@@ -45,5 +50,19 @@ public class ChattingController {
 	@PostMapping("/bit/getChatRooms")
 	public List<RoomDto> getChatRooms(HttpSession session) {
 		return service.getAllChatRooms((String)session.getAttribute("loginid"));
+	}
+	
+	@ResponseBody
+	@PostMapping("/bit/insertChat")
+	public void insertChat(
+			@ModelAttribute MessageDto dto) {
+		service.insertChat(dto);
+	}
+	
+	@ResponseBody
+	@PostMapping("/bit/createChatroom")
+	public void createChatroom(
+			@ModelAttribute RoomDto dto) {
+		service.insertChatroom(dto);
 	}
 }
