@@ -1,27 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
-<!DOCTYPE html>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="title-left">지구마블</div>
-<div class="title-right">
-   <button id="sidebarToggle"><i class="bi bi-list"></i></button>
-</div>
-<aside id="sidebar" class="sidebar">
-   <div class="sidebar-content">
-      <button id="closeSidebar"><i class="bi bi-x"></i></button>
-      <p onclick="location.href='bit/login'">로그인</p>
-      <p onclick="location.href='bit/chat'">마이페이지</p>
-      <p>플래너</p>
+<div class="title-left">BIT TRIP</div>
+<div class="title-center">
+   <div class="title-menu">
+      <ul>
+         <li><a href="#">Home</a></li>
+         <li><a href="#">Info</a></li>
+         <li><a href="#">Map</a></li>
+         <li><a href="#">Trip</a></li>
+         <li><a href="#">Book</a></li>
+      </ul>
    </div>
-</aside>
-
-<script>
-   document.getElementById('sidebarToggle').addEventListener('click', function() {
-      document.getElementById('sidebar').style.width = '250px';
-   });
-   document.getElementById('closeSidebar').addEventListener('click', function() {
-      document.getElementById('sidebar').style.width = '0';
-   });
-</script>
+</div>
+<div class="title-right">
+   <a href="#" class="gaip-button">회원가입</a>
+   <a href="#" class="login-button">로그인</a>
+</div>

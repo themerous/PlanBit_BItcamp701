@@ -74,8 +74,7 @@
 
         .container input {
             background-color: #eee;
-            border: 1px solid #eee;
-            border-radius: 5px;
+            border: none;
             padding: 12px 15px;
             margin: 8px 0;
             width: 100%;
@@ -91,6 +90,8 @@
             max-width: 100%;
             min-height: 580px;
             margin-top: 10%;
+
+            perspective: 1000px;
         }
 
 
@@ -98,6 +99,30 @@
             position: absolute;
             top: 0;
             height: 100%;
+
+            backface-visibility: hidden;
+            transition: transform 0.6s;
+        }
+
+        #front {
+            z-index: 1; /* 수정된 부분 */
+            transform: rotateY(0deg);
+        }
+
+        #back {
+            z-index: 2; /* 수정된 부분 */
+            transform: rotateY(180deg);
+        }
+
+
+        .container.flip #front {
+            z-index: 1; /* 수정된 부분 */
+            transform: rotateY(-180deg);
+        }
+
+        .container.flip #back {
+            z-index: 2; /* 수정된 부분 */
+            transform: rotateY(0deg);
         }
 
         .log-in-container {
@@ -112,6 +137,7 @@
             left: 50%;
             width: 50%;
             height: 100%;
+            z-index: 0;
         }
 
 
@@ -156,6 +182,13 @@
             margin: 0 5px;
             height: 40px;
             width: 40px;
+        }
+
+        .login-menu {
+            display: flex; /* 수평 정렬을 위해 flexbox 사용 */
+            justify-content: center; /* 수평 가운데 정렬 */
+            gap: 10px; /* 두 링크 사이에 간격 */
+            color: #333333;
         }
 
         /* 회원가입 */
@@ -252,6 +285,44 @@
             background-color: #51e3d4;
             border: none;
         }
+
+        .form-group .help-block {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .form-group .help-block.error {
+            color: red;
+        }
+
+        .form-group .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #51e3d4;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .select-container {
+            position: relative;
+        }
+
+        .select-container select {
+            appearance: none; /* 기본 화살표 제거 */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .select-container .fa-chevron-down {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* 아이콘 클릭 불가 */
+        }
+
     </style>
 </head>
 <body>

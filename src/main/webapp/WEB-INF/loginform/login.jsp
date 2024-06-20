@@ -56,9 +56,13 @@
 			$("#pw-msg").text("");
 		});
 	});//exit
+
+	function flipCard() {
+		document.getElementById('container').classList.toggle('flip');
+	}
 </script>
 	<div class="container" id="container">
-    	<div class="form-container log-in-container">
+    	<div class="form-container log-in-container" id="front">
     		<form id="loginon">
 	            <h1>로그인</h1>
 	            <span>or use your account</span>
@@ -66,7 +70,10 @@
 	            <small class="help-block" id="id-msg"></small>
 	            <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력하세요" />
 	            <small class="help-block" id="pw-msg"></small>
-	            <a href="#">Forgot your password?</a>
+				<div class="login-menu">
+					<a href="#" onclick="flipCard()">비밀번호 찾기</a>
+					<a href="#">회원가입</a>
+				</div>
 	            <button type="submit">로그인</button>
             </form>
     	</div>
@@ -80,5 +87,19 @@
             	</div>
         	</div>
     	</div>
+
+		<div class="form-container log-in-container" id="back">
+			<form action="#">
+				<h1>비밀번호 찾기</h1>
+				<span>or use your account</span>
+				<input type="email" placeholder="이메일을 입력하세요" />
+				<input type="password" placeholder="비밀번호 질문의 답을 입력하세요" />
+				<div class="login-menu">
+					<a href="#" onclick="flipCard()">로그인</a>
+					<a href="#">회원가입</a>
+				</div>
+				<button>찾기</button>
+			</form>
+		</div>
 	</div>
 
