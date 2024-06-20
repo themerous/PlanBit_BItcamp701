@@ -6,9 +6,14 @@
 	<definition name="mainLayout" template="/WEB-INF/layout/layout1.jsp">
 		<put-attribute name="header" value="/WEB-INF/layout/header.jsp"></put-attribute>
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"></put-attribute>
+		<put-attribute name="sidebutton" value="/WEB-INF/layout/sidebutton.jsp"></put-attribute>
 	</definition>
 	
 	<definition name="loginLayout" template="/WEB-INF/layout/layout2.jsp">
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="boardLayout" template="/WEB-INF/layout/layout3.jsp">
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"></put-attribute>
 	</definition>
 	<!-- macro -->
@@ -16,9 +21,13 @@
 	<definition name="layout/*" extends="mainLayout">
 		<put-attribute name="main" value="/WEB-INF/layout/{1}.jsp"></put-attribute>
 	</definition>
-	
-	<definition name="*/*" extends="loginLayout">
-		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
+	<!-- 로그인 레이아웃 -->
+	<definition name="loginform/*" extends="loginLayout">
+		<put-attribute name="main" value="/WEB-INF/loginform/{1}.jsp"></put-attribute>
+	</definition>
+	<!-- 보드레이아웃 -->
+	<definition name="board/*" extends="boardLayout">
+		<put-attribute name="main" value="/WEB-INF/board/{1}.jsp"></put-attribute>
 	</definition>
 	
 </tiles-definitions>

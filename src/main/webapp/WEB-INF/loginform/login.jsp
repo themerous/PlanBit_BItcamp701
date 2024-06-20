@@ -71,8 +71,8 @@
 	            <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력하세요" />
 	            <small class="help-block" id="pw-msg"></small>
 				<div class="login-menu">
-					<a href="#" onclick="flipCard()">비밀번호 찾기</a>
-					<a href="#">회원가입</a>
+					<a onclick="flipCard()">비밀번호 찾기</a>
+					<a href="./form">회원가입</a>
 				</div>
 	            <button type="submit">로그인</button>
             </form>
@@ -95,8 +95,8 @@
 				<input type="email" placeholder="이메일을 입력하세요" />
 				<input type="password" placeholder="비밀번호 질문의 답을 입력하세요" />
 				<div class="login-menu">
-					<a href="#" onclick="flipCard()">로그인</a>
-					<a href="#">회원가입</a>
+					<a onclick="flipCard()">로그인</a>
+					<a href="./form">회원가입</a>
 				</div>
 				<button>찾기</button>
 			</form>

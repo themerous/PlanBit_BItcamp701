@@ -7,7 +7,7 @@
 <main>
     <div class="blog-post">
         <div class="post-image">
-            <img src="/image/e3.jpg" alt="이미지 설명">
+            <img src="/images/e3.jpg" alt="이미지 설명">
         </div>
         <div class="post-title">
             <h2>블로그 제목</h2>

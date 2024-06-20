@@ -45,6 +45,12 @@ public class HomeController {
 	{
 		return "loginform/form";
 	}
+	
+	// 블로그글 디테일페이지
+	@GetMapping("bit/detail")
+	public String blogDetail() {
+		return "board/detail";
+	}
 
 	// 회원가입 insert 이벤트
 	@PostMapping("bit/insert")

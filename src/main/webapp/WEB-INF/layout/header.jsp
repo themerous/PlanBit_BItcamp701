@@ -16,6 +16,6 @@
    </div>
 </div>
 <div class="title-right">
-   <a href="#" class="gaip-button">회원가입</a>
-   <a href="#" class="login-button">로그인</a>
+   <a href="/bit/form" class="gaip-button">회원가입</a>
+   <a href="/bit/login" class="login-button">로그인</a>
 </div>
