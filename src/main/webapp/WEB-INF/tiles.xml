@@ -25,6 +25,9 @@
 	<definition name="loginform/*" extends="loginLayout">
 		<put-attribute name="main" value="/WEB-INF/loginform/{1}.jsp"></put-attribute>
 	</definition>
+	<definition name="chatting/*" extends="loginLayout">
+		<put-attribute name="main" value="/WEB-INF/chatting/{1}.jsp"></put-attribute>
+	</definition>
 	<!-- 보드레이아웃 -->
 	<definition name="board/*" extends="boardLayout">
 		<put-attribute name="main" value="/WEB-INF/board/{1}.jsp"></put-attribute>
