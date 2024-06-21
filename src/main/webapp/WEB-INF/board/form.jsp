@@ -1,320 +1,147 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.css"
-	rel="stylesheet">
-<style>
-body {
-	background-color: #f5f5f5;
-}
-
-.container {
-	background-color: white;
-	padding: 20px;
-	margin-top: 30px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-group label {
-	font-weight: bold;
-}
-
-.form-control {
-	border-radius: 0;
-}
-
-.btn-primary {
-	background-color: #1ec800;
-	border-color: #1ec800;
-	border-radius: 0;
-}
-
-.preview-img {
-	margin-top: 10px;
-	max-width: 200px;
-}
-
-.map_wrap, .map_wrap * {
-	margin: 0;
-	padding: 0;
-	font-family: 'Malgun Gothic', dotum, 'µ¸¿ò', sans-serif;
-	font-size: 12px;
-}
-
-.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
-	color: #000;
-	text-decoration: none;
-}
-
-.map_wrap {
-	position: relative;
-	width: 100%;
-	height: 480px;
-}
-
-#menu_wrap {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	width: 250px;
-	margin: 10px 0 30px 10px;
-	padding: 5px;
-	overflow-y: auto;
-	background: rgba(255, 255, 255, 0.7);
-	z-index: 1;
-	font-size: 12px;
-	border-radius: 10px;
-}
-
-.bg_white {
-	background: #fff;
-}
-
-#menu_wrap hr {
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 2px solid #5F5F5F;
-	margin: 3px 0;
-}
-
-#menu_wrap .option {
-	text-align: center;
-}
-
-#menu_wrap .option p {
-	margin: 10px 0;
-}
-
-#menu_wrap .option button {
-	margin-left: 5px;
-}
-
-#placesList li {
-	list-style: none;
-}
-
-#placesList .item {
-	position: relative;
-	border-bottom: 1px solid #888;
-	overflow: hidden;
-	cursor: pointer;
-	min-height: 65px;
-}
-
-#placesList .item span {
-	display: block;
-	margin-top: 4px;
-}
-
-#placesList .item h5, #placesList .item .info {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-#placesList .info .gray {
-	color: #8a8a8a;
-}
-
-#placesList .info .jibun {
-	padding-left: 26px;
-	background:
-		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
-		no-repeat;
-}
-
-#placesList .info .tel {
-	color: #009900;
-}
-
-#placesList .info .placey {
-	color: #009900;
-}
-
-#placesList .info .placex {
-	color: #009900;
-}
-
-#placesList .item .markerbg {
-	float: left;
-	position: absolute;
-	width: 36px;
-	height: 37px;
-	margin: 10px 0 0 10px;
-	background:
-		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
-		no-repeat;
-}
-
-#placesList .item .marker_1 {
-	background-position: 0 -10px;
-}
-
-#placesList .item .marker_2 {
-	background-position: 0 -56px;
-}
-
-#placesList .item .marker_3 {
-	background-position: 0 -102px
-}
-
-#placesList .item .marker_4 {
-	background-position: 0 -148px;
-}
-
-#placesList .item .marker_5 {
-	background-position: 0 -194px;
-}
-
-#placesList .item .marker_6 {
-	background-position: 0 -240px;
-}
-
-#placesList .item .marker_7 {
-	background-position: 0 -286px;
-}
-
-#placesList .item .marker_8 {
-	background-position: 0 -332px;
-}
-
-#placesList .item .marker_9 {
-	background-position: 0 -378px;
-}
-
-#placesList .item .marker_10 {
-	background-position: 0 -423px;
-}
-
-#placesList .item .marker_11 {
-	background-position: 0 -470px;
-}
-
-#placesList .item .marker_12 {
-	background-position: 0 -516px;
-}
-
-#placesList .item .marker_13 {
-	background-position: 0 -562px;
-}
-
-#placesList .item .marker_14 {
-	background-position: 0 -608px;
-}
-
-#placesList .item .marker_15 {
-	background-position: 0 -654px;
-}
-
-#pagination {
-	margin: 10px auto;
-	text-align: center;
-}
-
-#pagination a {
-	display: inline-block;
-	margin-right: 10px;
-}
-
-#pagination .on {
-	font-weight: bold;
-	cursor: default;
-	color: #777;
-}
-</style>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 0;
+        }
+        .btn-primary {
+            background-color: #1ec800;
+            border-color: #1ec800;
+            border-radius: 0;
+        }
+        .preview-img {
+            margin-top: 10px;
+            max-width: 200px;
+        }
+        .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'ë‹ì›€',sans-serif;font-size:12px;}
+        .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+        .map_wrap {position:relative;width:100%;height:480px;}
+        #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+        .bg_white {background:#fff;}
+        #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+        #menu_wrap .option{text-align: center;}
+        #menu_wrap .option p {margin:10px 0;}
+        #menu_wrap .option button {margin-left:5px;}
+        #placesList li {list-style: none;}
+        #placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+        #placesList .item span {display: block;margin-top:4px;}
+        #placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+        #placesList .info .gray {color:#8a8a8a;}
+        #placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+        #placesList .info .tel {color:#009900;}
+        #placesList .info .placey {color:#009900;}
+        #placesList .info .placex {color:#009900;}
+        #placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+        #placesList .item .marker_1 {background-position: 0 -10px;}
+        #placesList .item .marker_2 {background-position: 0 -56px;}
+        #placesList .item .marker_3 {background-position: 0 -102px}
+        #placesList .item .marker_4 {background-position: 0 -148px;}
+        #placesList .item .marker_5 {background-position: 0 -194px;}
+        #placesList .item .marker_6 {background-position: 0 -240px;}
+        #placesList .item .marker_7 {background-position: 0 -286px;}
+        #placesList .item .marker_8 {background-position: 0 -332px;}
+        #placesList .item .marker_9 {background-position: 0 -378px;}
+        #placesList .item .marker_10 {background-position: 0 -423px;}
+        #placesList .item .marker_11 {background-position: 0 -470px;}
+        #placesList .item .marker_12 {background-position: 0 -516px;}
+        #placesList .item .marker_13 {background-position: 0 -562px;}
+        #placesList .item .marker_14 {background-position: 0 -608px;}
+        #placesList .item .marker_15 {background-position: 0 -654px;}
+        #pagination {margin:10px auto;text-align: center;}
+        #pagination a {display:inline-block;margin-right:10px;}
+        #pagination .on {font-weight: bold; cursor: default;color:#777;}
+    </style>
 <div class="container">
-	<h2>±Û ÀÛ¼º</h2>
-	<form action="./boardinsert" method="post"
-		enctype="multipart/form-data">
-		<input type="hidden" name="board_num" value="${board_num}"> <input
-			type="hidden" id="isMapSectionAdded" name="isMapSectionAdded"
-			value="false">
+    <h2>ê¸€ ì‘ì„±</h2>
+    <form action="./boardinsert" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="board_num" value="${board_num}">
+        <input type="hidden" id="isMapSectionAdded" name="isMapSectionAdded" value="false">
 
-		<!-- Á¦¸ñ ÀÔ·ÂÃ¢ -->
-		<div class="form-group">
-			<label for="title">Á¦¸ñ</label> <input type="text" class="form-control"
-				id="title" name="title" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä" required>
-		</div>
+        <!-- ì œëª© ì…ë ¥ì°½ -->
+        <div class="form-group">
+            <label for="title">ì œëª©</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”" required>
+        </div>
 
-		<!-- ¸ŞÀÎ »çÁø ¾÷·Îµå -->
-		<div class="form-group">
-			<label for="upload">¸ŞÀÎ»çÁø</label> <input type="file"
-				class="form-control-file" id="upload" name="upload"
-				onchange="previewImage(event)"> <img id="preview"
-				class="preview-img" src="#" alt="¹Ì¸®º¸±â ÀÌ¹ÌÁö" style="display: none;">
-		</div>
+        <!-- ë©”ì¸ ì‚¬ì§„ ì—…ë¡œë“œ -->
+        <div class="form-group">
+            <label for="upload">ë©”ì¸ì‚¬ì§„</label>
+            <input type="file" class="form-control-file" id="upload" name="upload" onchange="previewImage(event)">
+            <img id="preview" class="preview-img" src="#" alt="ë¯¸ë¦¬ë³´ê¸° ì´ë¯¸ì§€" style="display: none;">
+        </div>
 
-		<!-- ³»¿ë ÀÔ·ÂÃ¢ -->
-		<div class="form-group">
-			<label for="summernote">³»¿ë</label>
-			<textarea id="summernote" name="content" class="form-control"
-				placeholder="³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä" required></textarea>
-		</div>
+        <!-- ë‚´ìš© ì…ë ¥ì°½ -->
+        <div class="form-group">
+            <label for="summernote">ë‚´ìš©</label>
+            <textarea id="summernote" name="content" class="form-control" placeholder="ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”" required></textarea>
+        </div>
 
-		<!-- ÀúÀåÇÏ±â ¹öÆ° -->
-		<button type="submit" class="btn btn-primary">ÀúÀåÇÏ±â</button>
+        <!-- ì €ì¥í•˜ê¸° ë²„íŠ¼ -->
+        <button type="submit" class="btn btn-primary">ì €ì¥í•˜ê¸°</button>
 
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-			data-bs-target="#myModal" onclick="toggleMapSection()">Open
-			modal</button>
-	</form>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="toggleMapSection()">
+            Open modal
+        </button>
+    </form>
 
 
-	<!-- -------------------------------------------------------------------------------------- -->
-	<!-- The Modal -->
-	<div class="modal" id="myModal">
-		<div class="modal-dialog modal-fullscreen"
-			style="width: 100vw; margin: 0;">
-			<form action="./mapinsert" method="post">
-				<div class="modal-content">
+    <!-- -------------------------------------------------------------------------------------- -->
+    <!-- The Modal -->
+    <form action="./mapinsert" method="post">
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-fullscreen" style="width: 100vw; margin: 0;">
+            <div class="modal-content">
 
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h4 class="modal-title">Modal Heading</h4>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							onclick="toggleMapSection()"></button>
-					</div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="toggleMapSection()"></button>
+                </div>
 
-					<!-- Modal body -->
-					<div class="modal-body">
+                <!-- Modal body -->
+                <div class="modal-body">
 
-						<div id="mapSection" style="display: none;">
-							<div id="wrapper">
-								<div class="map_wrap" id="map_wrap">
-									<div id="map"
-										style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-									<div id="menu_wrap" class="bg_white">
-										<div class="option">
-											<div>
-												Å°¿öµå : <input type="text" id="keyword" size="15">
-												<button onclick="searchPlaces(); return false;">°Ë»öÇÏ±â</button>
-											</div>
-										</div>
-										<hr>
-										<ul id="placesList"></ul>
-										<div id="pagination"></div>
-									</div>
-								</div>
+                    <div id="mapSection" style="display: none;">
+                        <div id="wrapper">
+                            <div class="map_wrap" id="map_wrap">
+                                <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                                <div id="menu_wrap" class="bg_white">
+                                    <div class="option">
+                                        <div>
+                                            í‚¤ì›Œë“œ : <input type="text" id="keyword" size="15">
+                                            <button onclick="searchPlaces(); return false;">ê²€ìƒ‰í•˜ê¸°</button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <ul id="placesList"></ul>
+                                    <div id="pagination"></div>
+                                </div>
+                            </div>
 
-								<!-- -------------------------------------------------------------------------------------- -->
-								<button type="submit" class="btn btn-primary">ÀúÀåÇÏ±â</button>
-								<button type="button" class="btn btn-primary"
-									onclick="addNewBox()">Ãß°¡</button>
-								<!-- Kakao Map API -->
-								<script type="text/javascript"
-									src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6f6609502fa3f00b4b14ebbdcdf59da6&libraries=services"></script>
-								<script>
-                                var markers = []; // ±âº» ¸¶Ä¿µéÀ» ´ãÀ» ¹è¿­
-                                var customMarkers = []; // Ä¿½ºÅÒ ¸¶Ä¿µéÀ» ´ãÀ» ¹è¿­
+                            <!-- -------------------------------------------------------------------------------------- -->
+                            <button type="submit" class="btn btn-primary">ì €ì¥í•˜ê¸°</button>
+                            <button type="button" class="btn btn-primary" onclick="addNewBox()">ì¶”ê°€</button>
+                            <!-- Kakao Map API -->
+                            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6f6609502fa3f00b4b14ebbdcdf59da6&libraries=services"></script>
+                            <script>
+                                var markers = []; // ê¸°ë³¸ ë§ˆì»¤ë“¤ì„ ë‹´ì„ ë°°ì—´
+                                var customMarkers = []; // ì»¤ìŠ¤í…€ ë§ˆì»¤ë“¤ì„ ë‹´ì„ ë°°ì—´
                                 var map, ps, infowindow, polyline;
 
-                                // Áöµµ¸¦ ÃÊ±âÈ­ÇÏ´Â ÇÔ¼ö
+                                // ì§€ë„ë¥¼ ì´ˆê¸°í™”í•˜ëŠ” í•¨ìˆ˜
                                 function initializeMap() {
                                     var mapContainer = document.getElementById('map');
                                     var mapOption = {
@@ -335,17 +162,17 @@ body {
                                     });
                                 }
 
-                                // Å°¿öµå·Î Àå¼Ò¸¦ °Ë»öÇÏ´Â ÇÔ¼ö
+                                // í‚¤ì›Œë“œë¡œ ì¥ì†Œë¥¼ ê²€ìƒ‰í•˜ëŠ” í•¨ìˆ˜
                                 function searchPlaces() {
                                     var keyword = document.getElementById('keyword').value;
                                     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-                                        alert('Å°¿öµå¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!');
+                                        alert('í‚¤ì›Œë“œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!');
                                         return false;
                                     }
                                     ps.keywordSearch(keyword, placesSearchCB);
                                 }
 
-                                // Àå¼Ò °Ë»öÀÇ Äİ¹é ÇÔ¼ö
+                                // ì¥ì†Œ ê²€ìƒ‰ì˜ ì½œë°± í•¨ìˆ˜
                                 function placesSearchCB(data, status, pagination) {
                                     if (status === kakao.maps.services.Status.OK) {
                                         displayPlaces(data);
@@ -357,15 +184,15 @@ body {
                                         }
                                         map.setBounds(bounds);
                                     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-                                        alert('°Ë»ö °á°ú°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.');
+                                        alert('ê²€ìƒ‰ ê²°ê³¼ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.');
                                         return;
                                     } else if (status === kakao.maps.services.Status.ERROR) {
-                                        alert('°Ë»ö °á°ú Áß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.');
+                                        alert('ê²€ìƒ‰ ê²°ê³¼ ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');
                                         return;
                                     }
                                 }
 
-                                // °Ë»öµÈ Àå¼ÒµéÀ» Ç¥½ÃÇÏ´Â ÇÔ¼ö
+                                // ê²€ìƒ‰ëœ ì¥ì†Œë“¤ì„ í‘œì‹œí•˜ëŠ” í•¨ìˆ˜
                                 function displayPlaces(places) {
                                     var listEl = document.getElementById('placesList'),
                                         menuEl = document.getElementById('menu_wrap'),
@@ -388,7 +215,7 @@ body {
                                                 var currentBox = boxes[boxes.length - 1];
 
                                                 if (currentBox.querySelector('.fulladdress').value !== "") {
-                                                    alert("¹Ú½º ¾È¿¡ ³»¿ëÀÌ ÀÖ½À´Ï´Ù. Ãß°¡ ¹öÆ°À» ´­·¯ »õ·Î¿î ¹Ú½º¸¦ »ı¼ºÇØ ÁÖ¼¼¿ä.");
+                                                    alert("ë°•ìŠ¤ ì•ˆì— ë‚´ìš©ì´ ìˆìŠµë‹ˆë‹¤. ì¶”ê°€ ë²„íŠ¼ì„ ëˆŒëŸ¬ ìƒˆë¡œìš´ ë°•ìŠ¤ë¥¼ ìƒì„±í•´ ì£¼ì„¸ìš”.");
                                                     return;
                                                 }
 
@@ -434,7 +261,7 @@ body {
                                     map.setBounds(bounds);
                                 }
 
-                                // ¸®½ºÆ® ¾ÆÀÌÅÛÀ» »ı¼ºÇÏ´Â ÇÔ¼ö
+                                // ë¦¬ìŠ¤íŠ¸ ì•„ì´í…œì„ ìƒì„±í•˜ëŠ” í•¨ìˆ˜
                                 function getListItem(index, places) {
                                     var el = document.createElement('li'),
                                         itemStr = '<span class="markerbg marker_' + (index + 1) + '"></span>' +
@@ -454,7 +281,7 @@ body {
                                     return el;
                                 }
 
-                                // ¸¶Ä¿¸¦ Ãß°¡ÇÏ´Â ÇÔ¼ö
+                                // ë§ˆì»¤ë¥¼ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
                                 function addMarker(position, idx) {
                                     var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png',
                                         imageSize = new kakao.maps.Size(36, 37),
@@ -474,7 +301,7 @@ body {
                                     return marker;
                                 }
 
-                                // Ä¿½ºÅÒ ¸¶Ä¿¸¦ Ãß°¡ÇÏ´Â ÇÔ¼ö
+                                // ì»¤ìŠ¤í…€ ë§ˆì»¤ë¥¼ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
                                 function addCustomMarker(position, title) {
                                     var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png',
                                         imageSize = new kakao.maps.Size(24, 35),
@@ -489,21 +316,21 @@ body {
                                     customMarkers.push({marker: marker, title: title});
                                 }
 
-                                // ÀÎÆ÷À©µµ¿ì¸¦ Ç¥½ÃÇÏ´Â ÇÔ¼ö
+                                // ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•˜ëŠ” í•¨ìˆ˜
                                 function displayInfowindow(marker, title) {
                                     var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
                                     infowindow.setContent(content);
                                     infowindow.open(map, marker);
                                 }
 
-                                // ³ëµå¸¦ ¸ğµÎ Á¦°ÅÇÏ´Â ÇÔ¼ö
+                                // ë…¸ë“œë¥¼ ëª¨ë‘ ì œê±°í•˜ëŠ” í•¨ìˆ˜
                                 function removeAllChildNods(el) {
                                     while (el.hasChildNodes()) {
                                         el.removeChild(el.lastChild);
                                     }
                                 }
 
-                                // ¸¶Ä¿¸¦ Á¦°ÅÇÏ´Â ÇÔ¼ö
+                                // ë§ˆì»¤ë¥¼ ì œê±°í•˜ëŠ” í•¨ìˆ˜
                                 function removeMarker() {
                                     for (var i = 0; i < markers.length; i++ ) {
                                         markers[i].setMap(null);
@@ -511,7 +338,7 @@ body {
                                     markers = [];
                                 }
 
-                                // ¹Ú½º¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ÇÔ¼ö
+                                // ë°•ìŠ¤ë¥¼ ì—…ë°ì´íŠ¸í•˜ëŠ” í•¨ìˆ˜
                                 function updateBox(box, pname, praddress, paddress, plat, plng) {
                                     var fulladdress = box.querySelector('.fulladdress');
                                     var pnameInput = box.querySelector('.pname');
@@ -535,7 +362,7 @@ body {
                                     lngclick.value = plng;
                                 }
 
-                                // Áöµµ ¼½¼ÇÀ» Åä±ÛÇÏ´Â ÇÔ¼ö
+                                // ì§€ë„ ì„¹ì…˜ì„ í† ê¸€í•˜ëŠ” í•¨ìˆ˜
                                 function toggleMapSection() {
                                     var mapSection = document.getElementById('mapSection');
                                     var isMapSectionAdded = document.getElementById('isMapSectionAdded');
@@ -558,12 +385,12 @@ body {
                                     }
                                 }
 
-                                // »õ·Î¿î ¹Ú½º¸¦ Ãß°¡ÇÏ´Â ÇÔ¼ö
+                                // ìƒˆë¡œìš´ ë°•ìŠ¤ë¥¼ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
                                 function addNewBox() {
                                     var container = document.getElementById('address-container');
                                     var boxes = container.getElementsByClassName('address-box');
 
-                                    // ±âÁ¸ ¹Ú½ºµéÀ» ¼øÈ¸ÇÏ¸ç °ªÀÌ ºñ¾îÀÖ´ÂÁö È®ÀÎ
+                                    // ê¸°ì¡´ ë°•ìŠ¤ë“¤ì„ ìˆœíšŒí•˜ë©° ê°’ì´ ë¹„ì–´ìˆëŠ”ì§€ í™•ì¸
                                     for (var i = 0; i < boxes.length; i++) {
                                         var box = boxes[i];
                                         var pname = box.querySelector('.pname').value.trim();
@@ -571,150 +398,148 @@ body {
                                         var latclick = box.querySelector('.latclick').value.trim();
                                         var lngclick = box.querySelector('.lngclick').value.trim();
 
-                                        // °ªÀÌ ÇÏ³ª¶óµµ ºñ¾îÀÖÀ¸¸é °æ°íÃ¢À» ¶ç¿ì°í ÇÔ¼ö Á¾·á
+                                        // ê°’ì´ í•˜ë‚˜ë¼ë„ ë¹„ì–´ìˆìœ¼ë©´ ê²½ê³ ì°½ì„ ë„ìš°ê³  í•¨ìˆ˜ ì¢…ë£Œ
                                         if (pname === '' || paddress === '' || latclick === '' || lngclick === '') {
-                                            alert('¹Ú½º ¾È¿¡ °ªÀÌ ºñ¾î ÀÖ½À´Ï´Ù. ¸ğµç Á¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.');
+                                            alert('ë°•ìŠ¤ ì•ˆì— ê°’ì´ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤. ëª¨ë“  ì •ë³´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.');
                                             return;
                                         }
                                     }
 
-                                    // °ªÀÌ ¸ğµÎ Ã¤¿öÁ® ÀÖÀ¸¸é »õ·Î¿î ¹Ú½º Ãß°¡
+                                    // ê°’ì´ ëª¨ë‘ ì±„ì›Œì ¸ ìˆìœ¼ë©´ ìƒˆë¡œìš´ ë°•ìŠ¤ ì¶”ê°€
                                     var newBox = document.createElement('div');
                                     newBox.className = 'address-box';
                                     newBox.innerHTML = `
-                                        <input type="text" class="fulladdress" name="fulladdress" style="width:90%;" disabled><br>
-                                        <input type="text" class="pname" name="mapname" value="">
-                                        <input type="text" class="paddress" name="addr" value="">
-                                        <input type="text" class="latclick" name="lat" value="">
-                                        <input type="text" class="lngclick" name="lng" value="">
-                                        <button type="button" class="btn btn-danger" onclick="deleteBox(this)">»èÁ¦</button>
-                                    `;
+        <input type="text" class="fulladdress" name="fulladdress" style="width:90%;" disabled><br>
+        <input type="text" class="pname" name="pname" value="">
+        <input type="text" class="paddress" name="paddress" value="">
+        <input type="text" class="latclick" name="latclick" value="">
+        <input type="text" class="lngclick" name="lngclick" value="">
+        <button type="button" class="btn btn-danger" onclick="deleteBox(this)">ì‚­ì œ</button>
+    `;
                                     container.appendChild(newBox);
                                 }
 
-                                // ¹Ú½º¸¦ »èÁ¦ÇÏ´Â ÇÔ¼ö, Ä¿½ºÅÒ ¸¶Ä¿µµ ÇÔ²² »èÁ¦
+                                // ë°•ìŠ¤ë¥¼ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜, ì»¤ìŠ¤í…€ ë§ˆì»¤ë„ í•¨ê»˜ ì‚­ì œ
                                 function deleteBox(button) {
                                     var box = button.parentNode;
                                     var lat = parseFloat(box.querySelector('.latclick').value);
                                     var lng = parseFloat(box.querySelector('.lngclick').value);
 
-                                    // Ä¿½ºÅÒ ¸¶Ä¿¸¦ Ã£¾Æ¼­ Á¦°Å
+                                    // ì»¤ìŠ¤í…€ ë§ˆì»¤ë¥¼ ì°¾ì•„ì„œ ì œê±°
                                     for (var i = 0; i < customMarkers.length; i++) {
                                         var marker = customMarkers[i].marker;
                                         var markerTitle = customMarkers[i].title;
                                         if (markerTitle === box.querySelector('.pname').value) {
-                                            // setTimeoutÀ» »ç¿ëÇÏ¿© ºñµ¿±â Ã³¸® ½Ã°£À» È®º¸
+                                            // setTimeoutì„ ì‚¬ìš©í•˜ì—¬ ë¹„ë™ê¸° ì²˜ë¦¬ ì‹œê°„ì„ í™•ë³´
                                             setTimeout(function() {
-                                                marker.setMap(null); // ¸¶Ä¿ Á¦°Å
-                                                customMarkers.splice(i, 1); // ¹è¿­¿¡¼­ Á¦°Å
-                                            }, 100); // 100ms ÈÄ¿¡ Á¦°Å
+                                                marker.setMap(null); // ë§ˆì»¤ ì œê±°
+                                                customMarkers.splice(i, 1); // ë°°ì—´ì—ì„œ ì œê±°
+                                            }, 100); // 100ms í›„ì— ì œê±°
                                             break;
                                         }
                                     }
 
-                                    // Æú¸®¶óÀÎ ¾÷µ¥ÀÌÆ®
+                                    // í´ë¦¬ë¼ì¸ ì—…ë°ì´íŠ¸
                                     var path = polyline.getPath().filter(function(latlng) {
                                         return !(latlng.getLat() === lat && latlng.getLng() === lng);
                                     });
                                     polyline.setPath(path);
 
-                                    // ¹Ú½º ¿ä¼Ò Á¦°Å
+                                    // ë°•ìŠ¤ ìš”ì†Œ ì œê±°
                                     box.parentNode.removeChild(box);
                                 }
 
-                                // ¸ğ´ŞÀÌ ¿­¸± ¶§¸¶´Ù Áöµµ¸¦ ´Ù½Ã ÃÊ±âÈ­
+                                // ëª¨ë‹¬ì´ ì—´ë¦´ ë•Œë§ˆë‹¤ ì§€ë„ë¥¼ ë‹¤ì‹œ ì´ˆê¸°í™”
                                 $('#myModal').on('shown.bs.modal', function () {
                                     if ($('#map').length > 0) {
-                                        $('#map').remove();  // ±âÁ¸ Áöµµ ¿ä¼Ò Á¦°Å
+                                        $('#map').remove();  // ê¸°ì¡´ ì§€ë„ ìš”ì†Œ ì œê±°
                                     }
                                     $('#map_wrap').append('<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>');
 
                                     initializeMap();
                                 });
 
-                                // ¸ğ´ŞÀÌ ´İÈú ¶§ ÀÌº¥Æ® ÇÚµé·¯
+                                // ëª¨ë‹¬ì´ ë‹«í ë•Œ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
                                 $('#myModal').on('hidden.bs.modal', function () {
-                                    clearSearchResults(); // °Ë»ö °á°ú ÃÊ±âÈ­
-                                    clearAddressBoxes();  // Ãß°¡µÈ ÁÖ¼Ò ¹Ú½º ÃÊ±âÈ­
-                                    polyline.setPath([]); // Æú¸®¶óÀÎ ÃÊ±âÈ­
+                                    clearSearchResults(); // ê²€ìƒ‰ ê²°ê³¼ ì´ˆê¸°í™”
+                                    clearAddressBoxes();  // ì¶”ê°€ëœ ì£¼ì†Œ ë°•ìŠ¤ ì´ˆê¸°í™”
+                                    polyline.setPath([]); // í´ë¦¬ë¼ì¸ ì´ˆê¸°í™”
                                 });
 
-                                // °Ë»ö °á°ú ÃÊ±âÈ­ ÇÔ¼ö
+                                // ê²€ìƒ‰ ê²°ê³¼ ì´ˆê¸°í™” í•¨ìˆ˜
                                 function clearSearchResults() {
-                                    $('#placesList').empty(); // Àå¼Ò ¸ñ·Ï ÃÊ±âÈ­
-                                    removeMarker(); // ¸¶Ä¿ Á¦°Å ÇÔ¼ö È£Ãâ
+                                    $('#placesList').empty(); // ì¥ì†Œ ëª©ë¡ ì´ˆê¸°í™”
+                                    removeMarker(); // ë§ˆì»¤ ì œê±° í•¨ìˆ˜ í˜¸ì¶œ
                                 }
 
-                                // ÁÖ¼Ò ¹Ú½º ÃÊ±âÈ­ ÇÔ¼ö
+                                // ì£¼ì†Œ ë°•ìŠ¤ ì´ˆê¸°í™” í•¨ìˆ˜
                                 function clearAddressBoxes() {
-                                    $('#address-container').empty(); // ÁÖ¼Ò ¹Ú½º ÃÊ±âÈ­
-                                    // ±âº» ÁÖ¼Ò ¹Ú½º ÇÏ³ª¸¦ Ãß°¡
+                                    $('#address-container').empty(); // ì£¼ì†Œ ë°•ìŠ¤ ì´ˆê¸°í™”
+                                    // ê¸°ë³¸ ì£¼ì†Œ ë°•ìŠ¤ í•˜ë‚˜ë¥¼ ì¶”ê°€
                                     var defaultBox = `
                                     <div class="address-box">
                                         <input type="text" class="fulladdress" name="fulladdress" style="width:90%;" disabled><br>
-                                        <input type="text" class="pname" name="mapname" value="">
+                                        <input type="text" class="pname" name="pname" value="">
                                         <input type="text" class="paddress" name="paddress" value="">
-                                        <input type="text" class="latclick" name="lat" value="">
-                                        <input type="text" class="lngclick" name="lng" value="">
+                                        <input type="text" class="latclick" name="latclick" value="">
+                                        <input type="text" class="lngclick" name="lngclick" value="">
                                     </div>
                                     `;
                                     $('#address-container').append(defaultBox);
                                 }
                             </script>
-								<div id="address-container">
-									<!-- À§µµ ¹× °æµµ ÁÂÇ¥ ¹× À§Ä¡Á¤º¸ -->
-									<div class="address-box">
-										<input type="text" class="fulladdress" name="fulladdress"
-											style="width: 90%;" disabled><br> <input
-											type="text" class="pname" name="mapname" value=""> <input
-											type="text" class="paddress" name="paddress" value="">
-										<input type="text" class="latclick" name="lat" value="">
-										<input type="text" class="lngclick" name="lng" value="">
+                            <div id="address-container">
+                                <!-- ìœ„ë„ ë° ê²½ë„ ì¢Œí‘œ ë° ìœ„ì¹˜ì •ë³´ -->
+                                <div class="address-box">
+                                    <input type="text" class="fulladdress" name="fulladdress" style="width:90%;" disabled><br>
+                                    <input type="text" class="pname" name="pname" value="">
+                                    <input type="text" class="paddress" name="paddress" value="">
+                                    <input type="text" class="latclick" name="latclick" value="">
+                                    <input type="text" class="lngclick" name="lngclick" value="">
 
-										<%--                                    <button type="button" class="btn btn-danger" onclick="deleteBox(this)">»èÁ¦</button>--%>
-									</div>
-								</div>
+                                    <%--                                    <button type="button" class="btn btn-danger" onclick="deleteBox(this)">ì‚­ì œ</button>--%>
+                                </div>
+                            </div>
 
-							</div>
-						</div>
-					</div>
+                        </div>
+                    </div>
+                </div>
 
-					<!-- Modal footer -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger"
-							data-bs-dismiss="modal" onclick="toggleMapSection()">Close</button>
-					</div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="toggleMapSection()">Close</button>
+                </div>
 
-				</div>
-			</form>
-		</div>
-	</div>
-	<!-- -------------------------------------------------------------------------------------- -->
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- -------------------------------------------------------------------------------------- -->
 </div>
 <script>
     $(document).ready(function() {
-        // ¸ğ´ŞÀÌ ¿­¸± ¶§ ÀÌº¥Æ® ÇÚµé·¯ µî·Ï
+        // ëª¨ë‹¬ì´ ì—´ë¦´ ë•Œ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ ë“±ë¡
         $('#myModal').on('shown.bs.modal', function () {
-            // Å°¿öµå ÀÔ·Â¶õÀÇ °ªÀ» "ºñÆ®Ä·ÇÁ"·Î ¼³Á¤
-            $('#keyword').val('ºñÆ®Ä·ÇÁ');
+            // í‚¤ì›Œë“œ ì…ë ¥ë€ì˜ ê°’ì„ "ë¹„íŠ¸ìº í”„"ë¡œ ì„¤ì •
+            $('#keyword').val('ë¹„íŠ¸ìº í”„');
         });
-        // ¸ğ´ŞÀÌ ´İÈú ¶§ ÀÌÀü °Ë»ö °á°ú ÃÊ±âÈ­
+        // ëª¨ë‹¬ì´ ë‹«í ë•Œ ì´ì „ ê²€ìƒ‰ ê²°ê³¼ ì´ˆê¸°í™”
         $('#myModal').on('hidden.bs.modal', function () {
-            clearSearchResults(); // °Ë»ö °á°ú ÃÊ±âÈ­
-            clearAddressBoxes();  // Ãß°¡µÈ ÁÖ¼Ò ¹Ú½º ÃÊ±âÈ­
+            clearSearchResults(); // ê²€ìƒ‰ ê²°ê³¼ ì´ˆê¸°í™”
+            clearAddressBoxes();  // ì¶”ê°€ëœ ì£¼ì†Œ ë°•ìŠ¤ ì´ˆê¸°í™”
         });
 
-        // °Ë»ö °á°ú ÃÊ±âÈ­ ÇÔ¼ö
+        // ê²€ìƒ‰ ê²°ê³¼ ì´ˆê¸°í™” í•¨ìˆ˜
         function clearSearchResults() {
-            $('#placesList').empty(); // Àå¼Ò ¸ñ·Ï ÃÊ±âÈ­
-            removeMarker(); // ¸¶Ä¿ Á¦°Å ÇÔ¼ö È£Ãâ
-            polyline.setPath([]); // Æú¸®¶óÀÎ ÃÊ±âÈ­
+            $('#placesList').empty(); // ì¥ì†Œ ëª©ë¡ ì´ˆê¸°í™”
+            removeMarker(); // ë§ˆì»¤ ì œê±° í•¨ìˆ˜ í˜¸ì¶œ
+            polyline.setPath([]); // í´ë¦¬ë¼ì¸ ì´ˆê¸°í™”
         }
 
-        // ÁÖ¼Ò ¹Ú½º ÃÊ±âÈ­ ÇÔ¼ö
+        // ì£¼ì†Œ ë°•ìŠ¤ ì´ˆê¸°í™” í•¨ìˆ˜
         function clearAddressBoxes() {
-            $('#address-container').empty(); // ÁÖ¼Ò ¹Ú½º ÃÊ±âÈ­
-            // ±âº» ÁÖ¼Ò ¹Ú½º ÇÏ³ª¸¦ Ãß°¡
+            $('#address-container').empty(); // ì£¼ì†Œ ë°•ìŠ¤ ì´ˆê¸°í™”
+            // ê¸°ë³¸ ì£¼ì†Œ ë°•ìŠ¤ í•˜ë‚˜ë¥¼ ì¶”ê°€
             var defaultBox = `
             <div class="address-box">
                 <input type="text" class="fulladdress" name="fulladdress" style="width:90%;" disabled><br>
@@ -738,8 +563,10 @@ body {
         reader.readAsDataURL(event.target.files[0]);
     }
 </script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.js"></script>
 <script>
     $(document).ready(function() {
         $('#summernote').summernote({
