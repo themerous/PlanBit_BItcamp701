@@ -228,23 +228,25 @@
             border: 1px solid white;
             margin-top: 70px;
             width: 500px;
-            height: 400px;
+            height: 470px;
             position: absolute;
             right: 200px;
 
         }
 
         .main-photo3 {
-
+            background-color: black;
             border: 1px solid white;
             width: 120px;
             height: 600px;
             position: absolute;
             right: 0;
             font-family: "Alfa Slab One", serif;
-            font-size: 40px;
+            font-size: 80px;
+            writing-mode: vertical-rl; /* 텍스트를 위에서 아래로 길게 나오게 설정 */
+            text-align: center; /* 텍스트를 중앙 정렬 */
 
-
+            color: white;
         }
 
 
