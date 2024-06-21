@@ -26,7 +26,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+
+
    <style>
+
         body *{
             font-family: "Bree Serif", serif;
 
@@ -61,7 +68,7 @@
         /*헤더 중간 박스 */
 
         .title-center {
-            font-size: 10px;
+
             color: #51e3d4;
         }
 
@@ -79,7 +86,7 @@
             text-decoration: none;
             padding: 20px;
             transition: background-color 0.3s;
-            font-size: 15px;
+            font-size: 17px;
             font-family: "Alfa Slab One", serif;
         }
 
@@ -153,15 +160,14 @@
 
         main {
             width: 90%;
-            height: 2000px;
-            border: 1px solid black;
+            height: auto;
             margin: 0 auto;
 
         }
 
         .main-home1 {
             width: 100%;
-            height: 700px;
+            height: auto;
             margin: 0 auto;
         }
 
@@ -221,14 +227,29 @@
 
             border: 1px solid white;
             margin-top: 70px;
-            width: 600px;
+            width: 500px;
             height: 400px;
             position: absolute;
-            right: 100px;
+            right: 200px;
+
+        }
+
+        .main-photo3 {
+
+            border: 1px solid white;
+            width: 120px;
+            height: 600px;
+            position: absolute;
+            right: 0;
+            font-family: "Alfa Slab One", serif;
+            font-size: 40px;
+
 
         }
 
 
+
+        /* 사이드 버튼 */
 
         aside {
             width: auto;
@@ -252,14 +273,14 @@
             padding: 8px;
             color: #51e3d4;
             filter: drop-shadow(0px 4px 4px #d2dae5);
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border: none;
 
         }
 
         .side-btn-box button i {
-            font-size: 35px;
+            font-size: 30px;
 
         }
 
@@ -267,20 +288,271 @@
             transform: scale(0.9, 0.9);
         }
 
+
+
+
+
+
         .main-home2 {
-            border: 1px solid blue;
             width: 100%;
-            height: 800px;
-            margin: 0 auto;
-            background-color: #51e3d4;
+            height: 700px;
+            background-image: url("/images/tri3.png");
+            background-size: cover;
+            border: 2px solid black;
         }
 
 
+
+
+
+
+
+
+
+
+
+
         .main-home3 {
+            width: 100%;
+            height: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px; /* 원하는 간격을 설정할 수 있습니다 */
+            padding: 10px; /* 원하는 패딩을 설정할 수 있습니다 */
+            position: relative; /* 버튼의 위치를 이 컨테이너를 기준으로 조정 */
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+        }
+
+        .main-blog {
+            text-align: center; /* 텍스트 정렬을 가운데로 설정 */
+            height: auto;
+        }
+
+        .main-blog-title {
+            color: white;
+            width: 100%;
+            height: 20%;
+            background-image: url("/images/water.jpg");
+            background-size: cover;
+            text-align: center;
+            display: flex;
+            align-items: center; /* 텍스트를 수직 가운데로 정렬 */
+            justify-content: center; /* 텍스트를 수평 가운데로 정렬 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+        }
+
+        .main-blog-title p {
+            font-size: 50px;
+        }
+
+        .main-blog-content {
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .blog-item2 {
+            position: relative;
+            width: 100%; /* 이미지 컨테이너의 너비 */
+            height: 250px; /* 이미지 컨테이너의 높이 */
+            overflow: hidden; /* 넘치는 이미지를 숨김 */
+            margin-bottom: 10px; /* 이미지 사이의 위아래 간격 설정 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-item2 img {
+            width: 100%;
+            object-fit: cover; /* 이미지 비율 유지 */
+            transition: transform 0.2s ease;
+            height: 100%;
+        }
+
+        .blog-item-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* 배경 색상과 투명도 */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* 기본적으로 숨김 */
+            transition: opacity 0.3s ease;
+        }
+
+        .blog-item-hover p {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .blog-item2:hover .blog-item-hover {
+            opacity: 1; /* 호버 시 나타나도록 함 */
+        }
+
+
+
+
+
+
+
+
+        .main-blog2 {
+
+            height: auto;
+            display: flex;
+            padding: 10px;
+            flex-direction: column; /* 아이템의 요소들을 위아래로 정렬 */
+            margin-top: 170px;
+            cursor: pointer;
+            align-items: center;
+
+
+        }
+
+        .blog-item {
+            display: flex;
+            margin-bottom: 30px; /* 각 블로그 아이템 사이의 간격 */
+            border: 1px solid #d2dae5;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+            width: 80%;
+
+        }
+
+        .blog-item:hover {
+            transform: scale(0.9, 0.9);
+        }
+
+        .blog-item img {
+            width: 170px;
+            height: 200px;
+            margin-right: 20px; /* 이미지와 텍스트 사이의 간격 */
+            object-fit: cover; /* 이미지 비율 유지 */
+        }
+
+
+        .blog-item-content {
+            flex: 1; /* 텍스트 컨텐츠가 남은 공간을 차지하도록 설정 */
+
+        }
+        .blog-item-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+            width: 170px;
+            font-family: "IBM Plex Sans KR", sans-serif;
+        }
+        .blog-item-text {
+            font-size: 16px;
+            text-align: left;
+            width: 170px;
+            border-bottom: 1px solid #ccc ;
+            font-family: "IBM Plex Sans KR", sans-serif;
+        }
+
+        .blog-item-icon {
+            display: flex;
+            margin-right: 20px;
+            justify-content: flex-end; /* 아이콘을 오른쪽 끝으로 정렬 */
+            margin-top: 5px; /* 아이콘 위 여백 설정 */
+            gap: 5px;
+        }
+
+        .blog-item-icon i {
+            font-size: 17px;
+        }
+
+        .plus {
+            align-items: center; /* 세로 방향으로 중앙 정렬 */
+            padding: 10px 20px;
+            color: black;
+            text-decoration: none;
+            border: 1px solid black;
+            background-color: white;
+            cursor: pointer;
+            width: 150px;
+            height: 55px;
+            text-align: center;
+            font-size: 21px;
+            font-family: 'Jua';
+            position: absolute;
+            bottom: 50px; /* 부모 컨테이너 하단에서 20px 떨어진 위치 */
+            right: 68px; /* 부모 컨테이너 오른쪽에서 20px 떨어진 위치 */
+        }
+
+        .chu-blog {
+            position: absolute;
+            right: 660px;
+            top: 30px;
+            font-size: 33px;
+            border-left: 6px solid #51e3d4;
+            align-items: center; /* 수직 중앙 정렬 */
+            justify-content: center; /* 수평 중앙 정렬 */
+            font-family: "IBM Plex Sans KR", sans-serif;
+            padding-top: 6px; /* 글씨를 아래로 이동 */
+        }
+
+        .category {
+            position: absolute;
+            top: 120px;
+            width: auto;
+            right: 350px;
+
+        }
+
+        .category-btn {
+            align-items: center; /* 세로 방향으로 중앙 정렬 */
+            color: #51e3d4;
+            text-decoration: none;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+            width: 100px;
+            height: 35px;
+            font-size: 22px;
+            font-family: 'Jua';
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .main-home4 {
+            width: 100%;
+            height: 600px;
+            background-color: #eeeeee;
+        }
+
+
+
+
+
+
+
+
+        .main-home5 {
             display: grid; /* 내부 div를 가로로 배치 */
             width: 100%;
             height: auto;
-            border: 1px solid black;
+
         }
 
         .photo-card {
@@ -288,8 +560,7 @@
             display: grid;
             height: auto;
             width: 100%;
-
-            background-color: black;
+            gap: 20px;
             padding: 15px;
         }
 
@@ -305,8 +576,8 @@
         .photo-div {
             display: flex;
             background-color: white;
-            width: 350px;
-            height: 250px;
+            width: 300px;
+            height: 200px;
             overflow: hidden; /* 내용을 박스 안에 고정 */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s, box-shadow 0.2s;
@@ -325,6 +596,130 @@
             transform: scale(0.9, 0.9);
 
         }
+
+
+
+
+
+
+
+
+        /* 풋터  */
+
+        .footer {
+            margin-top: 50px;
+            width: 100%;
+            background: white;
+            border-top: 1px solid black;
+            font-family: 'Open Sans', sans-serif;
+
+        }
+        .footer .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            padding: 50px;
+        }
+        .footer-row .footer-col h4 {
+            color: black;
+            font-size: 1.2rem;
+            font-weight: 400;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .footer-col .links {
+            margin-top: 20px;
+        }
+        .footer-col .links li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        .footer-col .links li a {
+            text-decoration: none;
+            color: black;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .footer-col .links li a:hover {
+            color: #fff;
+        }
+        .footer-col p {
+            margin: 20px 0;
+            color: black;
+            max-width: 300px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .footer-col form {
+            display: flex;
+            gap: 5px;
+        }
+        .footer-col input {
+            height: 40px;
+            border-radius: 6px;
+            background: none;
+            width: 100%;
+            outline: none;
+            border: 1px solid #7489C6 ;
+            caret-color: #fff;
+            color: #fff;
+            padding-left: 10px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .footer-col input::placeholder {
+            color: #ccc;
+        }
+        .footer-col form button {
+            background: #fff;
+            outline: none;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .footer-col form button:hover {
+            background: #cecccc;
+        }
+        .footer-col .icons {
+            display: flex;
+            margin-top: 30px;
+            gap: 30px;
+            cursor: pointer;
+        }
+        .footer-col .icons i {
+            color: #afb6c7;
+        }
+        .footer-col .icons i:hover  {
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+            .footer {
+                position: relative;
+                bottom: 0;
+                left: 0;
+                transform: none;
+                width: 100%;
+                border-radius: 0;
+            }
+
+            .footer .footer-row {
+                padding: 20px;
+                gap: 1rem;
+            }
+
+            .footer-col form {
+                display: block;
+            }
+
+            .footer-col form :where(input, button) {
+                width: 100%;
+            }
+
+            .footer-col form button {
+                margin: 10px 0 0 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -337,5 +732,8 @@
       <main>
          <tiles:insertAttribute name="main"></tiles:insertAttribute>
       </main>
+    <footer>
+        <tiles:insertAttribute name="footer"></tiles:insertAttribute>
+    </footer>
 </body>
 </html>

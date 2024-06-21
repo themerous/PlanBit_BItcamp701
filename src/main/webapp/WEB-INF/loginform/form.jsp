@@ -197,7 +197,7 @@
                       <div class="select-container">
                           <select id="question" name="question" class="form-control">
                               <option value="" disabled selected>보안 질문을 선택하세요</option>
-                              <option value="1">어린 시절 가장 친한 친구의 이름은 무엇인가요?</option>
+                              <option value="1">졸업한 중학교는 어디인가요?</option>
                               <option value="2">첫 번째 애완동물의 이름은 무엇인가요?</option>
                               <option value="3">출생지는 어디인가요?</option>
                           </select>
