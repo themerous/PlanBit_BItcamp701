@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE tiles-definitions PUBLIC 
-	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
-	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC
+		"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+		"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+	<!-- main -->
 	<definition name="mainLayout" template="/WEB-INF/layout/layout1.jsp">
 		<put-attribute name="header" value="/WEB-INF/layout/header.jsp"></put-attribute>
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"></put-attribute>
 		<put-attribute name="sidebutton" value="/WEB-INF/layout/sidebutton.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"></put-attribute>
 	</definition>
+
+	<!-- login change???-->
 	<definition name="subLayout" template="/WEB-INF/layout/layout2.jsp">
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"></put-attribute>
 	</definition>
+
 	<!-- macro -->
 	<!-- 와일드카드 -->
 	<definition name="layout/*" extends="mainLayout">
 		<put-attribute name="main" value="/WEB-INF/layout/{1}.jsp"></put-attribute>
 	</definition>
+
+	<!-- chagePage other folder -->
+	<definition name="tour/*" extends="mainLayout">
+		<put-attribute name="main" value="/WEB-INF/tour/{1}.jsp"></put-attribute>
+	</definition>
+
 	<!-- 로그인 레이아웃 -->
 	<definition name="*/*" extends="subLayout">
 		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
 	</definition>
+
 </tiles-definitions>

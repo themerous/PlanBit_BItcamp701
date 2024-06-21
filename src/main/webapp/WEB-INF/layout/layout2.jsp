@@ -18,6 +18,7 @@
 	<body>
 		<div class="mainlayout">
 	      <div class="main">
+			<%-- 로그인에는 tiles안쓰니깐 다른 열림창 만들어줌 --%>
 	         <tiles:insertAttribute name="main"></tiles:insertAttribute>
 	      </div>
 	   </div>

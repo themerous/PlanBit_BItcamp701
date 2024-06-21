@@ -17,6 +17,12 @@ import data.service.BoardService;
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
+
+	@GetMapping("board/detail")
+	public String detail() {
+		return "board/detail";
+	}
+
 	//게시판
 	@GetMapping("bit/board")
 	public String board(HttpSession session, Model model) {

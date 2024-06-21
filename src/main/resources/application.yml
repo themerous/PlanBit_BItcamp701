@@ -9,6 +9,7 @@ spring:
     url: jdbc:mysql://db-n9jfu-kr.vpc-pub-cdb.ntruss.com:3306/studyDB?serverTimezone=Asia/Seoul
     username: study
     password: mike@1430
+
 #Mybatis Setting
 #mybatis:
 #  type-aliases-package: data.dto

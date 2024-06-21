@@ -1,10 +1,13 @@
 package data.mapper;
 
+import data.dto.BoardDto;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import data.dto.UserDto;
+
+import java.util.List;
 
 @Mapper
 public interface UserMapperInter {
@@ -20,4 +23,5 @@ public interface UserMapperInter {
 	//아이디 중복체크 이벤트
 	@Select("select count(*) from user where id=#{searchid}")
 	public int idcheckcount(String searchid);
+
 }

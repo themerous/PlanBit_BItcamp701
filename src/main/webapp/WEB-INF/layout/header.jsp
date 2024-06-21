@@ -9,8 +9,7 @@
       <ul>
          <li><a href="#">Home</a></li>
          <li><a href="#">Planner</a></li>
-         <li><a href="#">Map</a></li>
-         <li><a href="#">Hotel</a></li>
+         <li><a href="/tour/tourMain">Map</a></li>
          <li><a href="#">Info</a></li>
       </ul>
    </div>
