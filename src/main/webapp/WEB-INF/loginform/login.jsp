@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
 <script type="text/javascript">
 	$(function(){
 		$("#loginon").submit(function(e){
@@ -60,6 +62,20 @@
 	function flipCard() {
 		document.getElementById('container').classList.toggle('flip');
 	}
+	
+	 function sendNumber(){
+	        /* $("#mail_number").css("display","block"); */
+	        $.ajax({
+	            url:"./mail",
+	            type:"post",
+	            dataType:"json",
+	            data:{"mail" : $("#mail").val()},
+	            success: function(data){
+	                alert("인증번호 발송");
+	               /* $("#Confirm").attr("value",data); */
+	            }
+	        });
+	    }
 </script>
 	<div class="container" id="container">
     	<div class="form-container log-in-container" id="front">
@@ -89,17 +105,19 @@
     	</div>
 
 		<div class="form-container log-in-container" id="back">
-			<form action="#">
+			<!-- <form action="./email" method="post"> -->
 				<h1>비밀번호 찾기</h1>
 				<span>or use your account</span>
-				<input type="email" placeholder="이메일을 입력하세요" />
-				<input type="password" placeholder="비밀번호 질문의 답을 입력하세요" />
+				<input type="text" name="mail" id="mail" placeholder="이메일을 입력하세요" />
+				<!-- <input type="text" placeholder="인증 코드를 입력하세요" /> -->
 				<div class="login-menu">
 					<a onclick="flipCard()">로그인</a>
 					<a href="./form">회원가입</a>
 				</div>
-				<button>찾기</button>
-			</form>
+				<button type="button" onclick="sendNumber()">찾기</button>
+				<br>
+    <input type="text" id="Confirm" name="Confirm" style="display: none" value="">
+			<!-- </form> -->
 		</div>
 	</div>
 
