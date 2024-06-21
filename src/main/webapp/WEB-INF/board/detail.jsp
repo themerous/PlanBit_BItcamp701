@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<link rel="stylesheet" href="/css/board/boardDetail.css">
 <header><a>BIT TRIP</a></header>
 <main>
     <div class="blog-post">
