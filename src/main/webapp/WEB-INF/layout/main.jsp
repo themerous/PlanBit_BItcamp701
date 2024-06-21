@@ -5,14 +5,14 @@
 
 <div class="main-home1">
     <div class="main-photo-box">
-        <div class="main-title">SHOP NOW</div>
+        <div class="main-title">START NOW</div>
         <div class="main-mini-title">How to Learn a Language by Watching TV and Movies
             The Complete Guide to Spaced Repetition Systems (SRS) for Language Learning
         </div>
         <div class="main-photo1"></div>
         <div class="main-photo2"></div>
         <div class="main-button"></div>
-        <div class="main-photo3">SHOP NOW</div>
+        <div class="main-photo3">START NOW</div>
     </div>
 </div>
 
@@ -21,7 +21,7 @@
 <div class="main-home3">
     <div class="main-blog">
         <div class="main-blog-title">
-            <p>Travel destination</p>
+            <p>TRAVEL</p>
         </div>
         <div class="main-blog-content">
             <div class="blog-item2">
