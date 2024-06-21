@@ -17,7 +17,7 @@
 				<a onclick="flipCard()">비밀번호 찾기</a>
 				<a href="./form">회원가입</a>
 			</div>
-	    	<button type="submit">로그인</button>
+	    	<button type="submit" class="login-btn">로그인</button>
     	</form>
     </div>
    	<div class="overlay-container">
@@ -34,13 +34,14 @@
 		<form action="#">
 			<h1>비밀번호 찾기</h1>
 			<span>or use your account</span>
-			<input type="email" placeholder="이메일을 입력하세요" />
-			<input type="password" placeholder="비밀번호 질문의 답을 입력하세요" />
+			<input type="email" placeholder="이메일을 입력하세요"/>
+			<input type="password" placeholder="인증번호 입력"/>
 			<div class="login-menu">
 				<a onclick="flipCard()">로그인</a>
 				<a href="./form">회원가입</a>
 			</div>
-			<button>찾기</button>
+			<button class="password-btn">인증번호</button>
+			<button class="email-btn">이메일 인증</button>
 		</form>
 	</div>
 </div>

@@ -186,10 +186,7 @@
         }
 
         .main-photo-box {
-            background-image: linear-gradient(
-                    rgba(0, 0, 0, 0.1),
-                    rgba(0, 0, 0, 0.1)
-            ), url("/images/p1.jpg");
+            background-image: url("/images/p1.jpg");
             width: 100%; /* 부모 요소 너비에 맞춤 */
             height: 600px; /* 고정 높이 설정 */
             position: relative;
@@ -336,7 +333,7 @@
             color: white;
             width: 100%;
             height: 20%;
-            background-image: url("/images/water.jpg");
+            background-image: url("/images/e4.jpg");
             background-size: cover;
             text-align: center;
             display: flex;
