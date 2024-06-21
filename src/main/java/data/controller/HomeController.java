@@ -45,7 +45,15 @@ public class HomeController {
 	{
 		return "loginform/form";
 	}
-	
+
+	// 비밀번호 재설정
+	@GetMapping("bit/passform")
+	public String passform()
+	{
+		return "loginform/passform";
+	}
+
+
 	// 블로그글 디테일페이지
 	@GetMapping("bit/detail")
 	public String blogDetail() {
