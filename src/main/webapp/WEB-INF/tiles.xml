@@ -7,6 +7,7 @@
 		<put-attribute name="header" value="/WEB-INF/layout/header.jsp"></put-attribute>
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"></put-attribute>
 		<put-attribute name="sidebutton" value="/WEB-INF/layout/sidebutton.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"></put-attribute>
 	</definition>
 	<definition name="subLayout" template="/WEB-INF/layout/layout2.jsp">
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"></put-attribute>
