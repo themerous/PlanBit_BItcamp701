@@ -20,7 +20,8 @@ $("#chatroomform").submit(function(e) {
 	const fdata = $(this).serialize();
 	console.log(fdata);
 
-	$.post("./createChatroom", fdata, function() {
+	$.post("./createChatroom", data, function() {
+		console.log("send success");
 		loadChatRooms();
-	}, 'json');
+	});
 });
