@@ -10,6 +10,7 @@
 <title>Insert title here</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=East+Sea+Dokdo&family=Jua&family=Gaegu&family=Gamja+Flower&family=Pacifico&family=Single+Day&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -31,7 +32,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
 
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
    <style>
 
         body *{
@@ -40,60 +43,59 @@
         }
         header {
             display: flex;
-            width: 90%;
+            width: 100%;
             justify-content: space-between;
             align-items: center;
             color: black;
-            height: 20%;
-            margin: 10px auto;
-            border: 1px solid black;
+            height: 10%;
             padding: 10px;
+            position: sticky;
+            top: 0; /* 도달했을때 고정시킬 위치 */
+            z-index: 10;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 그림자 추가 */
         }
 
 
         /*헤더 왼쪽 박스 */
 
         .title-left {
-            font-size: 50px;
+            font-size: 35px;
             font-family: "Alfa Slab One", serif;
-
-            color: black;
-
-        }
-
-        .title-left:hover {
             color: #51e3d4;
         }
+
 
         /*헤더 중간 박스 */
 
         .title-center {
-
             color: #51e3d4;
         }
 
         .title-menu ul {
             list-style: none;
             display: flex;
-            justify-content: center; /* 가로 방향 가운데 정렬 */
             margin: 0;
             padding: 0;
-            gap: 80px;
+            gap: 150px;
+
         }
 
         .title-center ul li a {
             color: black;
             text-decoration: none;
-            padding: 20px;
+            padding: 10px;
             transition: background-color 0.3s;
-            font-size: 17px;
-            font-family: "Alfa Slab One", serif;
+            font-size: 20px;
+            font-family: "Neuton", serif;
+            border-radius: 4px;
+
         }
 
         .title-center ul li a:hover {
-            color: #51e3d4;
+            color: white;
             border-radius: 4px;
-            padding: 20px;
+            background-color: #51e3d4;
         }
 
 
@@ -116,13 +118,14 @@
             padding: 10px 20px;
             color: black;
             text-decoration: none;
-            border: 1px solid black;
             cursor: pointer;
             width: 120px;
-            height: 55px;
+            height: 45px;
             text-align: center;
-            font-size: 21px;
+            font-size: 20px;
             font-family: 'Jua';
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
         }
 
         .gaip-button:hover {
@@ -135,23 +138,23 @@
             align-items: center; /* 세로 방향으로 중앙 정렬 */
             justify-content: center; /* 가로 방향으로 중앙 정렬 */
             padding: 10px 20px;
-            background-color: black;
+            background-color: #51e3d4;
             color: white;
             text-decoration: none;
             border: none;
-
+            border-radius: 4px;
             cursor: pointer;
-            width: 120px;
-            height: 55px;
+            width: 100px;
+            height: 50px;
             text-align: center;
-            font-size: 21px;
+            font-size: 20px;
             font-family: 'Jua';
         }
 
         .login-button:hover {
-            background-color: #51e3d4;
             transform: scale(0.9, 0.9);
         }
+
 
 
 
@@ -159,7 +162,7 @@
         /*메인 구역 */
 
         main {
-            width: 90%;
+            width: 100%;
             height: auto;
             margin: 0 auto;
 
@@ -171,81 +174,66 @@
             margin: 0 auto;
         }
 
-        .main-button {
-            width: 200px;
-            height: 60px;
-            border: 1px solid white;
-            color: white;
-            text-align: center;
-            font-size: 37px;
-            position: absolute;
-            margin-top: 480px;
-            margin-left: 160px;
-            border-radius: 4px;
-            align-items: center;
-        }
+
 
         .main-photo-box {
-            background-image: linear-gradient(
-                    rgba(0, 0, 0, 0.1),
-                    rgba(0, 0, 0, 0.1)
-            ), url("/images/p1.jpg");
+
             width: 100%; /* 부모 요소 너비에 맞춤 */
-            height: 600px; /* 고정 높이 설정 */
+            height: 650px; /* 고정 높이 설정 */
             position: relative;
+            background: linear-gradient(to right, #19B3FF,#51e3d4);
+
         }
+
+
 
         .main-title {
             position: absolute;
             font-family: "Alfa Slab One", serif;
-            font-size: 40px;
-            margin-top: 360px;
+            font-size: 75px;
+            margin-top: 170px;
             margin-left: 160px;
             color: white;
         }
+
         .main-mini-title {
             position: absolute;
             width: 600px;
-            font-size: 15px;
+            font-size: 23px;
             color: white;
-            margin-top: 420px;
+            margin-top: 280px;
             margin-left: 160px;
+
         }
 
         .main-photo1 {
-            background-image: url("/images/water.jpg");
+            background-image: url("/images/p1.jpg");
             background-size: cover;
-            margin-top: 70px;
-            margin-left: 160px;
-            width: 620px;
-            height: 280px;
-            position: absolute;
-            left: 0;
-        }
-
-        .main-photo2 {
-
-            border: 1px solid white;
-            margin-top: 70px;
-            width: 500px;
+            margin-top: 120px;
+            margin-right: 200px;
+            width: 660px;
             height: 400px;
             position: absolute;
-            right: 200px;
-
-        }
-
-        .main-photo3 {
-
-            border: 1px solid white;
-            width: 120px;
-            height: 600px;
-            position: absolute;
             right: 0;
-            font-family: "Alfa Slab One", serif;
-            font-size: 40px;
-
-
         }
+
+        .main-button {
+            width: 200px;
+            height: 60px;
+            text-align: center;
+            font-size: 27px;
+            position: absolute;
+            margin-top: 410px;
+            margin-left: 160px;
+            border-radius: 4px;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.5); /* 흰색의 50% 투명도 */
+            font-family: "Alfa Slab One", serif;
+            line-height: 60px; /* 버튼 높이와 동일한 line-height 설정 */
+            color: white;
+        }
+
+
 
 
 
@@ -295,10 +283,9 @@
 
         .main-home2 {
             width: 100%;
-            height: 700px;
+            height: 800px;
             background-image: url("/images/tri3.png");
             background-size: cover;
-            border: 2px solid black;
         }
 
 
@@ -321,8 +308,6 @@
             gap: 10px; /* 원하는 간격을 설정할 수 있습니다 */
             padding: 10px; /* 원하는 패딩을 설정할 수 있습니다 */
             position: relative; /* 버튼의 위치를 이 컨테이너를 기준으로 조정 */
-            border-left: 1px solid black;
-            border-right: 1px solid black;
         }
 
         .main-blog {
@@ -334,7 +319,7 @@
             color: white;
             width: 100%;
             height: 20%;
-            background-image: url("/images/water.jpg");
+            background-image: url("/images/e4.jpg");
             background-size: cover;
             text-align: center;
             display: flex;
@@ -471,10 +456,11 @@
         .plus {
             align-items: center; /* 세로 방향으로 중앙 정렬 */
             padding: 10px 20px;
-            color: black;
+            color: white;
             text-decoration: none;
-            border: 1px solid black;
-            background-color: white;
+            border: none;
+            border-radius: 4px;
+            background-color: #51e3d4;
             cursor: pointer;
             width: 150px;
             height: 55px;
@@ -483,7 +469,11 @@
             font-family: 'Jua';
             position: absolute;
             bottom: 50px; /* 부모 컨테이너 하단에서 20px 떨어진 위치 */
-            right: 68px; /* 부모 컨테이너 오른쪽에서 20px 떨어진 위치 */
+            right: 75px; /* 부모 컨테이너 오른쪽에서 20px 떨어진 위치 */
+        }
+
+        .plus:hover {
+            transform: scale(0.9, 0.9);
         }
 
         .chu-blog {
@@ -537,7 +527,7 @@
 
         .main-home4 {
             width: 100%;
-            height: 600px;
+            height: 800px;
             background-color: #eeeeee;
         }
 
@@ -562,6 +552,7 @@
             width: 100%;
             gap: 20px;
             padding: 15px;
+            margin-top: 20px;
         }
 
         #photo-up {

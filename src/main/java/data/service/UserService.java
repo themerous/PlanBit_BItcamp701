@@ -1,13 +1,10 @@
 package data.service;
 
-import data.dto.BoardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import data.dto.UserDto;
 import data.mapper.UserMapperInter;
-
-import java.util.List;
 
 @Service
 public class UserService {
@@ -28,6 +25,8 @@ public class UserService {
 	{
 		return uInter.idcheckcount(searchid);
 	}
-
-
+	public UserDto getDataById(String id)
+	{
+		return uInter.getDataById(id);
+	}
 }

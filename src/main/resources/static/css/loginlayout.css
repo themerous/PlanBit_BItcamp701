@@ -22,17 +22,18 @@ body {
     text-decoration: none;
     margin: 15px 0;
 }
-.container button {
-    border-radius: 20px;
+.login-btn {
+    border-radius: 4px;
     border: 2px solid #51e3d4;
     background-color: #51e3d4;
     color: white;
     font-size: 18px;
     font-weight: bold;
-    padding: 12px 45px;
+    padding: 10px 25px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    margin-top: 10px;
 }
 .container form {
     background-color: #ffffff;
@@ -45,11 +46,11 @@ body {
     text-align: center;
 }
 .container input {
-    background-color: #eee;
-    border: none;
+    border: 1px solid #cccccc;
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
+    border-radius: 5px;
 }
 .container {
     background-color: #fff;
@@ -138,12 +139,42 @@ body {
     height: 40px;
     width: 40px;
 }
+
 .login-menu {
     display: flex; /* 수평 정렬을 위해 flexbox 사용 */
     justify-content: center; /* 수평 가운데 정렬 */
     gap: 10px; /* 두 링크 사이에 간격 */
     color: #333333;
+    cursor: pointer;
 }
+
+.password-btn {
+    position: absolute;
+    width: 100px;
+    height: 42px;
+    top: 12px;
+    right: 4px;
+    margin: auto 0;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #51e3d4;
+    border: none;
+}
+
+.email-btn {
+    position: absolute;
+    width: 100px;
+    height: 42px;
+    top: 12px;
+    right: 4px;
+    margin: auto 0;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #51e3d4;
+    border: none;
+}
+
+
 
 /* 회원가입 */
 .container2 {

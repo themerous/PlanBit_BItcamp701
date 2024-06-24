@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.Blog_LikeMapperInter">
+    <select id="checkLikeExists" parameterType="data.dto.Blog_LikeDto" resultType="int">
+        SELECT COUNT(*)
+        FROM blog_like
+        WHERE user_id = #{user_id} AND board_num = #{board_num}
+    </select>
+
+    <select id="selectUserLike" parameterType="map" resultType="data.dto.Blog_LikeDto">
+        SELECT *
+        FROM blog_like
+        WHERE board_num = #{board_num} AND user_id = #{user_id}
+    </select>
+
+    <insert id="insertLike" parameterType="data.dto.Blog_LikeDto">
+        INSERT INTO blog_like (user_id, board_num, board_like, like_count,idx)
+        VALUES (#{user_id}, #{board_num}, #{board_like}, #{like_count},#{idx})
+    </insert>
+
+    <update id="incrementLike" parameterType="data.dto.Blog_LikeDto">
+        UPDATE blog_like
+        SET board_like = board_like + 1, like_count = like_count + 1
+        WHERE user_id = #{user_id} AND board_num = #{board_num} AND like_count &lt; 3
+    </update>
+
+    <select id="selectLikeCount" parameterType="int" resultType="int">
+        SELECT COALESCE(SUM(board_like), 0)
+        FROM blog_like
+        WHERE board_num = #{board_num}
+    </select>
+
+
+</mapper>

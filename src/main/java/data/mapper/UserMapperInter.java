@@ -1,13 +1,10 @@
 package data.mapper;
 
-import data.dto.BoardDto;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import data.dto.UserDto;
-
-import java.util.List;
 
 @Mapper
 public interface UserMapperInter {
@@ -24,4 +21,6 @@ public interface UserMapperInter {
 	@Select("select count(*) from user where id=#{searchid}")
 	public int idcheckcount(String searchid);
 
+	@Select("select * from user where id=#{id}")
+	public UserDto getDataById(String id);
 }
