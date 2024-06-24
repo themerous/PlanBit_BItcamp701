@@ -4,7 +4,8 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script type="text/javascript">
 	//이메일 인증번호 발송 함수
-	 function sendNumber(data){
+	 function sendNumber(){
+	        /* $("#mail_number").css("display","block"); */
 	        $.ajax({
 	            url:"./mail",
 	            type:"post",

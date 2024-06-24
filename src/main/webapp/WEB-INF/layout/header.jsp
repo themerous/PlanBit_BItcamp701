@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="title-left">BIT TRIP</div>
+<div class="title-left" onclick="location.href='/'">BIT TRIP</div>
 <div class="title-center">
    <div class="title-menu">
       <ul>
@@ -16,6 +16,28 @@
    </div>
 </div>
 <div class="title-right">
-   <a href="/bit/form" class="gaip-button">회원가입</a>
-   <a href="/bit/login" class="login-button">로그인</a>
+	<c:if test="${sessionScope.loginok==null }">
+	   <a href="/bit/form" class="gaip-button">Join</a>
+	   <a href="/bit/login" class="login-button">Login</a>
+	</c:if>
+	<c:if test="${sessionScope.loginok!=null }">
+	   <a id="logout" class="login-button">Logout</a>
+	   <a class="gaip-button">${sessionScope.loginid }님</a>
+	</c:if>
 </div>
+<script type="text/javascript">
+$(function(){
+	//로그아웃 버튼 이벤트
+	$("#logout").click(function(){
+		$.ajax({
+			type:"get",
+			dataType:"text",
+			url:`bit/logout`,
+			success:function(){
+				//전체페이지 새로고침
+				location.href=`/`;
+			}
+		});	
+	});
+});
+</script>
