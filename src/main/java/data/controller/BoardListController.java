@@ -15,7 +15,7 @@ public class BoardListController {
     @Autowired
     private BoardService boardService;
 
-    @GetMapping("bit/blog")
+    @GetMapping("/bit/blog")
     public String boardList(Model model) {
 
         List<BoardDto> boardList = boardService.gettestboardlist();
