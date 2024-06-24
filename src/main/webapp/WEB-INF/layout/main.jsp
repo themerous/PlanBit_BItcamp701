@@ -10,9 +10,7 @@
             The Complete Guide to Spaced Repetition Systems (SRS) for Language Learning
         </div>
         <div class="main-photo1"></div>
-        <div class="main-photo2"></div>
-        <div class="main-button"></div>
-        <div class="main-photo3">START NOW</div>
+        <div class="main-button">Get Start</div>
     </div>
 </div>
 
@@ -116,7 +114,7 @@
 <div class="main-home5">
     <div class="photo-card" id="photo-up">
         <div class="photo-div" id="photo1">
-            <img src="/images/e2.jpg" alt="Image 1">
+            <img src="/images/p1.jpg" alt="Image 1">
         </div>
         <div class="photo-div" id="photo2">
             <img src="/images/e5.jpg" alt="Image 2">
@@ -125,7 +123,7 @@
             <img src="/images/e4.jpg" alt="Image 3">
         </div>
         <div class="photo-div" id="photo4">
-            <img src="/images/p1.jpg" alt="Image 1">
+            <img src="/images/e3.jpg" alt="Image 1">
         </div>
     </div>
     <div class="photo-card" id="photo-down">

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import data.dto.BoardDto;
 import data.mapper.BoardMapperInter;
 
+import java.util.List;
+
 @Service
 public class BoardService {
 	@Autowired
@@ -23,5 +25,9 @@ public class BoardService {
 	public void updatemap(BoardDto dto)
 	{
 		bInter.updatemap(dto);
+	}
+	//블로그 리스트 가져오기
+	public List<BoardDto> gettestboardlist() {
+		return bInter.gettestboardlist();
 	}
 }
