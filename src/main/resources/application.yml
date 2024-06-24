@@ -23,7 +23,6 @@ spring:
             enable: true
           auth: true
 #Mybatis Setting
-#mybatis:
-#  type-aliases-package: data.dto
-#  mapper-locations: 
-#  - /mapper/**/*.xml
+mybatis:
+  type-aliases-package: data.dto
+  mapper-locations: /mapper/**/*.xml
