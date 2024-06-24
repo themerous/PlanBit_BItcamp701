@@ -47,9 +47,13 @@
             justify-content: space-between;
             align-items: center;
             color: black;
-            height: 20%;
+            height: 10%;
             padding: 10px;
-
+            position: sticky;
+            top: 0; /* 도달했을때 고정시킬 위치 */
+            z-index: 10;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 그림자 추가 */
         }
 
 
@@ -58,9 +62,7 @@
         .title-left {
             font-size: 35px;
             font-family: "Alfa Slab One", serif;
-
             color: #51e3d4;
-
         }
 
 
@@ -87,6 +89,7 @@
             font-size: 20px;
             font-family: "Neuton", serif;
             border-radius: 4px;
+
         }
 
         .title-center ul li a:hover {
@@ -121,6 +124,8 @@
             text-align: center;
             font-size: 20px;
             font-family: 'Jua';
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
         }
 
         .gaip-button:hover {
@@ -303,8 +308,6 @@
             gap: 10px; /* 원하는 간격을 설정할 수 있습니다 */
             padding: 10px; /* 원하는 패딩을 설정할 수 있습니다 */
             position: relative; /* 버튼의 위치를 이 컨테이너를 기준으로 조정 */
-            border-left: 1px solid black;
-            border-right: 1px solid black;
         }
 
         .main-blog {
@@ -524,7 +527,7 @@
 
         .main-home4 {
             width: 100%;
-            height: 600px;
+            height: 800px;
             background-color: #eeeeee;
         }
 
@@ -549,6 +552,7 @@
             width: 100%;
             gap: 20px;
             padding: 15px;
+            margin-top: 20px;
         }
 
         #photo-up {
