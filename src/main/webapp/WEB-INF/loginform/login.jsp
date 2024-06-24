@@ -2,6 +2,39 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script type="text/javascript">
+	//이메일 인증번호 발송 함수
+	 function sendNumber(){
+	        /* $("#mail_number").css("display","block"); */
+	        $.ajax({
+	            url:"./mail",
+	            type:"post",
+	            dataType:"json",
+	            data:{"mail" : $("#mail").val()},
+	            success:function(data){
+	                $("#Confirm").attr("value",data);
+	                $("#mail").css("border-color","green");
+	                $("#mail_msg").text("인증번호 발송").css("color","green");
+	            }
+	        });
+	    }
+	 //이메일 인증번호 인증 함수
+	 function confirmNumber(){
+	        let num1 = $("#number").val();
+	        let num2 = $("#Confirm").val();
+
+	        if(num1==num2)
+	        {
+	        	$("#number").css("border-color","green");
+	        	$("#number_msg").text("인증되었습니다.").css("color","green");
+	        }
+	        else
+	        {
+	        	$("#number").css("border-color","red");
+	        	$("#number_msg").text("번호가 다릅니다.").css("color","red");
+	        }
+	    }
+</script>
 <link rel="stylesheet" href="/css/loginlayout.css">
 <script src="/js/login/login.js"></script>
 <script type="text/javascript">
@@ -81,6 +114,7 @@
 				<a href="./form">회원가입</a>
 			</div>
 		</form>
+		 <input type="hidden" id="Confirm" name="Confirm" value="">
 	</div>
 </div>
 

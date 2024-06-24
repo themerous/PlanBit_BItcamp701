@@ -9,6 +9,19 @@ spring:
     url: jdbc:mysql://db-n9jfu-kr.vpc-pub-cdb.ntruss.com:3306/studyDB?serverTimezone=Asia/Seoul
     username: study
     password: mike@1430
+  #(email)
+  mail:
+    # Google smtp server 사용
+    host: smtp.gmail.com
+    port: 587
+    username: gim28711@gmail.com #앱 비밀번호 발급받은 google 계정
+    password: vdut oret cmmp wykv #발급받은 앱 비밀번호
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
 #Mybatis Setting
 #mybatis:
 #  type-aliases-package: data.dto
