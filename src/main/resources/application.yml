@@ -9,11 +9,7 @@ spring:
     url: jdbc:mysql://db-n9jfu-kr.vpc-pub-cdb.ntruss.com:3306/studyDB?serverTimezone=Asia/Seoul
     username: study
     password: mike@1430
-<<<<<<< HEAD
-    
   #(email)
-=======
->>>>>>> 62873bf6d7f5d00d9864a3d2296c6fa52ebff5f4
   mail:
     # Google smtp server 사용
     host: smtp.gmail.com
