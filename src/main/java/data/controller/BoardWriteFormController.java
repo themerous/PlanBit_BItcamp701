@@ -47,7 +47,7 @@ public class BoardWriteFormController {
 
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("board_title", board_title);
-        return "board/writeformtest";
+        return "board/form";
     }
 
     @PostMapping("/inserttest")

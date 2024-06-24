@@ -25,4 +25,8 @@ public class UserService {
 	{
 		return uInter.idcheckcount(searchid);
 	}
+	public UserDto getDataById(String id)
+	{
+		return uInter.getDataById(id);
+	}
 }

@@ -21,4 +21,5 @@ public class UserDto {
 	private int addr;
 	private String answer;
 	private int user_num;
+	private String photo;
 }

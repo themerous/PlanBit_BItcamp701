@@ -10,7 +10,6 @@ spring:
     username: study
     password: mike@1430
 #Mybatis Setting
-#mybatis:
-#  type-aliases-package: data.dto
-#  mapper-locations: 
-#  - /mapper/**/*.xml
+mybatis:
+  type-aliases-package: data.dto
+  mapper-locations: /mapper/**/*.xml

@@ -11,6 +11,6 @@ public interface Blog_MapMapperInter {
 
     public void insertBoard(Blog_MapDto dto);
 
-
+    public Blog_MapDto selectMap(int map_num);
 
 }

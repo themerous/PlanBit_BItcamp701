@@ -20,6 +20,10 @@ public class Blog_MapService {
         mapMapper.insertBoard(dto);
     }
 
+    public Blog_MapDto selectMap(int map_num){
+        return mapMapper.selectMap(map_num);
+    }
+
 
 
 

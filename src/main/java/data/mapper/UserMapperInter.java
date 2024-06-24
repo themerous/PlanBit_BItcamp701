@@ -20,4 +20,7 @@ public interface UserMapperInter {
 	//아이디 중복체크 이벤트
 	@Select("select count(*) from user where id=#{searchid}")
 	public int idcheckcount(String searchid);
+
+	@Select("select * from user where id=#{id}")
+	public UserDto getDataById(String id);
 }
