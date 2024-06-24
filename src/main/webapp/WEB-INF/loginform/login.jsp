@@ -17,7 +17,7 @@
 				<a onclick="flipCard()">비밀번호 찾기</a>
 				<a href="./form">회원가입</a>
 			</div>
-	    	<button type="submit">로그인</button>
+	    	<button type="">로그인</button>
     	</form>
     </div>
    	<div class="overlay-container">

@@ -1,0 +1,36 @@
+.tourMain {
+    display: flex;
+}
+
+.left {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    left: 0;
+}
+
+.right {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    right: 0;
+}
+
+#mapButton {
+    background-image: url("../../images/koreaMap.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 500px;
+    border: 1px solid black;
+}
+
+#tourist {
+    overflow: auto;
+}
+
+.api-pic{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}

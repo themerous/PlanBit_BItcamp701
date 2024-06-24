@@ -258,7 +258,7 @@ body {
 		</div>
 
 		<!-- 저장하기 버튼 -->
-		<button type="submit" class="btn btn-primary">저장하기</button>
+		<button type="" class="btn btn-primary">저장하기</button>
 
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 			data-bs-target="#myModal" onclick="toggleMapSection()">Open
@@ -303,7 +303,7 @@ body {
 								</div>
 
 								<!-- -------------------------------------------------------------------------------------- -->
-								<button type="submit" class="btn btn-primary">저장하기</button>
+								<button type="" class="btn btn-primary">저장하기</button>
 								<button type="button" class="btn btn-primary"
 									onclick="addNewBox()">추가</button>
 								<!-- Kakao Map API -->

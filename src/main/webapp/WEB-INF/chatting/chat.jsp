@@ -10,7 +10,7 @@
 		<input type="hidden" name="room_creator" value="${sessionScope.loginid }">
 		<input type="hidden" name="room_participant" value="${sessionScope.loginid }">
 		<input type="text" name="room_title">
-		<button type="submit">持失</button>
+		<button type="">持失</button>
 	</form>
 </div>
 <script src="/js/chat/chat.js"></script>
