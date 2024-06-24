@@ -8,26 +8,25 @@
         }
         #blog-title-photo {
             width: 100%;
-            height: 350px;
+            height: 400px;
             border: none;
             background-image: url('/images/e3.jpg'); /* 배경 이미지 URL */
             background-size: cover; /* 이미지 크기를 컨테이너에 맞게 조정 */
             background-position: center; /* 이미지를 중앙에 위치 */
             background-repeat: no-repeat; /* 이미지 반복 금지 */
             margin-bottom: 20px;
-        }
-
-        .text-center my-5 {
-            width: auto;
-            height: auto;
-
+            display: flex;
+            justify-content: center; /* 수평 중앙 정렬 */
+            align-items: center; /* 수직 중앙 정렬 */
         }
 
 
-        .fw-bolder {
+
+        #blog-title-photo h1 {
             color: white;
-            font-size: 80px;
+            font-size: 90px;
             font-family: "Neuton", serif;
+            text-align: center; /* 텍스트를 중앙으로 정렬 */
         }
 
         .card-img-top {
@@ -143,18 +142,13 @@
 
 
     </style>
-</head>
-<body>
+
 
 
 <!-- Page header with logo and tagline-->
-<header class="g" id="blog-title-photo">
-    <div class="container">
-        <div class="text-center my-5">
+<div class="g" id="blog-title-photo">
             <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-        </div>
-    </div>
-</header>
+</div>
 <!-- Page content-->
 <div class="container">
     <div class="row">
