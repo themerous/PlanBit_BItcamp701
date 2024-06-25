@@ -1,6 +1,7 @@
 package data.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -152,7 +153,7 @@ public class HomeController {
 	//마이페이지
 	@GetMapping("bit/mypage")
 	public String mypage(@RequestParam String id, Model model) {
-		UserDto dto = userService.getDataById(id);
+		UserDto dto = userService.databyid(id);
 		String name = dto.getName();
 		String photo = dto.getPhoto();
 		String user_id = dto.getId();

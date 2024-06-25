@@ -57,7 +57,7 @@ public class BoardDetailController {
 
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
-        UserDto memberDto = memberService.getDataById(dto.getUser_id());
+        UserDto memberDto = memberService.databyid(dto.getUser_id());
 
         String profile_photo = memberDto.getPhoto();
 

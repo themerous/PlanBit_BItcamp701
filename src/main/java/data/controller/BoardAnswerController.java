@@ -29,7 +29,7 @@ public class BoardAnswerController {
         //로그인한 아이디 얻기
         String user_id=(String)session.getAttribute("loginid");
         //아이디에 해당하는 이름 얻기
-        String writer=userService.getDataById(user_id).getName();
+        String writer=userService.databyid(user_id).getName();
         //dto 에 필요한 데이터 넣기
         Blog_AnswerDto dto=Blog_AnswerDto.builder()
                 .user_id(user_id)
