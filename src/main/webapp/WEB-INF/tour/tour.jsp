@@ -5,48 +5,72 @@
 
 <link rel="stylesheet" type="text/css" href="/css/tour/tour.css">
 
-
 <span>Hello Tour</span>
+<div class="high">
+	검색창 : <input type="text" value="" id="searchContent">
+	<button type="button" onclick="getSearch()">button</button>
+	<div id="ll"></div>
+</div>
 <div id="tourMain" class="tourMain">
-	<div class="left">
+		<div class="left">
 		<div id="mapButton">
 			<input type="radio" value="" onclick="setArea(this.value)">전체</input>
 			<img src="/images/koreaMap.png" class="leftImg" style="width: 100%; height: 100%">
 	<%--		<img src="/images/koreaMap.png" alt="Image Korea" style="">--%>
-			<input type="radio" value="1" onclick="setArea(this.value)">서울</input>
-			<input type="radio" value="6" onclick="setArea(this.value)">부산</input>
-			<input type="radio" value="4" onclick="setArea(this.value)">대구</input>
-			<input type="radio" value="2" onclick="setArea(this.value)">인천</input>
-			<input type="radio" value="5" onclick="setArea(this.value)">광주</input>
-			<input type="radio" value="3" onclick="setArea(this.value)">대전</input>
-			<input type="radio" value="7" onclick="setArea(this.value)">울산</input>
-			<input type="radio" value="8" onclick="setArea(this.value)">세종</input>
-			<input type="radio" value="31" onclick="setArea(this.value)">경기</input>
-			<input type="radio" value="32" onclick="setArea(this.value)">강원</input>
-			<input type="radio" value="33" onclick="setArea(this.value)">충북</input>
-			<input type="radio" value="34" onclick="setArea(this.value)">충남</input>
-			<input type="radio" value="35" onclick="setArea(this.value)">경북</input>
-			<input type="radio" value="36" onclick="setArea(this.value)">경남</input>
-			<input type="radio" value="37" onclick="setArea(this.value)">전북</input>
-			<input type="radio" value="38" onclick="setArea(this.value)">전남</input>
-			<input type="radio" value="39" onclick="setArea(this.value)">제주</input>
+			<input id="seoul" type="radio" value="1" onclick="setArea(this.value)"></input>
+			<label for="seoul">서울</label>
+			<input id="busan" type="radio" value="6" onclick="setArea(this.value)"></input>
+			<label for="busan">부산</label>
+			<input id="daegu" type="radio" value="4" onclick="setArea(this.value)"></input>
+			<label for="daegu">대구</label>
+			<input id="incheon" type="radio" value="2" onclick="setArea(this.value)"></input>
+			<label for="incheon">인천</label>
+			<input id="gwangju" type="radio" value="5" onclick="setArea(this.value)"></input>
+			<label for="gwangju">광주</label>
+			<input id="daejeon" type="radio" value="3" onclick="setArea(this.value)"></input>
+			<label for="daejeon">대전</label>
+			<input id="ulsan" type="radio" value="7" onclick="setArea(this.value)"></input>
+			<label for="ulsan">울산</label>
+			<input id="sejong" type="radio" value="8" onclick="setArea(this.value)"></input>
+			<label for="sejong">세종</label>
+			<input id="gyeonggi" type="radio" value="31" onclick="setArea(this.value)"></input>
+			<label for="gyeonggi">경기</label>
+			<input id="gangwon" type="radio" value="32" onclick="setArea(this.value)"></input>
+			<label for="gangwon">강원</label>
+			<input id="chungbuk" type="radio" value="33" onclick="setArea(this.value)"></input>
+			<label for="chungbuk">충북</label>
+			<input id="chungnam" type="radio" value="34" onclick="setArea(this.value)"></input>
+			<label for="chungnam">충남</label>
+			<input id="gyeongbuk" type="radio" value="35" onclick="setArea(this.value)"></input>
+			<label for="gyeongbuk">경북</label>
+			<input id="gyeongnam" type="radio" value="36" onclick="setArea(this.value)"></input>
+			<label for="gyeongnam">경남</label>
+			<input id="jeonbuk" type="radio" value="37" onclick="setArea(this.value)"></input>
+			<label for="jeonbuk">전북</label>
+			<input id="jeonnam" type="radio" value="38" onclick="setArea(this.value)"></input>
+			<label for="jeonnam">전남</label>
+			<input id="jeju" type="radio" value="39" onclick="setArea(this.value)"></input>
+			<label for="jeju">제주</label>
 		</div>
 	</div>
+
 	<div class="right">
+		<div id="contentTypeId">
+			<input type="radio" name="c" class="contentList" id="tourist" value="12" onselect="setType(this.value)">
+			<label for="tourist">관광지</label>
+			<input type="radio" name="c" class="contentList" id="lodge" value="32" onselect="setType(this.value)">
+			<label for="lodge">숙박</label>
+			<input type="radio" name="c" class="contentList" id="food" value="39" onselect="setType(this.value)">
+			<label for="food">음식점</label>
+
+			<button type="button" onclick="getMap()">검색하기</button>
+		</div>
+		<br>
 		<div id="tourList">
-			<div id="contentTypeId">
-				<input type="radio" name="c" class="contentList" id="tourist" value="12" onselect="setType(this.value)">
-				<label for="tourist">관광지</label>
-				<input type="radio" name="c" class="contentList" id="lodge" value="32" onselect="setType(this.value)">
-				<label for="lodge">숙박</label>
-				<input type="radio" name="c" class="contentList" id="food" value="39" onselect="setType(this.value)">
-				<label for="food">음식점</label>
-
-				<button type="button" onclick="getMap()">검색하기</button>
-			</div>
-
 			<div id="mapList">
 				<span>tourListResult</span>
+			</div>
+			<div id="pageListNum">
 				<%--pageNum--%>
 			</div>
 		</div>

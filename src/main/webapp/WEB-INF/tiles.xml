@@ -12,6 +12,7 @@
 	<definition name="subLayout" template="/WEB-INF/layout/layout2.jsp">
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"></put-attribute>
 	</definition>
+
 	<!-- macro -->
 	<!-- 와일드카드 -->
 	<definition name="layout/*" extends="mainLayout">
@@ -20,6 +21,10 @@
 	<definition name="planner/*" extends="mainLayout">
 		<put-attribute name="main" value="/WEB-INF/planner/{1}.jsp"></put-attribute>
 	</definition>
+	<definition name="tour/*" extends="mainLayout">
+		<put-attribute name="main" value="/WEB-INF/tour/{1}.jsp"></put-attribute>
+	</definition>
+
 	<!-- 로그인 레이아웃 -->
 	<definition name="*/*" extends="subLayout">
 		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
