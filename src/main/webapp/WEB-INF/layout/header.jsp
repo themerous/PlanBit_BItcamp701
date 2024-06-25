@@ -32,7 +32,7 @@ $(function(){
 		$.ajax({
 			type:"get",
 			dataType:"text",
-			url:`bit/logout`,
+			url:`/bit/logout`,
 			success:function(){
 				//전체페이지 새로고침
 				location.href=`/`;

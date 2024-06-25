@@ -12,19 +12,19 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 @Component
 public class PlannerWebsocketHandler extends TextWebSocketHandler {
-	private static final Map<String, Set<WebSocketSession>> chatRooms = new ConcurrentHashMap<>();
+	private static final Map<String, Set<WebSocketSession>> planners = new ConcurrentHashMap<>();
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        String room = getPage(session);
-        chatRooms.computeIfAbsent(room, k -> new CopyOnWriteArraySet<>()).add(session);
+        String planner = getPlanner(session);
+        planners.computeIfAbsent(planner, k -> new CopyOnWriteArraySet<>()).add(session);
     }
 
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        String room = getPage(session);
+        String planner = getPlanner(session);
         
-        for (WebSocketSession webSocketSession : chatRooms.get(room)) {
+        for (WebSocketSession webSocketSession : planners.get(planner)) {
             if (webSocketSession.isOpen()) {
                 webSocketSession.sendMessage(new TextMessage(message.getPayload()));
             }
@@ -33,12 +33,12 @@ public class PlannerWebsocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, org.springframework.web.socket.CloseStatus status) throws Exception {
-        String room = getPage(session);
-        chatRooms.getOrDefault(room, new CopyOnWriteArraySet<>()).remove(session);
+        String planner = getPlanner(session);
+        planners.getOrDefault(planner, new CopyOnWriteArraySet<>()).remove(session);
     }
     
     // Getting page
-    private String getPage(WebSocketSession session) {
+    private String getPlanner(WebSocketSession session) {
         return session.getUri().getPath().split("/")[2];
     }
 }
