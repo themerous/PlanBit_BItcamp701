@@ -7,6 +7,12 @@
 
 <span>Hello Tour</span>
 <div class="high">
+	<div class="highTitle">
+		<input type="text" name="tt" id="tt" value="">
+		<button type="submit" id="searchButton" onclick="getSearch()">button</button>
+	</div>
+
+	<div id="resultTest"></div>
 </div>
 <div id="tourMain" class="tourMain">
 		<div class="left">

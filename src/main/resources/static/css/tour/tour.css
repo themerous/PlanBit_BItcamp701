@@ -8,6 +8,24 @@
     height: 500px;
 }
 
+#resultTest {
+    height: 450px;
+    overflow-y: scroll;
+}
+
+.result::-webkit-scrollbar {
+    width: 10px;
+}
+.result::-webkit-scrollbar-track {
+    background-color: gray;
+}
+.result::-webkit-scrollbar-thumb {
+    background-color: skyblue;
+}
+.result::-webkit-scrollbar-button {
+    display: none;
+}
+
 .left {
     position: relative;
     border: 1px solid red;  /*나중에 지워야됨*/
