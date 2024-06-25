@@ -18,4 +18,5 @@ public class UserDto {
 	private String name;
 	private String img;
 	private int user_num;
+	private String photo;
 }

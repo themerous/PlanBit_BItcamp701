@@ -1,11 +1,11 @@
 package data.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Update;
+import data.dto.Blog_BoardDto;
+import org.apache.ibatis.annotations.*;
 
 import data.dto.BoardDto;
+
+import java.util.List;
 
 @Mapper
 public interface BoardMapperInter {
@@ -16,4 +16,7 @@ public interface BoardMapperInter {
 	public void updateboard(BoardDto dto);
 	@Update("update testboard set lat=#{lat},lng=#{lng},addr=#{addr},mapname=#{mapname} where board_num=#{board_num}")
 	public void updatemap(BoardDto dto);
+
+	@Select("select * from blog_board order by board_num desc")
+	List<Blog_BoardDto> gettestboardlist();
 }

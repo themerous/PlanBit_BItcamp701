@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import data.dto.BoardDto;
+import data.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class HomeController {
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private BoardService boardService;
+
+	//board mapping
+	//글 작성 writeform
+	//GetMapping	board/form
+	//PostMapping	board/insert
+
+	//글 상세보기 detail
+	//GetMapping	board/detail
 
 	// main
 	@GetMapping("/")
@@ -67,11 +80,13 @@ public class HomeController {
 	}
 	
 
+
 	// 블로그글 디테일페이지
-	@GetMapping("bit/detail")
-	public String blogDetail() {
-		return "board/detail";
-	}
+	// 블로그 글 디테일 페이지 BoardDetailController 생성 후 이동 (6/25) 박주용
+//	@GetMapping("bit/detail")
+//	public String blogDetail() {
+//		return "board/detail";
+//	}
 
 	// 회원가입 insert 이벤트
 	@PostMapping("bit/insert")

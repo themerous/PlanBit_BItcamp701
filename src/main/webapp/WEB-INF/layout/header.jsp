@@ -7,8 +7,8 @@
 <div class="title-center">
    <div class="title-menu">
       <ul>
-         <li><a href="#">Blog</a></li>
-         <li><a href="#">Planner</a></li>
+         <li><a href="/bit/blog">Blog</a></li>
+         <li><a href="">Planner</a></li>
          <li><a href="#">Map</a></li>
          <li><a href="#">Hotel</a></li>
          <li><a href="#">Info</a></li>
