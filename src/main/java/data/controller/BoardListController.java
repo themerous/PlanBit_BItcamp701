@@ -27,9 +27,4 @@ public class BoardListController {
         return "layout/blog";
     }
 
-    @GetMapping("bit/mypage")
-    public String mypage() {
-
-        return "layout/mypage";
-    }
 }

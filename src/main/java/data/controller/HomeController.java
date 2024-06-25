@@ -6,6 +6,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+
+import data.dto.Blog_BoardDto;
+import data.dto.BoardDto;
+import data.service.Blog_BoardService;
+import data.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +29,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private BoardService boardService;
+
+	@Autowired
+	private Blog_BoardService blogService;
 
 	//board mapping
 	//글 작성 writeform
@@ -137,5 +148,23 @@ public class HomeController {
 		
 		return map;
 	}
-	
+
+	//마이페이지
+	@GetMapping("bit/mypage")
+	public String mypage(@RequestParam String id, Model model) {
+		UserDto dto = userService.getDataById(id);
+		String name = dto.getName();
+		String photo = dto.getPhoto();
+		String user_id = dto.getId();
+		System.out.println(user_id);
+		List<Blog_BoardDto> userPost = blogService.userDataID(user_id);
+
+		model.addAttribute("user_id",user_id);
+		model.addAttribute("name", name);
+		model.addAttribute("photo", photo);
+		model.addAttribute("userPost", userPost);
+
+
+		return "layout/mypage";
+	}
 }
