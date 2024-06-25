@@ -8,13 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import data.dto.UserDto;
+import data.service.BoardService;
 import data.service.UserService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 	@Autowired
 	private UserService userService;
+
+	//board mapping
+	//글 작성 writeform
+	//GetMapping	board/form
+	//PostMapping	board/insert
+
+	//글 상세보기 detail
+	//GetMapping	board/detail
+
 	// main
 	@GetMapping("/")
 	public String home()
@@ -33,7 +43,7 @@ public class HomeController {
 	// 로그인
 	@GetMapping("bit/login")
 	public String login() 
-	{
+	{	
 		return "loginform/login";
 	}
 
@@ -44,20 +54,33 @@ public class HomeController {
 		return "loginform/form";
 	}
 
-	// 비밀번호 재설정
+	// 비밀번호 재설정 페이지
 	@GetMapping("bit/passform")
-	public String passform()
-	{
+	public String passform(@RequestParam String mail, Model model)
+	{	
+		UserDto dto = userService.databyid(mail);
+		model.addAttribute("dto",dto);
+		
 		return "loginform/passform";
 	}
 
+	// 비밀번호 재설정이벤트
+	@GetMapping("bit/passon")
+	public String passon(@RequestParam String repw,@RequestParam String id) 
+	{	
+		userService.updatepw(repw,id);
+		
+		return "loginform/login";
+	}
+	
 
 
 	// 블로그글 디테일페이지
-	@GetMapping("bit/detail")
-	public String blogDetail() {
-		return "board/detail";
-	}
+	// 블로그 글 디테일 페이지 BoardDetailController 생성 후 이동 (6/25) 박주용
+//	@GetMapping("bit/detail")
+//	public String blogDetail() {
+//		return "board/detail";
+//	}
 
 	// 회원가입 insert 이벤트
 	@PostMapping("bit/insert")
@@ -114,6 +137,5 @@ public class HomeController {
 		
 		return map;
 	}
-	
 	
 }

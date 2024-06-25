@@ -1,5 +1,9 @@
 package data.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +28,15 @@ public class UserService {
 	public int idcheckcount(String searchid)
 	{
 		return uInter.idcheckcount(searchid);
+	}
+	//아이디로 비밀번호 가져오기
+	public UserDto databyid(String id)
+	{
+		return uInter.databyid(id);
+	}
+	//비밀번호 재설정
+	public void updatepw(String pw,String id)
+	{
+		uInter.updatepw(pw,id);
 	}
 }
