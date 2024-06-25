@@ -1,5 +1,6 @@
 package data.service;
 
+import data.dto.Blog_BoardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class BoardService {
 		bInter.updatemap(dto);
 	}
 	//블로그 리스트 가져오기
-	public List<BoardDto> gettestboardlist() {
+	public List<Blog_BoardDto> gettestboardlist() {
 		return bInter.gettestboardlist();
 	}
 }

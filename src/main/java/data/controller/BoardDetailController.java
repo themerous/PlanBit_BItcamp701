@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/board")
@@ -70,27 +67,25 @@ public class BoardDetailController {
         int map_num = board_num;
         Blog_MapDto mdto = mapService.selectMap(map_num);
 
-        // 쉼표로 구분된 문자열을 분리하여 리스트로 변환
-//        List<String> placeNames = Arrays.asList(mdto.getPlaceNames().split(","));
-//        List<String> placeAddress = Arrays.asList(mdto.getPlaceAddress().split(","));
-//        List<String> placeLatitudes = Arrays.asList(mdto.getPlaceLatitudes().split(","));
-//        List<String> placeLongitudes = Arrays.asList(mdto.getPlaceLongitudes().split(","));
+        if (mdto != null && mdto.getPlaceNames() != null && !mdto.getPlaceNames().isEmpty()) {
+            // 쉼표로 구분된 문자열을 분리하여 리스트로 변환
+            String placeNames = mdto.getPlaceNames();
+            String placeAddress = mdto.getPlaceAddress();
+            String placeLatitudes = mdto.getPlaceLatitudes();
+            String placeLongitudes = mdto.getPlaceLongitudes();
+            System.out.println(placeNames);
 
-        String placeNames = mdto.getPlaceNames();
-        String placeAddress = mdto.getPlaceAddress();
-        String placeLatitudes = mdto.getPlaceLatitudes();
-        String placeLongitudes = mdto.getPlaceLongitudes();
+            // 지도 데이터를 모델에 추가
+            model.addAttribute("placeNames", placeNames);
+            model.addAttribute("placeAddress", placeAddress);
+            model.addAttribute("placeLatitudes", placeLatitudes);
+            model.addAttribute("placeLongitudes", placeLongitudes);
+        }
+
         model.addAttribute("photo", profile_photo);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
         model.addAttribute("currentPage", currentPage);
-        System.out.println(placeNames);
-
-        // 지도 데이터를 모델에 추가
-        model.addAttribute("placeNames", placeNames);
-        model.addAttribute("placeAddress", placeAddress);
-        model.addAttribute("placeLatitudes", placeLatitudes);
-        model.addAttribute("placeLongitudes", placeLongitudes);
 
         return "board/detail";
     }

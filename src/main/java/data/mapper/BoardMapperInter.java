@@ -1,5 +1,6 @@
 package data.mapper;
 
+import data.dto.Blog_BoardDto;
 import org.apache.ibatis.annotations.*;
 
 import data.dto.BoardDto;
@@ -16,6 +17,6 @@ public interface BoardMapperInter {
 	@Update("update testboard set lat=#{lat},lng=#{lng},addr=#{addr},mapname=#{mapname} where board_num=#{board_num}")
 	public void updatemap(BoardDto dto);
 
-	@Select("select * from testboard order by board_num desc")
-	List<BoardDto> gettestboardlist();
+	@Select("select * from blog_board order by board_num desc")
+	List<Blog_BoardDto> gettestboardlist();
 }
