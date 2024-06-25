@@ -10,13 +10,9 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 @Component
-public class WebsocketHandler extends TextWebSocketHandler {
+public class ChatWebsocketHandler extends TextWebSocketHandler {
 	private static final Map<String, Set<WebSocketSession>> chatRooms = new ConcurrentHashMap<>();
-	private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
