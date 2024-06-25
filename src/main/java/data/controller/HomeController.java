@@ -49,7 +49,7 @@ public class HomeController {
 	// 로그인
 	@GetMapping("bit/login")
 	public String login() 
-	{
+	{	
 		return "loginform/login";
 	}
 
@@ -60,13 +60,25 @@ public class HomeController {
 		return "loginform/form";
 	}
 
-	// 비밀번호 재설정
+	// 비밀번호 재설정 페이지
 	@GetMapping("bit/passform")
-	public String passform()
-	{
+	public String passform(@RequestParam String mail, Model model)
+	{	
+		UserDto dto = userService.databyid(mail);
+		model.addAttribute("dto",dto);
+		
 		return "loginform/passform";
 	}
 
+	// 비밀번호 재설정이벤트
+	@GetMapping("bit/passon")
+	public String passon(@RequestParam String repw,@RequestParam String id) 
+	{	
+		userService.updatepw(repw,id);
+		
+		return "loginform/login";
+	}
+	
 
 
 	// 블로그글 디테일페이지
@@ -131,6 +143,5 @@ public class HomeController {
 		
 		return map;
 	}
-	
 	
 }

@@ -15,11 +15,8 @@ import lombok.NoArgsConstructor;
 public class UserDto {
 	private String id;
 	private String pw;
-	private String email;
-	private int question;
 	private String name;
-	private int addr;
-	private String answer;
+	private String img;
 	private int user_num;
 	private String photo;
 }
