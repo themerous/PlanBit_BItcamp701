@@ -152,7 +152,7 @@ public class HomeController {
 
 	//마이페이지
 	@GetMapping("bit/mypage")
-	public String mypage(@RequestParam String id, Model model) {
+	public String mypage(@RequestParam String id,@RequestParam(defaultValue = "1") int currentPage, Model model) {
 		UserDto dto = userService.databyid(id);
 		String name = dto.getName();
 		String photo = dto.getPhoto();
@@ -160,6 +160,7 @@ public class HomeController {
 		System.out.println(user_id);
 		List<Blog_BoardDto> userPost = blogService.userDataID(user_id);
 
+		model.addAttribute("currentPage",currentPage);
 		model.addAttribute("user_id",user_id);
 		model.addAttribute("name", name);
 		model.addAttribute("photo", photo);
