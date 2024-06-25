@@ -13,74 +13,17 @@ function getItem(key, pageNum, area, typeNum) {
         "&_type=json";
 }
 
-function getSearchItem(key, text){
-    return "http://apis.data.go.kr/B551011/KorService1/" +
-        "searchKeyword1?"+
-        "serviceKey=" + key;
-        "&MobileApp=AppTest" +
-        "&MobileOS=ETC" +
-        "&pageNo=1" +
-        "&numOfRows=10" +
-        "&listYN=Y" +
-        "&keyword=" + text +
-        "&_type=json";
-}
-
-function getSearchInput(key, text){
-    return "http://apis.data.go.kr/B551011/KorService1/" +
-    "detailCommon1?" +
-    "serviceKey=" + key +
-    "&numOfRows=10" +
-    "&pageNo=1" +
-    "&MobileOS=ETC" +
-    "&MobileApp=AppTest" +
-    "&contentId=" + text +
-    "&defaultYN=Y";
-}
-
-let text=$("#searchContent").val();
-
 let pageNum = 1;
 let areaCode = "";
 let contentTypeId = 32;
 
 window.onload = getMap();
 
-function getSearch(){
-    let s = ``;
-    $.ajax({
-        url: getSearchItem(key, text),
-        type:"get",
-        dataType: "json",
-        success: function(d){
-            console.log(d);
-            $.ajax({
-                url: getSearchInput(key, text),
-                type:"get",
-                dataType:"json",
-                success: function (data){
-                    console.log(data);
-                    for(its of data.response.items.item){
-                        s += `<div>`;
-                        s += `<img src="` + its.firstimage + `"/>`;
-                        s += `<span>`;
-                        s += its.overview;
-                        s += `</span>`;
-                        s += `</div>`;
-                    }
-                    $("#ll").html(s);
-                }
-            })
-
-        }
-    })
-}
-
 function getMap() {
     let s = ``;
 
     $.ajax({
-        url: getItem(key, pageNum, areaCode, contentTypeId),
+        url: getItem(key, 1, areaCode, contentTypeId),
         type: 'get',
         dataType: "json",
         success: function (data) {
