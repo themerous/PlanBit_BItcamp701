@@ -63,6 +63,7 @@
             font-size: 35px;
             font-family: "Alfa Slab One", serif;
             color: #51e3d4;
+            cursor: pointer;
         }
 
 
@@ -96,6 +97,7 @@
             color: white;
             border-radius: 4px;
             background-color: #51e3d4;
+            padding: 10px;
         }
 
 
@@ -115,15 +117,15 @@
             display: inline-flex; /* Flexbox 사용 */
             align-items: center; /* 세로 방향으로 중앙 정렬 */
             justify-content: center; /* 가로 방향으로 중앙 정렬 */
-            padding: 10px 20px;
+            padding-bottom: 5px; /* 하단 패딩을 줄여서 텍스트를 위로 올림 */
             color: black;
             text-decoration: none;
             cursor: pointer;
             width: 120px;
             height: 45px;
             text-align: center;
-            font-size: 20px;
-            font-family: 'Jua';
+            font-size: 25px;
+            font-family: "Neuton", serif;
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 4px;
         }
@@ -137,7 +139,6 @@
             display: inline-flex; /* Flexbox 사용 */
             align-items: center; /* 세로 방향으로 중앙 정렬 */
             justify-content: center; /* 가로 방향으로 중앙 정렬 */
-            padding: 10px 20px;
             background-color: #51e3d4;
             color: white;
             text-decoration: none;
@@ -147,8 +148,10 @@
             width: 100px;
             height: 50px;
             text-align: center;
-            font-size: 20px;
-            font-family: 'Jua';
+            font-size: 25px;
+            font-family: "Neuton", serif;
+            padding-bottom: 5px; /* 하단 패딩을 줄여서 텍스트를 위로 올림 */
+
         }
 
         .login-button:hover {
@@ -224,13 +227,18 @@
             font-size: 27px;
             position: absolute;
             margin-top: 410px;
-            margin-left: 160px;
+            margin-left: 157px;
             border-radius: 4px;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.5); /* 흰색의 50% 투명도 */
             font-family: "Alfa Slab One", serif;
             line-height: 60px; /* 버튼 높이와 동일한 line-height 설정 */
             color: white;
+            cursor: pointer;
+        }
+
+        .main-button:hover {
+            transform: scale(0.9, 0.9);
         }
 
 
