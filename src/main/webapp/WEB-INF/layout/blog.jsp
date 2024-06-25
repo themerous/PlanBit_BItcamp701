@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
     <style>
         body * {
             font-family: "IBM Plex Sans KR", sans-serif;
@@ -180,11 +181,13 @@
                     <div class="card mb-4">
                         <a href="#!"><img class="card-img-top" src="/images/gg3.jpg"/></a>
                         <div class="card-body">
-                            <div class="small text-muted">2024.06.22</div>
-                            <h2 class="card-title h4">${dto.title}</h2>
-                            <p class="card-text">${dto.content}</p>
+
+                            <div class="small text-muted"><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd"/>
+                            </div>
+                            <h2 class="card-title h4">${dto.board_title}</h2>
+
                             <div class="bottom-box">
-                                <a class="btn-btn-primary" href="">더보기 →</a>
+                                <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
                                 <div class="images-heart">
                                     <img src="../images/e2.jpg" alt="" class="profile-img">
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
@@ -243,7 +246,7 @@
             <!-- Side widget-->
             <div class="card-blog">
                 <div class="card-body1">나만의 여행플래너를 계획하고 블로그를 작성해보자!
-                <br><button class="card-body1-btn">작성하기</button>
+                <br><button class="card-body1-btn" onclick="location.href='/board/formtest'">작성하기</button>
                 </div>
 
             </div>
