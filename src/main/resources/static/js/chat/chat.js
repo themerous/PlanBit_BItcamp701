@@ -18,9 +18,8 @@ function loadChatRooms() {
 $("#chatroomform").submit(function(e) {
 	e.preventDefault();
 	const fdata = $(this).serialize();
-	console.log(fdata);
 
-	$.post("./createChatroom", data, function() {
+	$.post("./createChatroom", fdata, function() {
 		console.log("send success");
 		loadChatRooms();
 	});

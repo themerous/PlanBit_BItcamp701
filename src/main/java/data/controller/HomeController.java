@@ -1,11 +1,11 @@
 package data.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 
 import data.dto.Blog_BoardDto;
 import data.dto.BoardDto;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import data.dto.UserDto;
+import data.service.BoardService;
 import data.service.UserService;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class HomeController {
@@ -54,7 +54,7 @@ public class HomeController {
 	// 로그인
 	@GetMapping("bit/login")
 	public String login() 
-	{
+	{	
 		return "loginform/login";
 	}
 
@@ -65,13 +65,25 @@ public class HomeController {
 		return "loginform/form";
 	}
 
-	// 비밀번호 재설정
+	// 비밀번호 재설정 페이지
 	@GetMapping("bit/passform")
-	public String passform()
-	{
+	public String passform(@RequestParam String mail, Model model)
+	{	
+		UserDto dto = userService.databyid(mail);
+		model.addAttribute("dto",dto);
+		
 		return "loginform/passform";
 	}
 
+	// 비밀번호 재설정이벤트
+	@GetMapping("bit/passon")
+	public String passon(@RequestParam String repw,@RequestParam String id) 
+	{	
+		userService.updatepw(repw,id);
+		
+		return "loginform/login";
+	}
+	
 
 
 	// 블로그글 디테일페이지
@@ -136,7 +148,7 @@ public class HomeController {
 		
 		return map;
 	}
-	
+
 	//마이페이지
 	@GetMapping("bit/mypage")
 	public String mypage(@RequestParam String id, Model model) {
@@ -155,5 +167,4 @@ public class HomeController {
 
 		return "layout/mypage";
 	}
-
 }
