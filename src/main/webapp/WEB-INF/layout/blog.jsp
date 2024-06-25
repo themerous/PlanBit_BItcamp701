@@ -101,8 +101,8 @@
             background-color: white;
             border: none;
             color: #51e3d4;
-            font-size: 30px;
-            padding: 5px 10px;
+            font-size: 27px;
+            padding: 5px 15px;
             font-weight: bold;
         }
 
