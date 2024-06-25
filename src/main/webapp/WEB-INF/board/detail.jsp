@@ -10,8 +10,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-
-
 <%--카카오 맵 api 항상 처음에 실행되어야함--%>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6f6609502fa3f00b4b14ebbdcdf59da6"></script>
@@ -21,7 +19,7 @@
     let boardNum = ${dto.board_num};
     let sessionLoginId = '${sessionScope.loginid}';
     let sessionLoginOk = '${sessionScope.loginok}';
-    let user_id = "${dto.user_id}";
+    let user_id = '${dto.user_id}';
 </script>
 <script src="/js/board/detail.js"></script>
 
@@ -53,7 +51,6 @@
                 var placeAddresses = '${placeAddresses}';
                 var placeLatitudes = '${placeLatitudes}';
                 var placeLongitudes = '${placeLongitudes}';
-
             </script>
             <script src="${pageContext.request.contextPath}/js/board/detailmap.js"></script>
         </c:if>
