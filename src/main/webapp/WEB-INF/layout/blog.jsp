@@ -246,7 +246,7 @@
             <!-- Side widget-->
             <div class="card-blog">
                 <div class="card-body1">나만의 여행플래너를 계획하고 블로그를 작성해보자!
-                <br><button class="card-body1-btn" onclick="location.href='/board/formtest'">작성하기</button>
+                <br><button class="card-body1-btn" onclick="location.href='/board/form'">작성하기</button>
                 </div>
 
             </div>
