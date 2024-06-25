@@ -27,6 +27,9 @@
 	        {
 	        	$("#number").css("border-color","green");
 	        	$("#number_msg").text("인증되었습니다.").css("color","green");
+	        	setTimeout(function() {
+	        	    location.href = "./passform?mail="+$('#mail').val();
+	        	}, 1000);
 	        }
 	        else
 	        {
