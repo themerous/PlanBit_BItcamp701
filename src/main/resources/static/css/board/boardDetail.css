@@ -7,13 +7,19 @@ body {
 
 header {
 	height: 100px;
-	color: black;
-	font-size: 50px;
 	display: flex;
-	margin-left: 110px;
 	align-items: center; /* 수직 가운데 정렬 */
-	font-family: "Alfa Slab One", serif;
+	color: #51e3d4;
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* 그림자 추가 */
+	z-index: 10;
+}
 
+header a {
+	font-size: 50px;
+	font-family: "Alfa Slab One", serif;
+	cursor: pointer;
+	margin-left: 20px;
 }
 
 main {
@@ -52,6 +58,7 @@ main {
 	width: 80%;
 	border-left: 6px solid #51e3d4;
 	padding: 10px;
+
 }
 
 .post-title h2 {
@@ -97,29 +104,35 @@ main {
 
 .reply-num {
 	width: 80%;
-	margin: 10px auto;
-	height: 100px;
-	border-left: 4px solid #51e3d4;
+	height: auto;
+	border-left: 7px solid #51e3d4;
 	display: flex;
 	align-items: center; /* 수직 중앙 정렬 */
-	justify-content: flex-start; /* 수평 왼쪽 정렬 */
-	padding-left: 13px; /* 왼쪽으로 살짝 띄우기 */
 }
 
 .reply-num h2{
 	font-size: 35px;
+	margin-left: 20px;
 }
 
 .post-reply-box {
 	padding: 20px;
-	border: 1px solid darkgreen;
+	border: 1px solid #eeeeee;
 	margin: 10px auto;
 	width: 80%;
 	height: auto;
 }
 
-.post-reply-box p{
-	color: #666666;
+.post-reply-box2 {
+	padding: 20px;
+	width: 80%;
+	height: auto;
+}
+
+
+
+.content {
+	font-size: 17px;
 
 }
 
@@ -128,7 +141,7 @@ main {
 
 }
 
-.post-reply p{
+.post-reply p, h5{
 	font-weight: bold;
 }
 
@@ -138,6 +151,11 @@ main {
 	border-radius: 4px;
 
 }
+
+.aday {
+	color: #555555;
+}
+
 
 .post-reply-reply {
 	background-color: #dcf9f3;

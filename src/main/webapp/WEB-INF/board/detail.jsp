@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Bebas+Neue&family=Bree+Serif&family=Hind+Vadodara:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<header><a>BIT TRIP</a></header>
+
 
 
 
@@ -21,11 +21,11 @@
     let boardNum = ${dto.board_num};
     let sessionLoginId = '${sessionScope.loginid}';
     let sessionLoginOk = '${sessionScope.loginok}';
-    let user_id = ${dto.user_id};
+    let user_id = "${dto.user_id}";
 </script>
-<script src="${pageContext.request.contextPath}/js/board/detail.js"></script>
+<script src="/js/board/detail.js"></script>
 
-
+<header><a>BIT TRIP</a></header>
 <main>
     <div class="blog-post">
         <div class="post-image">
@@ -37,7 +37,7 @@
         <div class="post-info">
             <i class="bi bi-calendar-check"></i><p><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd HH:mm"/></p>
             <i class="bi bi-person-circle"></i><p>${dto.user_id}</p>
-            <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>좋아요 (<span id="likeCount">${like}</span>) <p>조회수: ${dto.board_views}</p>
+            <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i><p id="likeCount">${like}</p> <p>조회수:&nbsp; ${dto.board_views}</p>
         </div>
         <div class="post-content">
             <pre>${dto.board_content}</pre>
@@ -53,39 +53,32 @@
                 var placeAddresses = '${placeAddresses}';
                 var placeLatitudes = '${placeLatitudes}';
                 var placeLongitudes = '${placeLongitudes}';
+
             </script>
             <script src="${pageContext.request.contextPath}/js/board/detailmap.js"></script>
         </c:if>
 
 
         <div class="post-reply-box">
-            <div class="post-reply">
-                <h5>황재웅</h5>
-                <p>안녕하세요 재밌는 글을 써줘서 감사</p>
-                <button type="button" class="post-reply-button">답글</button>
-                <div class="post-reply-reply">
-                    <h5><i class="bi bi-caret-right-fill"></i> 이현성</h5>
-                    <p>감사합니다</p>
-                </div>
-                <div class="post-reply-reply">
-                    <h5><i class="bi bi-caret-right-fill"></i> 손흥민</h5>
-                    <p>화이팅</p>
-                </div>
-            </div>
+<%--            <div class="post-reply">--%>
+<%--                <h5>황재웅</h5>--%>
+<%--                <p>안녕하세요 재밌는 글을 써줘서 감사</p>--%>
+<%--                <button type="button" class="post-reply-button">답글</button>--%>
+<%--                <div class="post-reply-reply">--%>
+<%--                    <h5><i class="bi bi-caret-right-fill"></i> 이현성</h5>--%>
+<%--                    <p>감사합니다</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
 <%--            댓글 기능 6/25 기능 구현 완료(css 디자인 미완)--%>
-            <div class="comment-section">
-                <h5>댓글</h5>
-                <hr>
-                <div class="answerlist"></div>
+            <div class="post-reply">
+                <div class="answerlist" ></div>
                 <c:if test="${sessionScope.loginok!=null}">
+                <div class="comment-form">
                     <textarea id="acontent" class="form-control" placeholder="댓글을 입력하세요..."></textarea>
-                    <button type="button" class="btn btn-outline-success mt-2" id="btnansweradd">등록</button>
+                    <button type="button" class="" id="btnansweradd">등록</button>
+                </div>
                 </c:if>
-            </div>
-            <div class="comment-form">
-                <textarea rows="4" placeholder="댓글 작성"></textarea>
-                <button type="button">등록</button>
             </div>
         </div>
 
