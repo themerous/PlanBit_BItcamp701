@@ -31,6 +31,14 @@ public class HomeController {
 	@Autowired
 	private BoardService boardService;
 
+	//board mapping
+	//글 작성 writeform
+	//GetMapping	board/form
+	//PostMapping	board/insert
+
+	//글 상세보기 detail
+	//GetMapping	board/detail
+
 	// main
 	@GetMapping("/")
 	public String home()
@@ -62,10 +70,11 @@ public class HomeController {
 
 
 	// 블로그글 디테일페이지
-	@GetMapping("bit/detail")
-	public String blogDetail() {
-		return "board/detail";
-	}
+	// 블로그 글 디테일 페이지 BoardDetailController 생성 후 이동 (6/25) 박주용
+//	@GetMapping("bit/detail")
+//	public String blogDetail() {
+//		return "board/detail";
+//	}
 
 	// 회원가입 insert 이벤트
 	@PostMapping("bit/insert")

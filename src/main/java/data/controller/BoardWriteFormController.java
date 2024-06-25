@@ -33,7 +33,7 @@ public class BoardWriteFormController {
     @Autowired
     private NcpObjectStorageService storageService;
 
-    @GetMapping("/formtest")
+    @GetMapping("/form")
     public String form(
             @RequestParam(defaultValue = "1") int currentPage,
             HttpSession session,
@@ -50,7 +50,7 @@ public class BoardWriteFormController {
         return "board/form";
     }
 
-    @PostMapping("/inserttest")
+    @PostMapping("/insert")
     public String insert(
             @ModelAttribute Blog_BoardDto dto,
             @RequestParam("upload") MultipartFile upload,

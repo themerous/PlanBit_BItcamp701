@@ -12,7 +12,7 @@
 
 <div class="container">
     <h2>글 작성</h2>
-    <form action="./inserttest" method="post" enctype="multipart/form-data">
+    <form action="./insert" method="post" enctype="multipart/form-data">
         <input type="hidden" name="currentPage" value="${currentPage}">
 
         <!-- 제목 입력창 -->
