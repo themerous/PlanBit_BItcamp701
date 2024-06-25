@@ -21,7 +21,7 @@
     let boardNum = ${dto.board_num};
     let sessionLoginId = '${sessionScope.loginid}';
     let sessionLoginOk = '${sessionScope.loginok}';
-    let user_id = ${dto.user_id};
+    let user_id = '${dto.user_id}';
 </script>
 <script src="${pageContext.request.contextPath}/js/board/detail.js"></script>
 
