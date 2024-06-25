@@ -42,4 +42,7 @@
     <select id="getDataidx" parameterType="int" resultType="data.dto.Blog_BoardDto">
         SELECT * FROM blog_board WHERE board_num = #{board_num}
     </select>
+    <select id="userDataID" parameterType="String" resultType="data.dto.Blog_BoardDto">
+        select * from blog_board where user_id = #{user_id} order by board_num desc
+    </select>
 </mapper>

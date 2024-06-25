@@ -45,8 +45,6 @@ public class BoardDetailController {
         // 로그인 여부 확인
         String loginId = (String) session.getAttribute("loginok");
         if (loginId == null) {
-            // 로그인 페이지로 리다이렉트
-            return "redirect:/login"; // 로그인 페이지로 리다이렉트하는 예시 코드
         }
         String loginid1 = (String) session.getAttribute("loginid");
         System.out.println(loginid1);
