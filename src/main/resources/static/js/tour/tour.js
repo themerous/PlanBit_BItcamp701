@@ -47,8 +47,11 @@ let contentTypeId = 32;
 window.onload = getMap();
 
 function getSearch(){
-    var text1 = $("#tt").val();
-    let ss = ``;
+    let text1 = $("#tt").val();
+    let imgaes = [];
+    let cotentid = [];
+    let titles = [];
+    let contents = [];
 
     $.ajax({
         url: getSearchItem(key, text1),
@@ -57,27 +60,37 @@ function getSearch(){
         success: function(d){
             for(its of d.response.body.items.item){
                 let searchPhoto = its.firstimage == "" ? "/images/noimage1.png" :its.firstimage2 ;
-                ss += `<img class="api-pic" src="` + searchPhoto + `" placeholder="img"/>`;
-                ss += `<span>`;
-                ss += its.title+`:`;
-                ss += `</span>`;
-                $.ajax({
-                    url: getSearchItemInput(key, its.contentid),
-                    type: "get",
-                    dataType:"json",
-                    success: function(dd){
-                        console.log(dd.response.body.items.item[0].overview);
-                        ss += `<span>`;
-                        ss += dd.response.body.items.item[0].overview;
-                        ss += `</span>`;
-                        $("#resultTest").html(ss);
-                    }
-                })
-
+                insertData(its.contentid, searchPhoto, its.title);
             }
-            $("#resultTest").html(ss);
         }
     })
+}
+
+function insertData(contentid, photo, title) {
+    $.ajax({
+        url: getSearchItemInput(key, contentid),
+        type: "get",
+        dataType:"json",
+        success: function(dd){
+            let ss = ``;
+            ss += `<div class="searchList">`;
+            ss += `<div class="searchListL"><img class="searchimageresult" src="${photo}"></div>`;
+            ss += `<div class="searchListR">`;
+            ss += `<p>`;
+            ss += title+`:`;
+            ss += `</p>`;
+            ss += `<p class="overview">`;
+            ss += dd.response.body.items.item[0].overview;
+            ss += `</p>`;
+            ss += `</div>`;
+            ss += `<div>`;
+            ss += `<button type="button">즐겨찾기</button>`;
+            ss += `</div>`;
+            ss += `</div><br>`;
+
+            $("#resultTest").html($("#resultTest").html() + ss);
+        }
+    });
 }
 
 function getMap() {
