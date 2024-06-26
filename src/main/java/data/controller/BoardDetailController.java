@@ -45,8 +45,6 @@ public class BoardDetailController {
         // 로그인 여부 확인
         String loginId = (String) session.getAttribute("loginok");
         if (loginId == null) {
-            // 로그인 페이지로 리다이렉트
-            return "redirect:/login"; // 로그인 페이지로 리다이렉트하는 예시 코드
         }
         String loginid1 = (String) session.getAttribute("loginid");
         System.out.println(loginid1);
@@ -59,7 +57,7 @@ public class BoardDetailController {
 
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
-        UserDto memberDto = memberService.getDataById(dto.getUser_id());
+        UserDto memberDto = memberService.databyid(dto.getUser_id());
 
         String profile_photo = memberDto.getPhoto();
 

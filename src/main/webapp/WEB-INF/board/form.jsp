@@ -9,7 +9,12 @@
 
 <%--kakao map api 지도 좌표 저장 js--%>
 <script src="${pageContext.request.contextPath}/js/board/writemap.js"></script>
-
+<c:if test="${sessionScope.loginok==null}">
+    <script type="text/javascript">
+        alert("먼저 로그인 후 글을 작성해주세요.");
+        history.back();
+    </script>
+</c:if>
 <div class="container">
     <h2>글 작성</h2>
     <form action="./insert" method="post" enctype="multipart/form-data">

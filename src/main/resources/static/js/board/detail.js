@@ -52,7 +52,7 @@ $(function (){
         }
         else{
             $.ajax({
-                url: '${pageContext.request.contextPath}/board/like',
+                url: '/board/like',
                 type: 'POST',
                 data: {
                     board_num: boardNum,
@@ -90,11 +90,11 @@ function answer_list() {
             let s = "";
             s += `<div class="reply-num"><h2>`+ data.length +`개의 리뷰</h2></div>`;
             $.each(data, function (idx, ele) {
-                s += `<div class="post-reply-box">
+                s += `<div class="post-reply-box2">
                         <div class="post-reply">
-                            <h5>(${ele.user_id})</h5>작성일 : <span class="aday">${ele.writeday}</span>`;
+                            <h5>${ele.user_id}</h5><span class="aday"> 작성일 : ${ele.writeday}</span>`;
                 if (loginok == 'yes' && loginid == ele.user_id) {
-                    s += `<i class="bi bi-trash adel" aidx="${ele.aidx}" style="cursor:pointer;"></i>`;
+                    s += `&nbsp;<i class="bi bi-trash adel" aidx="${ele.aidx}" style="cursor:pointer; color: #555555;"></i>`;
                 }
                 s += `<div class="content"><p>${ele.content}</p></div><button type="button" class="post-reply-button">답글</button>
                         </div>

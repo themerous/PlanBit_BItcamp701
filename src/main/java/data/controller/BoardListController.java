@@ -26,10 +26,19 @@ public class BoardListController {
 
         return "layout/blog";
     }
+    @GetMapping("/bit/search")
+    public String search(
+            @RequestParam("category") String category,
+            @RequestParam("query") String query,
+            @RequestParam(defaultValue = "1") int currentPage,
+            Model model
+    ){
+        List<Blog_BoardDto> searchResults = boardService.searchBoard(category, query);
+        model.addAttribute("boardList", searchResults);
+        model.addAttribute("currentPage",currentPage);
 
-    @GetMapping("bit/mypage")
-    public String mypage() {
 
-        return "layout/mypage";
+        return "layout/sblog";
     }
+
 }

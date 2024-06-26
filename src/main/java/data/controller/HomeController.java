@@ -7,7 +7,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+
+import data.dto.Blog_BoardDto;
 import data.dto.BoardDto;
+import data.service.Blog_BoardService;
 import data.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import data.dto.UserDto;
+import data.service.BoardService;
 import data.service.UserService;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class HomeController {
@@ -30,6 +33,9 @@ public class HomeController {
 
 	@Autowired
 	private BoardService boardService;
+
+	@Autowired
+	private Blog_BoardService blogService;
 
 	//board mapping
 	//글 작성 writeform
@@ -49,7 +55,7 @@ public class HomeController {
 	// 로그인
 	@GetMapping("bit/login")
 	public String login() 
-	{
+	{	
 		return "loginform/login";
 	}
 
@@ -60,13 +66,25 @@ public class HomeController {
 		return "loginform/form";
 	}
 
-	// 비밀번호 재설정
+	// 비밀번호 재설정 페이지
 	@GetMapping("bit/passform")
-	public String passform()
-	{
+	public String passform(@RequestParam String mail, Model model)
+	{	
+		UserDto dto = userService.databyid(mail);
+		model.addAttribute("dto",dto);
+		
 		return "loginform/passform";
 	}
 
+	// 비밀번호 재설정이벤트
+	@GetMapping("bit/passon")
+	public String passon(@RequestParam String repw,@RequestParam String id) 
+	{	
+		userService.updatepw(repw,id);
+		
+		return "loginform/login";
+	}
+	
 
 
 	// 블로그글 디테일페이지
@@ -131,6 +149,24 @@ public class HomeController {
 		
 		return map;
 	}
-	
-	
+
+	//마이페이지
+	@GetMapping("bit/mypage")
+	public String mypage(@RequestParam String id,@RequestParam(defaultValue = "1") int currentPage, Model model) {
+		UserDto dto = userService.databyid(id);
+		String name = dto.getName();
+		String photo = dto.getPhoto();
+		String user_id = dto.getId();
+		System.out.println(user_id);
+		List<Blog_BoardDto> userPost = blogService.userDataID(user_id);
+
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("user_id",user_id);
+		model.addAttribute("name", name);
+		model.addAttribute("photo", photo);
+		model.addAttribute("userPost", userPost);
+
+
+		return "layout/mypage";
+	}
 }

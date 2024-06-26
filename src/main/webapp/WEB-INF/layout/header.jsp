@@ -22,8 +22,10 @@
 	</c:if>
 	<c:if test="${sessionScope.loginok!=null }">
 	   <a id="logout" class="login-button">Logout</a>
-	   <a class="gaip-button">${sessionScope.loginid }님</a>
-	</c:if>
+
+        <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>
+
+    </c:if>
 </div>
 <script type="text/javascript">
 $(function(){
@@ -32,7 +34,7 @@ $(function(){
 		$.ajax({
 			type:"get",
 			dataType:"text",
-			url:`bit/logout`,
+			url:`/bit/logout`,
 			success:function(){
 				//전체페이지 새로고침
 				location.href=`/`;
