@@ -229,6 +229,7 @@ function toggleMapSection() {
     if (mapSection.style.display === 'none') {
         mapSection.style.display = 'block';
         initializeMap();
+        addNewBox();
     } else {
         mapSection.style.display = 'none';
     }
@@ -258,11 +259,11 @@ function addNewBox() {
     var newBox = document.createElement('div');
     newBox.className = 'address-box';
     newBox.innerHTML = `
-        <input type="text" class="fulladdress" name="fulladdress" style="width:90%;" disabled><br>
-        <input type="text" class="pname" name="placeNames" value="">
-        <input type="text" class="paddress" name="placeAddress" value="">
-        <input type="text" class="latclick" name="placeLatitudes" value="">
-        <input type="text" class="lngclick" name="placeLongitudes" value="">
+        <input type="text" class="fulladdress" name="fulladdress" style="width:90%;" disabled>&nbsp;
+        <input type="hidden" class="pname" name="placeNames" value="">
+        <input type="hidden" class="paddress" name="placeAddress" value="">
+        <input type="hidden" class="latclick" name="placeLatitudes" value="">
+        <input type="hidden" class="lngclick" name="placeLongitudes" value="">
         <button type="button" class="btn btn-danger" onclick="deleteBox(this)">삭제</button>
     `;
     container.appendChild(newBox);

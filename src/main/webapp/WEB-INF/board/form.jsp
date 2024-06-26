@@ -1,6 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <link rel="stylesheet" href="/css/board/boardWrite.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Bebas+Neue&family=Bree+Serif&family=Hind+Vadodara:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Kakao Map API -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6f6609502fa3f00b4b14ebbdcdf59da6&libraries=services"></script>
@@ -9,34 +14,45 @@
 
 <%--kakao map api 지도 좌표 저장 js--%>
 <script src="${pageContext.request.contextPath}/js/board/writemap.js"></script>
-<c:if test="${sessionScope.loginok==null}">
+<header><a onclick="location.href='/'">BIT TRIP</a></header>
+<c:if test="${sessionScope.loginid==null}">
     <script type="text/javascript">
         alert("먼저 로그인 후 글을 작성해주세요.");
         history.back();
     </script>
 </c:if>
-<div class="container">
-    <h2>글 작성</h2>
+<div class="blog-post">
+
+    <div class="post-image">
+        <img  id="preview" src="/images/e2.jpg" alt="이미지 설명" style="display: block;">
+    </div>
+
+    <div class="form-group">
+        <label for="upload" >메인사진</label>
+        <input type="file" class="form-control-file" id="upload" name="upload" onchange="previewImage(event)">
+        <img  class="preview-img" src="#" alt="미리보기 이미지" style="display: none;">
+    </div>
+    <h2 style="text-align: center;">글 작성</h2>
     <form action="./insert" method="post" enctype="multipart/form-data">
         <input type="hidden" name="currentPage" value="${currentPage}">
 
         <!-- 제목 입력창 -->
+        <div class="post-title">
         <div class="form-group">
             <label for="title">제목</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요" required>
         </div>
-
-        <!-- 메인 사진 업로드 -->
-        <div class="form-group">
-            <label for="upload">메인사진</label>
-            <input type="file" class="form-control-file" id="upload" name="upload" onchange="previewImage(event)">
-            <img id="preview" class="preview-img" src="#" alt="미리보기 이미지" style="display: none;">
         </div>
 
+        <!-- 메인 사진 업로드 -->
+
+
         <!-- 내용 입력창 -->
+        <div class="post-content">
         <div class="form-group">
             <label for="summernote">내용</label>
             <textarea id="summernote" name="board_content" class="form-control" placeholder="내용을 입력해주세요" required></textarea>
+        </div>
         </div>
 
         <!-- 저장하기 버튼 -->
@@ -70,6 +86,7 @@
         </div>
     </form>
     <!-- -------------------------------------------------------------------------------------- -->
+
 </div>
 <script>
 </script>
