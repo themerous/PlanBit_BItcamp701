@@ -2,8 +2,6 @@
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-    <style>
         body * {
             font-family: "IBM Plex Sans KR", sans-serif;
         }
@@ -136,17 +134,6 @@
             margin: 20px 0;
             display: none; /* 초기에는 숨김 */
         }
-
-
-
-
-
-
-
-    </style>
-
-
-
 <!-- Page header with logo and tagline-->
 <div class="g" id="blog-title-photo">
             <h1 class="fw-bolder">Welcome to Blog Home!</h1>
@@ -188,11 +175,15 @@
                             <h2 class="card-title h4">${dto.board_title}</h2>
 
                             <div class="bottom-box">
-                                <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
+
                                 <div class="images-heart">
-                                    <img src="../images/e2.jpg" alt="" class="profile-img">
+
+                                    <a href="#!"><img src="../images/e2.jpg" alt="" class="profile-img">
+                                            ${dto.user_id}
+                                    </a>
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
                                 </div>
+                                <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             </div>
                         </div>
                     </div>
@@ -216,10 +207,17 @@
             <div class="card mb-4">
                 <div class="card-header">검색</div>
                 <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="검색어를 입력하세요..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn-btn-primary" id="button-search" type="button">검색</button>
-                    </div>
+                    <form action="./search" method="get">
+                        <div class="input-group">
+                            <select class="form-select" name="category" aria-label="Search category">
+                                <option value="title">제목</option>
+                                <option value="content">내용</option>
+                                <option value="author">작성자</option>
+                            </select>
+                            <input class="form-control" type="text" name="query" placeholder="검색어를 입력하세요..." aria-label="Enter search term..." aria-describedby="button-search" />
+                            <button class="btn-btn-primary" id="button-search" type="submit">검색</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- Categories widget-->

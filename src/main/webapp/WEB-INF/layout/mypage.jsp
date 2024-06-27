@@ -162,7 +162,7 @@
                 <div class="user-info d-flex justify-content-between">
                     <h5 class="card-title">이름 : ${name}</h5>
                     <h5 class="card-title">아이디 : ${user_id}</h5>
-                    <h5 class="card-title">성별 : 남</h5>
+                    <h5 class="card-title">게시글 : ${userPost.size()}개</h5>
                 </div>
             </div>
         </div>
@@ -201,7 +201,7 @@
                         <div class="small text-muted"><fmt:formatDate value="${post.board_writeday}" pattern="yyyy년 MM월 dd일"/></div>
                         <h2 class="card-title">${post.board_title}</h2>
                         <div class="bottom-box">
-                            <a class="btn-btn-primary" href="viewPost?id=${post.user_id}">더보기 →</a>
+                            <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${post.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             <div class="images-heart">
                                 <img src="../images/e2.jpg" alt="" class="profile-img">
                                 <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>

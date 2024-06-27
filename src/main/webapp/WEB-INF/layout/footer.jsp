@@ -48,7 +48,7 @@
             </p>
             <form action="#">
                 <input type="text" placeholder="Your email" required>
-                <button type="submit">SUBSCRIBE</button>
+                <button type="">SUBSCRIBE</button>
             </form>
             <div class="icons">
                 <i class="fa-brands fa-facebook-f"></i>
