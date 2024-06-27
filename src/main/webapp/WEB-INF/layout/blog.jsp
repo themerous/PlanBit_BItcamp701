@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
         body * {
             font-family: "IBM Plex Sans KR", sans-serif;
         }
@@ -71,6 +72,8 @@
         }
 
 
+
+
         .c-box li {
             list-style: none;
         }
@@ -134,6 +137,7 @@
             margin: 20px 0;
             display: none; /* 초기에는 숨김 */
         }
+</style>
 <!-- Page header with logo and tagline-->
 <div class="g" id="blog-title-photo">
             <h1 class="fw-bolder">Welcome to Blog Home!</h1>
