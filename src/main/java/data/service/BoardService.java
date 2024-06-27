@@ -31,4 +31,11 @@ public class BoardService {
 	public List<Blog_BoardDto> gettestboardlist() {
 		return bInter.gettestboardlist();
 	}
+	//검색 블로그 리스트 가져오기
+	public List<Blog_BoardDto> searchBoard(String category, String query) {
+		return bInter.searchBoard(category, query);
+	}
+
+
+
 }

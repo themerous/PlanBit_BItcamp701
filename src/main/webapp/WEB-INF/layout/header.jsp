@@ -10,18 +10,18 @@
          <li><a href="/bit/blog">Blog</a></li>
          <li><a href="">Planner</a></li>
          <li><a href="#">Map</a></li>
-         <li><a href="#">Hotel</a></li>
+         <li><a href="/tour/tourMain">Hotel</a></li>
          <li><a href="#">Info</a></li>
       </ul>
    </div>
 </div>
 <div class="title-right">
 	<c:if test="${sessionScope.loginok==null }">
-	   <a href="/bit/form" class="gaip-button">Join</a>
-	   <a href="/bit/login" class="login-button">Login</a>
+	   <a href="/bit/form" class="gaip-button">회원가입</a>
+	   <a href="/bit/login" class="login-button">로그인</a>
 	</c:if>
 	<c:if test="${sessionScope.loginok!=null }">
-	   <a id="logout" class="login-button">Logout</a>
+	   <a id="logout" class="login-button">로그아웃</a>
 
         <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>
 

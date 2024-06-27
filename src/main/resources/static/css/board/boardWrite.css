@@ -1,26 +1,323 @@
+/*body {*/
+/*    background-color: #f5f5f5;*/
+/*}*/
+/*.container {*/
+/*    background-color: white;*/
+/*    padding: 20px;*/
+/*    margin-top: 30px;*/
+/*    box-shadow: 0 4px 8px rgba(0,0,0,0.1);*/
+/*}*/
+/*.form-group label {*/
+/*    font-weight: bold;*/
+/*}*/
+/*.form-control {*/
+/*    border-radius: 0;*/
+/*}*/
+/*.btn-primary {*/
+/*    background-color: #1ec800;*/
+/*    border-color: #1ec800;*/
+/*    border-radius: 0;*/
+/*}*/
+/*.preview-img {*/
+/*    margin-top: 10px;*/
+/*    max-width: 200px;*/
+/*}*/
+
+
 body {
-    background-color: #f5f5f5;
+    background-color: #f8f8f8;
+    font-family: "Bree Serif", serif;
 }
-.container {
+
+header {
+    height: 100px;
+    display: flex;
+    align-items: center; /* 수직 가운데 정렬 */
+    color: #51e3d4;
     background-color: white;
-    padding: 20px;
-    margin-top: 30px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); !* 그림자 추가 *!*/
+    z-index: 10;
 }
-.form-group label {
+
+header a {
+    font-size: 50px;
+    font-family: "Alfa Slab One", serif;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+main {
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    height: auto; /* 전체 화면 높이에 맞춰 정렬 */
+    background-color: #f0f0f0; /* 배경색 */
+    padding: 20px;
+}
+
+.blog-post {
+    width: 90%; /* 전체 너비를 사용 */
+    background-color: white;
+    border-radius: 8px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column; /* 세로 정렬 */
+    height: auto;
+    margin: 30px auto;
+}
+
+.post-image {
+    width: 100%; /* 이미지 너비를 100%로 설정 */
+    height: 350px; /* 이미지 높이 설정 */
+    overflow: hidden; /* 넘치는 이미지 숨김 */
+
+    border-radius: 8px;
+
+}
+
+.post-image img {
+    margin: 0px auto;
+    width: auto;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+    border-radius: 8px;
+    border: 3px solid #51e3d4;
+}
+
+.post-title {
+    margin: 30px auto;
+    width: 80%;
+    border-left: 6px solid #51e3d4;
+    padding: 10px;
+
+}
+
+.post-title h2 {
+    margin: 1px 0; /* 제목 위아래 여백 설정 */
+    font-size: 50px;
+}
+
+.post-info {
+    width: 80%;
+    margin: -10px auto; /* 제목 위아래 여백 설정 */
+    height: 30px;
+    display: flex;
+    gap: 10px; /* 요소들 사이의 간격 설정 */
+}
+
+.post-info  p {
+    font-size: 20px;
+}
+
+.post-info  i {
+    font-size: 20px;
+}
+
+.post-content {
+    padding: 20px;
+    border: 1px solid darkgreen;
+    border-bottom: 4px solid #51e3d4;
+    margin: 30px auto;
+    width: 80%;
+    height: 800px;
+}
+
+.post-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.post-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.reply-num {
+    width: 80%;
+    height: auto;
+    border-left: 7px solid #51e3d4;
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.reply-num h2{
+    font-size: 35px;
+    margin-left: 20px;
+}
+
+.post-reply-box {
+    padding: 20px;
+    border: 1px solid #eeeeee;
+    margin: 10px auto;
+    width: 80%;
+    height: auto;
+}
+
+.post-reply-box2 {
+    padding: 20px;
+    width: 80%;
+    height: auto;
+}
+
+
+
+.content {
+    font-size: 17px;
+
+}
+
+.post-reply h5{
+    font-weight: bold;
+
+}
+
+.post-reply p, h5{
     font-weight: bold;
 }
-.form-control {
-    border-radius: 0;
+
+.post-reply-button {
+    border: 1px solid #51e3d4;
+    background-color: white;
+    border-radius: 4px;
+
 }
-.btn-primary {
-    background-color: #1ec800;
-    border-color: #1ec800;
-    border-radius: 0;
+
+.aday {
+    color: #555555;
 }
-.preview-img {
+
+
+.post-reply-reply {
+    background-color: #dcf9f3;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 45%;
     margin-top: 10px;
-    max-width: 200px;
+    margin-left: 20px;
+}
+
+.post-reply-reply p {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.post-reply-reply i{
+
+    color: #51e3d4;
+
+}
+
+.comment-form {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-form textarea {
+    width: 40%;
+    padding: 10px;
+    border: 2px solid #51e3d4;
+    border-radius: 8px;
+    position: relative;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.comment-form button {
+    right: 605px;
+    padding: 12px 20px;
+    color: white;
+    background-color: #51e3d4;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+}
+
+.post-next-blog-title {
+    width: 80%;
+    margin: 20px auto;
+    height: 50px;
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: flex-start; /* 수평 왼쪽 정렬 */
+    padding-left: 5px; /* 왼쪽으로 살짝 띄우기 */
+}
+
+.post-next-blog-box {
+    margin: 10px auto;
+    width: 80%;
+    height: 300px;
+    display: flex; /* Flexbox를 사용하여 수평으로 정렬 */
+    justify-content: space-between; /* 구역 사이의 공간을 동일하게 */
+    gap: 20px;
+}
+
+.post-next-blog {
+    flex: 1; /* 각 구역이 동일한 크기를 가지도록 */
+    margin-bottom: 20px;
+    border: 1px solid lightgrey; /* 각 구역의 테두리 */
+    padding: 10px; /* 구역 내부의 패딩 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-next-blog img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지를 부모 요소의 크기에 맞게 조정 */
+}
+
+
+
+.right-btn1 {
+    right: 0;
+    position: fixed;
+    bottom: 32px;
+    align-self: end;
+    margin-right: 20px;
+    background-color: white;
+    padding: 8px;
+    border: 0;
+    border-radius: 8px;
+    color: #51e3d4;
+    filter: drop-shadow(0px 4px 4px #d2dae5);
+    width: 70px;
+    height: 70px;
+}
+
+.right-btn2 {
+    right: 0;
+    position: fixed;
+    bottom: 112px;
+    align-self: end;
+    margin-right: 20px;
+    background-color: white;
+    padding: 8px;
+    border: 0;
+    border-radius: 8px;
+    filter: drop-shadow(0px 4px 4px #d2dae5);
+    width: 70px;
+    height: 70px;
+    font-size: 25px;
+    color: #FF9EAA;
+}
+
+.right-btn1:hover {
+    background-color: #51e3d4;
+    color: white;
+    border-radius: 8px;
+}
+
+.right-btn2:hover {
+    background-color: #FF9EAA;
+    color: white;
+    border-radius: 8px;
 }
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}

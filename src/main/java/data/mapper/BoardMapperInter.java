@@ -19,4 +19,14 @@ public interface BoardMapperInter {
 
 	@Select("select * from blog_board order by board_num desc")
 	List<Blog_BoardDto> gettestboardlist();
+
+	@Select("<script>" +
+			"SELECT * FROM blog_board " +
+			"WHERE " +
+			"<if test='category == \"title\"'>board_title</if>" +
+			"<if test='category == \"content\"'>board_content</if>" +
+			"<if test='category == \"author\"'>user_id</if>" +
+			" LIKE CONCAT('%', #{query}, '%')" +
+			"</script>")
+	List<Blog_BoardDto> searchBoard(@Param("category") String category, @Param("query") String query);
 }
