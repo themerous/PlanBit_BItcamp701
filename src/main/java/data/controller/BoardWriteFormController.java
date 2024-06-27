@@ -53,7 +53,7 @@ public class BoardWriteFormController {
     @PostMapping("/insert")
     public String insert(
             @ModelAttribute Blog_BoardDto dto,
-            @RequestParam("upload") MultipartFile upload,
+            @RequestParam(value = "upload",required = false) MultipartFile upload,
             @RequestParam int currentPage,
             @RequestParam("title") String title,
             @RequestParam(value = "placeNames", required = false) String placeNamesStr,
@@ -63,7 +63,7 @@ public class BoardWriteFormController {
             HttpSession session
     ) {
         // 파일 업로드 처리
-        if (!upload.isEmpty()) {
+        if (upload != null && !upload.isEmpty()) {
             String photo = storageService.uploadFile(bucketName, folderName, upload);
             dto.setPhoto(photo);
         }

@@ -12,13 +12,24 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.css" rel="stylesheet">
 
-<script src="${pageContext.request.contextPath}/js/board/writemap.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.js"></script>
+<script src="${pageContext.request.contextPath}/js/board/summernote.js"></script>
+
+<script>
+    var placeNames = "${placeNames}" || "";
+    var placeAddresses = "${placeAddress}" || "";
+    var placeLatitudes = "${placeLatitudes}" || "";
+    var placeLongitudes = "${placeLongitudes}" || "";
+</script>
+<script src="/js/board/editmap.js"></script>
+
 <header><a onclick="location.href='/'">BIT TRIP</a></header>
 
 <div class="blog-post">
-
     <div class="post-image">
-        <img id="preview" src="<c:out value='${board.imageUrl}' />" alt="이미지 설명" style="display: block;">
+        <img id="preview" src="<c:out value='${dto.photo}' />" alt="이미지 설명" style="display: block;">
     </div>
 
     <div class="form-group">
@@ -29,24 +40,25 @@
 
     <h2 style="text-align: center;">글 수정</h2>
     <form action="./update" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="user_id" value="${board.user_id}">
+        <input type="hidden" name="board_num" value="${dto.board_num}">
+        <input type="hidden" name="currentPage" value="${currentPage}">
 
         <div class="post-title">
             <div class="form-group">
                 <label for="title">제목</label>
-                <input type="text" class="form-control" id="title" name="title" value="<c:out value='${board.board_title}' />" required>
+                <input type="text" class="form-control" id="title" name="board_title" value="${dto.board_title}" required/>
             </div>
         </div>
 
         <div class="post-content">
             <div class="form-group">
                 <label for="summernote">내용</label>
-                <textarea id="summernote" name="board_content" class="form-control" required><c:out value='${board.board_content}' /></textarea>
+                <textarea id="summernote" name="board_content" class="form-control" required><c:out value='${dto.board_content}' /></textarea>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">저장하기</button>
-        <button type="button" class="btn btn-secondary" id="togglemap" onclick="toggleMapSection()">지도 추가하기</button>
+        <button type="submit" class="btn btn-primary">수정하기</button>
+        <button type="button" class="btn btn-secondary" id="togglemap">지도 추가하기</button>
 
         <div id="mapSection" style="display: none;">
             <div id="wrapper">
@@ -56,7 +68,7 @@
                         <div class="option">
                             <div>
                                 키워드 : <input type="text" id="keyword" size="15">
-                                <button onclick="searchPlaces(); return false;">검색하기</button>
+                                <button type="button" onclick="searchPlaces(); return false;">검색하기</button>
                             </div>
                         </div>
                         <hr>
@@ -68,12 +80,7 @@
                 <button type="button" class="btn btn-primary" onclick="addNewBox()">추가</button>
                 <div id="address-container"></div>
             </div>
-            <button type="submit" class="btn btn-primary" id="submitBtn">저장하기</button>
+            <button type="submit" class="btn btn-primary" id="submitBtn">수정하기</button>
         </div>
     </form>
 </div>
-
-<script src="/js/board/summernote.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.js"></script>
