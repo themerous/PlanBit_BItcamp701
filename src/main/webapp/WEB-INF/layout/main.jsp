@@ -3,16 +3,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <div class="main-home1">
     <div class="main-photo-box">
         <div class="main-title">START NOW</div>
-        <div class="main-mini-title">How to Learn a Language by Watching TV and Movies
-            The Complete Guide to Spaced Repetition Systems (SRS) for Language Learning
+        <div class="main-mini-title">Explore Korea's Diverse Landscapes, Enjoy Its Rich Culture, and Create Unforgettable Memories With Your Loved Ones.
         </div>
         <div class="main-photo1"></div>
-        <div class="main-photo2"></div>
-        <div class="main-button"></div>
-        <div class="main-photo3">START NOW</div>
+        <a href="/board/form">
+            <div class="main-button">Get Start</div>
+        </a>
     </div>
 </div>
 
@@ -106,9 +106,11 @@
         </div>
     </div>
     <div class="chu-blog"><p>&nbsp;추천 블로그 게시물</p></div>
-    <button class="plus">더보기</button>
+    <a href="/bit/blog" class="plus">더보기</a>
 </div>
-<div class="main-home4"></div>
+<div class="main-home4">
+
+</div>
 
 
 
@@ -116,7 +118,7 @@
 <div class="main-home5">
     <div class="photo-card" id="photo-up">
         <div class="photo-div" id="photo1">
-            <img src="/images/e2.jpg" alt="Image 1">
+            <img src="/images/p1.jpg" alt="Image 1">
         </div>
         <div class="photo-div" id="photo2">
             <img src="/images/e5.jpg" alt="Image 2">
@@ -125,7 +127,7 @@
             <img src="/images/e4.jpg" alt="Image 3">
         </div>
         <div class="photo-div" id="photo4">
-            <img src="/images/p1.jpg" alt="Image 1">
+            <img src="/images/e3.jpg" alt="Image 1">
         </div>
     </div>
     <div class="photo-card" id="photo-down">

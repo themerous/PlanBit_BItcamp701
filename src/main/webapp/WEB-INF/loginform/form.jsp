@@ -8,7 +8,7 @@
 	<div class="register-container">
 		<div class="register-title">회원가입</div>
 		<form action="./insert" method="post" enctype="multipart/form-data"
-			onsubmit="return check()">
+			on="return check()">
 			<div class="form-group">
 				<label for="name">이름</label> <input type="text" id="name"
 					name="name" class="form-control" placeholder="이름을 입력하세요"
@@ -55,7 +55,7 @@
 					maxlength="50">
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn">회원가입</button>
+				<button type="" class="btn">회원가입</button>
 			</div>
 		</form>
 	</div>
