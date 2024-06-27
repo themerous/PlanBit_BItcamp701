@@ -45,7 +45,7 @@
     	<form id="loginon">
 	        <h1>로그인</h1>
 	        <span>or use your account</span>
-	        <input type="text" name="id" id="id" placeholder="아이디을 입력하세요" />
+	        <input type="email" name="id" id="id" placeholder="아이디을 입력하세요" />
 	        <small class="help-block" id="id-msg"></small>
 	        <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력하세요" />
 	        <small class="help-block" id="pw-msg"></small>
@@ -54,6 +54,9 @@
 				<a href="./form">회원가입</a>
 			</div>
 	    	<button type="submit" class="login-btn">로그인</button>
+	    	<a href="/oauth2/authorization/google"><img src="../images/glogin.png"></a>
+			<a href="/oauth2/authorization/naver"><img src="../images/nlogin.png"></a>
+			<a href="/oauth2/authorization/kakao"><img src="../images/klogin.png"></a>
     	</form>
     </div>
    	<div class="overlay-container">
