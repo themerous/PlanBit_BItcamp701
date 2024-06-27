@@ -106,7 +106,9 @@
     <div class="chu-blog"><p>&nbsp;추천 블로그 게시물</p></div>
     <button class="plus">더보기</button>
 </div>
-<div class="main-home4"></div>
+<div class="main-home4">
+
+</div>
 
 
 

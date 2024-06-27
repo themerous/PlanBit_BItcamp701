@@ -262,6 +262,8 @@
 	            height: 800px;
 	            background-color: #eeeeee;
 	        }
+
+
 	        .main-home5 {
 	            display: grid; /* 내부 div를 가로로 배치 */
 	            width: 100%;
