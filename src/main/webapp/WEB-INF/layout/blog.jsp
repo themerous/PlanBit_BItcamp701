@@ -69,6 +69,7 @@
             color: white;
             padding: 8px 10px;
             text-decoration: none;
+            cursor: pointer;
         }
 
 

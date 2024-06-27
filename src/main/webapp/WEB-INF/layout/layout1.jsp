@@ -61,6 +61,7 @@
 	            font-size: 35px;
 	            font-family: "Alfa Slab One", serif;
 	            color: #51e3d4;
+				cursor: pointer;
 	        }
 	
 	
@@ -134,7 +135,7 @@
 	            border: none;
 	            border-radius: 4px;
 	            cursor: pointer;
-	            width: 100px;
+	            width: 120px;
 	            height: 50px;
 	            text-align: center;
 	            font-size: 20px;
