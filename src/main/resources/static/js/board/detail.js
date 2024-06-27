@@ -98,7 +98,7 @@ function answer_list() {
                 if (loginok == 'yes' && loginid == ele.user_id) {
                     s1 += `&nbsp;<i class="bi bi-trash adel" aidx="${ele.aidx}" style="cursor:pointer; color: #555555;"></i>`;
                 }
-                s1 += `<div class="content"><p>${ele.content}</p></div><button type="button" class="post-reply-button">답글</button>
+                s1 += `<div class="content"><p>${ele.content}</p></div><button type="button" class="post-reply-button" onclick="commentOpen(${ele.aidx})">답글</button>
                     <div class="recommentlist" >`;
 
                 let s2 = `</div>
@@ -114,6 +114,8 @@ function answer_list() {
     })
 }
 
+
+
 //대댓글
 function  recomment_list(s1, num, s2) {
     console.log(num);
@@ -126,16 +128,28 @@ function  recomment_list(s1, num, s2) {
             console.log("successed");
             let s3 = '';
             $.each(data, function (idx, ele) {
-                s3 += `<div>${ele.user_id}의 대댓글 : ${ele.content}</div>`;
+                    s3 +=  `<div class="post-reply-reply">
+                    <h5><i class="bi bi-caret-right-fill"></i>${ele.user_id} :</h5>
+                    <p>${ele.content}</p>
+                    </div>`;
             });
-            s3 += `<div className="comment-form">
-                <textarea id="rcontent${num}" class="form-control" placeholder="댓글을 입력하세요..."></textarea>
+            s3 += `<div class="comment-form2" style="display: none;" id="comment-form2-`+num+`">
+                <textarea id="rcontent${num}" class="form-control" placeholder="답글을 입력하세요..."></textarea>
                 <button type="button" class="btnrecommentadd" onclick="insertComment(`+num+`)">등록</button>
-                </div>`;
+                </div>
+                <hr>`;
             $(".answerlist").html($(".answerlist").html() + s1 + s3 + s2);
         }
     });
 }
+
+
+function commentOpen(num){
+    console.log("num : " + num);
+    $(".comment-form2").css("display", "none");
+    document.getElementById("comment-form2-"+num).style.display = "flex";
+}
+
 
 function insertComment(comment_num) {
     console.log(comment_num);
@@ -145,6 +159,7 @@ function insertComment(comment_num) {
         answer_list();
     }, "json");
 }
+
 
 
 
