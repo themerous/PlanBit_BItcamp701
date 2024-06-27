@@ -7,11 +7,12 @@
 <div class="main-home1">
     <div class="main-photo-box">
         <div class="main-title">START NOW</div>
-        <div class="main-mini-title">How to Learn a Language by Watching TV and Movies
-            The Complete Guide to Spaced Repetition Systems (SRS) for Language Learning
+        <div class="main-mini-title">Explore Korea's Diverse Landscapes, Enjoy Its Rich Culture, and Create Unforgettable Memories With Your Loved Ones.
         </div>
         <div class="main-photo1"></div>
-        <div class="main-button">Get Start</div>
+        <a href="/board/form">
+            <div class="main-button">Get Start</div>
+        </a>
     </div>
 </div>
 
@@ -105,7 +106,7 @@
         </div>
     </div>
     <div class="chu-blog"><p>&nbsp;추천 블로그 게시물</p></div>
-    <button class="plus">더보기</button>
+    <a href="/bit/blog" class="plus">더보기</a>
 </div>
 <div class="main-home4">
 

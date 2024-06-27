@@ -206,6 +206,12 @@
 	            line-height: 60px; /* 버튼 높이와 동일한 line-height 설정 */
 	            color: white;
 	        }
+			.main-button:hover {
+				transform: scale(0.9, 0.9);
+			}
+
+
+
 	        .main-home2 {
 	            width: 100%;
 	            height: 800px;
@@ -393,15 +399,15 @@
 			/** PLUS */
 	        .plus {
 	            align-items: center; /* 세로 방향으로 중앙 정렬 */
-	            padding: 10px 20px;
+	            padding: 10px 10px;
 	            color: white;
 	            text-decoration: none;
 	            border: none;
 	            border-radius: 4px;
 	            background-color: #51e3d4;
 	            cursor: pointer;
-	            width: 150px;
-	            height: 55px;
+	            width: 130px;
+	            height: 50px;
 	            text-align: center;
 	            font-size: 21px;
 	            font-family: 'Jua';
