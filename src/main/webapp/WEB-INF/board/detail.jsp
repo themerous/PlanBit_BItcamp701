@@ -70,14 +70,16 @@
         <%--        카카오 맵 api detailmap.js 지도를 불러오고 게시글 작성할때 넣었던 좌표값 불러옴--%>
         <%--        c:if 문을 사용하여 게시글 작성했을때 지도를 포함시키지않았다면 지도 표시 x--%>
         <c:if test="${not empty placeNames and not empty placeLatitudes and not empty placeLongitudes}">
-            <div id="map" style="width:100%;height:350px;"></div>
+            <div id="map" style="width:80%;height:350px;margin: auto;"></div>
             <script>
                 var placeNames = '${placeNames}';
                 var placeAddresses = '${placeAddresses}';
                 var placeLatitudes = '${placeLatitudes}';
                 var placeLongitudes = '${placeLongitudes}';
             </script>
-            <script src="${pageContext.request.contextPath}/js/board/detailmap.js"></script>
+            <script src="/js/board/detailmap.js"></script>
+            <div class="post-maplist-box">
+            </div>
         </c:if>
 
 

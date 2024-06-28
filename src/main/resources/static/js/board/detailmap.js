@@ -105,4 +105,14 @@ $(function (){
             }
         };
     }
+
+    // 장소 목록을 .post-maplist-box에 추가
+    var mapListBox = $('.post-maplist-box');
+    mapListBox.empty(); // 기존 내용을 초기화
+
+    var listHTML = '';
+    for (var i = 0; i < namesArray.length; i++) {
+        listHTML += `<div>${i + 1}번 ${namesArray[i]} (위도: ${latitudesArray[i]}, 경도: ${longitudesArray[i]})</div>`;
+    }
+    mapListBox.html(listHTML);
 });

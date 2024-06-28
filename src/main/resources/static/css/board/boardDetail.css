@@ -138,6 +138,13 @@ main {
 	width: 80%;
 	height: auto;
 }
+.post-maplist-box {
+	padding: 20px;
+	border: 1px solid #eeeeee;
+	margin: 10px auto;
+	width: 80%;
+	height: auto;
+}
 
 .post-reply-box2 {
 	padding: 20px;
