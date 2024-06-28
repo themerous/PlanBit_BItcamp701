@@ -57,9 +57,9 @@ public class BoardDetailController {
 
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
-        UserDto memberDto = memberService.databyid(dto.getUser_id());
+        //UserDto memberDto = memberService.databyid(dto.getUser_id());
 
-        String profile_photo = memberDto.getPhoto();
+        //String profile_photo = memberDto.getPhoto();
 
         // 지도 데이터 가져오기
         int map_num = board_num;
@@ -80,7 +80,7 @@ public class BoardDetailController {
             model.addAttribute("placeLongitudes", placeLongitudes);
         }
 
-        model.addAttribute("photo", profile_photo);
+        //model.addAttribute("photo", profile_photo);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
         model.addAttribute("currentPage", currentPage);
