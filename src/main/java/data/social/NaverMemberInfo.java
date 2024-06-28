@@ -8,11 +8,7 @@ public class NaverMemberInfo implements OAuth2MemberInfo {
 	}
 
 	private Map<String, Object> attributes;
-	@Override
-	public String getProviderId() {
-		return (String) attributes.get("sub");
-	}
-
+	
 	@Override
 	public String getProvider() {
 		return "naver";
@@ -28,4 +24,8 @@ public class NaverMemberInfo implements OAuth2MemberInfo {
 		return (String) attributes.get("email");
 	}
 
+	@Override
+	public String getPhoto() {
+		return (String) attributes.get("profile_image");
+	}
 }

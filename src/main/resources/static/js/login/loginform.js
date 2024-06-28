@@ -38,7 +38,7 @@ $(function() {
 		if ($("#id").val() == '') {
 			//아이디 칸이 비웠을때 롤백
 			$("#id").css("border-color", "#cccccc");
-			$("#id-msg").text("아이디는 6-20자의 영문, 숫자 조합으로 입력하세요.").css("color", "#777777");
+			$("#id-msg").text("이메일는 6-20자의 영문, 숫자, @ 조합으로 입력하세요.").css("color", "#777777");
 		}
 		else {
 			// 아이디 입력 시 테두리를 빨간색으로 설정
@@ -96,37 +96,15 @@ $(function() {
 			$("#name").css("border-color", "green");
 		}
 	});
-	//이메일
-	$("#email").on("keyup", function() {
-		if ($("#email").val() == '') {
+	//이미지
+	$("#photo").on("keyup", function() {
+		if ($("#photo").val() == '') {
 			//이름 칸이 비웠을때 롤백
-			$("#email").css("border-color", "#cccccc");
+			$("#photo").css("border-color", "#cccccc");
 		}
 		else {
 			//이름 칸에 값이 들어왔을때
-			$("#email").css("border-color", "green");
-		}
-	});
-	//질문
-	$("#question").on("click", function() {
-		if ($("#question").val() == '') {
-			//이름 칸이 비웠을때 롤백
-			$("#question").css("border-color", "#cccccc");
-		}
-		else {
-			//이름 칸에 값이 들어왔을때
-			$("#question").css("border-color", "green");
-		}
-	});
-	//질문답변
-	$("#answer").on("keyup", function() {
-		if ($("#answer").val() == '') {
-			//이름 칸이 비웠을때 롤백
-			$("#answer").css("border-color", "#cccccc");
-		}
-		else {
-			//이름 칸에 값이 들어왔을때
-			$("#answer").css("border-color", "green");
+			$("#photo").css("border-color", "green");
 		}
 	});
 });// exit

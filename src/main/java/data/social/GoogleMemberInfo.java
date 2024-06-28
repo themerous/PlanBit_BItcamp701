@@ -7,10 +7,6 @@ public class GoogleMemberInfo implements OAuth2MemberInfo {
 	public GoogleMemberInfo(Map<String, Object> attributes) {
 		this.attributes = attributes;
 	}
-	@Override
-	public String getProviderId() {
-		return (String) attributes.get("id");
-	}
 
 	@Override
 	public String getProvider() {
@@ -25,5 +21,10 @@ public class GoogleMemberInfo implements OAuth2MemberInfo {
 	@Override
 	public String getId() {
 		return (String) attributes.get("email");
+	}
+	
+	@Override
+	public String getPhoto() {
+		return (String) attributes.get("picture");
 	}
 }
