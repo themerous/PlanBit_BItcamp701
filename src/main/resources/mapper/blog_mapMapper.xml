@@ -9,5 +9,15 @@
     <select id="selectMap" parameterType="int" resultType="Blog_MapDto">
         select * from blog_map where map_num=#{map_num}
     </select>
+
+    <update id="updateMapDto" parameterType="blog_Mapdto">
+        UPDATE blog_map SET
+            placeNames = #{placeNames},
+            placeAddress = #{placeAddress},
+            placeLatitudes = #{placeLatitudes},
+            placeLongitudes = #{placeLongitudes}
+        WHERE
+            map_num = #{map_num}
+    </update>
 </mapper>
 
