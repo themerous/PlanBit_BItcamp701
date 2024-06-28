@@ -121,6 +121,7 @@ public class HomeController {
 			map.put("status","success");
 			session.setAttribute("loginok", "yes");
 			session.setAttribute("loginid", id);
+			session.setAttribute("role", "bit");
 		}
 		else
 		{
@@ -165,7 +166,6 @@ public class HomeController {
 		model.addAttribute("name", name);
 		model.addAttribute("photo", photo);
 		model.addAttribute("userPost", userPost);
-
 
 		return "layout/mypage";
 	}

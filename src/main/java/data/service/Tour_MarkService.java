@@ -16,16 +16,16 @@ public class Tour_MarkService {
         return tour_MarkMapperInter.findByMark(id);
     }
 
-    public int checkBySerialNum(String id, String serialNum) {
-        return tour_MarkMapperInter.checkBySerialNum(id, serialNum);
+    public int checkBySerialNum(String id, int user_num, String serialNum) {
+        return tour_MarkMapperInter.checkBySerialNum(id, user_num, serialNum);
     }
 
-    public void insert(String id, String title,String addr, String photo, String serial_num, String link, String phone_num) {
+    public void insert(String id, int user_num, String title, String addr, String photo, String serial_num, String link, String phone_num) {
         System.out.println("in");
-        tour_MarkMapperInter.insert(id, title, addr, photo, serial_num, link, phone_num);
+        tour_MarkMapperInter.insert(id, user_num, title, addr, photo, serial_num, link, phone_num);
     }
 
-    public void deleteBySerialNum(String id, String serial_num){
-        tour_MarkMapperInter.deleteBySerialNum(id, serial_num);
+    public void deleteBySerialNum(String id, int user_num, String serial_num){
+        tour_MarkMapperInter.deleteBySerialNum(id, user_num, serial_num);
     }
 }
