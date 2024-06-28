@@ -18,5 +18,5 @@ public class UserDto {
 	private String pw;
 	private String name;
 	private String photo;
-  private String provider;
+	private String provider;
 }

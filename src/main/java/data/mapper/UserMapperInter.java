@@ -30,4 +30,8 @@ public interface UserMapperInter {
 	//비밀번호 재설정
 	@Update("update user set pw=#{pw} where id=#{id}")
 	public void updatepw(String pw,String id);
+
+	@Select("select user_num from user where id = #{id} and provider = #{provider}")
+	public int getUserNum(String id,String provider);
+
 }

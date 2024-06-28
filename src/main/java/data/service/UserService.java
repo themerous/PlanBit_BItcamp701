@@ -39,4 +39,9 @@ public class UserService {
 	{
 		uInter.updatepw(pw,id);
 	}
+
+	//유저 고유값(pk)조회
+	public int getUserNum(String id, String provider){
+		return uInter.getUserNum(id, provider);
+	}
 }

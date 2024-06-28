@@ -2,6 +2,7 @@ package data.controller;
 
 import data.dto.Tour_MarkDto;
 import data.service.Tour_MarkService;
+import data.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class TourController {
     //REST
     @Autowired
     Tour_MarkService tour_MarkService = new Tour_MarkService();
+    UserService userService = new UserService();
 
     @PostMapping("/markList")
     //마이페이지 = 세션 로그인 되 있을때 표시니 loginok검사 불필요
@@ -37,7 +39,9 @@ public class TourController {
     public void insert(HttpSession session,
                        @RequestBody HashMap<String, String> map) {
         System.out.println(map.get("serial_num") + "성공??");
-        tour_MarkService.insert((String)session.getAttribute("loginid"), map.get("title"), map.get("photo"), map.get("serial_num"), map.get("link"), map.get("phone_num"));
+        String loginId = (String)session.getAttribute("loginid");
+        String loginProvider = (String)session.getAttribute("role");
+        tour_MarkService.insert(loginId, userService.getUserNum(loginId, loginProvider), map.get("title"), map.get("addr"), map.get("photo"), map.get("serial_num"), map.get("link"), map.get("phone_num"));
     }
 
     @ResponseBody
@@ -45,7 +49,9 @@ public class TourController {
     public void delete(HttpSession session,
                        @RequestBody HashMap<String, String> map) {
         System.out.println(map.get("serial_num") + "controller들어옴");
-        tour_MarkService.deleteBySerialNum((String)session.getAttribute("loginid"), map.get("serial_num"));
+        String loginId = (String)session.getAttribute("loginid");
+        String loginProvider = (String)session.getAttribute("role");
+        tour_MarkService.deleteBySerialNum(loginId, userService.getUserNum(loginId, loginProvider), map.get("serial_num"));
     }
 
     @ResponseBody
@@ -53,11 +59,12 @@ public class TourController {
     public Map<String, Object> checkBySerialNum(HttpSession session,
                                                 @RequestBody HashMap<String, String> map) {
         String loginId = (String) session.getAttribute("loginid");
-        String serialNum = map.get("serial_num");
-        int check = tour_MarkService.checkBySerialNum(loginId, serialNum);
+        String loginProvider = (String)session.getAttribute("role");
+        int check = tour_MarkService.checkBySerialNum(loginId, userService.getUserNum(loginId, loginProvider), map.get("serial_num"));
+
 
         Map<String, Object> response = new HashMap<>();
-        response.put("serialNum", serialNum);
+        response.put("serialNum", map.get("serial_num"));
         response.put("check", check);
 
         return response;

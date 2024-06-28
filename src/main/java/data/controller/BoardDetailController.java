@@ -32,8 +32,8 @@ public class BoardDetailController {
     @Autowired
     private Blog_LikeService blogService;
 
-    private String bucketName = "bitcamp-bucket132";
-    private String folderName = "test";
+    private String bucketName = "hyunsung-bucket";
+    private String folderName = "blog_photo";
 
     @GetMapping("/detail")
     public String detail(
@@ -46,8 +46,18 @@ public class BoardDetailController {
         String loginId = (String) session.getAttribute("loginok");
         if (loginId == null) {
         }
+
+        //로그인 아이디 값 확인
         String loginid1 = (String) session.getAttribute("loginid");
         System.out.println(loginid1);
+
+        //로그인 provider 확인
+        String provider = (String) session.getAttribute("provider");
+        if (provider==null){
+            provider = "bit";
+        }
+        System.out.println(provider);
+
 
         // 조회수 증가
         boardService.updateReadcount(board_num);
@@ -57,9 +67,9 @@ public class BoardDetailController {
 
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
-        UserDto memberDto = memberService.databyid(dto.getUser_id());
+        //UserDto memberDto = memberService.databyid(dto.getUser_id());
 
-        String profile_photo = memberDto.getPhoto();
+        //String profile_photo = memberDto.getPhoto();
 
         // 지도 데이터 가져오기
         int map_num = board_num;
@@ -80,7 +90,7 @@ public class BoardDetailController {
             model.addAttribute("placeLongitudes", placeLongitudes);
         }
 
-        model.addAttribute("photo", profile_photo);
+        //model.addAttribute("photo", profile_photo);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
         model.addAttribute("currentPage", currentPage);
