@@ -161,14 +161,14 @@
             <div class="card mb4">
                 <p class="text-shadow">불탄다 불타</p>
                 <c:if test="${not empty topViewedBoard}">
-                    <a href="#!"><img class="card-img-top" src="${topViewedBoard.photo}"  onerror="this.src='/images/e3.jpg'"/></a>
+                    <a onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${topViewedBoard.photo}"  onerror="this.src='/images/e3.jpg'"/></a>
                     <div class="card-body">
                         <div class="small text-muted">
                             <fmt:formatDate value="${topViewedBoard.board_writeday}" pattern="yyyy.MM.dd" />
                         </div>
                         <h2 class="card-title">${topViewedBoard.board_title}</h2>
                         <div class="bottom-box">
-                            <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
+                            <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             <div class="images-heart">
                                 <img src="../images/e2.jpg" alt="" class="profile-img">
                                 <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
@@ -186,7 +186,7 @@
                 <div class="col-lg-6">
                     <div class="card mb-4" style="width: 400px;">
                         <c:if test="${dto.photo!='no' and dto.photo!=null}">
-                            <img class="card-img-top" src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">
+                            <a onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'" ></a>
                         </c:if>
                         <c:if test="${dto.photo==null}">
                             <img class="card-img-top" src="/images/ff.jpg">

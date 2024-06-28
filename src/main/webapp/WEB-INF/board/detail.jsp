@@ -38,9 +38,9 @@
 <main>
     <div class="blog-post">
         <div class="post-image">
-            <c:if test="${dto.photo!='no' and dto.photo!=null}">
+
                 <img src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'">
-            </c:if>
+
         </div>
         <div class="post-title">
             <h2>${dto.board_title}</h2>
