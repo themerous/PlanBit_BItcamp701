@@ -29,4 +29,8 @@ public interface BoardMapperInter {
 			" LIKE CONCAT('%', #{query}, '%')" +
 			"</script>")
 	List<Blog_BoardDto> searchBoard(@Param("category") String category, @Param("query") String query);
+
+
+	@Select("SELECT * FROM blog_board ORDER BY board_views DESC LIMIT 1")
+	Blog_BoardDto findTopViewedBoard();
 }

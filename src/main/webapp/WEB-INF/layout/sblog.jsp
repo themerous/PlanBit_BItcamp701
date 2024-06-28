@@ -10,7 +10,11 @@
         <div class="col-lg-8">
             <h2 class="fw-bolder">검색 결과</h2>
             <div class="row">
+                <c:if test="${empty boardList}">
+                    <h3>검색 결과 없지롱</h3>
+                </c:if>
                 <c:forEach var="dto" items="${boardList}">
+
                     <div class="col-lg-6">
                         <div class="card mb-4">
                             <a href="#!"><img class="card-img-top" src="/images/gg3.jpg"/></a>

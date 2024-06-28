@@ -73,8 +73,8 @@ public class Blog_BoardService {
     public Blog_BoardDto getBoardByIdx(int board_num) {
         return boardMapper.getDataidx(board_num);
     }
-    public List<Blog_BoardDto> userDataID(String user_id){
-        return boardMapper.userDataID(user_id);
+    public List<Blog_BoardDto> userDataID(int user_num){
+        return boardMapper.userDataID(user_num);
     }
 
 

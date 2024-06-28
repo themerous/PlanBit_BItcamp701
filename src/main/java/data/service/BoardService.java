@@ -36,6 +36,9 @@ public class BoardService {
 		return bInter.searchBoard(category, query);
 	}
 
+	public Blog_BoardDto getTopViewedBoard() {
+		return bInter.findTopViewedBoard();
+	}
 
 
 }

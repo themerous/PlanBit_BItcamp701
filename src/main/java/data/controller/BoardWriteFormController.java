@@ -75,8 +75,21 @@ public class BoardWriteFormController {
         dto.setBoard_title(title);
 
         // 세션에서 로그인 아이디 얻기
-        String loginid = (String) session.getAttribute("loginid");
-        dto.setUser_id(loginid);
+        String loginId = (String) session.getAttribute("loginok");
+        if (loginId != null) {
+
+        }
+        // 로그인 아이디 값 확인
+        String id = (String) session.getAttribute("loginid");
+        dto.setUser_id(id);
+        System.out.println(id);
+
+        // 로그인 provider 확인
+        String provider = (String) session.getAttribute("role");
+        System.out.println(provider);
+
+        int user_num = userService.getUserNum(id, provider);
+        dto.setUser_num(user_num);
 
         // 게시물 DB에 저장
         boardService.insertBoard(dto);
