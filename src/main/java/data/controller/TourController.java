@@ -37,7 +37,7 @@ public class TourController {
     public void insert(HttpSession session,
                        @RequestBody HashMap<String, String> map) {
         System.out.println(map.get("serial_num") + "성공??");
-        tour_MarkService.insert((String)session.getAttribute("loginid"), map.get("title"), map.get("photo"), map.get("serial_num"), map.get("link"), map.get("phone_num"));
+        tour_MarkService.insert((String)session.getAttribute("loginid"), map.get("title"), map.get("addr"), map.get("photo"), map.get("serial_num"), map.get("link"), map.get("phone_num"));
     }
 
     @ResponseBody
