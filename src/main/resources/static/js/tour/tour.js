@@ -62,14 +62,14 @@ function getSearch(){
             for(its of d.response.body.items.item){
                 let searchPhoto  = its.firstimage == "" ? "/images/noimage1.png" :its.firstimage2 ;
 
-                insertData(its.contentid, searchPhoto, its.title, its.tel, i);
+                insertData(its.contentid, searchPhoto, its.title, its.addr1, its.tel, i);
                 i++;
             }
         }
     })
 }
 
-function insertData(contentid, photo, title, tel, i) {
+function insertData(contentid, photo, title, addr, tel, i) {
     $.ajax({
         url: getSearchItemInput(key, contentid),
         type: "get",
@@ -80,10 +80,12 @@ function insertData(contentid, photo, title, tel, i) {
             ss += `<div class="searchListL"><img class="searchimageresult" src="${photo}"></div>`;
             ss += `<div class="searchListR">`;
             ss += `<p>`;
-            ss += title+`:`;
+            ss += `[`+ title+`]`;
             ss += `</p>`;
             ss += `<p>`;
-            ss += "전화번호" + tel;
+            ss += "주소 : " + addr;
+            ss += `<p>`;
+            ss += "전화번호 : " + tel;
             ss += `</p>`;
             ss += `<p class="overview">`;
             ss += dd.response.body.items.item[0].overview;
@@ -93,6 +95,7 @@ function insertData(contentid, photo, title, tel, i) {
             if(check == "yes"){
                 ss += `<div id="markInput`+i+`"`+ `style="display: none;"` + `>`;
                 ss += `<input name="title" id="sTitle`+i+`" type="hidden" value="`+title+`">`;   //title, photo, serial_num, link, phone_num
+                ss += `<input name="addr" id="sAddr`+i+`" type="hidden" value="`+addr+`">`;   //title, photo, serial_num, link, phone_num
                 ss += `<input name="photo" id="sPhoto`+i+`" type="hidden" value="`+photo+`">`;
                 ss += `<input name="serial_num" id="sSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
                 ss += `<div id="sLink`+i+`" style="display: none;">`+dd.response.body.items.item[0].homepage+`</div>    `;
@@ -159,6 +162,7 @@ function sendInsert(i){
 
     formData = {
         "title" : document.getElementById("sTitle"+i).value,
+        "addr" : document.getElementById("sAddr" + i).value,
         "photo" : document.getElementById("sPhoto" + i).value,
         "serial_num" : document.getElementById("sSerial_num" + i).value,
         "link" : linkString,

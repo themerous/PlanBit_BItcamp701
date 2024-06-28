@@ -77,6 +77,20 @@
     	<form id="loginon">
 	        <h1>로그인</h1>
 	        <span>or use your account</span>
+			<div class="s-box">
+				<a href="/oauth2/authorization/google">
+					<img src="/images/googlebtn.png" alt="Google" style="width: 40px">
+				</a>
+				<a href="/oauth2/authorization/naver">
+					<img src="/images/naverbtn.png" alt="Naver" style="width: 40px">
+				</a>
+				<a href="/oauth2/authorization/kakao">
+					<img src="/images/kakaobtn.png" alt="Kakao" style="width: 40px">
+				</a>
+				<a href="">
+					<img src="/images/applebtn.png" alt="Apple" style="width: 40px">
+				</a>
+			</div>
 	        <input type="email" name="id" id="id" placeholder="아이디을 입력하세요" />
 	        <small class="help-block" id="id-msg"></small>
 	        <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력하세요" />
@@ -86,9 +100,7 @@
 				<a href="./form">회원가입</a>
 			</div>
 	    	<button type="submit" class="login-btn">로그인</button>
-	    	<a href="/oauth2/authorization/google"><img src="../images/glogin.png"></a>
-			<a href="/oauth2/authorization/naver"><img src="../images/nlogin.png"></a>
-			<a href="/oauth2/authorization/kakao"><img src="../images/klogin.png"></a>
+
     	</form>
     </div>
    	<div class="overlay-container">
