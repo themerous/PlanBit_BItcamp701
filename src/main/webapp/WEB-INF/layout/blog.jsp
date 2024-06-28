@@ -11,10 +11,11 @@
             width: 100%;
             height: 400px;
             border: none;
-            background-image: url('/images/e3.jpg'); /* 배경 이미지 URL */
-            background-size: cover; /* 이미지 크기를 컨테이너에 맞게 조정 */
-            background-position: center; /* 이미지를 중앙에 위치 */
-            background-repeat: no-repeat; /* 이미지 반복 금지 */
+            /*background-image: url('/images/e3.jpg'); !* 배경 이미지 URL *!*/
+            /*background-size: cover; !* 이미지 크기를 컨테이너에 맞게 조정 *!*/
+            /*background-position: center; !* 이미지를 중앙에 위치 *!*/
+            /*background-repeat: no-repeat; !* 이미지 반복 금지 *!*/
+            background: linear-gradient(to right, #19B3FF,#51e3d4);
             margin-bottom: 20px;
             display: flex;
             justify-content: center; /* 수평 중앙 정렬 */
@@ -24,8 +25,8 @@
 
 
         #blog-title-photo h1 {
-            color: white;
-            font-size: 90px;
+            color: rgba(255, 255, 255, 0.9); /* 흰색을 50% 불투명도로 설정 */
+            font-size: 100px;
             font-family: "Neuton", serif;
             text-align: center; /* 텍스트를 중앙으로 정렬 */
         }
@@ -98,6 +99,11 @@
             padding: 40px;
         }
 
+        .small-text-muted {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
         .card-body1-btn {
             margin-top: 10px;
             border-radius: 4px;
@@ -175,20 +181,20 @@
                         <a href="#!"><img class="card-img-top" src="/images/gg3.jpg"/></a>
                         <div class="card-body">
 
-                            <div class="small text-muted"><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd"/>
+                            <div class="small-text-muted">
+                                <span>${dto.user_id}</span>
+                                <span style="color: #8a8a8a"><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd"/></span>
                             </div>
                             <h2 class="card-title h4">${dto.board_title}</h2>
 
                             <div class="bottom-box">
 
-                                <div class="images-heart">
+                                <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
 
-                                    <a href="#!"><img src="../images/e2.jpg" alt="" class="profile-img">
-                                            ${dto.user_id}
-                                    </a>
+                                <div class="images-heart">
+                                    <img src="../images/e2.jpg" alt="" class="profile-img">
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
                                 </div>
-                                <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             </div>
                         </div>
                     </div>
@@ -196,10 +202,7 @@
                 </c:forEach>
             </div>
 
-            <!-- 무한로딩 창-->
-            <div id="loading-indicator">
-                <img src="loading.gif" alt="로딩 중...">
-            </div>
+
 
             <!-- Pagination-->
             <nav aria-label="Pagination">
@@ -235,15 +238,20 @@
                                 <li><a href="#!">#추천 여행지</a></li>
                                 <li><a href="#!">#데이트</a></li>
                                 <li><a href="#!">#멋진</a></li>
+                                <li><a href="#!">#특별한</a></li>
+                                <li><a href="#!">#휴가</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-6">
                             <ul class="c-box">
-                                <li><a href="#!">#특별한</a></li>
                                 <li><a href="#!">#가족과</a></li>
-                                <li><a href="#!">#휴가</a></li>
+                                <li><a href="#!">#분위기 좋은</a></li>
+                                <li><a href="#!">#친구와</a></li>
+                                <li><a href="#!">#아름다운</a></li>
+                                <li><a href="#!">#재밌는</a></li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -257,44 +265,5 @@
         </div>
     </div>
 </div>
-<!-- jQuery CDN -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    var page = 1; // 초기 페이지 번호
-    var isLoading = false; // 추가 데이터 로딩 중 여부
-
-    $(document).ready(function() {
-        // 초기 데이터 로드
-        loadMoreData(page);
-
-        // 스크롤 이벤트를 감지하여 추가 데이터 로드
-        $(window).scroll(function() {
-            // 스크롤바가 페이지 하단에 도달했을 때 추가 데이터 로드
-            if ($(window).scrollTop() + $(window).height() >= $(document).height() && !isLoading) {
-                isLoading = true; // 로딩 중 상태로 변경
-                page++; // 페이지 번호 증가
-                loadMoreData(page); // 추가 데이터 로딩 함수 호출
-            }
-        });
-    });
-
-    function loadMoreData(page) {
-        // Ajax를 통해 데이터 로드
-        $.ajax({
-            url: 'loadMoreData.jsp', // 실제 데이터를 가져오는 URL 설정
-            type: 'GET',
-            data: { page: page }, // 페이지 번호 전달
-            dataType: 'html', // 받을 데이터 타입 설정
-            success: function(html) {
-                $('#blog-posts').append(html); // 데이터를 추가하여 페이지에 렌더링
-                isLoading = false; // 로딩 완료 상태로 변경
-            },
-            error: function(xhr, status, error) {
-                console.error('Error loading data:', error);
-                isLoading = false; // 로딩 완료 상태로 변경
-            }
-        });
-    }
-</script>
 
 

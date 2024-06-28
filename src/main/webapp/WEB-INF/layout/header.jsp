@@ -23,8 +23,8 @@
 	<c:if test="${sessionScope.loginok!=null }">
 	   <a id="logout" class="login-button">로그아웃</a>
 
-        <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>
-
+<%--        <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>--%>
+        <a class="header-pro-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'"></a>
     </c:if>
 </div>
 <script type="text/javascript">
