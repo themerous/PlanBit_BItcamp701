@@ -148,7 +148,7 @@
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                                 <label>
-                                    <input type="file" id="photo" name="photo" class="image-upload" accept="image/*" required="required"/>
+                                    <input type="file" name="myfile" class="image-upload" accept="image/*" required="required"/>
                                 </label>
                             </div>
                         </div>
