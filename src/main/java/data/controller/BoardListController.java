@@ -23,7 +23,7 @@ public class BoardListController {
         List<Blog_BoardDto> boardList = boardService.gettestboardlist();
         Blog_BoardDto topViewedBoard = boardService.getTopViewedBoard();
         model.addAttribute("topViewedBoard", topViewedBoard);
-        model.addAttribute("currentPage",currentPage );
+        model.addAttribute("currentPage",currentPage);
         model.addAttribute("boardList", boardList);
 
         return "layout/blog";
