@@ -33,11 +33,14 @@
     }
 </script>
 
-<header><a>BIT TRIP</a></header>
+<c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
+<header><a onclick="location.href='/'">BIT TRIP</a></header>
 <main>
     <div class="blog-post">
         <div class="post-image">
-            <img src="/images/e3.jpg" alt="이미지 설명">
+            <c:if test="${dto.photo!='no' and dto.photo!=null}">
+                <img src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'">
+            </c:if>
         </div>
         <div class="post-title">
             <h2>${dto.board_title}</h2>

@@ -32,8 +32,8 @@ public class BoardDetailController {
     @Autowired
     private Blog_LikeService blogService;
 
-    private String bucketName = "bitcamp-bucket132";
-    private String folderName = "test";
+    private String bucketName = "hyunsung-bucket";
+    private String folderName = "blog_photo";
 
     @GetMapping("/detail")
     public String detail(
@@ -46,8 +46,18 @@ public class BoardDetailController {
         String loginId = (String) session.getAttribute("loginok");
         if (loginId == null) {
         }
+
+        //로그인 아이디 값 확인
         String loginid1 = (String) session.getAttribute("loginid");
         System.out.println(loginid1);
+
+        //로그인 provider 확인
+        String provider = (String) session.getAttribute("provider");
+        if (provider==null){
+            provider = "bit";
+        }
+        System.out.println(provider);
+
 
         // 조회수 증가
         boardService.updateReadcount(board_num);
