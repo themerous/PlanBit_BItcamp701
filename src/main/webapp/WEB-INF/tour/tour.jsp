@@ -18,9 +18,9 @@
 </div>
 <div id="tourMain" class="tourMain">
 		<div class="left">
-		<div id="mapButton">
+		<div class="mapButton">
 			<input name="s" type="radio" value="" onclick="setArea(this.value)">전체</input>
-			<img src="/images/koreaMap.png" class="leftImg" style="width: 100%; height: 100%">
+			<img src="/images/korea.png" class="leftImg" style="width: 100%; height: 100%">
 	<%--		<img src="/images/koreaMap.png" alt="Image Korea" style="">--%>
 			<input name="s" id="seoul" type="radio" value="1" onclick="setArea(this.value)">
 			<label for="seoul">서울</label>

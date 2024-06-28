@@ -144,6 +144,7 @@
             <div class="main-home4-box-box">
                 <p># 플래너를 활용하여 여행하기<br>
                     # 다양한 장소를 체험하기<br>
+                    # 눈으로 기억하기<br>
 
                 </p>
             </div>
@@ -159,7 +160,8 @@
             <p>BLOG</p>
             <div class="main-home4-box-box">
                 <p># 나만의 블로그 작성하기<br>
-                    # 블로그 구경하기<br>
+                    # 나만의 블로그 꾸미기<br>
+
                 </p>
             </div>
         </a>
@@ -173,8 +175,9 @@
             </div>
             <p>SHARE</p>
             <div class="main-home4-box-box">
-                <p># 내 블로그 공유하기<br>
-                    # 친구의 블로그 구경하기
+                <p># 내 블로그 공유해보기<br>
+                    # 친구들의 기록 구경하기<br>
+                    # 공유하고 소통하기
                 </p>
 
             </div>

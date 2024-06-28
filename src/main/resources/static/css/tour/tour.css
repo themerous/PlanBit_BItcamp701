@@ -35,6 +35,9 @@
     margin: auto;
     margin: 0 10px;
 }
+
+
+
 .searchimageresult {
     width: 100%;
     height: 100%;
@@ -52,28 +55,34 @@
 
 .left {
     position: relative;
-    width: 50%;
+    width: 30%;
     height: 700px;
     left: 0;
     border: 1px solid red;
+    overflow: hidden;
 }
 
 .right {
     position: relative;
-    width: 50%;
+    width: 70%;
     height: 700px;
     right: 0;
     border: 1px solid blue;
+    overflow: hidden;
 }
 
-#mapButton {
+.mapButton {
     position: relative;
     width: 90%;
     height: 100%;
-    border: 1px solid black;
+    border: 1px solid red;
     margin: auto;
-
 }
+
+.mapButton img {
+    object-fit: cover;
+}
+
 
 .leftImg {
     position: relative;
