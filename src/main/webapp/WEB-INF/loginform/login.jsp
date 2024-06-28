@@ -87,9 +87,6 @@
 				<a href="/oauth2/authorization/kakao">
 					<img src="/images/kakaobtn.png" alt="Kakao" style="width: 40px">
 				</a>
-				<a href="">
-					<img src="/images/applebtn.png" alt="Apple" style="width: 40px">
-				</a>
 			</div>
 	        <input type="email" name="id" id="id" placeholder="아이디을 입력하세요" />
 	        <small class="help-block" id="id-msg"></small>
@@ -106,9 +103,9 @@
    	<div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-right">
-	            <h1>HTML CSS Login Form</h1>
+	            <h1>BIT TRIP Login Form</h1>
 				<p>
-					Facebook login page Clone using HTML and CSS.
+					Log in to your BIT TRIP account.
 	        	</p>
             </div>
         </div>

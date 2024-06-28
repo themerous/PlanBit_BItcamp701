@@ -36,6 +36,7 @@
     	<link rel="preconnect" href="https://fonts.googleapis.com">
     	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     	<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 		<style>
 	        body *{
 	            font-family: "Bree Serif", serif;
@@ -145,6 +146,16 @@
 	        .login-button:hover {
 	            transform: scale(0.9, 0.9);
 	        }
+
+			.header-pro-button {
+				border: 2px solid #51e3d4;
+				border-radius: 50%;
+				background-image: url("./images/e2.jpg");
+				background-size: cover;
+				width: 60px;
+				height: 60px;
+
+			}
 	
 	        /*메인 구역 */
 	        main {
@@ -179,8 +190,10 @@
 	            color: white;
 	            margin-top: 280px;
 	            margin-left: 160px;
-	
+
+
 	        }
+
 	        .main-photo1 {
 	            background-image: url("/images/p1.jpg");
 	            background-size: cover;
@@ -300,6 +313,7 @@
 				--bg-color-light: white;
 				--text-color-hover: white;
 				--box-shadow-color: #51e3d4;
+				--box-border-color: #51e3d4;
 			}
 
 			.credentialing {
@@ -307,6 +321,7 @@
 				--bg-color-light: white;
 				--text-color-hover: white;
 				--box-shadow-color: #41d3e1;
+				--box-border-color: #41d3e1;
 			}
 
 			.wallet {
@@ -314,6 +329,7 @@
 				--bg-color-light: white;
 				--text-color-hover: white;
 				--box-shadow-color: #33c6ed;
+				--box-border-color: #33c6ed;
 			}
 
 			.human-resources {
@@ -321,13 +337,14 @@
 				--bg-color-light: white;
 				--text-color-hover: white;
 				--box-shadow-color: #19B3FF;
+				--box-border-color: #19B3FF;
 			}
 
 			.card1 {
 				width: 350px;
 				height: 600px;
 				background: #fff;
-				border-top-right-radius: 10px;
+				border-radius: 10px;
 				overflow: hidden;
 				display: flex;
 				align-items: center;
@@ -335,24 +352,30 @@
 				box-shadow: 0 14px 26px rgba(0,0,0,0.04);
 				transition: all 0.3s ease-out;
 				text-decoration: none;
+				flex-direction: column;
+				justify-content: center;
+				border: 2px solid var(--box-border-color);
+
+
 			}
 
 			.card1:hover {
 				transform: translateY(-5px) scale(1.005) translateZ(0);
 				box-shadow: 0 24px 36px rgba(0,0,0,0.11),
 				0 24px 46px var(--box-shadow-color);
+
 			}
 
-			.card1:hover .overlay {
+			.card1:hover .overlay1 {
 				transform: scale(7) translateZ(0);
 			}
 
-			.card1:hover .circle {
+			.card1:hover .circle1 {
 				border-color: var(--bg-color-light);
 				background: var(--bg-color);
 			}
 
-			.card1:hover .circle:after {
+			.card1:hover .circle1:after {
 				background: var(--bg-color-light);
 			}
 
@@ -410,6 +433,7 @@
 				transition: opacity 0.3s ease-out;
 			}
 
+
 			.circle1 svg {
 				z-index: 10000;
 				transform: translateZ(0);
@@ -418,18 +442,16 @@
 			}
 
 			.main-home4-box-box {
-				border: 1px solid white;
 				width: 80%;
 				height: 50%;
 				display: flex; /* Flexbox를 사용하도록 설정 */
 				flex-direction: column; /* 수직 정렬을 위해 설정 */
-
-
 				text-align: center; /* 텍스트를 가운데 정렬 */
 			}
 
 			.main-home4-box-box p {
 				font-family: "Bree Serif", serif;
+				font-size: 20px;
 			}
 
 
@@ -440,14 +462,18 @@
 				height: 118px;
 				border-radius: 50%;
 				background: var(--bg-color);
-				top: 80px;
+				top: 60px;
 				left: 70px;
 				z-index: 0;
 				transition: transform 0.3s ease-out;
 			}
 
 
-	        .main-home5 {
+
+
+
+
+			.main-home5 {
 	            display: grid; /* 내부 div를 가로로 배치 */
 	            width: 100%;
 	            height: auto;
@@ -472,12 +498,25 @@
 	            border-radius: 4px;
 	            background-color: white;
 	            padding: 8px;
-	            color: #51e3d4;
 	            filter: drop-shadow(0px 4px 4px #d2dae5);
 	            width: 70px;
 	            height: 70px;
 	            border: none;
 	        }
+			.chat {
+				background-image: url("/images/chat2.png");
+				background-size: 80% auto; /* 너비를 50%로, 높이는 자동으로 조정 */
+				background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+				background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
+
+			}
+
+			.upbutton {
+				background-image: url("/images/up3.png");
+				background-size: 60% auto; /* 너비를 50%로, 높이는 자동으로 조정 */
+				background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+				background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
+			}
 	        .side-btn-box button i {
 	            font-size: 30px;
 	
@@ -588,7 +627,7 @@
 	            font-size: 21px;
 	            font-family: 'Jua';
 	            position: absolute;
-	            bottom: 50px; /* 부모 컨테이너 하단에서 20px 떨어진 위치 */
+	            bottom: 60px; /* 부모 컨테이너 하단에서 20px 떨어진 위치 */
 	            right: 75px; /* 부모 컨테이너 오른쪽에서 20px 떨어진 위치 */
 	        }
 	        .plus:hover {
@@ -748,7 +787,7 @@
 	            color: black;
 	        }
 	        .footer-col .icons i:hover  {
-	            color: #fff;
+	            color: #19B3FF;
 	        }
 	        @media (max-width: 768px) {
 	            .footer {
