@@ -139,6 +139,14 @@
             font-size: 30px;
         }
 
+        .medal {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            top: -30px;
+            left: -50px;
+        }
+
 
 </style>
 <!-- Page header with logo and tagline-->
@@ -152,6 +160,7 @@
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb4">
+                <img class="medal" src="/images/ffff.png"/>
                 <c:if test="${not empty topViewedBoard}">
                     <a href="#!"><img class="card-img-top" src="${topViewedBoard.photo}"  onerror="this.src='/images/e3.jpg'"/></a>
                     <div class="card-body">
