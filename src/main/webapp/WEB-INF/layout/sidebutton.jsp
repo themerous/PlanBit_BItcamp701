@@ -5,5 +5,5 @@
 <div class="side-btn-box">
 <%--    <button class="chat"><i class="bi bi-chat-dots-fill"></i></button>--%>
     <button class="chat"></button>
-    <button class="upbutton"></button>
+    <button class="upbutton" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"></button>
 </div>
