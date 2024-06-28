@@ -27,8 +27,8 @@ public class BoardWriteFormController {
     @Autowired
     private Blog_MapService mapService;
 
-    private String bucketName = "bitcamp-bucket132";
-    private String folderName = "test";
+    private String bucketName = "hyunsung-bucket";
+    private String folderName = "blog_photo";
 
     @Autowired
     private NcpObjectStorageService storageService;

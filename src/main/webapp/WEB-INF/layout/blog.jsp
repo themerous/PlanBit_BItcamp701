@@ -164,7 +164,7 @@
                     </div>
                 </div>
             </div>
-
+            <c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
 
             <!-- Nested row for non-featured blog posts-->
             <div class="row">
@@ -172,7 +172,12 @@
                 <c:forEach var="dto" items="${boardList}">
                 <div class="col-lg-6">
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="/images/gg3.jpg"/></a>
+                        <c:if test="${dto.photo!='no' and dto.photo!=null}">
+                            <img class="card-img-top" src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'">
+                        </c:if>
+                        <c:if test="${dto.photo==null}">
+                            <img class="card-img-top" src="/images/ff.jpg">
+                        </c:if>
                         <div class="card-body">
 
                             <div class="small text-muted"><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd"/>
@@ -183,7 +188,7 @@
 
                                 <div class="images-heart">
 
-                                    <a href="#!"><img src="../images/e2.jpg" alt="" class="profile-img">
+                                    <a href=""><img src="../images/e2.jpg" alt="" class="profile-img">
                                             ${dto.user_id}
                                     </a>
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>

@@ -22,7 +22,7 @@
     </script>
 </c:if>
 <div class="blog-post">
-
+    <form action="./insert" method="post" enctype="multipart/form-data">
     <div class="post-image">
         <img  id="preview" src="/images/e2.jpg" alt="이미지 설명" style="display: block;">
     </div>
@@ -33,7 +33,7 @@
         <img  class="preview-img" src="#" alt="미리보기 이미지" style="display: none;">
     </div>
     <h2 style="text-align: center;">글 작성</h2>
-    <form action="./insert" method="post" enctype="multipart/form-data">
+
         <input type="hidden" name="currentPage" value="${currentPage}">
 
         <!-- 제목 입력창 -->
