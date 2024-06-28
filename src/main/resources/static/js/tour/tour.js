@@ -152,7 +152,7 @@ function sendInsert(i){
 
     let phoneString = document.getElementById("sPhone_num" + i).value;
     let phoneNumbers = phoneString !== ""
-        ? phoneString.match(/(\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4})|(\d{3}[\s.-]?\d{4}[\s.-]?\d{4})|((02)[\s.-]?\d{3}[\s.-]?\d{4})/g)
+        ? phoneString.match(/(\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}) | (\(?\d{3}\)?[\s.-]?\d{4}[\s.-]?\d{4}) | (\d{3}[\s.-]?\d{4}[\s.-]?\d{4}) | ((02)[\s.-]?\d{3}[\s.-]?\d{4}) | ((02)[\s.-]?\d{4}[\s.-]?\d{4})/g)
         : [];
     console.log(phoneNumbers);
     let phoneResult = phoneNumbers.length == 0 ? "" : phoneNumbers[0];
