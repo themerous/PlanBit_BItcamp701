@@ -13,11 +13,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @Alias("UserDto")
 public class UserDto {
+	private int user_num;
 	private String id;
 	private String pw;
 	private String name;
-	private String phone;
-	private String image;
-	private int user_num;
 	private String photo;
+  private String provider;
 }

@@ -23,6 +23,9 @@ public class Blog_MapService {
     public Blog_MapDto selectMap(int map_num){
         return mapMapper.selectMap(map_num);
     }
+    public void updateMapData(Blog_MapDto dto) {
+        mapMapper.updateMapDto(dto);
+    }
 
 
 

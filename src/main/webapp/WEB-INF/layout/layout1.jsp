@@ -61,6 +61,7 @@
 	            font-size: 35px;
 	            font-family: "Alfa Slab One", serif;
 	            color: #51e3d4;
+				cursor: pointer;
 	        }
 	
 	
@@ -134,7 +135,7 @@
 	            border: none;
 	            border-radius: 4px;
 	            cursor: pointer;
-	            width: 100px;
+	            width: 120px;
 	            height: 50px;
 	            text-align: center;
 	            font-size: 20px;
@@ -205,12 +206,20 @@
 	            line-height: 60px; /* 버튼 높이와 동일한 line-height 설정 */
 	            color: white;
 	        }
+			.main-button:hover {
+				transform: scale(0.9, 0.9);
+			}
+
+
+
 	        .main-home2 {
 	            width: 100%;
 	            height: 800px;
 	            background-image: url("/images/tri3.png");
 	            background-size: cover;
 	        }
+
+
 	        .main-home3 {
 	            width: 100%;
 	            height: 1000px;
@@ -257,11 +266,187 @@
 	            cursor: pointer;
 	            align-items: center;
 	        }
+
+
+
+
+
+
+
+
 	        .main-home4 {
 	            width: 100%;
 	            height: 800px;
 	            background-color: #eeeeee;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
 	        }
+
+			.main-home4-box {
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				flex-wrap: wrap;
+
+				gap: 40px;
+
+			}
+
+
+			.education {
+				--bg-color: #51e3d4;
+				--bg-color-light: white;
+				--text-color-hover: white;
+				--box-shadow-color: #51e3d4;
+			}
+
+			.credentialing {
+				--bg-color: #41d3e1;
+				--bg-color-light: white;
+				--text-color-hover: white;
+				--box-shadow-color: #41d3e1;
+			}
+
+			.wallet {
+				--bg-color: #33c6ed;
+				--bg-color-light: white;
+				--text-color-hover: white;
+				--box-shadow-color: #33c6ed;
+			}
+
+			.human-resources {
+				--bg-color: #19B3FF;
+				--bg-color-light: white;
+				--text-color-hover: white;
+				--box-shadow-color: #19B3FF;
+			}
+
+			.card {
+				width: 350px;
+				height: 600px;
+				background: #fff;
+				border-top-right-radius: 10px;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				position: relative;
+				box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+				transition: all 0.3s ease-out;
+				text-decoration: none;
+			}
+
+			.card:hover {
+				transform: translateY(-5px) scale(1.005) translateZ(0);
+				box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+				0 24px 46px var(--box-shadow-color);
+			}
+
+			.card:hover .overlay {
+				transform: scale(7) translateZ(0);
+			}
+
+			.card:hover .circle {
+				border-color: var(--bg-color-light);
+				background: var(--bg-color);
+			}
+
+			.card:hover .circle:after {
+				background: var(--bg-color-light);
+			}
+
+			.card:hover p {
+				color: var(--text-color-hover);
+			}
+
+			.card:hover svg {
+				color: black;
+			}
+
+
+			.card:active {
+				transform: scale(1) translateZ(0);
+				box-shadow: 0 15px 24px rgba(0,0,0,0.11),
+				0 15px 24px var(--box-shadow-color);
+			}
+
+			.card p {
+				font-size: 27px;
+				color: black;
+				margin-top: 30px;
+				z-index: 1000;
+				transition: color 0.3s ease-out;
+				font-family: "Neuton", serif;
+			}
+
+			.circle {
+				width: 131px;
+				height: 131px;
+				border-radius: 50%;
+				background: #fff;
+				border: 2px solid var(--bg-color);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				z-index: 1;
+				transition: all 0.3s ease-out;
+				margin-top: 50px;
+
+
+			}
+
+			.circle:after {
+				content: "";
+				width: 118px;
+				height: 118px;
+				display: block;
+				position: absolute;
+				background: var(--bg-color);
+				border-radius: 50%;
+				top: 7px;
+				left: 7px;
+				transition: opacity 0.3s ease-out;
+			}
+
+			.circle svg {
+				z-index: 10000;
+				transform: translateZ(0);
+				color: white;
+
+			}
+
+			.main-home4-box-box {
+				border: 1px solid white;
+				width: 80%;
+				height: 50%;
+				display: flex; /* Flexbox를 사용하도록 설정 */
+				flex-direction: column; /* 수직 정렬을 위해 설정 */
+
+
+				text-align: center; /* 텍스트를 가운데 정렬 */
+			}
+
+			.main-home4-box-box p {
+				font-family: "Bree Serif", serif;
+			}
+
+
+
+			.overlay {
+				width: 118px;
+				position: absolute;
+				height: 118px;
+				border-radius: 50%;
+				background: var(--bg-color);
+				top: 80px;
+				left: 70px;
+				z-index: 0;
+				transition: transform 0.3s ease-out;
+			}
+
+
 	        .main-home5 {
 	            display: grid; /* 내부 div를 가로로 배치 */
 	            width: 100%;
@@ -390,15 +575,15 @@
 			/** PLUS */
 	        .plus {
 	            align-items: center; /* 세로 방향으로 중앙 정렬 */
-	            padding: 10px 20px;
+	            padding: 10px 10px;
 	            color: white;
 	            text-decoration: none;
 	            border: none;
 	            border-radius: 4px;
 	            background-color: #51e3d4;
 	            cursor: pointer;
-	            width: 150px;
-	            height: 55px;
+	            width: 130px;
+	            height: 50px;
 	            text-align: center;
 	            font-size: 21px;
 	            font-family: 'Jua';
@@ -560,7 +745,7 @@
 	            cursor: pointer;
 	        }
 	        .footer-col .icons i {
-	            color: #afb6c7;
+	            color: black;
 	        }
 	        .footer-col .icons i:hover  {
 	            color: #fff;
