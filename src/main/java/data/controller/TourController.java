@@ -32,7 +32,9 @@ public class TourController {
     //마이페이지 = 세션 로그인 되 있을때 표시니 loginok검사 불필요
     public void markList(HttpSession session,
                          Model model) {
-        model.addAttribute("tourList", tour_MarkService.findByMark((String)session.getAttribute("loginid")));
+        String login = (String) session.getAttribute("login");
+        String provider = (String) session.getAttribute("role");
+        model.addAttribute("tourList", tour_MarkService.findByMark(login));
     }
 
     @ResponseBody
@@ -62,7 +64,7 @@ public class TourController {
         String loginId = (String) session.getAttribute("loginid");
         String loginProvider = (String)session.getAttribute("role");
 
-        System.out.println("============================"+userService.getUserNum(loginId, loginProvider));
+
         int check = tour_MarkService.checkBySerialNum(loginId, userService.getUserNum(loginId, loginProvider), map.get("serial_num"));
 
 

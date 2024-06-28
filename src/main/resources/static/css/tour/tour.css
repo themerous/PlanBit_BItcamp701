@@ -64,6 +64,7 @@
     height: 700px;
     right: 0;
     border: 1px solid blue;
+    overflow: hidden;
 }
 
 #mapButton {

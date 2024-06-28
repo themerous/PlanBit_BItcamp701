@@ -68,7 +68,7 @@
 			<input type="radio" name="c" class="contentList" id="food" value="39" onclick="setType(this.value)">
 			<label for="food">음식점</label>
 
-			<button type="button" onclick="getMap()">검색하기</button>
+			<button type="button" onclick="getMapInitial()">검색하기</button>
 		</div>
 		<br>
 		<div id="tourList">
