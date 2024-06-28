@@ -4,6 +4,9 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" type="text/css" href="/css/tour/tour.css">
+<script>
+	let check = "${sessionScope.loginok}";
+</script>
 
 <span>Hello Tour</span>
 <div class="high">
@@ -12,7 +15,7 @@
 		<button type="submit" id="searchButton" onclick="getSearch()">button</button>
 	</div>
 
-	<div id="resultTest"></div>
+	<div id="result"></div>
 </div>
 <div id="tourMain" class="tourMain">
 		<div class="left">

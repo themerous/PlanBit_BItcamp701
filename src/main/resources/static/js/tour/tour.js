@@ -14,15 +14,13 @@ function getItem(key, pageNum, area, typeNum) {
 }
 
 function getSearchItem(key, text){
-    return "https://apis.data.go.kr/B551011/KorService1/searchKeyword1?" +
+    return "https://apis.data.go.kr/B551011/KorService1/" +
+        "searchKeyword1?" +
         "serviceKey=" + key +
         "&MobileApp=AppTest" +
         "&MobileOS=ETC" +
-        "&pageNo=1" +
-        "&numOfRows=10" +
         "&listYN=Y" +
         "&&arrange=A" +
-        "&contentTypeId=12" +
         "&keyword=" + text +
         "&_type=json";
 }
@@ -37,6 +35,7 @@ function getSearchItemInput(key, contentId){
         "&MobileApp=AppTest" +
         "&contentId=" + contentId +
         "&overviewYN=Y" +
+        "&defaultYN=Y" +
         "&_type=json";
 }
 
@@ -47,37 +46,74 @@ let contentTypeId = 32;
 window.onload = getMap();
 
 function getSearch(){
-    var text1 = $("#tt").val();
-    let ss = ``;
+    $("#result").html("");
+    let text1 = $("#tt").val();
 
     $.ajax({
         url: getSearchItem(key, text1),
         type:"get",
         dataType: "json",
         success: function(d){
-            for(its of d.response.body.items.item){
-                let searchPhoto = its.firstimage == "" ? "/images/noimage1.png" :its.firstimage2 ;
-                ss += `<img class="api-pic" src="` + searchPhoto + `" placeholder="img"/>`;
-                ss += `<span>`;
-                ss += its.title+`:`;
-                ss += `</span>`;
-                $.ajax({
-                    url: getSearchItemInput(key, its.contentid),
-                    type: "get",
-                    dataType:"json",
-                    success: function(dd){
-                        console.log(dd.response.body.items.item[0].overview);
-                        ss += `<span>`;
-                        ss += dd.response.body.items.item[0].overview;
-                        ss += `</span>`;
-                        $("#resultTest").html(ss);
-                    }
-                })
-
+            if(d.response.body.items.item == undefined){
+                alert("검색 내용이 없습니다.");
+                return false;
             }
-            $("#resultTest").html(ss);
+            let i = 0;
+            for(its of d.response.body.items.item){
+                let searchPhoto  = its.firstimage == "" ? "/images/noimage1.png" :its.firstimage2 ;
+
+                insertData(its.contentid, searchPhoto, its.title, its.addr1, its.tel, i);
+                i++;
+            }
         }
     })
+}
+
+function insertData(contentid, photo, title, addr, tel, i) {
+    $.ajax({
+        url: getSearchItemInput(key, contentid),
+        type: "get",
+        dataType:"json",
+        success: function(dd){
+            let ss = ``;
+            ss += `<div class="searchList">`;
+            ss += `<div class="searchListL"><img class="searchimageresult" src="${photo}"></div>`;
+            ss += `<div class="searchListR">`;
+            ss += `<p>`;
+            ss += `[`+ title+`]`;
+            ss += `</p>`;
+            ss += `<p>`;
+            ss += "주소 : " + addr;
+            ss += `<p>`;
+            ss += "전화번호 : " + tel;
+            ss += `</p>`;
+            ss += `<p class="overview">`;
+            ss += dd.response.body.items.item[0].overview;
+            ss += `</p>`;
+            ss += dd.response.body.items.item[0].homepage;
+            ss += `</div>`;
+            if(check == "yes"){
+                ss += `<div id="markInput`+i+`"`+ `style="display: none;"` + `>`;
+                ss += `<input name="title" id="sTitle`+i+`" type="hidden" value="`+title+`">`;   //title, photo, serial_num, link, phone_num
+                ss += `<input name="addr" id="sAddr`+i+`" type="hidden" value="`+addr+`">`;   //title, photo, serial_num, link, phone_num
+                ss += `<input name="photo" id="sPhoto`+i+`" type="hidden" value="`+photo+`">`;
+                ss += `<input name="serial_num" id="sSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
+                ss += `<div id="sLink`+i+`" style="display: none;">`+dd.response.body.items.item[0].homepage+`</div>    `;
+                ss += `<input name="phone_num" id="sPhone_num`+i+`" type="hidden" value="`+tel+`">`;
+                ss += `<button type="button" onclick="sendInsert(${i})">즐겨찾기</button>`;
+                ss += `</div>`;
+
+                ss += `<div id="markDelete`+i+`"` + `style="display: none;"` +`>`;
+                ss += `<input name="serial_num" id="dSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
+                ss += `<button type="button" onclick="sendDelete(${i})">즐겨찾기해제</button>`;
+                ss += `</div>`;
+            }
+            ss += `</div><br>`;
+
+            $("#result").html($("#result").html() + ss);
+            checkFavoriteStatus(contentid, i);
+        }
+    });
 }
 
 function getMap() {
@@ -106,12 +142,61 @@ function getMap() {
                 s += its.contentid;
                 s += `</span><hr>`;
                 s += `</div>`;
-                s += `</div><hr>`;
-
+                s += `</div>`;
+                s += `<hr>`;
             }
             $("#mapList").html(s);
         }
     })
+}
+
+function sendInsert(i){
+    let linkString = document.getElementById("sLink" + i).firstElementChild != null ? document.getElementById("sLink" + i).firstElementChild.href : "";
+
+    let phoneString = document.getElementById("sPhone_num" + i).value;
+    let phoneNumbers = phoneString !== ""
+        ? phoneString.match(/(\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}) | (\(?\d{3}\)?[\s.-]?\d{4}[\s.-]?\d{4}) | (\d{3}[\s.-]?\d{4}[\s.-]?\d{4}) | ((02)[\s.-]?\d{3}[\s.-]?\d{4}) | ((02)[\s.-]?\d{4}[\s.-]?\d{4})/g)
+        : [];
+    console.log(phoneNumbers);
+    let phoneResult = phoneNumbers.length == 0 ? "" : phoneNumbers[0];
+
+    formData = {
+        "title" : document.getElementById("sTitle"+i).value,
+        "addr" : document.getElementById("sAddr" + i).value,
+        "photo" : document.getElementById("sPhoto" + i).value,
+        "serial_num" : document.getElementById("sSerial_num" + i).value,
+        "link" : linkString,
+        "phone_num" : phoneResult
+    }
+    $.post({
+        url: "/tour/insert",
+        data: JSON.stringify(formData),
+        contentType : 'application/json; charset=utf-8',
+        success: function(d) {
+            console.log("성공");
+            // 여기서 즐찾 true false 적용
+            document.getElementById("markInput" + i).style.display = "none";
+            document.getElementById("markDelete" + i).style.display = "block";
+        }
+    });
+
+}
+
+function sendDelete(i){
+    formData = {
+        "serial_num" : document.getElementById("dSerial_num" + i).value
+    }
+    $.post({
+        url : "/tour/delete",
+        data : JSON.stringify(formData),
+        contentType : 'application/json; charset=utf-8',
+        success : function(d) {
+            console.log("삭제 성공");
+            document.getElementById("markInput" + i).style.display = "block";
+            document.getElementById("markDelete" + i).style.display = "none";
+        }
+    })
+
 }
 
 function setArea(data) {
@@ -122,6 +207,20 @@ function setType(data) {
     contentTypeId = data;
 }
 
-function setText(data){
-    text = data;
+function checkFavoriteStatus(contentid, i) {
+    $.ajax({
+        url: "/tour/check",
+        type: "post",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ "serial_num": contentid }),
+        success: function(response) {
+            if(response.check == 1) {
+                document.getElementById("markInput" + i).style.display = "none";
+                document.getElementById("markDelete" + i).style.display = "block";
+            } else {
+                document.getElementById("markInput" + i).style.display = "block";
+                document.getElementById("markDelete" + i).style.display = "none";
+            }
+        }
+    });
 }

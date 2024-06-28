@@ -33,8 +33,17 @@ body {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
-    margin-top: 10px;
+
 }
+
+.s-box {
+    display: flex;
+    align-items: center; /* 수평 중앙 정렬 */
+    gap: 15px;
+
+
+}
+
 .container form {
     background-color: #ffffff;
     display: flex;

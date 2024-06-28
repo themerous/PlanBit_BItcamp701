@@ -13,4 +13,5 @@ public interface Blog_MapMapperInter {
 
     public Blog_MapDto selectMap(int map_num);
 
+    public void updateMapDto(Blog_MapDto Dto);
 }
