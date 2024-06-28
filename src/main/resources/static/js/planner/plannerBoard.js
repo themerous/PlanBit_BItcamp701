@@ -3,16 +3,13 @@ window.onload = () => {
 }
 
 const page = document.getElementById("note");
-page.addEventListener("keyup", () => {
+
+page.addEventListener("input", () => {
 	sendContent();
 });
 
 function sendContent() {
-	console.log(page.value);
-	const mo = {
-		id: id,
-		content: page.value
-	}
-	socket.send(JSON.stringify(mo));
-	page.innerHTML = "";
+	const content = page.value;
+	const cursorPosition = page.selectionStart;
+	socket.send(content + "|" + cursorPosition);
 }

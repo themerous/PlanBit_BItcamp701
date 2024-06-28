@@ -15,7 +15,7 @@ function loadChatRooms() {
 	});
 }
 
-$("#chatroomform").(function(e) {
+$("#chatroomform").submit(function(e) {
 	e.preventDefault();
 	const fdata = $(this).serialize();
 
