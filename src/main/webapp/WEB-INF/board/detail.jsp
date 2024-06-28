@@ -50,7 +50,7 @@
             <i class="bi bi-person-circle"></i><p>${dto.user_id}</p>
             <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i><p id="likeCount">${like}</p> <p>조회수:&nbsp; ${dto.board_views}</p>
             <div class="post-info-btn">
-                <c:if test="${sessionScope.loginok!=null and sessionScope.loginid==dto.user_id}">
+                <c:if test="${sessionScope.loginok!=null and dto.user_num==user_num }">
                     <button type="button" class="post-info-up"
                             onclick="location.href='./updateform?board_num=${dto.board_num}&currentPage=${currentPage}'">수정
                     </button>

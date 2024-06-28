@@ -23,6 +23,8 @@ public class Blog_BoardDto {
     private int board_views;
     private String photo;
     private Timestamp board_writeday;
+    private int user_num;
+
 
     private String placeNames;
     private String placeAddress;

@@ -21,6 +21,8 @@ public class BoardListController {
     public String boardList(Model model,@RequestParam(defaultValue = "1") int currentPage) {
 
         List<Blog_BoardDto> boardList = boardService.gettestboardlist();
+        Blog_BoardDto topViewedBoard = boardService.getTopViewedBoard();
+        model.addAttribute("topViewedBoard", topViewedBoard);
         model.addAttribute("currentPage",currentPage );
         model.addAttribute("boardList", boardList);
 

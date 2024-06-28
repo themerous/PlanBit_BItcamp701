@@ -153,14 +153,17 @@ public class HomeController {
 
 	//마이페이지
 	@GetMapping("bit/mypage")
-	public String mypage(@RequestParam String id,@RequestParam(defaultValue = "1") int currentPage, Model model) {
+	public String mypage(@RequestParam String id,@RequestParam(defaultValue = "1") int currentPage, Model model,HttpSession session) {
+		String user_id = (String) session.getAttribute("loginid");
 		UserDto dto = userService.databyid(id);
+		String provider = (String) session.getAttribute("role");
+		int user_num = userService.getUserNum(id, provider);
 		String name = dto.getName();
 		String photo = dto.getPhoto();
-		String user_id = dto.getId();
 		System.out.println(user_id);
-		List<Blog_BoardDto> userPost = blogService.userDataID(user_id);
+		List<Blog_BoardDto> userPost = blogService.userDataID(user_num);
 
+		model.addAttribute("user_num",user_num);
 		model.addAttribute("currentPage",currentPage);
 		model.addAttribute("user_id",user_id);
 		model.addAttribute("name", name);

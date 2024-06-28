@@ -9,7 +9,7 @@
 <!--        update blog_board set restep=restep+1 where regroup=#{regroup} and restep&gt;#{restep}-->
 <!--    </update>-->
     <insert id="insertBoard" parameterType="blog_boardDto">
-        insert into blog_board (user_id,board_title,board_content,photo, board_writeday) values (#{user_id},#{board_title},#{board_content},#{photo}, now())
+        insert into blog_board (user_id,board_title,board_content,photo,user_num, board_writeday) values (#{user_id},#{board_title},#{board_content},#{photo},#{user_num}, now())
         <selectKey keyProperty="board_num" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -42,7 +42,7 @@
     <select id="getDataidx" parameterType="int" resultType="data.dto.Blog_BoardDto">
         SELECT * FROM blog_board WHERE board_num = #{board_num}
     </select>
-    <select id="userDataID" parameterType="String" resultType="data.dto.Blog_BoardDto">
-        select * from blog_board where user_id = #{user_id} order by board_num desc
+    <select id="userDataID" parameterType="int" resultType="data.dto.Blog_BoardDto">
+        select * from blog_board where user_num = #{user_num} order by board_num desc
     </select>
 </mapper>
