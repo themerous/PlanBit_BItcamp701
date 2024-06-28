@@ -1,10 +1,19 @@
 const key = "fftZaPlUQRLNUdl6u7PIZoE9gBoawB4ituWAHIvMVGpNy9Y48F6v2euQ8bDwl5U7ln/pni5XxVeL0TlNU0qv5w==";
+let loading = false;
+let pageNum = 1;
+let areaCode = "";
+let contentTypeId = 32;
+
+window.onload = function(){
+    getMapInfinite();
+    setupInfiniteScroll();
+}
 
 function getItem(key, pageNum, area, typeNum) {
     return "http://apis.data.go.kr/B551011/KorService1/" +
         "areaBasedSyncList1?" +
         "serviceKey=" + key +
-        "&numOfRows=20" +
+        "&numOfRows=10" +
         "&pageNo=" + pageNum +
         "&MobileOS=ETC" +
         "&contentTypeId=" + typeNum +
@@ -38,12 +47,6 @@ function getSearchItemInput(key, contentId){
         "&defaultYN=Y" +
         "&_type=json";
 }
-
-let pageNum = 1;
-let areaCode = "";
-let contentTypeId = 32;
-
-window.onload = getMap();
 
 function getSearch(){
     $("#result").html("");
@@ -116,46 +119,120 @@ function insertData(contentid, photo, title, addr, tel, i) {
     });
 }
 
-function getMap() {
-    let s = ``;
-
+//getMap infinite
+// AJAX를 통해 데이터를 가져오는 함수
+function getMapInfinite() {
+    if (loading) return;  // 이미 로딩 중이면 실행하지 않음
+    loading = true;       // 로딩 시작
+    document.getElementById("mapList").innerHTML="";
+    pageNum = 1;
     $.ajax({
         url: getItem(key, pageNum, areaCode, contentTypeId),
         type: 'get',
         dataType: "json",
-        success: function (data) {
-            for (let its of data.response.body.items.item) {
-                let photo = its.firstimage == "" ? "/images/noimage1.png" :its.firstimage ;
-                s += `<div class="scrollList">`;
-                s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
-                s += `<div class="scrollListR">`;
-                s += `<br><span>`;
-                s += its.title;
-                s += `</span><hr>`;
-                s += `<br><span>`;
-                s += its.addr1;
-                s += `</span><hr>`;
-                s += `<br><span>`;
-                s += its.tel;
-                s += `</span><hr>`;
-                s += `<br><span>`;
-                s += its.contentid;
-                s += `</span><hr>`;
-                s += `</div>`;
-                s += `</div>`;
-                s += `<hr>`;
+        success: function(data) {
+            console.log("일단 됨");
+            if (data.response.body.items) {  // 응답 데이터 검사
+                let s = '';
+                for (let its of data.response.body.items.item) {
+                    let photo = its.firstimage == "" ? "/images/noimage1.png" : its.firstimage;
+                    s += `<div class="scrollList">`;
+                    s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
+                    s += `<div class="scrollListR">`;
+                    s += `<br><span>`;
+                    s += its.title;
+                    s += `</span><hr>`;
+                    s += `<br><span>`;
+                    s += its.addr1;
+                    s += `</span><hr>`;
+                    s += `<br><span>`;
+                    s += its.tel;
+                    s += `</span><hr>`;
+                    s += `<br><span>`;
+                    s += its.contentid;
+                    s += `</span><hr>`;
+                    s += `</div>`;
+                    s += `</div>`;
+                    s += `<hr>`;
+                }
+                $("#mapList").html($("#mapList").html()+s);
+                $("#tourList")[0].scrollTop = 0;
+                // 기존 내용에 추가
+                pageNum++;                // 페이지 번호 증가
             }
-            $("#mapList").html(s);
+            loading = false;  // 로딩 완료
+        },
+        error: function() {
+            loading = false;  // 로딩 실패시에도 플래그 초기화
         }
-    })
+    });
 }
+// 초기화 함수
+function getMapReset(){
+    if (loading) return;  // 이미 로딩 중이면 실행하지 않음
+    loading = true;       // 로딩 시작
+    $.ajax({
+        url: getItem(key, pageNum, areaCode, contentTypeId),
+        type: 'get',
+        dataType: "json",
+        success: function(data) {
+            if (data.response.body.items) {
+                console.log("일단 불러옴")// 응답 데이터 검사
+                let s = '';
+                for (let its of data.response.body.items.item) {
+                    let photo = its.firstimage == "" ? "/images/noimage1.png" : its.firstimage;
+                    s += `<div class="scrollList">`;
+                    s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
+                    s += `<div class="scrollListR">`;
+                    s += `<br><span>`;
+                    s += its.title;
+                    s += `</span><hr>`;
+                    s += `<br><span>`;
+                    s += its.addr1;
+                    s += `</span><hr>`;
+                    s += `<br><span>`;
+                    s += its.tel;
+                    s += `</span><hr>`;
+                    s += `<br><span>`;
+                    s += its.contentid;
+                    s += `</span><hr>`;
+                    s += `</div>`;
+                    s += `</div>`;
+                    s += `<hr>`;
+                }
+                $("#mapList").html($("#mapList").html()+s);  // 기존 내용에 추가
+                pageNum++;                // 페이지 번호 증가
+            }
+            loading = false;  // 로딩 완료
+        },
+        error: function() {
+            loading = false;  // 로딩 실패시에도 플래그 초기화
+        }
+    });
+}
+// 스크롤 이벤트 설정
+function setupInfiniteScroll() {
+    $("#tourList").on('scroll', function() {
+        if ($("#tourList").scrollTop() + $("#tourList").height() >= $("#tourList")[0].scrollHeight - 100) {
+            if (!loading) {  // 로딩 중이 아닐 때만 실행
+                getMapReset();
+            }
+        }
+    });
+}
+
+// 초기화
+$(document).ready(function() {
+    setupInfiniteScroll();
+});
+//
 
 function sendInsert(i){
     let linkString = document.getElementById("sLink" + i).firstElementChild != null ? document.getElementById("sLink" + i).firstElementChild.href : "";
 
     let phoneString = document.getElementById("sPhone_num" + i).value;
     let phoneNumbers = phoneString !== ""
-        ? phoneString.match(/(\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}) | (\(?\d{3}\)?[\s.-]?\d{4}[\s.-]?\d{4}) | (\d{3}[\s.-]?\d{4}[\s.-]?\d{4}) | ((02)[\s.-]?\d{3}[\s.-]?\d{4}) | ((02)[\s.-]?\d{4}[\s.-]?\d{4})/g)
+        ? phoneString.match(/(\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4})/g)
         : [];
     console.log(phoneNumbers);
     let phoneResult = phoneNumbers.length == 0 ? "" : phoneNumbers[0];
