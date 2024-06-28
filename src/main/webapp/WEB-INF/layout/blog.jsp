@@ -139,14 +139,7 @@
             font-size: 30px;
         }
 
-        .loading-indicator {
-            text-align: center;
-            margin: 20px 0;
-            display: none; /* 초기에는 숨김 */
-        }
-        .text-shadow{
-            text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
-        }
+
 </style>
 <!-- Page header with logo and tagline-->
 <div class="g" id="blog-title-photo">
@@ -159,12 +152,12 @@
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb4">
-                <p class="text-shadow">불탄다 불타</p>
                 <c:if test="${not empty topViewedBoard}">
                     <a onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${topViewedBoard.photo}"  onerror="this.src='/images/e3.jpg'"/></a>
                     <div class="card-body">
-                        <div class="small text-muted">
-                            <fmt:formatDate value="${topViewedBoard.board_writeday}" pattern="yyyy.MM.dd" />
+                        <div class="small-text-muted">
+                            <span>${topViewedBoard.user_id}</span>
+                            <span style="color: #8a8a8a"><fmt:formatDate value="${topViewedBoard.board_writeday}" pattern="yyyy.MM.dd" /></span>
                         </div>
                         <h2 class="card-title">${topViewedBoard.board_title}</h2>
                         <div class="bottom-box">
