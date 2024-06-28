@@ -323,7 +323,7 @@
 				--box-shadow-color: #19B3FF;
 			}
 
-			.card {
+			.card1 {
 				width: 350px;
 				height: 600px;
 				background: #fff;
@@ -337,41 +337,41 @@
 				text-decoration: none;
 			}
 
-			.card:hover {
+			.card1:hover {
 				transform: translateY(-5px) scale(1.005) translateZ(0);
 				box-shadow: 0 24px 36px rgba(0,0,0,0.11),
 				0 24px 46px var(--box-shadow-color);
 			}
 
-			.card:hover .overlay {
+			.card1:hover .overlay {
 				transform: scale(7) translateZ(0);
 			}
 
-			.card:hover .circle {
+			.card1:hover .circle {
 				border-color: var(--bg-color-light);
 				background: var(--bg-color);
 			}
 
-			.card:hover .circle:after {
+			.card1:hover .circle:after {
 				background: var(--bg-color-light);
 			}
 
-			.card:hover p {
+			.card1:hover p {
 				color: var(--text-color-hover);
 			}
 
-			.card:hover svg {
+			.card1:hover svg {
 				color: black;
 			}
 
 
-			.card:active {
+			.card1:active {
 				transform: scale(1) translateZ(0);
 				box-shadow: 0 15px 24px rgba(0,0,0,0.11),
 				0 15px 24px var(--box-shadow-color);
 			}
 
-			.card p {
+			.card1 p {
 				font-size: 27px;
 				color: black;
 				margin-top: 30px;
@@ -380,7 +380,7 @@
 				font-family: "Neuton", serif;
 			}
 
-			.circle {
+			.circle1 {
 				width: 131px;
 				height: 131px;
 				border-radius: 50%;
@@ -397,7 +397,7 @@
 
 			}
 
-			.circle:after {
+			.circle1:after {
 				content: "";
 				width: 118px;
 				height: 118px;
@@ -410,7 +410,7 @@
 				transition: opacity 0.3s ease-out;
 			}
 
-			.circle svg {
+			.circle1 svg {
 				z-index: 10000;
 				transform: translateZ(0);
 				color: white;
@@ -434,7 +434,7 @@
 
 
 
-			.overlay {
+			.overlay1 {
 				width: 118px;
 				position: absolute;
 				height: 118px;
