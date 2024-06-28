@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.Blog_MapMapperInter">
+
+    <insert id="insertBoard" parameterType="blog_MapDto">
+        insert into blog_map (map_num, placeNames,placeAddress,placeLatitudes,placeLongitudes) values (#{map_num},#{placeNames},#{placeAddress},#{placeLatitudes},#{placeLongitudes})
+    </insert>
+
+    <select id="selectMap" parameterType="int" resultType="Blog_MapDto">
+        select * from blog_map where map_num=#{map_num}
+    </select>
+
+    <update id="updateMapDto" parameterType="blog_Mapdto">
+        UPDATE blog_map SET
+            placeNames = #{placeNames},
+            placeAddress = #{placeAddress},
+            placeLatitudes = #{placeLatitudes},
+            placeLongitudes = #{placeLongitudes}
+        WHERE
+            map_num = #{map_num}
+    </update>
+</mapper>
+

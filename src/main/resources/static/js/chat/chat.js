@@ -8,19 +8,18 @@ function loadChatRooms() {
 		for(let a of data) {
 			s += '<form method="post" action="./chatting">'
 			s += '<input type="hidden" name="room_num" value="' + a.room_num + '">'
-			s += '<button type="submit">방이름: ' + a.room_title + '</button></form>';
+			s += '<button type="">방이름: ' + a.room_title + '</button></form>';
 		}
 		
 		$("#chatrooms").html(s);
 	});
 }
 
-$("#chatroomform").submit(function(e) {
+$("#chatroomform").(function(e) {
 	e.preventDefault();
 	const fdata = $(this).serialize();
-	console.log(fdata);
 
-	$.post("./createChatroom", data, function() {
+	$.post("./createChatroom", fdata, function() {
 		console.log("send success");
 		loadChatRooms();
 	});
