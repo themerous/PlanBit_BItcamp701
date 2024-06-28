@@ -8,7 +8,7 @@
     height: 500px;
 }
 
-#resultTest {
+#result {
     height: 450px;
     overflow-y: scroll;
 }
@@ -24,6 +24,29 @@
 }
 .result::-webkit-scrollbar-button {
     display: none;
+}
+
+
+
+.searchList {
+    display: flex;
+    border: 1px solid pink;
+    width: 100%;
+}
+.searchListL {
+    width: 300px;
+    height: 100%;
+    left: 0;
+    margin: auto;
+    margin: 0 10px;
+}
+.searchimageresult {
+    width: 100%;
+    height: 100%;
+}
+.searchListR {
+    width: 100%;
+    overflow: hidden;
 }
 
 .left {
@@ -204,4 +227,5 @@
     position: relative;
     width: 40%;
     right: 0;
+
 }

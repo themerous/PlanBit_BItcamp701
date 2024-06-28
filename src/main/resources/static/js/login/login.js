@@ -1,5 +1,5 @@
 $(function() {
-	$("#loginon").on("submit", function(e) {
+	$("#loginon").on("submit",function(e) {
 		//기본 이벤트 무효화
 		e.preventDefault();
 		//폼안의 입력값 읽기

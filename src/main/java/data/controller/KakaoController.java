@@ -30,7 +30,7 @@ public class KakaoController {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("grant_type", "authorization_code"); //고정값
 		params.add("client_id", "746dd0b3d390eeffc122a0f59031a86d");
-		params.add("redirect_uri", "http://localhost:7777/login/oauth2/code/kakao"); //등록한 redirect uri
+		params.add("redirect_uri", "http://localhost:8081/login/oauth2/code/kakao"); //등록한 redirect uri
 		params.add("code", code); 
 
 		// 3. header + body

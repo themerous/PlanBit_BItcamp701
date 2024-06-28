@@ -6,6 +6,7 @@
         body * {
             font-family: "IBM Plex Sans KR", sans-serif;
         }
+
         #blog-title-photo {
             width: 100%;
             height: 400px;

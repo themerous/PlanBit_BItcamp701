@@ -55,7 +55,7 @@ public class OAuth2MemberService extends DefaultOAuth2UserService {
 		String id = memberInfo.getId();
 		//String role = "ROLE_USER"; //일반 유저
 		System.out.println(oAuth2User.getAttributes());
-		Optional<UserDto> findMember = memberMapper.findByEmail(id);
+		Optional<UserDto> findMember = memberMapper.findUser(id,provider);
 		UserDto dto;
 		if(findMember.isEmpty())
 		{//찾지 못하면
@@ -77,6 +77,7 @@ public class OAuth2MemberService extends DefaultOAuth2UserService {
 		// HttpSession에 사용자 정보 저장
         session.setAttribute("loginid",id);
         session.setAttribute("loginok", "yes");
+        session.setAttribute("role", provider);
 		
 		//new PrincipalDetails(member, oAuth2User.getAttributes())
 		return new PrincipalDetails(dto, oAuth2User.getAttributes());
