@@ -5,7 +5,7 @@ let areaCode = "";
 let contentTypeId = 32;
 
 window.onload = function(){
-    getMap();
+    getMapInfinite();
     setupInfiniteScroll();
 }
 
@@ -121,7 +121,7 @@ function insertData(contentid, photo, title, addr, tel, i) {
 
 //getMap infinite
 // AJAX를 통해 데이터를 가져오는 함수
-function getMap() {
+function getMapInfinite() {
     if (loading) return;  // 이미 로딩 중이면 실행하지 않음
     loading = true;       // 로딩 시작
     document.getElementById("mapList").innerHTML="";
@@ -168,7 +168,7 @@ function getMap() {
     });
 }
 // 초기화 함수
-function getMap2(){
+function getMapReset(){
     if (loading) return;  // 이미 로딩 중이면 실행하지 않음
     loading = true;       // 로딩 시작
     $.ajax({
@@ -215,7 +215,7 @@ function setupInfiniteScroll() {
     $("#tourList").on('scroll', function() {
         if ($("#tourList").scrollTop() + $("#tourList").height() >= $("#tourList")[0].scrollHeight - 100) {
             if (!loading) {  // 로딩 중이 아닐 때만 실행
-                getMap2();
+                getMapReset();
             }
         }
     });
