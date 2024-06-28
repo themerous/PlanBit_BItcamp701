@@ -25,6 +25,7 @@ public class TourController {
     //REST
     @Autowired
     Tour_MarkService tour_MarkService = new Tour_MarkService();
+    @Autowired
     UserService userService = new UserService();
 
     @PostMapping("/markList")
@@ -60,6 +61,8 @@ public class TourController {
                                                 @RequestBody HashMap<String, String> map) {
         String loginId = (String) session.getAttribute("loginid");
         String loginProvider = (String)session.getAttribute("role");
+
+        System.out.println("============================"+userService.getUserNum(loginId, loginProvider));
         int check = tour_MarkService.checkBySerialNum(loginId, userService.getUserNum(loginId, loginProvider), map.get("serial_num"));
 
 

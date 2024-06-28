@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import data.dto.UserDto;
 import data.service.BoardService;
 import data.service.UserService;
+import naver.ncloud.NcpObjectStorageService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -30,13 +32,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 	@Autowired
 	private UserService userService;
-
+	
 	@Autowired
 	private BoardService boardService;
 
 	@Autowired
 	private Blog_BoardService blogService;
-
+	
+	@Autowired
+	private NcpObjectStorageService ncpService;
+	
+	private String bucketName = "hyunsung-bucket";
+	private String folderName = "blog_photo";
 	//board mapping
 	//글 작성 writeform
 	//GetMapping	board/form
@@ -96,8 +103,10 @@ public class HomeController {
 
 	// 회원가입 insert 이벤트
 	@PostMapping("bit/insert")
-	public String insert(@ModelAttribute UserDto dto, HttpServletRequest request) 
+	public String insert(@ModelAttribute UserDto dto, HttpServletRequest request,@RequestParam("myfile") MultipartFile myfile) 
 	{
+		String photo = ncpService.uploadFile(bucketName, folderName, myfile);
+		dto.setPhoto(photo);
 		userService.insertUser(dto);
 		// 회원가입하고 로그인페이지로감
 		return "loginform/login";
@@ -122,6 +131,7 @@ public class HomeController {
 			session.setAttribute("loginok", "yes");
 			session.setAttribute("loginid", id);
 			session.setAttribute("role", "bit");
+			System.out.println(session.getAttribute("role"));
 		}
 		else
 		{

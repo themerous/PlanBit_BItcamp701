@@ -8,7 +8,6 @@
 	let check = "${sessionScope.loginok}";
 </script>
 
-<span>Hello Tour</span>
 <div class="high">
 	<div class="highTitle">
 		<input type="text" name="tt" id="tt" value="">
@@ -73,12 +72,7 @@
 		</div>
 		<br>
 		<div id="tourList">
-			<div id="mapList">
-				<span>tourListResult</span>
-			</div>
-			<div id="pageListNum">
-				<%--pageNum--%>
-			</div>
+			<div id="mapList"></div>
 		</div>
 	</div>
 </div>
