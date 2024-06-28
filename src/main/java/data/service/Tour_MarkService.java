@@ -20,9 +20,9 @@ public class Tour_MarkService {
         return tour_MarkMapperInter.checkBySerialNum(id, serialNum);
     }
 
-    public void insert(String id, String title, String photo, String serial_num, String link, String phone_num) {
+    public void insert(String id, String title,String addr, String photo, String serial_num, String link, String phone_num) {
         System.out.println("in");
-        tour_MarkMapperInter.insert(id, title, photo, serial_num, link, phone_num);
+        tour_MarkMapperInter.insert(id, title, addr, photo, serial_num, link, phone_num);
     }
 
     public void deleteBySerialNum(String id, String serial_num){
