@@ -21,8 +21,10 @@ public class PlannerController {
 	@GetMapping("/planner/page") 
 	public String PlannerPage(
 			@RequestParam int planner_num,
+			@RequestParam int page_num,
 			Model model) {
 		model.addAttribute("planner_num", planner_num);
+		model.addAttribute("page_num", page_num);
 		return "planner/page";
 	}
 	
