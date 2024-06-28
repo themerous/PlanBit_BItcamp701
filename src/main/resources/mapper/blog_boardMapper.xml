@@ -31,7 +31,7 @@
         select * from blog_board where board_num=#{board_num}
     </select>
     <update id="updateBoard" parameterType="Blog_BoardDto">
-        update blog_board set board_title=#{board_title},board_content=#{board_content} <if test="uploadphoto!=null">,uploadphoto=#{uploadphoto}</if> where num=#{num}
+        update blog_board set board_title=#{board_title},board_content=#{board_content} <if test="photo!=null">,photo=#{photo}</if> where board_num=#{board_num}
     </update>
     <delete id="deleteBoard" parameterType="int">
         delete from blog_board where board_num=#{board_num}
