@@ -151,10 +151,11 @@
 			.header-pro-button {
 				border: 2px solid #51e3d4;
 				border-radius: 50%;
-				background-image: url("/images/e2.jpg");
+
 				background-size: cover;
 				width: 60px;
 				height: 60px;
+				cursor: pointer;
 
 			}
 	

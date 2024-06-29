@@ -92,6 +92,13 @@
             height: 400px;
         }
 
+        .card-blog2 {
+
+            border-radius: 4px;
+            height: 600px;
+            margin-top: 10px;
+        }
+
         .card-body1 {
             font-size: 40px;
             color: white;
@@ -242,39 +249,17 @@
                     </form>
                 </div>
             </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">카테고리</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="c-box">
-                                <li><a href="#!">#추천 여행지</a></li>
-                                <li><a href="#!">#데이트</a></li>
-                                <li><a href="#!">#멋진</a></li>
-                                <li><a href="#!">#특별한</a></li>
-                                <li><a href="#!">#휴가</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="c-box">
-                                <li><a href="#!">#가족과</a></li>
-                                <li><a href="#!">#분위기 좋은</a></li>
-                                <li><a href="#!">#친구와</a></li>
-                                <li><a href="#!">#아름다운</a></li>
-                                <li><a href="#!">#재밌는</a></li>
-                            </ul>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
             <!-- Side widget-->
             <div class="card-blog">
                 <div class="card-body1">나만의 여행플래너를 계획하고 블로그를 작성해보자!
                 <br><button class="card-body1-btn" onclick="location.href='/board/form'">작성하기</button>
                 </div>
 
+            </div>
+            <div class="card-blog2">
+                <div class="card-body1">
+                </div>
             </div>
         </div>
     </div>

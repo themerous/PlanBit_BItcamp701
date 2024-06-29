@@ -5,7 +5,7 @@ let areaCode = "";
 let contentTypeId = 32;
 
 window.onload = function(){
-    getMapInfinite();
+    getMapInitial();
     setupInfiniteScroll();
 }
 
@@ -13,7 +13,7 @@ function getItem(key, pageNum, area, typeNum) {
     return "http://apis.data.go.kr/B551011/KorService1/" +
         "areaBasedSyncList1?" +
         "serviceKey=" + key +
-        "&numOfRows=10" +
+        "&numOfRows=5" +
         "&pageNo=" + pageNum +
         "&MobileOS=ETC" +
         "&contentTypeId=" + typeNum +
@@ -63,7 +63,7 @@ function getSearch(){
             }
             let i = 0;
             for(its of d.response.body.items.item){
-                let searchPhoto  = its.firstimage == "" ? "/images/noimage1.png" :its.firstimage2 ;
+                let searchPhoto  = its.firstimage == "" ? "/images/noimage2.png" :its.firstimage2 ;
 
                 insertData(its.contentid, searchPhoto, its.title, its.addr1, its.tel, i);
                 i++;
@@ -80,9 +80,9 @@ function insertData(contentid, photo, title, addr, tel, i) {
         success: function(dd){
             let ss = ``;
             ss += `<div class="searchList">`;
-            ss += `<div class="searchListL"><img class="searchimageresult" src="${photo}"></div>`;
+            ss += `<div class="searchListL"><div class="img-box"><img class="searchimageresult" src="${photo}"></div></div>`;
             ss += `<div class="searchListR">`;
-            ss += `<p>`;
+            ss += `<p class="tour-title">`;
             ss += `[`+ title+`]`;
             ss += `</p>`;
             ss += `<p>`;
@@ -103,12 +103,12 @@ function insertData(contentid, photo, title, addr, tel, i) {
                 ss += `<input name="serial_num" id="sSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
                 ss += `<div id="sLink`+i+`" style="display: none;">`+dd.response.body.items.item[0].homepage+`</div>    `;
                 ss += `<input name="phone_num" id="sPhone_num`+i+`" type="hidden" value="`+tel+`">`;
-                ss += `<button type="button" onclick="sendInsert(${i})">즐겨찾기</button>`;
+                ss += `<button type="button" onclick="sendInsert(${i})" class="star"><i class="bi bi-star-fill" style="color: #fce61b"></i></button>`;
                 ss += `</div>`;
 
                 ss += `<div id="markDelete`+i+`"` + `style="display: none;"` +`>`;
                 ss += `<input name="serial_num" id="dSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
-                ss += `<button type="button" onclick="sendDelete(${i})">즐겨찾기해제</button>`;
+                ss += `<button type="button" onclick="sendDelete(${i})" class="star"><i class="bi bi-star" style="color: #fce61b"></i></button>`;
                 ss += `</div>`;
             }
             ss += `</div><br>`;
@@ -119,12 +119,15 @@ function insertData(contentid, photo, title, addr, tel, i) {
     });
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //getMap infinite
 // AJAX를 통해 데이터를 가져오는 함수
-function getMapInfinite() {
+function getMapInitial() {
     if (loading) return;  // 이미 로딩 중이면 실행하지 않음
     loading = true;       // 로딩 시작
     document.getElementById("mapList").innerHTML="";
+
     pageNum = 1;
     $.ajax({
         url: getItem(key, pageNum, areaCode, contentTypeId),
@@ -132,43 +135,44 @@ function getMapInfinite() {
         dataType: "json",
         success: function(data) {
             console.log("일단 됨");
-            if (data.response.body.items) {  // 응답 데이터 검사
-                let s = '';
-                for (let its of data.response.body.items.item) {
-                    let photo = its.firstimage == "" ? "/images/noimage1.png" : its.firstimage;
-                    s += `<div class="scrollList">`;
-                    s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
-                    s += `<div class="scrollListR">`;
-                    s += `<br><span>`;
-                    s += its.title;
-                    s += `</span><hr>`;
-                    s += `<br><span>`;
-                    s += its.addr1;
-                    s += `</span><hr>`;
-                    s += `<br><span>`;
-                    s += its.tel;
-                    s += `</span><hr>`;
-                    s += `<br><span>`;
-                    s += its.contentid;
-                    s += `</span><hr>`;
-                    s += `</div>`;
-                    s += `</div>`;
-                    s += `<hr>`;
-                }
-                $("#mapList").html($("#mapList").html()+s);
-                $("#tourList")[0].scrollTop = 0;
-                // 기존 내용에 추가
-                pageNum++;                // 페이지 번호 증가
+            let s = '';
+            for (let its of data.response.body.items.item) {
+                let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
+                s += `<div class="scrollList">`;
+                s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
+                s += `<div class="scrollListR">`;
+                s += `<br><span>`;
+                s += its.title;
+                s += `</span><hr>`;
+                s += `<br><span>`;
+                s += its.addr1;
+                s += `</span><hr>`;
+                s += `<br><span>`;
+                s += its.tel;
+                s += `</span><hr>`;
+                s += `<br><span>`;
+                s += its.contentid;
+                s += `</span><hr>`;
+                s += `</div>`;
+                s += `</div>`;
+                s += `<hr>`;
             }
+            $("#mapList").html($("#mapList").html()+s);
+            $("#tourList")[0].scrollTop = 0;
+            // 기존 내용에 추가
+            pageNum++;                // 페이지 번호 증가
+
             loading = false;  // 로딩 완료
         },
         error: function() {
             loading = false;  // 로딩 실패시에도 플래그 초기화
+            console.log("infinite 지랄남");
         }
     });
 }
+
 // 초기화 함수
-function getMapReset(){
+function getMapInfinite(){
     if (loading) return;  // 이미 로딩 중이면 실행하지 않음
     loading = true;       // 로딩 시작
     $.ajax({
@@ -177,10 +181,10 @@ function getMapReset(){
         dataType: "json",
         success: function(data) {
             if (data.response.body.items) {
-                console.log("일단 불러옴")// 응답 데이터 검사
+                console.log("resetMethed")// 응답 데이터 검사
                 let s = '';
                 for (let its of data.response.body.items.item) {
-                    let photo = its.firstimage == "" ? "/images/noimage1.png" : its.firstimage;
+                    let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
                     s += `<div class="scrollList">`;
                     s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
                     s += `<div class="scrollListR">`;
@@ -210,12 +214,13 @@ function getMapReset(){
         }
     });
 }
+
 // 스크롤 이벤트 설정
 function setupInfiniteScroll() {
     $("#tourList").on('scroll', function() {
         if ($("#tourList").scrollTop() + $("#tourList").height() >= $("#tourList")[0].scrollHeight - 100) {
             if (!loading) {  // 로딩 중이 아닐 때만 실행
-                getMapReset();
+                getMapInfinite();
             }
         }
     });
@@ -225,7 +230,8 @@ function setupInfiniteScroll() {
 $(document).ready(function() {
     setupInfiniteScroll();
 });
-//
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 function sendInsert(i){
     let linkString = document.getElementById("sLink" + i).firstElementChild != null ? document.getElementById("sLink" + i).firstElementChild.href : "";
@@ -300,4 +306,38 @@ function checkFavoriteStatus(contentid, i) {
             }
         }
     });
+}
+
+function getMap() {
+    let s = ``;
+
+    $.ajax({
+        url: getItem(key, pageNum, areaCode, contentTypeId),
+        type: 'get',
+        dataType: "json",
+        success: function (data) {
+            for (let its of data.response.body.items.item) {
+                let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
+                s += `<div class="scrollList">`;
+                s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
+                s += `<div class="scrollListR">`;
+                s += `<br><span>`;
+                s += its.title;
+                s += `</span><hr>`;
+                s += `<br><span>`;
+                s += its.addr1;
+                s += `</span><hr>`;
+                s += `<br><span>`;
+                s += its.tel;
+                s += `</span><hr>`;
+                s += `<br><span>`;
+                s += its.contentid;
+                s += `</span><hr>`;
+                s += `</div>`;
+                s += `</div>`;
+                s += `<hr>`;
+            }
+            $("#mapList").html(s);
+        }
+    })
 }
