@@ -144,6 +144,15 @@
     .flex-fill {
         font-size: 18px;
     }
+
+
+    .tourFavorites {
+        border: 1px solid black;
+    }
+    .tourList {
+        display: flex;
+        border: 1px solid black;
+    }
 </style>
 
 <!-- Page header with logo and tagline-->
@@ -192,6 +201,11 @@
 </div>
 
 <div class="container">
+    <div class="selectButton">
+        <button type="button" id="showMyBlog">내 블로그</button>
+        <button type="button" id="showFavoritesBlog">블로그 즐겨찾기</button>
+        <button type="button" id="showFavoritesTour">투어 즐겨찾기</button>
+    </div>
     <div class="row">
         <c:forEach var="post" items="${userPost}">
             <div class="col-lg-4 mb-4">
@@ -211,5 +225,13 @@
                 </div>
             </div>
         </c:forEach>
+
+
+    <div class="row3">
+        <div id="tourFavorites"></div>
+    </div>
+        
     </div>
 </div>
+
+<script src="/js/user/myPage.js"></script>

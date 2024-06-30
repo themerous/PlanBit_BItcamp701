@@ -5,7 +5,6 @@ import data.service.Tour_MarkService;
 import data.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -28,13 +27,18 @@ public class TourController {
     @Autowired
     UserService userService = new UserService();
 
+    @ResponseBody
     @PostMapping("/markList")
     //마이페이지 = 세션 로그인 되 있을때 표시니 loginok검사 불필요
-    public void markList(HttpSession session,
-                         Model model) {
-        String login = (String) session.getAttribute("login");
+    public List<Tour_MarkDto> markList(HttpSession session) {
+        String login = (String) session.getAttribute("loginid");
         String provider = (String) session.getAttribute("role");
-        model.addAttribute("tourList", tour_MarkService.findByMark(login));
+
+        if (login == null || provider == null) {
+            throw new RuntimeException("로그인 정보가 없습니다.");
+        }
+
+        return tour_MarkService.findByMark(login, userService.getUserNum(login, provider));
     }
 
     @ResponseBody
