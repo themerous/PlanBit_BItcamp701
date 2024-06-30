@@ -13,12 +13,14 @@ $(function(){
                 s += `<div class="tourListL">`
                 s += `<img src="` + d.photo + `">`;
                 s += `</div>`;
+
                 s += `<div class="tourListR">`;
                 s += `<p>` + d.title + `</p>`;
                 s += `<p>` + d.addr + `</p>`;
                 s += `<p>` + d.link + `</p>`;
                 s += `<p>` + d.phone_num + `</p>`;
                 s += `</div>`;
+
                 s += `</div>`;
             }
             $("#tourFavorites").append(s);

@@ -188,7 +188,8 @@
                                     </a>
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
                                 </div>
-                                <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
+                                <a class="btn-btn-primary" onclick="boardMove()">더보기 →</a>
+                                <!-- 원래 onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'" -->
                             </div>
                         </div>
                     </div>
@@ -294,6 +295,13 @@
                 isLoading = false; // 로딩 완료 상태로 변경
             }
         });
+    }
+    function boardMove(){
+        if("${sessionScope.loginok}" == "yes"){
+            return location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}';
+        }
+        alert("로그인 하고와 요년아");
+        return location.href="/bit/login";
     }
 </script>
 

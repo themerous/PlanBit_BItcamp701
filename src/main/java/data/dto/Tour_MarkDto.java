@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 public class Tour_MarkDto {
     private String id;
     private String title;
+    private String addr;
     private String photo;
     private String serial_num;
     private String link;
