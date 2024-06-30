@@ -145,13 +145,37 @@
         font-size: 18px;
     }
 
-
-    .tourFavorites {
-        border: 1px solid black;
+    /*selectButton css*/
+    .selectButtonAbsoluteSize {
+        width: 100%;
     }
+
+    .selectButton {
+        display: flex;
+        margin: 0 auto;
+    }
+
     .tourList {
         display: flex;
-        border: 1px solid black;
+        border-bottom: 1px solid black;
+        height: 300px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /*tourListL : sm-4로 크기 할당*/
+
+    .db-pic {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        left: 0;
+    }
+    .tourListR {
+        margin: auto;
+        padding-left: 20px;
+        font-size: 20px;
     }
 </style>
 
@@ -203,10 +227,12 @@
 
 <%-- 환용 수정 --%>
 <div class="container">
-    <div class="selectButton">
-        <button type="button" id="showMyBlog" onclick="myPageLoad(1)">내 블로그</button>
-        <button type="button" id="showFavoritesBlog" onclick="myPageLoad(2)">블로그 즐겨찾기</button>
-        <button type="button" id="showFavoritesTour" onclick="myPageLoad(3)">투어 즐겨찾기</button>
+    <div class="selectButtonAbsoluteSize">
+        <div class="selectButton">
+            <button type="button" id="showMyBlog" onclick="myPageLoad(1)">내 블로그</button>
+            <button type="button" id="showFavoritesBlog" onclick="myPageLoad(2)">블로그 즐겨찾기</button>
+            <button type="button" id="showFavoritesTour" onclick="myPageLoad(3)">투어 즐겨찾기</button>
+        </div>
     </div>
     <div id="row1" class="row">
         <c:forEach var="post" items="${userPost}">

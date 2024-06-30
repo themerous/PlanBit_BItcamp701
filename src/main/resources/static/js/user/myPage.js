@@ -10,14 +10,16 @@ $(function(){
             let s = ``;
             for (let d of data){
                 s += `<div class="tourList">`;
-                s += `<div class="tourListL">`
-                s += `<img src="` + d.photo + `">`;
+                s += `<div class="tourListL col-sm-4">`
+                s += `<img class="db-pic" src="` + d.photo + `">`;
                 s += `</div>`;
 
-                s += `<div class="tourListR">`;
+                s += `<div class="tourListR col-sm-8">`;
                 s += `<p>` + d.title + `</p>`;
                 s += `<p>` + d.addr + `</p>`;
-                s += `<p>` + d.link + `</p>`;
+                s += `<p>`;
+                s += `<a href="` + d.link + `">`+ d.link + `</a>`;
+                s += `</p>`;
                 s += `<p>` + d.phone_num + `</p>`;
                 s += `</div>`;
 
