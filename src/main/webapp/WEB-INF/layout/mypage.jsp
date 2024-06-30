@@ -200,13 +200,15 @@
     </div>
 </div>
 
+
+<%-- 환용 수정 --%>
 <div class="container">
     <div class="selectButton">
-        <button type="button" id="showMyBlog">내 블로그</button>
-        <button type="button" id="showFavoritesBlog">블로그 즐겨찾기</button>
-        <button type="button" id="showFavoritesTour">투어 즐겨찾기</button>
+        <button type="button" id="showMyBlog" onclick="myPageLoad(1)">내 블로그</button>
+        <button type="button" id="showFavoritesBlog" onclick="myPageLoad(2)">블로그 즐겨찾기</button>
+        <button type="button" id="showFavoritesTour" onclick="myPageLoad(3)">투어 즐겨찾기</button>
     </div>
-    <div class="row">
+    <div id="row1" class="row">
         <c:forEach var="post" items="${userPost}">
             <div class="col-lg-4 mb-4">
                 <div class="card">
@@ -225,12 +227,15 @@
                 </div>
             </div>
         </c:forEach>
-
-
-    <div class="row3">
-        <div id="tourFavorites"></div>
     </div>
-        
+
+    <div id="row2" class="row" style="display: none;">
+        <p>row2</p>
+    </div>
+
+    <div id="row3" class="card mb-4" style="display: none;">
+        <div class="card-header">투어 즐겨찾기</div>
+        <div id="tourFavorites" class="card-body"></div>
     </div>
 </div>
 

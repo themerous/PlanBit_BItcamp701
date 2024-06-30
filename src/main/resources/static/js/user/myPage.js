@@ -1,3 +1,5 @@
+//+ 첫 function에 블로그 좋아요 ajax추가하기
+
 $(function(){
     //일단 리스트 다 불러오기
 
@@ -26,3 +28,21 @@ $(function(){
         }
     })
 })
+
+function myPageLoad(num){
+    if(num == 1){
+        document.getElementById("row1").style.display = "block";
+        document.getElementById("row2").style.display = "none";
+        document.getElementById("row3").style.display = "none";
+    }
+    else if(num == 2){
+        document.getElementById("row1").style.display = "none";
+        document.getElementById("row2").style.display = "block";
+        document.getElementById("row3").style.display = "none";
+    }
+    else if(num == 3){
+        document.getElementById("row1").style.display = "none";
+        document.getElementById("row2").style.display = "none";
+        document.getElementById("row3").style.display = "block";
+    }
+}
