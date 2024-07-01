@@ -2,7 +2,7 @@ let socket;
 
 function connect() {     
     socket = new WebSocket('ws://' + window.location.host + '/page/' + planner_num + '/' + page_num);
-
+    
 	// 연결성공
 	socket.onopen = function() {
 		console.log("connected");

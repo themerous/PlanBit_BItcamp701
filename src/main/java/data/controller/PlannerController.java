@@ -18,14 +18,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import data.dto.PageDto;
 import data.dto.PlannerDto;
 import data.service.PlannerService;
+import data.service.UserService;
 
 @Controller
 public class PlannerController {
 	@Autowired
 	private PlannerService service;
+	@Autowired
+	private UserService uservice;
 	
 	@GetMapping("/planner")
-	public String PlannerList(
+	public String PlannerPage(
 			@RequestParam String id,
 			@RequestParam String provider,
 			Model model) {
@@ -38,6 +41,14 @@ public class PlannerController {
 	public void DeletePlanner(
 			@RequestParam int planner_num) {
 		service.deletePlanner(planner_num);
+	}
+	@ResponseBody
+	@GetMapping("/planner/list")
+	public List<PlannerDto> getPlannerList(
+			@RequestParam String user_id,
+			@RequestParam String provider) {
+		int user_num = uservice.getUserNum(user_id, provider);
+		return service.getUserPlanner(user_num);
 	}
 
 	@ResponseBody
@@ -80,6 +91,7 @@ public class PlannerController {
 			@RequestParam int page_num,
 			@RequestParam String content) {
 		service.updatePage(planner_num, page_num, content);
+		service.updatePlanner(planner_num);
 	}
 	@ResponseBody
 	@DeleteMapping("/planner/page")

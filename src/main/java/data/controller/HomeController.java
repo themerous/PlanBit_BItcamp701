@@ -122,9 +122,11 @@ public class HomeController {
 			HttpSession session
 			) 
 	{
+		UserDto dto = userService.databyid(id);
 		Map<String, String> map = new HashMap<>();
 		//로그인 상태
 		boolean loginstatus = userService.logincheck(id, pw);
+		String photo = dto.getPhoto();
 		if(loginstatus)
 		{
 			//아이디와 비번이 맞는 경우
@@ -132,8 +134,8 @@ public class HomeController {
 			session.setAttribute("loginok", "yes");
 			session.setAttribute("loginid", id);
 			session.setAttribute("role", "bit");
-			//session.setAttribute("img",photo);
-			System.out.println(session.getAttribute("role"));
+			session.setAttribute("img", photo);
+			System.out.println(session.getAttribute("img"));
 		}
 		else
 		{
@@ -151,6 +153,7 @@ public class HomeController {
 		session.removeAttribute("loginok");
 		session.removeAttribute("loginid");
 		session.removeAttribute("role");
+		session.removeAttribute("img");
 	}
 	
 	//아이디 중복확인
@@ -169,9 +172,9 @@ public class HomeController {
 	@GetMapping("bit/mypage")
 	public String mypage(@RequestParam String id,@RequestParam(defaultValue = "1") int currentPage, Model model,HttpSession session) {
 		String user_id = (String) session.getAttribute("loginid");
-		UserDto dto = userService.databyid(id);
 		String provider = (String) session.getAttribute("role");
-		int user_num = userService.getUserNum(id, provider);
+		UserDto dto = userService.databyid(user_id);
+		int user_num = userService.getUserNum(user_id, provider);
 		String name = dto.getName();
 		String photo = dto.getPhoto();
 		System.out.println(photo);

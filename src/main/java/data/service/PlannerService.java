@@ -28,6 +28,9 @@ public class PlannerService {
 	public PlannerDto getPlanner(int planner_num) {
 		return mapper.getPlanner(planner_num);
 	}
+	public List<PlannerDto> getUserPlanner(int user_num) {
+		return mapper.getUserPlanner(user_num);
+	}
 	public String pageLastUpdate(int page_num, int planner_num) {
 		return mapper.pageLastUpdate(page_num, planner_num);
 	}
@@ -35,6 +38,9 @@ public class PlannerService {
 	// Update
 	public void updatePage(int planner_num, int page_num, String content) {
 		mapper.updatePage(planner_num, page_num, content);
+	}
+	public void updatePlanner(int planner_num) {
+		mapper.updatePlanner(planner_num);
 	}
 	
 	// Delete

@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Bebas+Neue&family=Bree+Serif&family=Hind+Vadodara:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"></c:set>
 <%--카카오 맵 api 항상 처음에 실행되어야함--%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6f6609502fa3f00b4b14ebbdcdf59da6&libraries=services,clusterer,drawing"></script>
 
@@ -47,7 +47,13 @@
         </div>
         <div class="post-info">
             <i class="bi bi-calendar-check"></i><p><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd HH:mm"/></p>
-            <i class="bi bi-person-circle"></i><p>${dto.user_id}</p>
+            <c:if test="${sessionScope.role=='bit' }">
+					<img src="${stpath}/${profile_photo}" class="dd">
+				</c:if>
+				<c:if test="${sessionScope.role!='bit' }">
+					<img src="${profile_photo}" class="dd">
+				</c:if>
+            <p>${dto.user_id}</p>
             <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i><p id="likeCount">${like}</p> <p>조회수:&nbsp; ${dto.board_views}</p>
             <div class="post-info-btn">
                 <c:if test="${sessionScope.loginok!=null and dto.user_num==user_num }">
@@ -107,14 +113,9 @@
 
 </main>
 
-<button class="right-btn1"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin=
-                                        "round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2=
-        "5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-    <line x1="12" y1="19" x2="12" y2="5"></line>
-    <polyline points="5 12 12 5 19 12"></polyline>
+<button class="right-btn1" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
 </button>
-<button class="right-btn2" id="likeBtn" type="button"><i class="bi bi-suit-heart-fill"></i></button>
+<button class="right-btn2" id="likeBtn" type="button"></button>
 
 <!-- 모달 구조 -->
 <div id="mapModal" class="modal">
@@ -160,5 +161,17 @@
         color: black;
         text-decoration: none;
         cursor: pointer;
+    }
+    .dd {
+    	border-radius: 50%;
+    	border: 1px solid black;
+    	width: 35px;
+    	height: 35px;
+    }
+    .profile-img2 {
+        width: 20px; /* 프로필 사진의 너비 */
+        height: 20px; /* 프로필 사진의 높이 */
+        object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
+        margin-top: 5px; /* 원하는 만큼 아래로 내리기 */
     }
 </style>

@@ -66,7 +66,6 @@ function deletePage() {
 	    success: function() {
 	        console.log("last Page deleted successfully");
 	        socket.send("tkrwp#$%dhksfy|0");
-	        loadPageList();
 	    }
 	});
 	if(pageListCount == page_num) {
@@ -99,7 +98,6 @@ function updatePage() {
 		success: function() {
 			console.log("planner updated");
 			socket.send("chlwhdtnwjddlf#@!qkRnla|0");
-			lastUpdateTime();
 		}
 	});
 }

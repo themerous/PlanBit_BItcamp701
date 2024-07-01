@@ -65,7 +65,6 @@
 				<a href="./form">회원가입</a>
 			</div>
 	    	<button type="submit" class="login-btn">로그인</button>
-
     	</form>
     </div>
    	<div class="overlay-container">
