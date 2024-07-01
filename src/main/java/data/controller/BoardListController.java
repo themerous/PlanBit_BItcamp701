@@ -37,27 +37,9 @@ public class BoardListController {
         model.addAttribute("currentPage",currentPage);
         model.addAttribute("boardList", boardList);
 
-
-        //로그인 id 값 얻기
-        String id = (String) session.getAttribute("loginid");
-        System.out.println(id);
-        //로그인 provider 값 얻ㄱ기
-        String provider = (String) session.getAttribute("role");
-        System.out.println(provider);
-        int user_num = userService.getUserNum(id, provider);
-        System.out.println("usernum="+user_num);
-
-
-
-        List<Long> bookmarkedBoardIds = BKService.getBookmarkedBoardIds(user_num);
-        System.out.println(bookmarkedBoardIds);
-
-        model.addAttribute("bookmarkedBoardIds", bookmarkedBoardIds);
-
-
-
         return "layout/blog";
     }
+
     @GetMapping("/search")
     public String search(
             @RequestParam("category") String category,
@@ -71,6 +53,12 @@ public class BoardListController {
 
 
         return "layout/sblog";
+    }
+
+    @ResponseBody
+    @GetMapping("/blog/bookmark")
+    public List<Long> bookmarkdata(HttpSession session) {
+        return BKService.getBookmarkedBoardIds(userService.getUserNum((String) session.getAttribute("loginid"), (String) session.getAttribute("role")));
     }
 
     @PostMapping("/bookmark")
