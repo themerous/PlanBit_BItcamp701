@@ -162,12 +162,16 @@
 
         /* 북마크 */
         .images-bookmark {
-            position: absolute;
-            right: 5px;
-            top: -5px;
-            font-size: 50px;
+            font-size: 32px;
+            margin-right: 7px;
+            object-fit: cover;
+        }
+        .starr {
+            width: 33px;
+            height: 33px;
 
-
+            object-fit: cover;
+            margin-top: -8px;
         }
 
 
@@ -211,7 +215,6 @@
                         <div class="bottom-box">
                             <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             <div class="images-heart">
-                                <img src="../images/e2.jpg" alt="" class="profile-img">
                                 <img src="../images/hjhj.png" alt="" class="profile-img2">
                             </div>
                         </div>
@@ -226,7 +229,7 @@
                 <c:forEach var="dto" items="${boardList}">
                 <div class="col-lg-6">
                     <div class="card mb-4" style="width: 400px;">
-                        <div class="images-bookmark" data-board-num="${dto.board_num}"></div>
+
                         <c:if test="${dto.photo!='no' and dto.photo!=null}">
                             <a onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'" ></a>
                         </c:if>
@@ -247,8 +250,7 @@
 
 
                                 <div class="images-heart">
-                                    <img src="../images/e2.jpg" alt="" class="profile-img">
-
+                                    <div class="images-bookmark" data-board-num="${dto.board_num}"></div>
                                     <img src="../images/hjhj.png" alt="" class="profile-img2">
                                 </div>
                             </div>
@@ -305,7 +307,7 @@
         document.querySelectorAll('.images-bookmark').forEach(element => {
             const board_num = element.dataset.boardNum;
             if (bookmarkedBoardIds.includes(parseInt(board_num))) {
-                element.innerHTML = '<i class="bi bi-star-fill" style="color: #fce61b;"  onclick="delmark(' + board_num + ')"></i>';
+                element.innerHTML = '<img src="/images/starr.png" class="starr" onclick="delmark(' + board_num + ')"/>';
             } else {
                 element.innerHTML = '<i class="bi bi-star" style="color: #fce61b;" onclick="toggleBookmark(' + board_num + ')"></i>';
             }
