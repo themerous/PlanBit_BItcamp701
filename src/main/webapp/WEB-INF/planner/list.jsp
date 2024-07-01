@@ -2,12 +2,17 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-direction is working right now
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.css" rel="stylesheet">
 <script>
-
+	const user_id = "${user_id}";
+	const provider = "${provider}";
 </script>
-<textarea id="summernote" name="content" class="form-control" placeholder="내용을 입력해주세요" required></textarea>
+<div>
+	<div>
+		타이틀 내역들 들어가는 공간입니다
+	</div>
+	<div id="planner-list-execute">
+		리스트가 출력될 공간입니다.
+	</div>
+</div>
 <script src="/js/planner/plannerBoard.js"></script>
+<script src="/js/planner/plannerSocket.js"></script>

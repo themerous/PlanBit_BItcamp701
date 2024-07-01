@@ -3,12 +3,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<style>
+	#planner-button:hover {
+		color: white;
+	}
+</style>
 <div class="title-left" onclick="location.href='/'">BIT TRIP</div>
 <div class="title-center">
    <div class="title-menu">
       <ul>
          <li><a href="/bit/blog">Blog</a></li>
-         <li><a href="">Planner</a></li>
+         <li><a onclick="checkIfLoggedIn()">Planner</a></li>
          <li><a href="#">Map</a></li>
          <li><a href="/tour/tourMain">Tour</a></li>
          <li><a href="#">Info</a></li>
@@ -42,4 +47,12 @@ $(function(){
 		});	
 	});
 });
+function checkIfLoggedIn(e) {
+	if("${sessionScope.loginok}" == "yes") {
+		location.href = "/planner?id=${loginid}&provider=${role}";
+	}else {
+		alert("로그인을 해주세요");
+		location.href = "/bit/login";
+	}
+}
 </script>
