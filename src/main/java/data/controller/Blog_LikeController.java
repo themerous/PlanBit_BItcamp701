@@ -3,6 +3,7 @@ package data.controller;
 import data.dto.Blog_LikeDto;
 import data.service.Blog_BoardService;
 import data.service.Blog_LikeService;
+import data.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,12 +25,17 @@ public class Blog_LikeController {
     @Autowired
     private Blog_LikeService blogLikeService;
 
+    @Autowired
+    private UserService userService;
+
     // Endpoint to handle like button click
     @PostMapping("/like")
     public ResponseEntity<Map<String, Integer>> likePost(@RequestParam("board_num") int board_num, HttpSession session) {
         String user_id = (String) session.getAttribute("loginid");
+        String provider = (String) session.getAttribute("role");
+        int user_num = userService.getUserNum(user_id,provider);
 
-        Blog_LikeDto likeDto = new Blog_LikeDto(user_id, board_num, 1, 0, 0);
+        Blog_LikeDto likeDto = new Blog_LikeDto(user_num, board_num, 1, 0, 0);
 
         blogLikeService.addOrUpdateLike(likeDto);
 
