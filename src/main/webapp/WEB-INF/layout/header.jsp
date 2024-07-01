@@ -14,9 +14,9 @@
       <ul>
          <li><a href="/bit/blog">Blog</a></li>
          <li><a onclick="checkIfLoggedIn()">Planner</a></li>
-         <li><a href="#">Map</a></li>
+         <li><a href="/bit/map">Map</a></li>
          <li><a href="/tour/tourMain">Tour</a></li>
-         <li><a href="#">Info</a></li>
+         <li><a href="/bit/info">Info</a></li>
       </ul>
    </div>
 </div>
@@ -29,8 +29,9 @@
 	   <a id="logout" class="login-button">로그아웃</a>
 
 <%--        <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>--%>
-        <a class="header-pro-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'"></a>
-    </c:if>
+        <a class="header-pro-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'"><img src="${sessionScope.img}" style="position: relative; width: 100%; height: 100%; border-radius: 50%;"></a>
+            </c:if>
+
 </div>
 <script type="text/javascript">
 $(function(){

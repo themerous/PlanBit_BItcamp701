@@ -182,4 +182,10 @@ public class HomeController {
 
 		return "layout/mypage";
 	}
+
+	@GetMapping("bit/map")
+	public String map(){
+
+		return "layout/map";
+	}
 }
