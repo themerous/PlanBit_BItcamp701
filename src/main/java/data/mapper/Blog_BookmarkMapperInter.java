@@ -1,5 +1,6 @@
 package data.mapper;
 
+import data.dto.Blog_BookmarkDto;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -7,7 +8,11 @@ import java.util.List;
 @Mapper
 public interface Blog_BookmarkMapperInter {
 
-    @Select("SELECT board_num FROM blog_bookmark WHERE user_num = #{user_num}")
+    @Select("select board_num from blog_bookmark where user_num = #{user_num}")
+    List<Integer> getBookMarkALlByUserNum(int user_num);
+
+
+    @Select("SELECT board_num FROM blog_bookmark WHERE user_num")
     List<Long> getBookmarkedBoardIds(int user_num);
 
     @Insert("INSERT INTO blog_bookmark (user_num, board_num) VALUES (#{user_num}, #{boardNum})")
