@@ -127,14 +127,23 @@
             justify-content: space-between; /* 아이콘과 링크를 양쪽 끝에 배치 */
             align-items: center; /* 수직 중앙 정렬 */
 
+
         }
 
         .profile-img {
-            width: 30px; /* 프로필 사진의 너비 */
-            height: 30px; /* 프로필 사진의 높이 */
+            width: 35px; /* 프로필 사진의 너비 */
+            height: 35px; /* 프로필 사진의 높이 */
             border-radius: 50%; /* 동그라미 모양으로 만드는 속성 */
             object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
             margin-right: 10px; /* 프로필 사진과 버튼 사이의 간격 */
+            border: 1px solid #51e3d4;
+        }
+
+        .profile-img2 {
+            width: 30px; /* 프로필 사진의 너비 */
+            height: 30px; /* 프로필 사진의 높이 */
+            object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
+
         }
 
         .images-heart {
@@ -142,9 +151,6 @@
             align-items: center; /* 세로 중앙 정렬 */
         }
 
-        .bottom-box i{
-            font-size: 30px;
-        }
 
         .medal {
             position: absolute;
@@ -152,6 +158,16 @@
             height: 140px;
             top: -30px;
             left: -50px;
+        }
+
+        /* 북마크 */
+        .images-bookmark {
+            position: absolute;
+            right: 5px;
+            top: -5px;
+            font-size: 50px;
+
+
         }
 
 
@@ -196,7 +212,7 @@
                             <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             <div class="images-heart">
                                 <img src="../images/e2.jpg" alt="" class="profile-img">
-                                <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
+                                <img src="../images/hjhj.png" alt="" class="profile-img2">
                             </div>
                         </div>
                     </div>
@@ -210,6 +226,7 @@
                 <c:forEach var="dto" items="${boardList}">
                 <div class="col-lg-6">
                     <div class="card mb-4" style="width: 400px;">
+                        <div class="images-bookmark" data-board-num="${dto.board_num}"></div>
                         <c:if test="${dto.photo!='no' and dto.photo!=null}">
                             <a onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'" ></a>
                         </c:if>
@@ -227,14 +244,13 @@
                             <div class="bottom-box">
 
                                 <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
-                                <div class="images-bookmark" data-board-num="${dto.board_num}"></div>
+
 
                                 <div class="images-heart">
                                     <img src="../images/e2.jpg" alt="" class="profile-img">
-                                    <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
+
+                                    <img src="../images/hjhj.png" alt="" class="profile-img2">
                                 </div>
-                                <a class="btn-btn-primary" onclick="boardMove(${dto.board_num}, ${currentPage})">더보기 →</a>
-                                <!-- 원래 onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'" -->
                             </div>
                         </div>
                     </div>
@@ -289,9 +305,9 @@
         document.querySelectorAll('.images-bookmark').forEach(element => {
             const board_num = element.dataset.boardNum;
             if (bookmarkedBoardIds.includes(parseInt(board_num))) {
-                element.innerHTML = '<i class="bi bi-bookmark-fill" style="color: #FF9EAA;" onclick="delmark(' + board_num + ')"></i>';
+                element.innerHTML = '<i class="bi bi-star-fill" style="color: #fce61b;"  onclick="delmark(' + board_num + ')"></i>';
             } else {
-                element.innerHTML = '<i class="bi bi-bookmark" style="color: #FF9EAA;" onclick="toggleBookmark(' + board_num + ')"></i>';
+                element.innerHTML = '<i class="bi bi-star" style="color: #fce61b;" onclick="toggleBookmark(' + board_num + ')"></i>';
             }
         });
     }

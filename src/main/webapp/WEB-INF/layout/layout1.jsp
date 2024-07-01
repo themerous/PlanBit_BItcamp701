@@ -191,9 +191,8 @@
 	            color: white;
 	            margin-top: 280px;
 	            margin-left: 160px;
-
-
 	        }
+
 
 	        .main-photo1 {
 	            background-image: url("/images/p1.jpg");
