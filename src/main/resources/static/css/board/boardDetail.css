@@ -36,7 +36,7 @@ main {
 	flex-direction: column; /* 세로 정렬 */
 	height: auto;
 	margin: 30px auto;
-	border: 1px solid black;
+
 }
 
 .post-image {
@@ -103,11 +103,12 @@ main {
 
 .post-content {
 	padding: 20px;
-	border: 1px solid darkgreen;
+	border: 1px solid #eeeeee;
 	border-bottom: 4px solid #51e3d4;
 	margin: 30px auto;
 	width: 80%;
 	min-height: 800px;
+	border-radius: 4px;
 }
 
 .post-content h2 {

@@ -48,7 +48,7 @@
         <div class="post-info">
             <i class="bi bi-calendar-check"></i><p><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd HH:mm"/></p>
             <i class="bi bi-person-circle"></i><p>${dto.user_id}</p>
-            <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i><p id="likeCount">${like}</p> <p>조회수:&nbsp; ${dto.board_views}</p>
+            <img src="../images/hjhj.png" alt="" class="profile-img2"></i><p id="likeCount">${like}</p> <p>조회수:&nbsp; ${dto.board_views}</p>
             <div class="post-info-btn">
                 <c:if test="${sessionScope.loginok!=null and dto.user_num==user_num }">
                     <button type="button" class="post-info-up"
@@ -156,4 +156,12 @@
         text-decoration: none;
         cursor: pointer;
     }
+    .profile-img2 {
+        width: 20px; /* 프로필 사진의 너비 */
+        height: 20px; /* 프로필 사진의 높이 */
+        object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
+
+        margin-top: 5px; /* 원하는 만큼 아래로 내리기 */
+    }
+
 </style>
