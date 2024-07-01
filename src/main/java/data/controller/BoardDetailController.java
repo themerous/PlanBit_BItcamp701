@@ -63,17 +63,19 @@ public class BoardDetailController {
 
             int user_num = userService.getUserNum(id, provider);
 
-        System.out.println(user_num);
+        System.out.println("확인용"+user_num);
         // 조회수 증가
         boardService.updateReadcount(board_num);
 
         // num 에 해당하는 글 가져오기
         Blog_BoardDto dto = boardService.getData(board_num);
+        
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
         UserDto memberDto = userService.databyid(dto.getUser_id());
 
         String profile_photo = memberDto.getPhoto();
+        String provider2 = memberDto.getProvider();
         System.out.println(memberDto);
 
         // 지도 데이터 가져오기
@@ -98,6 +100,7 @@ public class BoardDetailController {
         model.addAttribute("user_num",user_num);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
+        model.addAttribute("provider2",provider2);
         model.addAttribute("profile_photo",profile_photo);
         model.addAttribute("currentPage", currentPage);
 
