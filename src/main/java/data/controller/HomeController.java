@@ -10,8 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import data.dto.Blog_BoardDto;
 import data.dto.BoardDto;
-import data.service.Blog_BoardService;
-import data.service.BoardService;
+import data.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import data.dto.UserDto;
 import data.service.BoardService;
-import data.service.UserService;
 import naver.ncloud.NcpObjectStorageService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +39,9 @@ public class HomeController {
 	
 	@Autowired
 	private NcpObjectStorageService ncpService;
+
+	@Autowired
+	private Blog_BookmarkService BKService;
 	
 	private String bucketName = "hyunsung-bucket";
 	private String folderName = "blog_photo";
@@ -176,8 +177,12 @@ public class HomeController {
 		int user_num = userService.getUserNum(user_id, provider);
 		String name = dto.getName();
 		String photo = dto.getPhoto();
+		System.out.println(photo);
 		System.out.println(user_id);
 		List<Blog_BoardDto> userPost = blogService.userDataID(user_num);
+
+		List<Long> userMark = BKService.getBookmarkedBoardIds(user_num);
+
 
 		model.addAttribute("user_num",user_num);
 		model.addAttribute("currentPage",currentPage);
@@ -185,6 +190,7 @@ public class HomeController {
 		model.addAttribute("name", name);
 		model.addAttribute("photo", photo);
 		model.addAttribute("userPost", userPost);
+		model.addAttribute("userMark",userMark);
 
 		return "layout/mypage";
 	}

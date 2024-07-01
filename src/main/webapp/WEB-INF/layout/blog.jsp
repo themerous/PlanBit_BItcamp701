@@ -203,7 +203,7 @@
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb4">
-                <img class="medal" src="/images/ffff.png"/>
+                <img class="medal" src=""/>
                 <c:if test="${not empty topViewedBoard}">
                     <a onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${topViewedBoard.photo}"  onerror="this.src='/images/e3.jpg'"/></a>
                     <div class="card-body">
