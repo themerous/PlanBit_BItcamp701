@@ -1,7 +1,9 @@
 package data.controller;
 
 import data.dto.Blog_BoardDto;
+import data.dto.Blog_BookmarkDto;
 import data.dto.BoardDto;
+import data.service.Blog_BoardService;
 import data.service.Blog_BookmarkService;
 import data.service.BoardService;
 import data.service.UserService;
@@ -13,11 +15,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/bit")
 public class BoardListController {
+    @Autowired
+    Blog_BoardService blog_BoardService;
 
     @Autowired
     private BoardService boardService;
@@ -30,7 +37,6 @@ public class BoardListController {
 
     @GetMapping("/blog")
     public String boardList(Model model, @RequestParam(defaultValue = "1") int currentPage, HttpSession session) {
-
         List<Blog_BoardDto> boardList = boardService.gettestboardlist();
         Blog_BoardDto topViewedBoard = boardService.getTopViewedBoard();
         model.addAttribute("topViewedBoard", topViewedBoard);
@@ -53,6 +59,24 @@ public class BoardListController {
 
 
         return "layout/sblog";
+    }
+
+    @ResponseBody
+    @PostMapping("/blog/getting")
+    public List<Blog_BoardDto> mySelectBookMark(HttpSession session){
+        List<Blog_BoardDto> bbDto = new ArrayList<>();
+
+
+        String id = (String)session.getAttribute("loginid");
+        String provider = (String)session.getAttribute("role");
+
+        ArrayList<Integer> boardNum = new ArrayList<>(BKService.getBookMarkALlByUserNum(userService.getUserNum(id, provider)));
+
+        for(int i : boardNum){
+            bbDto.add(blog_BoardService.getData(i));
+        }
+
+        return bbDto;
     }
 
     @ResponseBody

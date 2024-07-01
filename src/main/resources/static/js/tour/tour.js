@@ -307,37 +307,3 @@ function checkFavoriteStatus(contentid, i) {
         }
     });
 }
-
-function getMap() {
-    let s = ``;
-
-    $.ajax({
-        url: getItem(key, pageNum, areaCode, contentTypeId),
-        type: 'get',
-        dataType: "json",
-        success: function (data) {
-            for (let its of data.response.body.items.item) {
-                let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
-                s += `<div class="scrollList">`;
-                s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
-                s += `<div class="scrollListR">`;
-                s += `<br><span>`;
-                s += its.title;
-                s += `</span><hr>`;
-                s += `<br><span>`;
-                s += its.addr1;
-                s += `</span><hr>`;
-                s += `<br><span>`;
-                s += its.tel;
-                s += `</span><hr>`;
-                s += `<br><span>`;
-                s += its.contentid;
-                s += `</span><hr>`;
-                s += `</div>`;
-                s += `</div>`;
-                s += `<hr>`;
-            }
-            $("#mapList").html(s);
-        }
-    })
-}
