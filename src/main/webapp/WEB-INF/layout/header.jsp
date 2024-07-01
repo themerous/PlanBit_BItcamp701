@@ -9,7 +9,7 @@
       <ul>
          <li><a href="/bit/blog">Blog</a></li>
          <li><a href="">Planner</a></li>
-         <li><a href="#">Map</a></li>
+         <li><a href="/bit/map">Map</a></li>
          <li><a href="/tour/tourMain">Tour</a></li>
          <li><a href="/bit/info">Info</a></li>
       </ul>
