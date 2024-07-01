@@ -14,8 +14,8 @@ import data.dto.UserDto;
 public interface UserMapperInter {
 	//회원가입 이벤트
 	@Insert("""
-				insert into user (id,pw,name)
-				value (#{id},#{pw},#{name})
+				insert into user (id,pw,name,photo)
+				value (#{id},#{pw},#{name},#{photo})
 			""")
 	public void insertUser(UserDto dto);
 	//로그인 이벤트

@@ -11,10 +11,11 @@
             width: 100%;
             height: 400px;
             border: none;
-            background-image: url('/images/e3.jpg'); /* 배경 이미지 URL */
-            background-size: cover; /* 이미지 크기를 컨테이너에 맞게 조정 */
-            background-position: center; /* 이미지를 중앙에 위치 */
-            background-repeat: no-repeat; /* 이미지 반복 금지 */
+            /*background-image: url('/images/e3.jpg'); !* 배경 이미지 URL *!*/
+            /*background-size: cover; !* 이미지 크기를 컨테이너에 맞게 조정 *!*/
+            /*background-position: center; !* 이미지를 중앙에 위치 *!*/
+            /*background-repeat: no-repeat; !* 이미지 반복 금지 *!*/
+            background: linear-gradient(to right, #19B3FF,#51e3d4);
             margin-bottom: 20px;
             display: flex;
             justify-content: center; /* 수평 중앙 정렬 */
@@ -24,8 +25,8 @@
 
 
         #blog-title-photo h1 {
-            color: white;
-            font-size: 90px;
+            color: rgba(255, 255, 255, 0.9); /* 흰색을 50% 불투명도로 설정 */
+            font-size: 100px;
             font-family: "Neuton", serif;
             text-align: center; /* 텍스트를 중앙으로 정렬 */
         }
@@ -91,6 +92,13 @@
             height: 400px;
         }
 
+        .card-blog2 {
+
+            border-radius: 4px;
+            height: 600px;
+            margin-top: 10px;
+        }
+
         .card-body1 {
             font-size: 40px;
             color: white;
@@ -98,6 +106,11 @@
             padding: 40px;
         }
 
+        .small-text-muted {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
         .card-body1-btn {
             margin-top: 10px;
             border-radius: 4px;
@@ -133,11 +146,15 @@
             font-size: 30px;
         }
 
-        .loading-indicator {
-            text-align: center;
-            margin: 20px 0;
-            display: none; /* 초기에는 숨김 */
+        .medal {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            top: -30px;
+            left: -50px;
         }
+
+
 </style>
 <!-- Page header with logo and tagline-->
 <div class="g" id="blog-title-photo">
@@ -150,42 +167,64 @@
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb4">
-                <a href="#!"><img class="card-img-top" src="/images/ff6.jpg"/></a>
-                <div class="card-body">
-                    <div class="small text-muted">2024년 6월 22일</div>
-                    <h2 class="card-title">가을에 가장 여행하기 좋은 장소!</h2>
-                    <p class="card-text">오늘은 가을에 가장 여행하기 좋은 장소 7곳을 소개해보려고 한다.</p>
-                    <div class="bottom-box">
-                        <a class="btn-btn-primary" href="">더보기 →</a>
-                        <div class="images-heart">
-                            <img src="../images/e2.jpg" alt="" class="profile-img">
-                            <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
+                <img class="medal" src="/images/ffff.png"/>
+                <c:if test="${not empty topViewedBoard}">
+                    <a onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${topViewedBoard.photo}"  onerror="this.src='/images/e3.jpg'"/></a>
+                    <div class="card-body">
+                        <div class="small-text-muted">
+                            <span>${topViewedBoard.user_id}</span>
+                            <span style="color: #8a8a8a"><fmt:formatDate value="${topViewedBoard.board_writeday}" pattern="yyyy.MM.dd" /></span>
+                        </div>
+                        <h2 class="card-title">${topViewedBoard.board_title}</h2>
+                        <div class="bottom-box">
+                            <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'">더보기 →</a>
+                            <div class="images-heart">
+                                <img src="../images/e2.jpg" alt="" class="profile-img">
+                                <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </c:if>
             </div>
-
+            <c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
 
             <!-- Nested row for non-featured blog posts-->
             <div class="row">
 
                 <c:forEach var="dto" items="${boardList}">
                 <div class="col-lg-6">
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="/images/gg3.jpg"/></a>
+                    <div class="card mb-4" style="width: 400px;">
+                        <c:if test="${dto.photo!='no' and dto.photo!=null}">
+                            <a onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'" ></a>
+                        </c:if>
+                        <c:if test="${dto.photo==null}">
+                            <img class="card-img-top" src="/images/ff.jpg">
+                        </c:if>
                         <div class="card-body">
 
-                            <div class="small text-muted"><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd"/>
+                            <div class="small-text-muted">
+                                <span>${dto.user_id}</span>
+                                <span style="color: #8a8a8a"><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd"/></span>
                             </div>
                             <h2 class="card-title h4">${dto.board_title}</h2>
 
                             <div class="bottom-box">
 
-                                <div class="images-heart">
+                                <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
+                                <div class="images-bookmark">
+                                    <script>
+                                        // JavaScript로 북마크 상태 확인 및 아이콘 변경
+                                        var bookmarkedBoardIds = ${bookmarkedBoardIds}; // JSP에서 받은 북마크된 글의 ID 목록
 
-                                    <a href="#!"><img src="../images/e2.jpg" alt="" class="profile-img">
-                                            ${dto.user_id}
-                                    </a>
+                                        if (bookmarkedBoardIds.includes(${dto.board_num})) {
+                                            document.write('<i class="bi bi-bookmark-fill" style="color: #FF9EAA;" onclick="delmark(${dto.board_num})"></i>');
+                                        } else {
+                                            document.write('<i class="bi bi-bookmark" style="color: #FF9EAA;" onclick="toggleBookmark(${dto.board_num})"></i>');
+                                        }
+                                    </script>
+                                </div>
+                                <div class="images-heart">
+                                    <img src="../images/e2.jpg" alt="" class="profile-img">
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
                                 </div>
                                 <a class="btn-btn-primary" onclick="boardMove(${dto.board_num}, ${currentPage})">더보기 →</a>
@@ -197,10 +236,7 @@
                 </c:forEach>
             </div>
 
-            <!-- 무한로딩 창-->
-            <div id="loading-indicator">
-                <img src="loading.gif" alt="로딩 중...">
-            </div>
+
 
             <!-- Pagination-->
             <nav aria-label="Pagination">
@@ -226,28 +262,7 @@
                     </form>
                 </div>
             </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">카테고리</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="c-box">
-                                <li><a href="#!">#추천 여행지</a></li>
-                                <li><a href="#!">#데이트</a></li>
-                                <li><a href="#!">#멋진</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="c-box">
-                                <li><a href="#!">#특별한</a></li>
-                                <li><a href="#!">#가족과</a></li>
-                                <li><a href="#!">#휴가</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <!-- Side widget-->
             <div class="card-blog">
                 <div class="card-body1">나만의 여행플래너를 계획하고 블로그를 작성해보자!
@@ -255,46 +270,63 @@
                 </div>
 
             </div>
+            <div class="card-blog2">
+                <div class="card-body1">
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- jQuery CDN -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
-    var page = 1; // 초기 페이지 번호
-    var isLoading = false; // 추가 데이터 로딩 중 여부
-
-    $(document).ready(function() {
-        // 초기 데이터 로드
-        loadMoreData(page);
-
-        // 스크롤 이벤트를 감지하여 추가 데이터 로드
-        $(window).scroll(function() {
-            // 스크롤바가 페이지 하단에 도달했을 때 추가 데이터 로드
-            if ($(window).scrollTop() + $(window).height() >= $(document).height() && !isLoading) {
-                isLoading = true; // 로딩 중 상태로 변경
-                page++; // 페이지 번호 증가
-                loadMoreData(page); // 추가 데이터 로딩 함수 호출
+    function toggleBookmark(board_num) {
+        if (!board_num) {
+            alert("유효하지 않은 board_num 값입니다.");
+            return;
+        }
+        fetch(`/bit/bookmark?board_num=\${board_num}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             }
-        });
-    });
+        })
+            .then(response => {
+                console.log("Response status:", response.status); // 응답 상태 코드 출력
+                if (response.ok) {
+                    location.reload(); // 페이지를 새로고침하여 아이콘 상태를 갱신
+                } else {
+                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
+    function delmark(board_num) {
+        if (!board_num) {
+            alert("유효하지 않은 board_num 값입니다.");
+            return;
+        }
 
-    function loadMoreData(page) {
-        // Ajax를 통해 데이터 로드
-        $.ajax({
-            url: 'loadMoreData.jsp', // 실제 데이터를 가져오는 URL 설정
-            type: 'GET',
-            data: { page: page }, // 페이지 번호 전달
-            dataType: 'html', // 받을 데이터 타입 설정
-            success: function(html) {
-                $('#blog-posts').append(html); // 데이터를 추가하여 페이지에 렌더링
-                isLoading = false; // 로딩 완료 상태로 변경
+        fetch(`/bit/delmark?board_num=\${board_num}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            error: function(xhr, status, error) {
-                console.error('Error loading data:', error);
-                isLoading = false; // 로딩 완료 상태로 변경
-            }
-        });
+            credentials: 'same-origin' // 세션 처리를 위해 크레덴셜 포함
+        })
+            .then(response => {
+                console.log("응답 상태:", response.status); // 응답 상태 확인
+                if (response.ok) {
+                    location.reload(); // 북마크 상태 업데이트를 위해 페이지 새로고침
+                } else {
+                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                }
+            })
+            .catch(error => {
+                console.error("에러:", error);
+                alert("오류가 발생했습니다. 다시 시도해 주세요.");
+            });
     }
     function boardMove(board_num, currentPage){
         if("${sessionScope.loginok}" == "yes"){
@@ -304,5 +336,6 @@
         return location.href="/bit/login";
     }
 </script>
+
 
 

@@ -40,21 +40,24 @@
             </ul>
         </div>
         <div class="footer-col">
-            <h4>Newsletter</h4>
+            <h4>Ncloud</h4>
             <p>
-                Subscribe to our newsletter for a weekly dose
-                of news, updates, helpful tips, and
-                exclusive offers.
+                Naver cloud camp devOps 11th group 2 semi-project "beat trip"
+                travel planner & travel blog website
             </p>
             <form action="#">
                 <input type="text" placeholder="Your email" required>
                 <button type="">SUBSCRIBE</button>
             </form>
             <div class="icons">
-                <i class="bi bi-facebook"></i>
+                <a href="https://www.instagram.com/">
+                    <i class="bi bi-instagram"></i>
+                </a>
                 <i class="bi bi-twitter"></i>
                 <i class="bi bi-discord"></i>
-                <i class="bi bi-github"></i>
+                <a href="https://github.com/BitCamp701-team2">
+                    <i class="bi bi-github"></i>
+                </a>
             </div>
         </div>
     </div>

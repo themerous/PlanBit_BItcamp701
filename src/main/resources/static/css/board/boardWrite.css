@@ -83,9 +83,19 @@ main {
     border: 3px solid #51e3d4;
 }
 
+.form-group1 {
+    display: flex; /* Flexbox 활성화 */
+
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 10px; /* 내부 여백 추가 (옵션) */
+
+    margin-top: 10px;
+    margin-left: 585px;
+}
+
 .post-title {
     margin: 30px auto;
-    width: 80%;
+    width: 77%;
     border-left: 6px solid #51e3d4;
     padding: 10px;
 
@@ -102,6 +112,7 @@ main {
     height: 30px;
     display: flex;
     gap: 10px; /* 요소들 사이의 간격 설정 */
+
 }
 
 .post-info  p {
@@ -114,7 +125,6 @@ main {
 
 .post-content {
     padding: 20px;
-    border: 1px solid darkgreen;
     border-bottom: 4px solid #51e3d4;
     margin: 30px auto;
     width: 80%;
@@ -272,6 +282,9 @@ main {
     height: 100%;
     object-fit: cover; /* 이미지를 부모 요소의 크기에 맞게 조정 */
 }
+
+
+
 
 
 

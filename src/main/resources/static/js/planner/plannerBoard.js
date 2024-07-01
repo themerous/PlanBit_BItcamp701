@@ -1,18 +1,16 @@
 window.onload = () => {
-	connect();
+	
 }
 
-const page = document.getElementById("note");
-page.addEventListener("keyup", () => {
-	sendContent();
-});
-
 function sendContent() {
-	console.log(page.value);
-	const mo = {
-		id: id,
-		content: page.value
-	}
-	socket.send(JSON.stringify(mo));
-	page.innerHTML = "";
+	
+}
+
+function getPlannerList() {
+	$.get("/planner/list", {"user_id": user_id, "provider": provider}, function(data) {
+		let s = "";
+		for(let d of data) {
+			s += ``;
+		}
+	});
 }

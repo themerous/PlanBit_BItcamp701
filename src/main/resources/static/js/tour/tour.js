@@ -1,4 +1,4 @@
-const key = "fftZaPlUQRLNUdl6u7PIZoE9gBoawB4ituWAHIvMVGpNy9Y48F6v2euQ8bDwl5U7ln/pni5XxVeL0TlNU0qv5w==";
+let key = "fftZaPlUQRLNUdl6u7PIZoE9gBoawB4ituWAHIvMVGpNy9Y48F6v2euQ8bDwl5U7ln/pni5XxVeL0TlNU0qv5w==";
 let loading = false;
 let pageNum = 1;
 let areaCode = "";
@@ -63,7 +63,7 @@ function getSearch(){
             }
             let i = 0;
             for(its of d.response.body.items.item){
-                let searchPhoto  = its.firstimage == "" ? "/images/noimage1.png" :its.firstimage2 ;
+                let searchPhoto  = its.firstimage == "" ? "/images/noimage2.png" :its.firstimage2 ;
 
                 insertData(its.contentid, searchPhoto, its.title, its.addr1, its.tel, i);
                 i++;
@@ -80,9 +80,9 @@ function insertData(contentid, photo, title, addr, tel, i) {
         success: function(dd){
             let ss = ``;
             ss += `<div class="searchList">`;
-            ss += `<div class="searchListL"><img class="searchimageresult" src="${photo}"></div>`;
+            ss += `<div class="searchListL"><div class="img-box"><img class="searchimageresult" src="${photo}"></div></div>`;
             ss += `<div class="searchListR">`;
-            ss += `<p>`;
+            ss += `<p class="tour-title">`;
             ss += `[`+ title+`]`;
             ss += `</p>`;
             ss += `<p>`;
@@ -103,12 +103,12 @@ function insertData(contentid, photo, title, addr, tel, i) {
                 ss += `<input name="serial_num" id="sSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
                 ss += `<div id="sLink`+i+`" style="display: none;">`+dd.response.body.items.item[0].homepage+`</div>    `;
                 ss += `<input name="phone_num" id="sPhone_num`+i+`" type="hidden" value="`+tel+`">`;
-                ss += `<button type="button" onclick="sendInsert(${i})">즐겨찾기</button>`;
+                ss += `<button type="button" onclick="sendInsert(${i})" class="star"><i class="bi bi-star-fill" style="color: #fce61b"></i></button>`;
                 ss += `</div>`;
 
                 ss += `<div id="markDelete`+i+`"` + `style="display: none;"` +`>`;
                 ss += `<input name="serial_num" id="dSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
-                ss += `<button type="button" onclick="sendDelete(${i})">즐겨찾기해제</button>`;
+                ss += `<button type="button" onclick="sendDelete(${i})" class="star"><i class="bi bi-star" style="color: #fce61b"></i></button>`;
                 ss += `</div>`;
             }
             ss += `</div><br>`;
@@ -158,9 +158,9 @@ function getMapInitial() {
                 s += `<hr>`;
             }
             $("#mapList").html($("#mapList").html()+s);
-             $("#tourList")[0].scrollTop = 0;
+            $("#tourList")[0].scrollTop = 0;
             // 기존 내용에 추가
-             pageNum++;                // 페이지 번호 증가
+            pageNum++;                // 페이지 번호 증가
 
             loading = false;  // 로딩 완료
         },
@@ -184,7 +184,7 @@ function getMapInfinite(){
                 console.log("resetMethed")// 응답 데이터 검사
                 let s = '';
                 for (let its of data.response.body.items.item) {
-                    let photo = its.firstimage == "" ? "/images/noimage1.png" : its.firstimage;
+                    let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
                     s += `<div class="scrollList">`;
                     s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
                     s += `<div class="scrollListR">`;

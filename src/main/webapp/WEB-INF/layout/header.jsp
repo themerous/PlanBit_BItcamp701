@@ -3,15 +3,20 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<style>
+	#planner-button:hover {
+		color: white;
+	}
+</style>
 <div class="title-left" onclick="location.href='/'">BIT TRIP</div>
 <div class="title-center">
    <div class="title-menu">
       <ul>
          <li><a href="/bit/blog">Blog</a></li>
-         <li><a href="">Planner</a></li>
-         <li><a href="#">Map</a></li>
+         <li><a onclick="checkIfLoggedIn()">Planner</a></li>
+         <li><a href="/bit/map">Map</a></li>
          <li><a href="/tour/tourMain">Tour</a></li>
-         <li><a href="#">Info</a></li>
+         <li><a href="/bit/info">Info</a></li>
       </ul>
    </div>
 </div>
@@ -23,8 +28,8 @@
 	<c:if test="${sessionScope.loginok!=null }">
 	   <a id="logout" class="login-button">로그아웃</a>
 
-        <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>
-
+<%--        <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>--%>
+        <a class="header-pro-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'"><img src="${sessionScope.img}" style="position: relative; width: 100%; height: 100%; border-radius: 50%;"></a>
     </c:if>
 </div>
 <script type="text/javascript">
@@ -42,4 +47,12 @@ $(function(){
 		});	
 	});
 });
+function checkIfLoggedIn(e) {
+	if("${sessionScope.loginok}" == "yes") {
+		location.href = "/planner?id=${loginid}&provider=${role}";
+	}else {
+		alert("로그인을 해주세요");
+		location.href = "/bit/login";
+	}
+}
 </script>

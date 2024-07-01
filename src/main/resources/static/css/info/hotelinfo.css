@@ -1,0 +1,33 @@
+.card {
+    margin-bottom: 1rem;
+}
+img {
+    height: 250px;
+
+}
+.list-view {
+    .row {
+        > [class*='col-'] {
+            max-width: 100%;
+            flex: 0 0 100%;
+        }
+    }
+    .card {
+        @media (max-width: 450px) {
+            flex-direction: column;
+        }
+        flex-direction: row;
+        > .card-img-top {
+            width: 450px;
+        }
+
+        .card-body {
+            display: inline-block;
+        }
+    }
+}
+
+.card-img-top {
+    object-fit: cover;
+}
+

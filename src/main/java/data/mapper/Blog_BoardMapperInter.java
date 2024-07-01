@@ -28,7 +28,7 @@ public interface Blog_BoardMapperInter {
 
     public Blog_BoardDto getDataidx(int board_num);
 
-    public List<Blog_BoardDto> userDataID(String user_id);
+    public List<Blog_BoardDto> userDataID(int user_num);
 
     public void incrementlikes(int board_num);
 

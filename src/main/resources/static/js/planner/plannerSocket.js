@@ -10,21 +10,14 @@ function connect() {
     
     // WebSocket 메시지 수신 이벤트
   	socket.onmessage = function(event) {
-		console.log("oM");
-		const mo = JSON.parse(event.data);
-		console.log(mo.content);
-		// Summernote 내용 업데이트
-		document.getElementById("note").value = mo.content;
+		const data = event.data.split("|");
+		page.value = data[0]; // 내용물
+		page.setSelectionRange(data[1], data[1]); // 커서 위치정보 
     };
 
 
 	// 연결해제
     socket.onclose = function() {
-		console.log("disconnected")
+		console.log("disconnected");
     }
-    
-    // 에러시
-    socket.onerror = function() {
-		
-	}
 }

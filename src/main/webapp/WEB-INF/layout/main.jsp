@@ -4,6 +4,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
+
 <div class="main-home1">
     <div class="main-photo-box">
         <div class="main-title">START NOW</div>
@@ -114,6 +115,7 @@
 
         <a href="#" class="card1 education">
             <div class="overlay1"></div>
+
             <div class="circle1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8"/>
@@ -122,7 +124,12 @@
                 </svg>
             </div>
             <p>PLAN</p>
-            <div class="main-home4-box-box"><p>함께 여행계획을 작성해보기</p></div>
+            <div class="main-home4-box-box">
+                <p># 여행 장소를 찾아보기<br>
+                    # 함께 여행계획을 작성하기<br>
+                    # 플래너를 활용하기<br>
+                </p>
+            </div>
         </a>
 
         <a href="#" class="card1 credentialing">
@@ -134,7 +141,13 @@
                 </svg>
             </div>
             <p>TRIP</p>
-            <div class="main-home4-box-box"><p>계획표를 활용해 다양한 여행지를 탐방하기</p></div>
+            <div class="main-home4-box-box">
+                <p># 플래너를 활용하여 여행하기<br>
+                    # 다양한 장소를 체험하기<br>
+                    # 눈으로 기억하기<br>
+
+                </p>
+            </div>
         </a>
 
         <a href="#" class="card1 wallet">
@@ -146,7 +159,10 @@
             </div>
             <p>BLOG</p>
             <div class="main-home4-box-box">
-                <p>다녀온 나만의 특별한 여행지를 작성해보기</p>
+                <p># 나만의 블로그 작성하기<br>
+                    # 나만의 블로그 꾸미기<br>
+
+                </p>
             </div>
         </a>
 
@@ -158,7 +174,13 @@
                 </svg>
             </div>
             <p>SHARE</p>
-            <div class="main-home4-box-box"><p>많은 사람들에게 나만의 여행 블로그를 공유하기</p></div>
+            <div class="main-home4-box-box">
+                <p># 내 블로그 공유해보기<br>
+                    # 친구들의 기록 구경하기<br>
+                    # 공유하고 소통하기
+                </p>
+
+            </div>
         </a>
     </div>
 </div>
@@ -196,6 +218,7 @@
         </div>
     </div>
 </div>
+
 
 
 

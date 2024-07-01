@@ -22,18 +22,18 @@
     </script>
 </c:if>
 <div class="blog-post">
-
+    <form action="./insert" method="post" enctype="multipart/form-data">
     <div class="post-image">
-        <img  id="preview" src="/images/e2.jpg" alt="이미지 설명" style="display: block;">
+        <img  id="preview" src="/images/noimage2.png" alt="이미지 설명" style="display: block;">
     </div>
 
-    <div class="form-group">
-        <label for="upload" >메인사진</label>
+    <div class="form-group1">
+        <label for="upload" ></label>
         <input type="file" class="form-control-file" id="upload" name="upload" onchange="previewImage(event)">
         <img  class="preview-img" src="#" alt="미리보기 이미지" style="display: none;">
     </div>
     <h2 style="text-align: center;">글 작성</h2>
-    <form action="./insert" method="post" enctype="multipart/form-data">
+
         <input type="hidden" name="currentPage" value="${currentPage}">
 
         <!-- 제목 입력창 -->
@@ -56,8 +56,10 @@
         </div>
 
         <!-- 저장하기 버튼 -->
+        <div class="hh">
         <button type="submit" class="btn btn-primary">저장하기</button>
         <button type="button" class="btn btn-secondary" id="togglemap" onclick="toggleMapSection()">지도 추가하기</button>
+        </div>
 
         <div id="mapSection" style="display: none;">
             <div id="wrapper">

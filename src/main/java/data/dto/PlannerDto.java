@@ -16,9 +16,9 @@ import lombok.ToString;
 @ToString
 @Builder
 public class PlannerDto {
-	private int board_num;
-	private String board_creator;
-	private String board_title;
-	private String board_detail;
+	private int planner_num;
+	private String planner_creator;
+	private String planner_title;
+	private String planner_detail;
 	private Timestamp last_update;
 }

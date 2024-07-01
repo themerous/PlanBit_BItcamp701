@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import data.dto.UserDto;
 import data.service.BoardService;
 import data.service.UserService;
+import naver.ncloud.NcpObjectStorageService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -30,13 +32,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 	@Autowired
 	private UserService userService;
-
+	
 	@Autowired
 	private BoardService boardService;
 
 	@Autowired
 	private Blog_BoardService blogService;
-
+	
+	@Autowired
+	private NcpObjectStorageService ncpService;
+	
+	private String bucketName = "hyunsung-bucket";
+	private String folderName = "blog_photo";
 	//board mapping
 	//글 작성 writeform
 	//GetMapping	board/form
@@ -96,8 +103,10 @@ public class HomeController {
 
 	// 회원가입 insert 이벤트
 	@PostMapping("bit/insert")
-	public String insert(@ModelAttribute UserDto dto, HttpServletRequest request) 
+	public String insert(@ModelAttribute UserDto dto, HttpServletRequest request,@RequestParam("myfile") MultipartFile myfile) 
 	{
+		String photo = ncpService.uploadFile(bucketName, folderName, myfile);
+		dto.setPhoto(photo);
 		userService.insertUser(dto);
 		// 회원가입하고 로그인페이지로감
 		return "loginform/login";
@@ -122,6 +131,7 @@ public class HomeController {
 			session.setAttribute("loginok", "yes");
 			session.setAttribute("loginid", id);
 			session.setAttribute("role", "bit");
+			//session.setAttribute("img",photo);
 			System.out.println(session.getAttribute("role"));
 		}
 		else
@@ -154,14 +164,17 @@ public class HomeController {
 
 	//마이페이지
 	@GetMapping("bit/mypage")
-	public String mypage(@RequestParam String id,@RequestParam(defaultValue = "1") int currentPage, Model model) {
+	public String mypage(@RequestParam String id,@RequestParam(defaultValue = "1") int currentPage, Model model,HttpSession session) {
+		String user_id = (String) session.getAttribute("loginid");
 		UserDto dto = userService.databyid(id);
+		String provider = (String) session.getAttribute("role");
+		int user_num = userService.getUserNum(id, provider);
 		String name = dto.getName();
 		String photo = dto.getPhoto();
-		String user_id = dto.getId();
 		System.out.println(user_id);
-		List<Blog_BoardDto> userPost = blogService.userDataID(user_id);
+		List<Blog_BoardDto> userPost = blogService.userDataID(user_num);
 
+		model.addAttribute("user_num",user_num);
 		model.addAttribute("currentPage",currentPage);
 		model.addAttribute("user_id",user_id);
 		model.addAttribute("name", name);
@@ -169,5 +182,11 @@ public class HomeController {
 		model.addAttribute("userPost", userPost);
 
 		return "layout/mypage";
+	}
+
+	@GetMapping("bit/map")
+	public String map(){
+
+		return "layout/map";
 	}
 }

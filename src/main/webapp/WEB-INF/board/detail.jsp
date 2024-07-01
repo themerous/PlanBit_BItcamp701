@@ -33,11 +33,14 @@
     }
 </script>
 
-<header><a>BIT TRIP</a></header>
+<c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
+<header><a onclick="location.href='/'">BIT TRIP</a></header>
 <main>
     <div class="blog-post">
         <div class="post-image">
-            <img src="/images/e3.jpg" alt="이미지 설명">
+
+                <img src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'">
+
         </div>
         <div class="post-title">
             <h2>${dto.board_title}</h2>
@@ -47,7 +50,7 @@
             <i class="bi bi-person-circle"></i><p>${dto.user_id}</p>
             <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i><p id="likeCount">${like}</p> <p>조회수:&nbsp; ${dto.board_views}</p>
             <div class="post-info-btn">
-                <c:if test="${sessionScope.loginok!=null and sessionScope.loginid==dto.user_id}">
+                <c:if test="${sessionScope.loginok!=null and dto.user_num==user_num }">
                     <button type="button" class="post-info-up"
                             onclick="location.href='./updateform?board_num=${dto.board_num}&currentPage=${currentPage}'">수정
                     </button>

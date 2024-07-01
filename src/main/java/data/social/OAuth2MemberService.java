@@ -53,6 +53,7 @@ public class OAuth2MemberService extends DefaultOAuth2UserService {
 		//String providerId = memberInfo.getProviderId();
 		String name = memberInfo.getName();
 		String id = memberInfo.getId();
+		String photo = memberInfo.getPhoto();
 		//String role = "ROLE_USER"; //일반 유저
 		System.out.println(oAuth2User.getAttributes());
 		Optional<UserDto> findMember = memberMapper.findUser(id,provider);
@@ -65,6 +66,7 @@ public class OAuth2MemberService extends DefaultOAuth2UserService {
 					//.pw(encoder.encode("pw")) //encoder.encode
 					//.role(role) //뺌
 					.provider(provider)
+					.photo(photo)
 					//.providerId(providerId) //뻄
 					.build(); 
 			memberMapper.save(dto);
@@ -78,6 +80,7 @@ public class OAuth2MemberService extends DefaultOAuth2UserService {
         session.setAttribute("loginid",id);
         session.setAttribute("loginok", "yes");
         session.setAttribute("role", provider);
+		session.setAttribute("img",photo);
 		
 		//new PrincipalDetails(member, oAuth2User.getAttributes())
 		return new PrincipalDetails(dto, oAuth2User.getAttributes());

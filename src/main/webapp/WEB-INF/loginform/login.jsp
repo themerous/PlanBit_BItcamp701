@@ -40,38 +40,6 @@
 </script>
 <link rel="stylesheet" href="/css/loginlayout.css">
 <script src="/js/login/login.js"></script>
-<script type="text/javascript">
-	//이메일 인증번호 발송 함수
-	function sendNumber(data){
-		$.ajax({
-			url:"./mail",
-			type:"post",
-			dataType:"json",
-			data:{"mail" : $("#mail").val()},
-			success:function(data){
-				$("#Confirm").attr("value",data);
-				$("#mail").css("border-color","green");
-				$("#mail_msg").text("인증번호 발송").css("color","green");
-			}
-		});
-	}
-	//이메일 인증번호 인증 함수
-	function confirmNumber(){
-		let num1 = $("#number").val();
-		let num2 = $("#Confirm").val();
-
-		if(num1==num2)
-		{
-			$("#number").css("border-color","green");
-			$("#number_msg").text("인증되었습니다.").css("color","green");
-		}
-		else
-		{
-			$("#number").css("border-color","red");
-			$("#number_msg").text("번호가 다릅니다.").css("color","red");
-		}
-	}
-</script>
 <div class="container" id="container">
     <div class="form-container log-in-container" id="front">
     	<form id="loginon">
@@ -86,9 +54,6 @@
 				</a>
 				<a href="/oauth2/authorization/kakao">
 					<img src="/images/kakaobtn.png" alt="Kakao" style="width: 40px">
-				</a>
-				<a href="">
-					<img src="/images/applebtn.png" alt="Apple" style="width: 40px">
 				</a>
 			</div>
 	        <input type="email" name="id" id="id" placeholder="아이디을 입력하세요" />
@@ -106,9 +71,9 @@
    	<div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-right">
-	            <h1>HTML CSS Login Form</h1>
+	            <h1>BIT TRIP Login Form</h1>
 				<p>
-					Facebook login page Clone using HTML and CSS.
+					Log in to your BIT TRIP account.
 	        	</p>
             </div>
         </div>
