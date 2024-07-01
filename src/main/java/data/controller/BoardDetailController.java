@@ -43,22 +43,39 @@ public class BoardDetailController {
     }
     
     @GetMapping("/detail")
-    public String detail(@RequestParam int board_num,
-                         @RequestParam int currentPage,
-                         Model model,
-                         HttpSession session) {
+    public String detail(
+            @RequestParam int board_num,
+            @RequestParam int currentPage,
+            Model model,
+            HttpSession session
+    ) {
+        String loginId = (String) session.getAttribute("loginok");
+        if (loginId != null) {
 
+        }
+            // 로그인 아이디 값 확인
+            String id = (String) session.getAttribute("loginid");
+            System.out.println(id);
+           
+            // 로그인 provider 확인
+            String provider = (String) session.getAttribute("role");
+            System.out.println(provider);
 
+            int user_num = userService.getUserNum(id, provider);
+
+        System.out.println("확인용"+user_num);
         // 조회수 증가
         boardService.updateReadcount(board_num);
 
         // num 에 해당하는 글 가져오기
         Blog_BoardDto dto = boardService.getData(board_num);
+        
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
         UserDto memberDto = userService.databyid(dto.getUser_id());
-        int user_num = userService.getUserNum((String) session.getAttribute("loginid"), (String) session.getAttribute("role"));
+
         String profile_photo = memberDto.getPhoto();
+        String provider2 = memberDto.getProvider();
         System.out.println(memberDto);
 
         // 지도 데이터 가져오기
@@ -79,9 +96,11 @@ public class BoardDetailController {
             model.addAttribute("placeLatitudes", placeLatitudes);
             model.addAttribute("placeLongitudes", placeLongitudes);
         }
+
         model.addAttribute("user_num",user_num);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
+        model.addAttribute("provider2",provider2);
         model.addAttribute("profile_photo",profile_photo);
         model.addAttribute("currentPage", currentPage);
 
