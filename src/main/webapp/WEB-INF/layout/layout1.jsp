@@ -228,7 +228,7 @@
 	        .main-home2 {
 	            width: 100%;
 	            height: 800px;
-	            background-image: url("/images/tri3.png");
+	            background-image: url("/images/home222.png");
 	            background-size: cover;
 	        }
 
@@ -290,7 +290,7 @@
 	        .main-home4 {
 	            width: 100%;
 	            height: 800px;
-	            background-color: #eeeeee;
+	            background-color: #F8FDFF;
 				display: flex;
 				justify-content: center;
 				align-items: center;
