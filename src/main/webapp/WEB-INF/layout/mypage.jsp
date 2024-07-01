@@ -92,11 +92,19 @@
         align-items: center;
     }
     .profile-img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 10px;
+        width: 35px; /* 프로필 사진의 너비 */
+        height: 35px; /* 프로필 사진의 높이 */
+        border-radius: 50%; /* 동그라미 모양으로 만드는 속성 */
+        object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
+        margin-right: 10px; /* 프로필 사진과 버튼 사이의 간격 */
+        border: 1px solid #51e3d4;
+    }
+
+    .profile-img2 {
+        width: 30px; /* 프로필 사진의 너비 */
+        height: 30px; /* 프로필 사진의 높이 */
+        object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
+
     }
     .images-heart {
         display: flex;
@@ -122,6 +130,7 @@
         float: left;
         margin-right: 10px;
         margin-top: 10px;
+        border: 2px solid #51e3d4;
     }
     .user-info {
         overflow: hidden;
@@ -251,7 +260,7 @@
                             <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${post.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             <div class="images-heart">
                                 <img src="../images/e2.jpg" alt="" class="profile-img">
-                                <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
+                                <img src="../images/hjhj.png" alt="" class="profile-img2">
                             </div>
                         </div>
                     </div>
