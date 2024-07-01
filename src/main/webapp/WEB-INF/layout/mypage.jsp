@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="stpath"
+	value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"></c:set>
 <style>
     body * {
         font-family: "IBM Plex Sans KR", sans-serif;
@@ -195,47 +196,52 @@
 
 <!-- Page header with logo and tagline-->
 <div class="g" id="blog-title-photo">
-    <h1 class="fw-bolder">Welcome My Page!</h1>
+	<h1 class="fw-bolder">Welcome My Page!</h1>
 </div>
 
 <div class="container">
-    <!-- Side widgets-->
-    <div class="row2">
-        <!-- Search widget-->
-        <div class="card mb-4">
-            <div class="card-header">내정보</div>
-            <div class="card-body">
-                <img src="../images/p1.jpg" class="main-profile-img img-fluid mb-3" alt="사용자 사진">
-                <div class="user-info d-flex justify-content-between">
-                    <h5 class="card-title">이름 : ${name}</h5>
-                    <h5 class="card-title">이메일 : ${user_id}</h5>
-                    <h5 class="card-title">게시글 : ${userPost.size()}개</h5>
-                </div>
-            </div>
-        </div>
-        <!-- Categories widget-->
-        <div class="card mb-4">
-            <div class="card-header">플래너</div>
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div class="flex-fill">
-                        <p class="mb-0">서울 여행 플래너</p>
-                    </div>
-                    <div>
-                        <p class="mb-0">3/4</p>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div class="flex-fill">
-                        <p class="mb-0">대구 여행 플래너</p>
-                    </div>
-                    <div>
-                        <p class="mb-0">2/4</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Side widgets-->
+	<div class="row2">
+		<!-- Search widget-->
+		<div class="card mb-4">
+			<div class="card-header">내정보</div>
+			<div class="card-body">
+				<c:if test="${sessionScope.role=='bit' }">
+					<img src="${stpath}/${photo}" class="main-profile-img img-fluid mb-3">
+				</c:if>
+				<c:if test="${sessionScope.role!='bit' }">
+					<img src="${photo}" class="main-profile-img img-fluid mb-3">
+				</c:if>
+				<div class="user-info d-flex justify-content-between">
+					<h5 class="card-title">이름 : ${name}</h5>
+					<h5 class="card-title">이메일 : ${user_id}</h5>
+					<h5 class="card-title">게시글 : ${userPost.size()}개</h5>
+				</div>
+			</div>
+		</div>
+		<!-- Categories widget-->
+		<div class="card mb-4">
+			<div class="card-header">플래너</div>
+			<div class="card-body">
+				<div class="d-flex justify-content-between">
+					<div class="flex-fill">
+						<p class="mb-0">서울 여행 플래너</p>
+					</div>
+					<div>
+						<p class="mb-0">3/4</p>
+					</div>
+				</div>
+				<div class="d-flex justify-content-between">
+					<div class="flex-fill">
+						<p class="mb-0">대구 여행 플래너</p>
+					</div>
+					<div>
+						<p class="mb-0">2/4</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 

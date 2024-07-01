@@ -2,12 +2,16 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<% String value = (String) session.getAttribute("loginok"); %>
+<c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"></c:set>
 <style>
 	#planner-button:hover {
 		color: white;
 	}
 </style>
+<script>
+	let variable = "<%=value %>";
+</script>
 <div class="title-left" onclick="location.href='/'">BIT TRIP</div>
 <div class="title-center">
    <div class="title-menu">
@@ -27,9 +31,13 @@
 	</c:if>
 	<c:if test="${sessionScope.loginok!=null }">
 	   <a id="logout" class="login-button">로그아웃</a>
-
 <%--        <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>--%>
-        <a class="header-pro-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'"><img src="${sessionScope.img}" style="position: relative; width: 100%; height: 100%; border-radius: 50%;"></a>
+		<c:if test="${sessionScope.role=='bit' }">
+        	<a class="header-pro-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'"><img src="${stpath}/${sessionScope.img}" style="position: relative; width: 100%; height: 100%; border-radius: 50%;"></a>
+        </c:if>
+        <c:if test="${sessionScope.role!='bit' }">
+        	<a class="header-pro-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'"><img src="${sessionScope.img}" style="position: relative; width: 100%; height: 100%; border-radius: 50%;"></a>
+        </c:if>
     </c:if>
 </div>
 <script type="text/javascript">

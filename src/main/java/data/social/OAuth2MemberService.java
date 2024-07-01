@@ -1,10 +1,12 @@
 package data.social;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -12,8 +14,11 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import data.dto.Blog_BoardDto;
 import data.dto.UserDto;
 import data.mapper.MemberMapper;
+import data.service.Blog_BoardService;
+import data.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -22,6 +27,10 @@ public class OAuth2MemberService extends DefaultOAuth2UserService {
 	private final BCryptPasswordEncoder encoder;
 	private final MemberMapper memberMapper;
 	private final HttpSession session;
+	@Autowired
+	private Blog_BoardService blogService;
+	@Autowired
+	private UserService userService;
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
