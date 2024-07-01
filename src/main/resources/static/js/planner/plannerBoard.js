@@ -26,8 +26,15 @@ function getPlannerList() {
 				</div>
 				<div class="planner-choice custom-font-1" id="planner-card-back">
 					<p style="width: 50px; display: inline-block; margin-right: 10px">제  목: </p><input type="text" id="planner_title" style="width: 190px">
-					<p style="width: 50px; display: inline-block; margin-right: 10px">참여자: </p><input type="text" id="personToAdd">
-					<i class="bi bi-plus-circle" onclick="addPerson()" style="font-size: 16px; margin: 0; line-height: 20px;"></i>
+					<div class="input-group>
+						<span class="input-group-text" id="basic-addon1">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+								<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+								<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+							</svg>	
+						</span>
+						<input type="text" class="form-control" placeholder="추가인원 입력" aria-describedby="basic-addon1">
+					</div>
 					<p id="participent" style="text-align: center; width: 260px;"></p>
 				</div>
 			`;
