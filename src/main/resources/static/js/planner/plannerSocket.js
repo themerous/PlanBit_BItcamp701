@@ -1,7 +1,7 @@
 let socket;
 
 function connect() {     
-    socket = new WebSocket('ws://' + window.location.host + '/plan/' + planner_num);
+    socket = new WebSocket('ws://' + window.location.host + '/plan/1');
 
 	// 연결성공
 	socket.onopen = function() {

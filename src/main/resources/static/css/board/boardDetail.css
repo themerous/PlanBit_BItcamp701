@@ -36,20 +36,23 @@ main {
 	flex-direction: column; /* 세로 정렬 */
 	height: auto;
 	margin: 30px auto;
-	border: 1px solid black;
+
 }
 
 .post-image {
 	width: 100%; /* 이미지 너비를 100%로 설정 */
 	height: 350px; /* 이미지 높이 설정 */
 	overflow: hidden; /* 넘치는 이미지 숨김 */
+
 }
 
 .post-image img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+	 /* 이미지 비율 유지하며 채우기 */
 	border-radius: 8px;
+	object-fit: cover;
+
 }
 
 .post-title {
@@ -100,11 +103,12 @@ main {
 
 .post-content {
 	padding: 20px;
-	border: 1px solid darkgreen;
+	border: 1px solid #eeeeee;
 	border-bottom: 4px solid #51e3d4;
 	margin: 30px auto;
 	width: 80%;
-	height: 800px;
+	min-height: 800px;
+	border-radius: 4px;
 }
 
 .post-content h2 {
@@ -313,6 +317,10 @@ main {
 		filter: drop-shadow(0px 4px 4px #d2dae5);
 		width: 70px;
 		height: 70px;
+		background-image: url("/images/up3.png");
+		background-size: 60% auto; /* 너비를 50%로, 높이는 자동으로 조정 */
+		background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+		background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
 	}
 
 	.right-btn2 {
@@ -328,19 +336,21 @@ main {
 		filter: drop-shadow(0px 4px 4px #d2dae5);
 		width: 70px;
 		height: 70px;
-		font-size: 25px;
-		color: #FF9EAA;
+
+
+		background-image: url("/images/hjhj.png");
+		background-size: 65% auto; /* 너비를 50%로, 높이는 자동으로 조정 */
+		background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+		background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
 	}
 
 	.right-btn1:hover {
-		background-color: #51e3d4;
-		color: white;
+		transform: scale(0.9, 0.9);
 		border-radius: 8px;
 	}
 
 	.right-btn2:hover {
-		background-color: #FF9EAA;
-		color: white;
+		transform: scale(0.9, 0.9);
 		border-radius: 8px;
 	}
 

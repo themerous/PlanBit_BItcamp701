@@ -17,7 +17,7 @@
     let boardNum = ${dto.board_num};
     let sessionLoginId = '${sessionScope.loginid}';
     let sessionLoginOk = '${sessionScope.loginok}';
-    let user_id = '${dto.user_id}';
+    let user_num = '${dto.user_num}';
 </script>
 <script src="/js/board/detail.js"></script>
 
@@ -113,14 +113,9 @@
 
 </main>
 
-<button class="right-btn1"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin=
-                                        "round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2=
-        "5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-    <line x1="12" y1="19" x2="12" y2="5"></line>
-    <polyline points="5 12 12 5 19 12"></polyline>
+<button class="right-btn1" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
 </button>
-<button class="right-btn2" id="likeBtn" type="button"><i class="bi bi-suit-heart-fill"></i></button>
+<button class="right-btn2" id="likeBtn" type="button"></button>
 
 <!-- 모달 구조 -->
 <div id="mapModal" class="modal">
@@ -167,11 +162,16 @@
         text-decoration: none;
         cursor: pointer;
     }
-    
     .dd {
     	border-radius: 50%;
     	border: 1px solid black;
     	width: 35px;
     	height: 35px;
+    }
+    .profile-img2 {
+        width: 20px; /* 프로필 사진의 너비 */
+        height: 20px; /* 프로필 사진의 높이 */
+        object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
+        margin-top: 5px; /* 원하는 만큼 아래로 내리기 */
     }
 </style>

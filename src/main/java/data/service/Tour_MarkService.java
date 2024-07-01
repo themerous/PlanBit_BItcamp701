@@ -12,8 +12,8 @@ public class Tour_MarkService {
     @Autowired
     Tour_MarkMapperInter tour_MarkMapperInter;
 
-    public List<Tour_MarkDto> findByMark(String id) {
-        return tour_MarkMapperInter.findByMark(id);
+    public List<Tour_MarkDto> findByMark(String id, int provider) {
+        return tour_MarkMapperInter.findByMark(id, provider);
     }
 
     public int checkBySerialNum(String id, int user_num, String serialNum) {

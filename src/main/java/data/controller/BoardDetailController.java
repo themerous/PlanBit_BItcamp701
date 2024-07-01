@@ -10,9 +10,7 @@ import data.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -35,6 +33,15 @@ public class BoardDetailController {
     private String bucketName = "hyunsung-bucket";
     private String folderName = "blog_photo";
 
+    @ResponseBody
+    @GetMapping("/detail/likes")
+    public void detailLikeCount(
+    		@RequestParam int board_num) {
+    	// 1. 세션에 저장된 정보로 user_num값 가져오기
+    	
+    	// 2. user_num과 board_num값을 이용하여 likeCount 증가시키기
+    }
+    
     @GetMapping("/detail")
     public String detail(
             @RequestParam int board_num,
@@ -57,11 +64,6 @@ public class BoardDetailController {
             int user_num = userService.getUserNum(id, provider);
 
         System.out.println(user_num);
-
-
-
-
-
         // 조회수 증가
         boardService.updateReadcount(board_num);
 

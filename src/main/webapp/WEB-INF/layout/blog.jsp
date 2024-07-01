@@ -127,14 +127,23 @@
             justify-content: space-between; /* 아이콘과 링크를 양쪽 끝에 배치 */
             align-items: center; /* 수직 중앙 정렬 */
 
+
         }
 
         .profile-img {
-            width: 30px; /* 프로필 사진의 너비 */
-            height: 30px; /* 프로필 사진의 높이 */
+            width: 35px; /* 프로필 사진의 너비 */
+            height: 35px; /* 프로필 사진의 높이 */
             border-radius: 50%; /* 동그라미 모양으로 만드는 속성 */
             object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
             margin-right: 10px; /* 프로필 사진과 버튼 사이의 간격 */
+            border: 1px solid #51e3d4;
+        }
+
+        .profile-img2 {
+            width: 30px; /* 프로필 사진의 너비 */
+            height: 30px; /* 프로필 사진의 높이 */
+            object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
+
         }
 
         .images-heart {
@@ -142,9 +151,6 @@
             align-items: center; /* 세로 중앙 정렬 */
         }
 
-        .bottom-box i{
-            font-size: 30px;
-        }
 
         .medal {
             position: absolute;
@@ -154,8 +160,34 @@
             left: -50px;
         }
 
+        /* 북마크 */
+        .images-bookmark {
+            position: absolute;
+            right: 5px;
+            top: -5px;
+            font-size: 50px;
+
+
+        }
+
 
 </style>
+<script>
+    let bookmarkedBoardIds = [];
+    window.onload = function() {
+        if(${sessionScope.loginok != null}) {
+            getBookmarkData();
+        }
+    }
+    function getBookmarkData() {
+        $.get("/bit/blog/bookmark", function(data) {
+            bookmarkedBoardIds = Object.values(data);
+            console.log(bookmarkedBoardIds);
+            updateBookmarkIcons(); // 북마크 아이콘 상태 업데이트
+        }, "json");
+    }
+
+</script>
 <!-- Page header with logo and tagline-->
 <div class="g" id="blog-title-photo">
             <h1 class="fw-bolder">Welcome to Blog Home!</h1>
@@ -180,7 +212,7 @@
                             <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             <div class="images-heart">
                                 <img src="../images/e2.jpg" alt="" class="profile-img">
-                                <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
+                                <img src="../images/hjhj.png" alt="" class="profile-img2">
                             </div>
                         </div>
                     </div>
@@ -194,6 +226,7 @@
                 <c:forEach var="dto" items="${boardList}">
                 <div class="col-lg-6">
                     <div class="card mb-4" style="width: 400px;">
+                        <div class="images-bookmark" data-board-num="${dto.board_num}"></div>
                         <c:if test="${dto.photo!='no' and dto.photo!=null}">
                             <a onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${stpath}/${dto.photo}" onerror="this.src='/images/e3.jpg'" ></a>
                         </c:if>
@@ -211,21 +244,12 @@
                             <div class="bottom-box">
 
                                 <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
-                                <div class="images-bookmark">
-                                    <script>
-                                        // JavaScript로 북마크 상태 확인 및 아이콘 변경
-                                        var bookmarkedBoardIds = ${bookmarkedBoardIds}; // JSP에서 받은 북마크된 글의 ID 목록
 
-                                        if (bookmarkedBoardIds.includes(${dto.board_num})) {
-                                            document.write('<i class="bi bi-bookmark-fill" style="color: #FF9EAA;" onclick="delmark(${dto.board_num})"></i>');
-                                        } else {
-                                            document.write('<i class="bi bi-bookmark" style="color: #FF9EAA;" onclick="toggleBookmark(${dto.board_num})"></i>');
-                                        }
-                                    </script>
-                                </div>
+
                                 <div class="images-heart">
                                     <img src="../images/e2.jpg" alt="" class="profile-img">
-                                    <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
+
+                                    <img src="../images/hjhj.png" alt="" class="profile-img2">
                                 </div>
                             </div>
                         </div>
@@ -277,6 +301,17 @@
 </div>
 
 <script>
+    function updateBookmarkIcons() {
+        document.querySelectorAll('.images-bookmark').forEach(element => {
+            const board_num = element.dataset.boardNum;
+            if (bookmarkedBoardIds.includes(parseInt(board_num))) {
+                element.innerHTML = '<i class="bi bi-star-fill" style="color: #fce61b;"  onclick="delmark(' + board_num + ')"></i>';
+            } else {
+                element.innerHTML = '<i class="bi bi-star" style="color: #fce61b;" onclick="toggleBookmark(' + board_num + ')"></i>';
+            }
+        });
+    }
+
     function toggleBookmark(board_num) {
         if (!board_num) {
             alert("유효하지 않은 board_num 값입니다.");
@@ -289,9 +324,9 @@
             }
         })
             .then(response => {
-                console.log("Response status:", response.status); // 응답 상태 코드 출력
+                console.log("Response status:", response.status);
                 if (response.ok) {
-                    location.reload(); // 페이지를 새로고침하여 아이콘 상태를 갱신
+                    getBookmarkData(); // 아이콘 상태를 갱신
                 } else {
                     alert("오류가 발생했습니다. 다시 시도해 주세요.");
                 }
@@ -300,23 +335,23 @@
                 console.error("Error:", error);
             });
     }
+
     function delmark(board_num) {
         if (!board_num) {
             alert("유효하지 않은 board_num 값입니다.");
             return;
         }
-
         fetch(`/bit/delmark?board_num=\${board_num}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'same-origin' // 세션 처리를 위해 크레덴셜 포함
+            credentials: 'same-origin'
         })
             .then(response => {
-                console.log("응답 상태:", response.status); // 응답 상태 확인
+                console.log("응답 상태:", response.status);
                 if (response.ok) {
-                    location.reload(); // 북마크 상태 업데이트를 위해 페이지 새로고침
+                    getBookmarkData(); // 아이콘 상태를 갱신
                 } else {
                     alert("오류가 발생했습니다. 다시 시도해 주세요.");
                 }
@@ -326,8 +361,4 @@
                 alert("오류가 발생했습니다. 다시 시도해 주세요.");
             });
     }
-
 </script>
-
-
-

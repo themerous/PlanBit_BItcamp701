@@ -13,7 +13,7 @@ public class Blog_LikeService {
     private Blog_LikeMapperInter blogLikeMapper;
 
     public void addOrUpdateLike(Blog_LikeDto likeDto) {
-        Blog_LikeDto existingLike = blogLikeMapper.selectUserLike(likeDto.getBoard_num(), likeDto.getUser_id());
+        Blog_LikeDto existingLike = blogLikeMapper.selectUserLike(likeDto.getBoard_num(), likeDto.getUser_num());
         if (existingLike == null) {
             likeDto.setLike_count(1);
             blogLikeMapper.insertLike(likeDto);
@@ -28,8 +28,8 @@ public class Blog_LikeService {
         return blogLikeMapper.selectLikeCount(board_num);
     }
 
-    public Blog_LikeDto getUserLike(int board_num, String user_id) {
-        return blogLikeMapper.selectUserLike(board_num, user_id);
+    public Blog_LikeDto getUserLike(int board_num, int user_num) {
+        return blogLikeMapper.selectUserLike(board_num, user_num);
     }
 
 }

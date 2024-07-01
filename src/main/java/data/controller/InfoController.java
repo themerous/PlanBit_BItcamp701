@@ -18,4 +18,8 @@ public class InfoController {
     public String infotransport(){
         return "info/transportinfo";
     }
+    @GetMapping("info/supportinfo")
+    public String infosupport(){
+        return "info/supportinfo";
+    }
 }
