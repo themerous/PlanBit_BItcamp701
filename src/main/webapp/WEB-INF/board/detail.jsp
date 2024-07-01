@@ -49,14 +49,16 @@
             <i class="bi bi-calendar-check"></i><p><fmt:formatDate value="${dto.board_writeday}" pattern="yyyy.MM.dd HH:mm"/></p>
             <c:if test="${sessionScope.role=='bit' }">
 					<img src="${stpath}/${profile_photo}" class="dd">
-				</c:if>
-				<c:if test="${sessionScope.role!='bit' }">
-					<img src="${profile_photo}" class="dd">
-				</c:if>
+            </c:if>
+            <c:if test="${sessionScope.role!='bit' }">
+                <img src="${profile_photo}" class="dd">
+            </c:if>
             <p>${dto.user_id}</p>
             <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i><p id="likeCount">${like}</p> <p>조회수:&nbsp; ${dto.board_views}</p>
             <div class="post-info-btn">
-                <c:if test="${sessionScope.loginok!=null and dto.user_num==user_num }">
+                <p>${user_num}</p>
+                <c:if test="${sessionScope.loginok != null and dto.user_num == user_num}">
+
                     <button type="button" class="post-info-up"
                             onclick="location.href='./updateform?board_num=${dto.board_num}&currentPage=${currentPage}'">수정
                     </button>

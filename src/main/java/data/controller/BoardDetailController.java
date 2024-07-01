@@ -43,12 +43,11 @@ public class BoardDetailController {
     }
     
     @GetMapping("/detail")
-    public String detail(
-            @RequestParam int board_num,
-            @RequestParam int currentPage,
-            Model model,
-            HttpSession session
-    ) {
+    public String detail(@RequestParam int board_num,
+                         @RequestParam int currentPage,
+                         Model model,
+                         HttpSession session) {
+
 
         // 조회수 증가
         boardService.updateReadcount(board_num);
