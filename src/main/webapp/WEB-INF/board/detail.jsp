@@ -107,14 +107,9 @@
 
 </main>
 
-<button class="right-btn1"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin=
-                                        "round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2=
-        "5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-    <line x1="12" y1="19" x2="12" y2="5"></line>
-    <polyline points="5 12 12 5 19 12"></polyline>
+<button class="right-btn1" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
 </button>
-<button class="right-btn2" id="likeBtn" type="button"><i class="bi bi-suit-heart-fill"></i></button>
+<button class="right-btn2" id="likeBtn" type="button"></button>
 
 <!-- 모달 구조 -->
 <div id="mapModal" class="modal">
