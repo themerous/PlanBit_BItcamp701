@@ -38,6 +38,7 @@ public class BoardListController {
     @GetMapping("/blog")
     public String boardList(Model model, @RequestParam(defaultValue = "1") int currentPage, HttpSession session) {
         List<Blog_BoardDto> boardList = boardService.gettestboardlist();
+
         Blog_BoardDto topViewedBoard = boardService.getTopViewedBoard();
         model.addAttribute("topViewedBoard", topViewedBoard);
         model.addAttribute("currentPage",currentPage);
