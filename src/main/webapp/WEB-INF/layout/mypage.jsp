@@ -177,6 +177,11 @@
         padding-left: 20px;
         font-size: 20px;
     }
+    #row3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 </style>
 
 <!-- Page header with logo and tagline-->
