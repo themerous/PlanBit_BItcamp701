@@ -148,6 +148,8 @@ public class HomeController {
 	public void logout(HttpSession session)
 	{
 		session.removeAttribute("loginok");
+		session.removeAttribute("loginid");
+		session.removeAttribute("role");
 	}
 	
 	//아이디 중복확인

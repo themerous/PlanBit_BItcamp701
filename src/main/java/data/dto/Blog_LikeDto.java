@@ -12,7 +12,7 @@ import org.apache.ibatis.type.Alias;
 @Builder
 @Alias("Blog_LikeDto")
 public class Blog_LikeDto {
-    private String user_id;
+    private int user_num;
     private int board_num;
     private int board_like;
     private int like_count;
