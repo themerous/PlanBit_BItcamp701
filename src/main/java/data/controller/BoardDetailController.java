@@ -57,7 +57,7 @@ public class BoardDetailController {
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
         UserDto memberDto = userService.databyid(dto.getUser_id());
-
+        int user_num = userService.getUserNum((String) session.getAttribute("loginid"), (String) session.getAttribute("role"));
         String profile_photo = memberDto.getPhoto();
         System.out.println(memberDto);
 
@@ -79,7 +79,7 @@ public class BoardDetailController {
             model.addAttribute("placeLatitudes", placeLatitudes);
             model.addAttribute("placeLongitudes", placeLongitudes);
         }
-
+        model.addAttribute("user_num",user_num);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
         model.addAttribute("profile_photo",profile_photo);
