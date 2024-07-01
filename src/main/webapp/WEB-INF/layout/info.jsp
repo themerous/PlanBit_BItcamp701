@@ -10,7 +10,7 @@
             <div class="card-column">
                 <div class="card-details">
                     <div class="card-icons">
-                        <img class="light-icon" src="/images/hotel.jpeg" alt="icon" />
+                        <img class="light-icon" src="/images/hotel33.png" alt="icon" />
                     </div>
                     <h3><a href="<c:url value="/info/hinfo"/>">숙소 예약 사이트</a></h3>
                     <p>전국 최저가 사이트 비교하기</p>
@@ -20,9 +20,9 @@
             <div class="card-column">
                 <div class="card-details">
                     <div class="card-icons">
-                        <img class="light-icon" src="/images/bus.jpeg" alt="icon" />
+                        <img class="light-icon" src="/images/bus33.png" alt="icon" />
                     </div>
-                    <h3><a href="<c:url value="/info/tinfo"/>">교통</a></h3>
+                    <h3><a href="<c:url value="/info/tinfo"/>">교통 예약 사이트</a></h3>
                     <p>여행 목적지 까지 교통편 티켓 예매하기</p>
                     <a class="read-more-btn" href="<c:url value="/info/tinfo"/>"><i class="bi bi-chevron-double-right"></i></a>
                 </div>
@@ -30,11 +30,11 @@
             <div class="card-column">
                 <div class="card-details">
                     <div class="card-icons">
-                        <img class="light-icon" src="/images/ticket.jpeg" alt="icon" />
+                        <img class="light-icon" src="/images/coupon33.png" alt="icon" />
                     </div>
-                    <h3><a href="https://www.fiverr.com/aliali44">레저 및 티켓</a></h3>
-                    <p>레저 티켓 예매하기</p>
-                    <a class="read-more-btn" href=""><i class="bi bi-chevron-double-right"></i></a>
+                    <h3><a href="<c:url value="/info/supportinfo"/>">여행 필수품 사이트</a></h3>
+                    <p>여행에 필요한 준비물 사이트</p>
+                    <a class="read-more-btn" href="<c:url value="/info/supportinfo"/>"><i class="bi bi-chevron-double-right"></i></a>
                 </div>
             </div>
         </div>
