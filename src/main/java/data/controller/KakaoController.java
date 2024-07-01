@@ -20,7 +20,6 @@ public class KakaoController {
 	@GetMapping
 	public String getAccessToken(@RequestParam("code") String code) 
 	{
-		System.out.println("code = " + code);
 
 		// 1. header 생성
 		HttpHeaders httpHeaders = new HttpHeaders(); //import 다시 확인!!!!
@@ -44,8 +43,6 @@ public class KakaoController {
 				httpEntity,
 				Object.class
 				);
-
-		System.out.println("response = " + response);
 
 		return "/";
 	}

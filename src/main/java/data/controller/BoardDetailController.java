@@ -60,7 +60,7 @@ public class BoardDetailController {
         UserDto memberDto = userService.databyid(dto.getUser_id());
         String profile_photo = memberDto.getPhoto();
         String provider2 = memberDto.getProvider();
-        System.out.println(memberDto);
+
 
         // 지도 데이터 가져오기
         int map_num = board_num;
@@ -72,7 +72,7 @@ public class BoardDetailController {
             String placeAddress = mdto.getPlaceAddress();
             String placeLatitudes = mdto.getPlaceLatitudes();
             String placeLongitudes = mdto.getPlaceLongitudes();
-            System.out.println(placeNames);
+
 
             // 지도 데이터를 모델에 추가
             model.addAttribute("placeNames", placeNames);

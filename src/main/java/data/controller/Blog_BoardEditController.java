@@ -93,7 +93,7 @@ public class Blog_BoardEditController {
 
         // 추가된 게시물의 시퀀스 번호 확인
         int board_num = dto.getBoard_num();
-        System.out.println("board_num=" + board_num);
+
 
         // 장소 정보 저장 (쉼표로 구분된 문자열 그대로 저장)
         if (placeNamesStr != null && placeAddressStr != null && placeLatitudesStr != null && placeLongitudesStr != null) {

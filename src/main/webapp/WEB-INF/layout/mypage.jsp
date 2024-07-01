@@ -176,6 +176,7 @@
     /*selectButton css*/
     .selectButtonAbsoluteSize {
         width: 100%;
+		height: 6vh;
     }
 
     .selectButton {
@@ -206,6 +207,18 @@
         padding-left: 20px;
         font-size: 20px;
     }
+
+	.myPageTourFav{
+		border: none;
+		background-color: transparent;
+		width: 80px;
+		height: 80px;
+		font-size: 50px;
+	}
+	.myPageTourFav:hover {
+		background-color: lightgray;
+	}
+
     #row3 {
         display: flex;
         flex-direction: column;

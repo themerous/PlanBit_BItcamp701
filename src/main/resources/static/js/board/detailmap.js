@@ -10,7 +10,7 @@ $(function () {
     var addressesArray = placeAddresses.split(',');
     var latitudesArray = placeLatitudes.split(',');
     var longitudesArray = placeLongitudes.split(',');
-    console.log(addressesArray);
+
     var positions = [];
     for (var i = 0; i < namesArray.length; i++) {
         positions.push({
@@ -93,7 +93,7 @@ $(function () {
         var lng = $(this).data('lng');
         var name = $(this).data('name');
         var address = $(this).data('address');
-        console.log(address);
+
 
         // 모달 열기
         modal.style.display = "block";

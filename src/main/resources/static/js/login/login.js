@@ -10,7 +10,7 @@ $(function() {
 			url: "./loginon",
 			data: fdata,
 			success: function(data) {
-				console.log("hello");
+
 				if (data.status == 'success') {
 					//로그인 성공시
 					location.href = "/";
