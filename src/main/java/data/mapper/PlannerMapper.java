@@ -1,5 +1,7 @@
 package data.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -23,6 +25,13 @@ public interface PlannerMapper {
 	public PageDto getPage(int page_num, int planner_num);
 	@Select("select * from planner_board where planner_num = #{planner_num}")
 	public PlannerDto getPlanner(int planner_num);
+	@Select("""
+				SELECT pb.*
+				FROM planner_board pb
+				JOIN planner_participent pp ON pb.planner_num = pp.planner_num
+				WHERE pp.participent = #{user_num}
+			""")
+	public List<PlannerDto> getUserPlanner(int user_num);
 	@Select("select page_date from planner_page where planner_num = #{planner_num} and page_num = #{page_num}")
 	public String pageLastUpdate(int page_num, int planner_num);
 	
@@ -32,6 +41,8 @@ public interface PlannerMapper {
 				where planner_num=#{planner_num} and page_num=#{page_num}
 			""")
 	public void updatePage(int planner_num, int page_num, String content);
+	@Update("update planner_board set last_update = now() where planner_num = #{planner_num}")
+	public void updatePlanner(int planner_num);
 	
 	// Delete
 	@Delete("delete from planner_page where page_num = #{page_num} and planner_num = #{planner_num}")
