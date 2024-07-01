@@ -137,7 +137,7 @@ function getMapInitial() {
             console.log("일단 됨");
             let s = '';
             for (let its of data.response.body.items.item) {
-                let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
+                let photo = its.firstimage == "" ? "/images/noimage1.png" : its.firstimage;
                 s += `<div class="scrollList">`;
                 s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
                 s += `<div class="scrollListR">`;
@@ -317,7 +317,7 @@ function getMap() {
         dataType: "json",
         success: function (data) {
             for (let its of data.response.body.items.item) {
-                let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
+                let photo = its.firstimage == "" ? "/images/noimage1.png" : its.firstimage;
                 s += `<div class="scrollList">`;
                 s += `<img class="api-pic" src="` + photo + `" placeholder="img"/>`;
                 s += `<div class="scrollListR">`;
