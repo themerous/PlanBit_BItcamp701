@@ -25,8 +25,10 @@ public class Blog_BoardEditController {
     @Autowired
     private Blog_MapService mapService;
 
-    private String bucketName="bitcamp-bucket-56";
-    private String folderName="photocommon";
+
+    private String bucketName = "hyunsung-bucket";
+    private String folderName = "blog_photo";
+
 
     @Autowired
     private NcpObjectStorageService storageService;
@@ -68,7 +70,7 @@ public class Blog_BoardEditController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute Blog_BoardDto dto,
-                         @RequestParam(value = "upload",required = false) MultipartFile upload,
+                         @RequestPart("upload")  MultipartFile upload,
                          @RequestParam int currentPage,
                          @RequestParam(value = "placeNames", required = false) String placeNamesStr,
                          @RequestParam(value = "placeAddress", required = false) String placeAddressStr,
@@ -77,22 +79,7 @@ public class Blog_BoardEditController {
                          Model model,
                          HttpServletRequest request)
     {
-//		//업로드 경로
-//		String saveFolder=request.getSession().getServletContext().getRealPath("/save");
-//		//업로드 안했을경우 null 값 보내서 수정시 컬럼 제외
-//		String uploadphoto=null;
-//		if(!upload.getOriginalFilename().equals("")) {
-//			//확장자 분리
-//			String ext=upload.getOriginalFilename().split("\\.")[1];
-//			uploadphoto=UUID.randomUUID()+"."+ext;
-//			//업로드
-//			try {
-//				upload.transferTo(new File(saveFolder+"/"+uploadphoto));
-//			} catch (IllegalStateException | IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
+        // 파일 업로드 처리
         if (upload != null && !upload.isEmpty()) {
             String photo = storageService.uploadFile(bucketName, folderName, upload);
             dto.setPhoto(photo);

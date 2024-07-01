@@ -26,10 +26,12 @@
 <script src="/js/board/editmap.js"></script>
 
 <header><a onclick="location.href='/'">BIT TRIP</a></header>
-
+<c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
+<form action="./update" method="post" enctype="multipart/form-data">
 <div class="blog-post">
     <div class="post-image">
-        <img id="preview" src="<c:out value='${dto.photo}' />" alt="이미지 설명" style="display: block;">
+
+        <img id="preview" src="<c:out value='${stpath}/${dto.photo}' />" alt="이미지 설명" style="display: block;">
     </div>
 
     <div class="form-group">
@@ -39,7 +41,7 @@
     </div>
 
     <h2 style="text-align: center;">글 수정</h2>
-    <form action="./update" method="post" enctype="multipart/form-data">
+
         <input type="hidden" name="board_num" value="${dto.board_num}">
         <input type="hidden" name="currentPage" value="${currentPage}">
 
