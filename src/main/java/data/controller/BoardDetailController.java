@@ -49,7 +49,7 @@ public class BoardDetailController {
             // 로그인 아이디 값 확인
             String id = (String) session.getAttribute("loginid");
             System.out.println(id);
-
+           
             // 로그인 provider 확인
             String provider = (String) session.getAttribute("role");
             System.out.println(provider);
@@ -67,12 +67,12 @@ public class BoardDetailController {
 
         // num 에 해당하는 글 가져오기
         Blog_BoardDto dto = boardService.getData(board_num);
-
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
-        //UserDto memberDto = memberService.databyid(dto.getUser_id());
+        UserDto memberDto = userService.databyid(dto.getUser_id());
 
-        //String profile_photo = memberDto.getPhoto();
+        String profile_photo = memberDto.getPhoto();
+        System.out.println(memberDto);
 
         // 지도 데이터 가져오기
         int map_num = board_num;
@@ -93,10 +93,10 @@ public class BoardDetailController {
             model.addAttribute("placeLongitudes", placeLongitudes);
         }
 
-        //model.addAttribute("photo", profile_photo);
         model.addAttribute("user_num",user_num);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
+        model.addAttribute("profile_photo",profile_photo);
         model.addAttribute("currentPage", currentPage);
 
         return "board/detail";
