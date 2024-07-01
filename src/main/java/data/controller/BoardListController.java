@@ -82,7 +82,9 @@ public class BoardListController {
     @ResponseBody
     @GetMapping("/blog/bookmark")
     public List<Long> bookmarkdata(HttpSession session) {
+
         return BKService.getBookmarkedBoardIds(userService.getUserNum((String) session.getAttribute("loginid"), (String) session.getAttribute("role")));
+
     }
 
     @PostMapping("/bookmark")

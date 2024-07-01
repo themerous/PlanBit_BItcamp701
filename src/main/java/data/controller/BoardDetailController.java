@@ -49,21 +49,7 @@ public class BoardDetailController {
             Model model,
             HttpSession session
     ) {
-        String loginId = (String) session.getAttribute("loginok");
-        if (loginId != null) {
 
-        }
-            // 로그인 아이디 값 확인
-            String id = (String) session.getAttribute("loginid");
-            System.out.println(id);
-           
-            // 로그인 provider 확인
-            String provider = (String) session.getAttribute("role");
-            System.out.println(provider);
-
-            int user_num = userService.getUserNum(id, provider);
-
-        System.out.println(user_num);
         // 조회수 증가
         boardService.updateReadcount(board_num);
 
@@ -95,7 +81,6 @@ public class BoardDetailController {
             model.addAttribute("placeLongitudes", placeLongitudes);
         }
 
-        model.addAttribute("user_num",user_num);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
         model.addAttribute("profile_photo",profile_photo);
