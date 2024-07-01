@@ -30,8 +30,7 @@
 
 <%--        <a class="gaip-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'">${sessionScope.loginid}님</a>--%>
         <a class="header-pro-button" onclick="location.href='/bit/mypage?id=${sessionScope.loginid}'"><img src="${sessionScope.img}" style="position: relative; width: 100%; height: 100%; border-radius: 50%;"></a>
-            </c:if>
-
+    </c:if>
 </div>
 <script type="text/javascript">
 $(function(){

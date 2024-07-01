@@ -131,6 +131,7 @@ public class HomeController {
 			session.setAttribute("loginok", "yes");
 			session.setAttribute("loginid", id);
 			session.setAttribute("role", "bit");
+			//session.setAttribute("img",photo);
 			System.out.println(session.getAttribute("role"));
 		}
 		else

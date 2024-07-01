@@ -161,7 +161,7 @@
                 <img src="../images/p1.jpg" class="main-profile-img img-fluid mb-3" alt="사용자 사진">
                 <div class="user-info d-flex justify-content-between">
                     <h5 class="card-title">이름 : ${name}</h5>
-                    <h5 class="card-title">아이디 : ${user_id}</h5>
+                    <h5 class="card-title">이메일 : ${user_id}</h5>
                     <h5 class="card-title">게시글 : ${userPost.size()}개</h5>
                 </div>
             </div>

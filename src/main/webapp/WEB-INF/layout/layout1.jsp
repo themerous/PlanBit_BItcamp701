@@ -154,6 +154,7 @@
 				background-size: cover;
 				width: 60px;
 				height: 60px;
+				cursor: pointer;
 
 			}
 	

@@ -80,6 +80,7 @@ public class OAuth2MemberService extends DefaultOAuth2UserService {
         session.setAttribute("loginid",id);
         session.setAttribute("loginok", "yes");
         session.setAttribute("role", provider);
+		session.setAttribute("img",photo);
 		
 		//new PrincipalDetails(member, oAuth2User.getAttributes())
 		return new PrincipalDetails(dto, oAuth2User.getAttributes());

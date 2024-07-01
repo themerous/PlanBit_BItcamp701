@@ -1,12 +1,38 @@
 .high {
-    border: 1px solid black;
     width: 100%;
     height: 500px;
 }
 
+.highTitle {
+    display: flex; /* Flexbox 활성화 */
+    justify-content: center; /* 수평 방향으로 중앙 정렬 */
+    align-items: center; /* 수직 방향으로 중앙 정렬 (필요한 경우) */
+    margin-top: 10px;
+
+}
+
+#tt {
+    width: 500px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #51e3d4;
+}
+
+#searchButton {
+    border: none;
+    width: 70px;
+    height: 40px;
+    background-color: #51e3d4;
+    color: white;
+    margin-left: 5px;
+    border-radius: 4px;
+}
+
 #result {
-    height: 450px;
+    height: 440px;
     overflow-y: scroll;
+    background-color: #f5f5f5;
+    margin-top: 10px;
 }
 
 .result::-webkit-scrollbar {
@@ -24,24 +50,48 @@
 
 .searchList {
     display: flex;
-    border: 1px solid pink;
     width: 100%;
 }
 
 .searchListL {
-    width: 300px;
+    width: 20%;
     height: 100%;
     left: 0;
-    margin: auto;
-    margin: 0 10px;
+    display: flex; /* Flexbox 활성화 */
+    justify-content: center; /* 수평 방향 중앙 정렬 */
+    align-items: center; /* 수직 방향 중앙 정렬 (옵션, 필요할 경우) */
 }
+
+.img-box {
+    width: 300px;
+    height: 300px;
+}
+
 .searchimageresult {
+    object-fit: cover;
     width: 100%;
     height: 100%;
 }
 .searchListR {
-    width: 100%;
+    width: 80%;
     overflow: hidden;
+    padding: 20px;
+    background-color: white;
+}
+.searchListR p {
+    font-family: "IBM Plex Sans KR", sans-serif;
+}
+.tour-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.star {
+    border: none;
+    background-color: #f5f5f5;
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
 }
 
 /*-----------------------------------------------------*/
@@ -52,42 +102,84 @@
 
 .left {
     position: relative;
-    width: 50%;
+    width: 30%;
     height: 700px;
     left: 0;
-    border: 1px solid red;
+
+
+
 }
 
 .right {
     position: relative;
-    width: 50%;
+    width: 70%;
     height: 700px;
     right: 0;
-    border: 1px solid blue;
+
+    overflow: hidden;
 }
 
-#mapButton {
+
+
+.contentList-search {
+    border: none;
+    width: 100px;
+    height: 40px;
+    background-color: #51e3d4;
+    color: white;
+    margin-left: 5px;
+    border-radius: 4px;
+
+}
+
+.mapButton {
     position: relative;
     width: 90%;
-    height: 100%;
-    border: 1px solid black;
+    height: 90%;
+    border-right: 1px solid black;
     margin: auto;
-
 }
+
+.radiobtn + label {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.radiobtn:checked + label {
+    background-color: #51e3d4;
+    border-color: #51e3d4;
+    color: white;
+}
+
+.radiobtn + label:hover {
+    background-color: #e0e0e0;
+}
+
+.mapButton img {
+    object-fit: cover;
+}
+
 
 .leftImg {
     position: relative;
     width: 100%;
     height: auto;
     margin: auto;
+
 }
 
 #tourList {
     position: relative;
-    height: 100%;
+    height: 80%;
     right: 0;
     overflow: auto;
     overflow-y: scroll;
+
 }
 
 .tourList::-webkit-scrollbar {
@@ -105,7 +197,8 @@
 
 #mapList {
     display: block;
-    height: 100vh;
+    height: 400px;
+
 }
 
 .scrollList {
@@ -114,11 +207,12 @@
     width: 100%;
     height: auto;
     padding: 10px;
+
 }
 
 .api-pic{
     position: relative;
-    width: 50%;
+    width: 30%;
     height: auto;
     margin: auto;
     padding: 10px;
@@ -127,109 +221,108 @@
 
 .scrollListR {
     position: relative;
-    width: 40%;
+    width: 60%;
     right: 0;
-
 }
 
 #seoul, label[for="seoul"] {
     position: absolute;
-    left: 40%;
-    bottom: 73%;
+    left: 28%;
+    bottom: 72%;
 }
 
 #busan, label[for="busan"] {
     position: absolute;
-    left: 71%;
-    bottom: 35%;
+    left: 72%;
+    bottom: 27%;
 }
 
 #daegu, label[for="daegu"] {
     position: absolute;
-    left: 64%;
-    bottom: 47%;
+    left: 62%;
+    bottom: 38%;
 }
 
 #incheon, label[for="incheon"] {
     position: absolute;
-    left: 34%;
-    bottom: 70%;
+    left: 20%;
+    bottom: 65%;
 }
 
 #gwangju, label[for="gwangju"] {
     position: absolute;
-    left: 35%;
-    bottom: 32%;
+    left: 23%;
+    bottom: 27%;
 }
 
 #daejeon, label[for="daejeon"] {
     position: absolute;
-    left: 44%;
-    bottom: 52%;
+    left: 36%;
+    bottom: 47%;
 }
 
 #ulsan, label[for="ulsan"] {
     position: absolute;
-    left: 73%;
-    bottom: 39%;
+    left: 77%;
+    bottom: 34%;
 }
 
 #sejong, label[for="sejong"] {
     position: absolute;
-    left: 42%;
-    bottom: 56%;
+    left: 33%;
+    bottom: 54%;
 }
 
 #gyeonggi, label[for="gyeonggi"] {
     position: absolute;
-    left: 45%;
-    bottom: 71%;
+    left: 38%;
+    bottom: 65%;
 }
 
 #gangwon, label[for="gangwon"] {
     position: absolute;
     left: 59%;
-    bottom: 78%;
+    bottom: 77%;
 }
 
 #chungbuk, label[for="chungbuk"] {
     position: absolute;
-    left: 49%;
-    bottom: 61%;
+    left: 50%;
+    bottom: 58%;
 }
 
 #chungnam, label[for="chungnam"] {
     position: absolute;
-    left: 35%;
-    bottom: 55%;
+    left: 20%;
+    bottom: 50%;
 }
 
 #gyeongbuk, label[for="gyeongbuk"] {
     position: absolute;
-    left: 66%;
-    bottom: 55%;
+    left: 68%;
+    bottom: 53%;
 }
 
 #gyeongnam, label[for="gyeongnam"] {
     position: absolute;
-    left: 60%;
-    bottom: 35%;
+    left: 55%;
+    bottom: 30%;
 }
 
 #jeonbuk, label[for="jeonbuk"] {
     position: absolute;
-    left: 40%;
-    bottom: 42%;
+    left: 30%;
+    bottom: 36%;
 }
 
 #jeonnam, label[for="jeonnam"] {
     position: absolute;
-    left: 38%;
-    bottom: 28%;
+    left: 27%;
+    bottom: 20%;
 }
 
 #jeju, label[for="jeju"] {
     position: absolute;
-    left: 36%;
-    bottom: 10%;
+    left: 25%;
+    bottom: 1%;
 }
