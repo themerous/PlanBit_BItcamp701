@@ -7,8 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface Tour_MarkMapperInter {
-    @Select("select * from tour_mark where id=#{id}")
-    List<Tour_MarkDto> findByMark(String id);
+    @Select("select * from tour_mark where id=#{id} and user_num=#{user_num}")
+    List<Tour_MarkDto> findByMark(String id, int user_num);
 
     @Select("select count(*) from tour_mark where id = #{id} and user_num=#{user_num} and serial_num = #{serial_num}")
     int checkBySerialNum(String id, int user_num, String serial_num);

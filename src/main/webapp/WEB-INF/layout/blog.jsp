@@ -227,6 +227,8 @@
                                     <img src="../images/e2.jpg" alt="" class="profile-img">
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
                                 </div>
+                                <a class="btn-btn-primary" onclick="boardMove(${dto.board_num}, ${currentPage})">더보기 →</a>
+                                <!-- 원래 onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'" -->
                             </div>
                         </div>
                     </div>
@@ -326,7 +328,13 @@
                 alert("오류가 발생했습니다. 다시 시도해 주세요.");
             });
     }
-
+    function boardMove(board_num, currentPage){
+        if("${sessionScope.loginok}" == "yes"){
+            return location.href="/board/detail?board_num=" + board_num + "&currentPage=" + currentPage;
+        }
+        alert("로그인 하고와 요년아");
+        return location.href="/bit/login";
+    }
 </script>
 
 

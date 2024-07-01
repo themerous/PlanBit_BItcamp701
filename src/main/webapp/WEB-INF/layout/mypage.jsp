@@ -144,6 +144,39 @@
     .flex-fill {
         font-size: 18px;
     }
+
+    /*selectButton css*/
+    .selectButtonAbsoluteSize {
+        width: 100%;
+    }
+
+    .selectButton {
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .tourList {
+        display: flex;
+        border-bottom: 1px solid black;
+        height: 300px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /*tourListL : sm-4로 크기 할당*/
+
+    .db-pic {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        left: 0;
+    }
+    .tourListR {
+        margin: auto;
+        padding-left: 20px;
+        font-size: 20px;
+    }
 </style>
 
 <!-- Page header with logo and tagline-->
@@ -191,8 +224,17 @@
     </div>
 </div>
 
+
+<%-- 환용 수정 --%>
 <div class="container">
-    <div class="row">
+    <div class="selectButtonAbsoluteSize">
+        <div class="selectButton">
+            <button type="button" id="showMyBlog" onclick="myPageLoad(1)">내 블로그</button>
+            <button type="button" id="showFavoritesBlog" onclick="myPageLoad(2)">블로그 즐겨찾기</button>
+            <button type="button" id="showFavoritesTour" onclick="myPageLoad(3)">투어 즐겨찾기</button>
+        </div>
+    </div>
+    <div id="row1" class="row">
         <c:forEach var="post" items="${userPost}">
             <div class="col-lg-4 mb-4">
                 <div class="card">
@@ -212,4 +254,15 @@
             </div>
         </c:forEach>
     </div>
+
+    <div id="row2" class="row" style="display: none;">
+        <p>row2</p>
+    </div>
+
+    <div id="row3" class="card mb-4" style="display: none;">
+        <div class="card-header">투어 즐겨찾기</div>
+        <div id="tourFavorites" class="card-body"></div>
+    </div>
 </div>
+
+<script src="/js/user/myPage.js"></script>
