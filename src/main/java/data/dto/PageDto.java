@@ -9,16 +9,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class PlannerDto {
+@ToString
+public class PageDto {
 	private int planner_num;
-	private String planner_creator;
-	private String planner_title;
-	private String planner_detail;
-	private Timestamp last_update;
+	private int page_num;
+	private Timestamp page_date;
+	private String content;
 }

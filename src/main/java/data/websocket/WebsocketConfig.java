@@ -20,6 +20,6 @@ public class WebsocketConfig implements WebSocketConfigurer{
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		registry.addHandler(chatHandler, "/chat/{room}").setAllowedOrigins("localhost");
 		registry.addHandler(planHandler, "/plan/{plan}").setAllowedOrigins("localhost");
-		registry.addHandler(pageHandler, "/page/{page}").setAllowedOrigins("localhost");
+		registry.addHandler(pageHandler, "/page/{plan}/{page}").setAllowedOrigins("localhost");
 	}
 }
