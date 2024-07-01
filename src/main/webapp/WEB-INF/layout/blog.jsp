@@ -233,6 +233,8 @@
                                     <img src="../images/e2.jpg" alt="" class="profile-img">
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
                                 </div>
+                                <a class="btn-btn-primary" onclick="boardMove(${dto.board_num}, ${currentPage})">더보기 →</a>
+                                <!-- 원래 onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'" -->
                             </div>
                         </div>
                     </div>

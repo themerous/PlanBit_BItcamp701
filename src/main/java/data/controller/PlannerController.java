@@ -26,10 +26,10 @@ public class PlannerController {
 	
 	@GetMapping("/planner")
 	public String PlannerList(
-			@RequestParam String user_id,
+			@RequestParam String id,
 			@RequestParam String provider,
 			Model model) {
-		model.addAttribute("user_id", user_id);
+		model.addAttribute("user_id", id);
 		model.addAttribute("provider", provider);
 		return "planner/list";
 	}

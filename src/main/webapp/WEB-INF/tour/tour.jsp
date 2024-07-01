@@ -67,7 +67,6 @@
 			<label for="lodge">숙박</label>
 			<input type="radio" name="c" class="contentList" id="food" value="39" onclick="setType(this.value)">
 			<label for="food">음식점</label>
-
 			<button type="button" onclick="getMapInitial()" class="contentList-search">검색하기</button>
 		</div>
 		<br>

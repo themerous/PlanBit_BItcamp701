@@ -103,12 +103,12 @@ function insertData(contentid, photo, title, addr, tel, i) {
                 ss += `<input name="serial_num" id="sSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
                 ss += `<div id="sLink`+i+`" style="display: none;">`+dd.response.body.items.item[0].homepage+`</div>    `;
                 ss += `<input name="phone_num" id="sPhone_num`+i+`" type="hidden" value="`+tel+`">`;
-                ss += `<button type="button" onclick="sendInsert(${i})" class="star"><i class="bi bi-star-fill" style="color: #fce61b"></i></button>`;
+                ss += `<button type="button" onclick="sendInsert(${i})" class="star"><i class="bi bi-star" style="color: #fce61b"></i></button>`;
                 ss += `</div>`;
 
                 ss += `<div id="markDelete`+i+`"` + `style="display: none;"` +`>`;
                 ss += `<input name="serial_num" id="dSerial_num`+i+`" type="hidden" value="`+contentid+`">`;
-                ss += `<button type="button" onclick="sendDelete(${i})" class="star"><i class="bi bi-star" style="color: #fce61b"></i></button>`;
+                ss += `<button type="button" onclick="sendDelete(${i})" class="star"><i class="bi bi-star-fill" style="color: #fce61b"></i></button>`;
                 ss += `</div>`;
             }
             ss += `</div><br>`;
@@ -218,7 +218,7 @@ function getMapInfinite(){
 // 스크롤 이벤트 설정
 function setupInfiniteScroll() {
     $("#tourList").on('scroll', function() {
-        if ($("#tourList").scrollTop() + $("#tourList").height() >= $("#tourList")[0].scrollHeight - 100) {
+        if ($("#tourList").scrollTop() + $("#tourList").height() >= $("#tourList")[0].scrollHeight) {
             if (!loading) {  // 로딩 중이 아닐 때만 실행
                 getMapInfinite();
             }
