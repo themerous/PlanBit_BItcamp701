@@ -196,7 +196,7 @@
         <div class="card mb-4">
             <div class="card-header">내정보</div>
             <div class="card-body">
-                <img src="../images/p1.jpg" class="main-profile-img img-fluid mb-3" alt="사용자 사진">
+                <img src="${photo}" class="main-profile-img img-fluid mb-3" alt="사용자 사진">
                 <div class="user-info d-flex justify-content-between">
                     <h5 class="card-title">이름 : ${name}</h5>
                     <h5 class="card-title">이메일 : ${user_id}</h5>
@@ -239,11 +239,12 @@
             <button type="button" id="showFavoritesTour" onclick="myPageLoad(3)">투어 즐겨찾기</button>
         </div>
     </div>
+    <c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
     <div id="row1" class="row">
         <c:forEach var="post" items="${userPost}">
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <a href="#!"><img class="card-img-top" src="${post.photo}" alt="게시글 이미지" onerror="this.src='../images/p1.jpg'"/></a>
+                    <a href="#!"><img class="card-img-top" src="${stpath}/${post.photo}" alt="게시글 이미지" onerror="this.src='../images/p1.jpg'"/></a>
                     <div class="card-body">
                         <div class="small text-muted"><fmt:formatDate value="${post.board_writeday}" pattern="yyyy년 MM월 dd일"/></div>
                         <h2 class="card-title">${post.board_title}</h2>
@@ -261,7 +262,6 @@
     </div>
 
     <div id="row2" class="row" style="display: none;">
-        <p>row2</p>
     </div>
 
     <div id="row3" class="card mb-4" style="display: none;">
