@@ -16,6 +16,7 @@ body{
 .creative-cards{
     padding: 120px 0;
     position: relative;
+
 }
 .creative-cards .container {
     max-width: 1320px;
@@ -36,16 +37,18 @@ body{
     max-width: 100%;
     padding-right: 15px;
     padding-left: 15px;
+
 }
 .card-details {
     width: 80%;
     margin: auto;
     position: relative;
     transition: .3s ease-in-out;
+
 }
 .card-details:before {
     content: "";
-    width: 190px;
+    width: 300px;
     height: 380px;
     background: #f7f6f2;
     position: absolute;
@@ -54,9 +57,11 @@ body{
     transform: translate(-50%, -50%) skew(-20deg, 0deg);
     z-index: -1;
     transition: .3s ease-in-out;
+    border-left: 5px solid #51e3d4;
 }
 .card-details:hover:before{
-    background-color: #fffab3;
+    background-image: url("/images/p1.jpg");
+    background-size: cover; /* 이미지 크기를 컨테이너에 맞게 조정 */
 }
 .card-icons {
     width: 140px;
@@ -72,16 +77,16 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    border: 1px solid;
+    background-color: white;
     width: 100%;
     height: 100%;
     transform: skew(-20deg, 0deg);
-    background: #fff;
-    border-color: #ffee02;
     transition: .3s ease-in-out;
+
 }
 .card-details:hover .card-icons:before{
-    background-color: #ffee02;
+    background: none;
+    border: none;
 }
 .card-icons img{
     position: relative;
@@ -112,19 +117,19 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid;
+    border: 1px solid #51e3d4;
     border-radius: 100%;
-    margin: auto;
+
     background: #fff;
     transform: translateX(-10px);
     opacity: 0;
     visibility: hidden;
-    border-color: #ffee02;
     transition: .3s ease-in-out;
     text-decoration: none;
+    margin-left: 190px;
 }
 .read-more-btn i{
-    color: #000;
+    color: #51e3d4;
     font-size: 12px;
 }
 .card-details:hover .read-more-btn{
