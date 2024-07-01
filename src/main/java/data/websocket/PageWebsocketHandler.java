@@ -5,24 +5,34 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import data.dto.PageDto;
+import data.mapper.PlannerMapper;
+import data.service.PlannerService;
+
 @Component
+@Controller
 public class PageWebsocketHandler extends TextWebSocketHandler {
     private static final Map<String, Set<WebSocketSession>> pages = new ConcurrentHashMap<>();
     private static final Map<String, String> pageContents = new ConcurrentHashMap<>();
     private static final Map<WebSocketSession, Integer> cursorPositions = new ConcurrentHashMap<>();
-
+    @Autowired
+    private PlannerService service;
+    
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         String page = getPage(session);
         pages.computeIfAbsent(page, k -> new CopyOnWriteArraySet<>()).add(session);
-        
         if(pages.get(page).size() == 1) {
-        	String currentContent = "처음 들어오는 사람만 초기값으로 받아오는지 실험중";
+        	PageDto dto = service.getPage(Integer.parseInt(page), Integer.parseInt(getPlanner(session)));
+        	String currentContent = dto.getContent();
+        	pageContents.put(page, currentContent);
             session.sendMessage(new TextMessage(currentContent + "|" + 0)); // 기본 커서 위치 0으로 전송
         }else {
         	String currentContent = pageContents.getOrDefault(page, "");
@@ -42,8 +52,8 @@ public class PageWebsocketHandler extends TextWebSocketHandler {
 
         for (WebSocketSession webSocketSession : pages.get(page)) {
             if (webSocketSession.isOpen()) {
-                int position = cursorPositions.getOrDefault(webSocketSession, 0);
-                webSocketSession.sendMessage(new TextMessage(currentContent + "|" + position));
+            	int position = cursorPositions.getOrDefault(webSocketSession, 0);
+            	webSocketSession.sendMessage(new TextMessage(currentContent + "|" + position));
             }
         }
     }
@@ -63,6 +73,9 @@ public class PageWebsocketHandler extends TextWebSocketHandler {
     }
 
     private String getPage(WebSocketSession session) {
-        return session.getUri().getPath().split("/")[2];
+        return session.getUri().getPath().split("/")[3];
+    }
+    private String getPlanner(WebSocketSession session) {
+    	return session.getUri().getPath().split("/")[2];
     }
 }

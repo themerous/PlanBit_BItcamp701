@@ -211,7 +211,18 @@
                             <div class="bottom-box">
 
                                 <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${dto.board_num}&currentPage=${currentPage}'">더보기 →</a>
+                                <div class="images-bookmark">
+                                    <script>
+                                        // JavaScript로 북마크 상태 확인 및 아이콘 변경
+                                        var bookmarkedBoardIds = ${bookmarkedBoardIds}; // JSP에서 받은 북마크된 글의 ID 목록
 
+                                        if (bookmarkedBoardIds.includes(${dto.board_num})) {
+                                            document.write('<i class="bi bi-bookmark-fill" style="color: #FF9EAA;" onclick="delmark(${dto.board_num})"></i>');
+                                        } else {
+                                            document.write('<i class="bi bi-bookmark" style="color: #FF9EAA;" onclick="toggleBookmark(${dto.board_num})"></i>');
+                                        }
+                                    </script>
+                                </div>
                                 <div class="images-heart">
                                     <img src="../images/e2.jpg" alt="" class="profile-img">
                                     <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
@@ -264,5 +275,59 @@
         </div>
     </div>
 </div>
+
+<script>
+    function toggleBookmark(board_num) {
+        if (!board_num) {
+            alert("유효하지 않은 board_num 값입니다.");
+            return;
+        }
+        fetch(`/bit/bookmark?board_num=\${board_num}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                console.log("Response status:", response.status); // 응답 상태 코드 출력
+                if (response.ok) {
+                    location.reload(); // 페이지를 새로고침하여 아이콘 상태를 갱신
+                } else {
+                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
+    function delmark(board_num) {
+        if (!board_num) {
+            alert("유효하지 않은 board_num 값입니다.");
+            return;
+        }
+
+        fetch(`/bit/delmark?board_num=\${board_num}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin' // 세션 처리를 위해 크레덴셜 포함
+        })
+            .then(response => {
+                console.log("응답 상태:", response.status); // 응답 상태 확인
+                if (response.ok) {
+                    location.reload(); // 북마크 상태 업데이트를 위해 페이지 새로고침
+                } else {
+                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                }
+            })
+            .catch(error => {
+                console.error("에러:", error);
+                alert("오류가 발생했습니다. 다시 시도해 주세요.");
+            });
+    }
+
+</script>
+
 
 
