@@ -47,6 +47,10 @@
 		height: 100%;
 
 	}
+	.custom-font-1 {
+		font-size: 12px;
+		padding: 20px;
+	}
 </style>
 <div>
 	<div>
