@@ -56,6 +56,7 @@
         color: white;
         padding: 8px 10px;
         text-decoration: none;
+		cursor: pointer;
     }
 	.btn-btn-primary1 {
 		background-color: #51e3d4;
@@ -183,6 +184,7 @@
         display: flex;
         margin: 0 auto;
 		float: right;
+		gap: 7px;
     }
 
     .tourList {
@@ -298,7 +300,6 @@
                         <div class="bottom-box">
                             <a class="btn-btn-primary" onclick="location.href='/board/detail?board_num=${post.board_num}&currentPage=${currentPage}'">더보기 →</a>
                             <div class="images-heart">
-                                <img src="../images/e2.jpg" alt="" class="profile-img">
                                 <img src="../images/hjhj.png" alt="" class="profile-img2">
                             </div>
                         </div>
@@ -306,6 +307,7 @@
                 </div>
             </div>
         </c:forEach>
+
     </div>
 
     <div id="row2" class="row" style="display: none;">

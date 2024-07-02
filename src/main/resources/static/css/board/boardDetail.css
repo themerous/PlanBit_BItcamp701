@@ -78,6 +78,10 @@ main {
 
 }
 
+.post-info img {
+	object-fit: cover;
+}
+
 .post-info-btn {
 	margin-left: auto;
 }

@@ -204,7 +204,7 @@
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb4">
-
+                <img class="medal" src="/images/ffff.png"/>
 
 
 

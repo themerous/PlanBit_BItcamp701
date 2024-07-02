@@ -92,6 +92,10 @@
 	            border-radius: 4px;
 	            background-color: #51e3d4;
 	        }
+
+			.planner:hover {
+				color: white;
+			}
 	
 	
 	        /*헤더 오른쪽 박스 */
@@ -151,14 +155,18 @@
 			.header-pro-button {
 				border: 2px solid #51e3d4;
 				border-radius: 50%;
-				background-size: cover;
+
 				width: 60px;
 				height: 60px;
 				cursor: pointer;
 
 			}
-	
-	        /*메인 구역 */
+
+			.header-pro-button img {
+				object-fit: cover;
+			}
+
+				/*메인 구역 */
 	        main {
 	            width: 100%;
 	            height: auto;

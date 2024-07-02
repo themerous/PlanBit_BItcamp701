@@ -17,7 +17,7 @@
    <div class="title-menu">
       <ul>
          <li><a href="/bit/blog">Blog</a></li>
-         <li><a onclick="checkIfLoggedIn()">Planner</a></li>
+         <li><a onclick="checkIfLoggedIn()" style="cursor: pointer" class="planner" >Planner</a></li>
          <li><a href="/bit/map">Map</a></li>
          <li><a href="/tour/tourMain">Tour</a></li>
          <li><a href="/bit/info">Info</a></li>
