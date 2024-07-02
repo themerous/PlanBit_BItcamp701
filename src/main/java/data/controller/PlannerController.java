@@ -36,11 +36,44 @@ public class PlannerController {
 		model.addAttribute("provider", provider);
 		return "planner/list";
 	}
+	@PostMapping("/planner")
+	public String CreatePlanner(
+			@RequestParam String user_id,
+			@RequestParam String provider,
+			@RequestParam String title,
+			@RequestParam String detail,
+			@RequestParam String participent) {
+		int user_num = uservice.getUserNum(user_id, provider);
+		PlannerDto dto = new PlannerDto();
+		dto.setPlanner_creator(user_num);
+		dto.setPlanner_detail(detail);
+		dto.setPlanner_title(title);
+		service.createPlanner(dto);
+		service.createPage(1, dto.getPlanner_num(), "");
+		service.setParticipent(dto.getPlanner_num(), user_num);
+		String[] list = participent.split(",");
+		for(int i = 0 ; i < list.length ; i++) {
+			if(list[i] != "") {
+				service.setParticipent(dto.getPlanner_num(), Integer.parseInt(list[i]));
+			}
+		}
+		String redirect = "redirect:/planner?id=" + user_id + "&provider=" + provider;
+		return redirect;
+	}
 	@ResponseBody
 	@DeleteMapping("/planner")
 	public void DeletePlanner(
 			@RequestParam int planner_num) {
 		service.deletePlanner(planner_num);
+	}
+	@GetMapping("/planner/new")
+	public String toPlannerForm(
+			@RequestParam String id,
+			@RequestParam String provider,
+			Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("provider", provider);
+		return "planner/new";
 	}
 	@ResponseBody
 	@GetMapping("/planner/list")

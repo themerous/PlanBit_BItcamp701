@@ -17,6 +17,12 @@ public class PlannerService {
 	public void createPage(int page_num, int planner_num, String content) {
 		mapper.createPage(page_num, planner_num, content);
 	}
+	public void createPlanner(PlannerDto dto) {
+		mapper.createPlanner(dto);
+	}
+	public void setParticipent(int planner_num, int user_num) {
+		mapper.setParticipent(planner_num, user_num);
+	}
 	
 	// Read
 	public int pageNumCount(int planner_num) {

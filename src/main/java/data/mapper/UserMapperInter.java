@@ -22,7 +22,7 @@ public interface UserMapperInter {
 	@Select("select count(*) from user where id=#{searchid}")
 	public int idcheckcount(String searchid);
 	//아이디로 비밀번호 가져오기
-	@Select("select * from user where id=#{id}")
+	@Select("select * from user where id = #{id} and provider = 'bit'")
 	public UserDto databyid(String id);
 	//비밀번호 재설정
 	@Update("update user set pw=#{pw} where id=#{id}")
