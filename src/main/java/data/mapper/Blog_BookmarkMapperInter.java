@@ -12,7 +12,7 @@ public interface Blog_BookmarkMapperInter {
     List<Integer> getBookMarkALlByUserNum(int user_num);
 
 
-    @Select("SELECT board_num FROM blog_bookmark WHERE user_num")
+    @Select("SELECT board_num FROM blog_bookmark WHERE user_num = #{user_num}")
     List<Long> getBookmarkedBoardIds(int user_num);
 
     @Insert("INSERT INTO blog_bookmark (user_num, board_num) VALUES (#{user_num}, #{boardNum})")

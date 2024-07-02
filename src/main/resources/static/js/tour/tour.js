@@ -134,7 +134,7 @@ function getMapInitial() {
         type: 'get',
         dataType: "json",
         success: function(data) {
-            console.log("일단 됨");
+
             let s = '';
             for (let its of data.response.body.items.item) {
                 let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
@@ -166,7 +166,7 @@ function getMapInitial() {
         },
         error: function() {
             loading = false;  // 로딩 실패시에도 플래그 초기화
-            console.log("infinite 지랄남");
+
         }
     });
 }
@@ -181,7 +181,7 @@ function getMapInfinite(){
         dataType: "json",
         success: function(data) {
             if (data.response.body.items) {
-                console.log("resetMethed")// 응답 데이터 검사
+
                 let s = '';
                 for (let its of data.response.body.items.item) {
                     let photo = its.firstimage == "" ? "/images/noimage2.png" : its.firstimage;
@@ -240,7 +240,7 @@ function sendInsert(i){
     let phoneNumbers = phoneString !== ""
         ? phoneString.match(/(\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4})/g)
         : [];
-    console.log(phoneNumbers);
+
     let phoneResult = phoneNumbers.length == 0 ? "" : phoneNumbers[0];
 
     formData = {
@@ -256,7 +256,7 @@ function sendInsert(i){
         data: JSON.stringify(formData),
         contentType : 'application/json; charset=utf-8',
         success: function(d) {
-            console.log("성공");
+
             // 여기서 즐찾 true false 적용
             document.getElementById("markInput" + i).style.display = "none";
             document.getElementById("markDelete" + i).style.display = "block";
@@ -274,7 +274,7 @@ function sendDelete(i){
         data : JSON.stringify(formData),
         contentType : 'application/json; charset=utf-8',
         success : function(d) {
-            console.log("삭제 성공");
+
             document.getElementById("markInput" + i).style.display = "block";
             document.getElementById("markDelete" + i).style.display = "none";
         }

@@ -38,6 +38,7 @@ public class BoardListController {
     @GetMapping("/blog")
     public String boardList(Model model, @RequestParam(defaultValue = "1") int currentPage, HttpSession session) {
         List<Blog_BoardDto> boardList = boardService.gettestboardlist();
+
         Blog_BoardDto topViewedBoard = boardService.getTopViewedBoard();
         model.addAttribute("topViewedBoard", topViewedBoard);
         model.addAttribute("currentPage",currentPage);
@@ -82,7 +83,9 @@ public class BoardListController {
     @ResponseBody
     @GetMapping("/blog/bookmark")
     public List<Long> bookmarkdata(HttpSession session) {
+
         return BKService.getBookmarkedBoardIds(userService.getUserNum((String) session.getAttribute("loginid"), (String) session.getAttribute("role")));
+
     }
 
     @PostMapping("/bookmark")
@@ -98,7 +101,7 @@ public class BoardListController {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // 인증되지 않은 경우
             }
 
-            System.out.println("Received board_num: " + board_num);
+
             int user_num = userService.getUserNum(id, provider);
             System.out.println("user_num: " + user_num);
             if (user_num == -1) {
@@ -127,14 +130,14 @@ public class BoardListController {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // 인증되지 않은 경우
             }
 
-            System.out.println("Received board_num: " + board_num);
+
             int user_num = userService.getUserNum(id, provider);
-            System.out.println("user_num: " + user_num);
+
             if (user_num == -1) {
                 System.out.println("유효하지 않은 사용자입니다.");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); // 유효하지 않은 사용자
             }
-            System.out.println("fdsafdsafsfasfsdfasfas"+user_num);
+
             BKService.deleteFavorite(user_num, board_num);
             return ResponseEntity.ok().build();
         } catch (Exception e) {

@@ -192,6 +192,7 @@
     }
 
 </script>
+<c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
 <!-- Page header with logo and tagline-->
 <div class="g" id="blog-title-photo">
             <h1 class="fw-bolder">Welcome to Blog Home!</h1>
@@ -203,9 +204,17 @@
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb4">
-                <img class="medal" src=""/>
+
+
+
+
                 <c:if test="${not empty topViewedBoard}">
-                    <a onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${topViewedBoard.photo}"  onerror="this.src='/images/e3.jpg'"/></a>
+                    <c:if test="${topViewedBoard.photo!='no' and topViewedBoard.photo!=null}">
+                    <a onclick="location.href='/board/detail?board_num=${topViewedBoard.board_num}&currentPage=${currentPage}'"><img class="card-img-top" src="${stpath}/${topViewedBoard.photo}"  onerror="this.src='/images/e3.jpg'"/></a>
+                    </c:if>
+                    <c:if test="${topViewedBoard.photo==null}">
+                        <img class="card-img-top" src="/images/ff.jpg">
+                    </c:if>
                     <div class="card-body">
                         <div class="small-text-muted">
                             <span>${topViewedBoard.user_id}</span>
@@ -221,7 +230,7 @@
                     </div>
                 </c:if>
             </div>
-            <c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
+
 
             <!-- Nested row for non-featured blog posts-->
             <div class="row">

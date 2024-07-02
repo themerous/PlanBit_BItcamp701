@@ -1,26 +1,89 @@
-window.onload = function() {
-	loadChatRooms()
-}
-
-function loadChatRooms() {
-	$.post("./getChatRooms", function(data) {
-		let s = "";
-		for(let a of data) {
-			s += '<form method="post" action="./chatting">'
-			s += '<input type="hidden" name="room_num" value="' + a.room_num + '">'
-			s += '<button type="">방이름: ' + a.room_title + '</button></form>';
+function loadChatRoom() {
+	$.get("/chat", function(data) {
+		let s = `
+			<div id="chatListHeader">
+				<p style="font-size: 16px; margin: 5px;">채팅</p>
+				<a style="font-size: 16px; margin: 5px;" onclick="showChatRoomForm()"><i class="bi bi-plus-lg"></i></a>
+			</div>
+			<div>
+		`;
+		for(let room of data) {
+			let t = room.room_participant.split(",")
+			s += `
+				<div class="chat-hover" onclick="moveToChat(${room.room_num}, '${room.room_title}')">
+					<div style="font-size: 16px;">
+						${room.room_title}
+					</div>
+					<div style="font-size: 12px;">
+						참여인원수 : ${t.length}
+					</div>
+				</div>
+			`;
 		}
-		
-		$("#chatrooms").html(s);
-	});
+		s += '</div>';
+		document.getElementById("chatting-room").innerHTML = s;
+	}, "json");
 }
 
-$("#chatroomform").submit(function(e) {
-	e.preventDefault();
-	const fdata = $(this).serialize();
+function moveToChat(room, title) {
+	connect(room);
+	$.get("/chat/data", {room_num: room}, function(data) {
+		let name = "";
+		let s = `
+			<div id="chatListHeader">
+				<p style="font-size: 16px; margin: 5px;">${title}</p>
+				<a style="font-size: 16px; margin: 5px;" onclick="showChatRoomForm()">
+					<i class="bi bi-arrow-bar-left"></i>
+				</a>
+			</div>
+			<div id="myChatRoom" style="width: 380px; height: 336px;">
+		`;
+		for(d of data) {
+			name = d.name;
+			s += `
+				<div style="margin: 5px; display: flex;">
+					<div style="display: flex; flex-direction: column;">
+						<div>
+							${d.name}
+						</div>
+						<div style="border-radius: 10px;width: 300px; margin: 5px auto; padding: 5px; background-color: rgba(220,220,220,1)">
+							${d.content}
+						</div>
+					</div>
+				</div>
+			`;
+		}
+		s += `</div>`;
+		s += `
+			<div>
+				<textarea style="width: 380px; height: 100px;" id="chat-input"></textarea>
+				<div>
+					<button style="width: 380px; height: 30px" type="button" onclick="sendText(${room},'${name}')">입력</button>
+				</div>
+			</div>
+		`;
+		document.getElementById("chatting-room").innerHTML = s;
+	})
+}
 
-	$.post("./createChatroom", fdata, function() {
-		console.log("send success");
-		loadChatRooms();
+function sendText(room, name) {
+	const mo = document.getElementById("chat-input");
+	const messageO = {
+		"content": mo.value,
+		"writer": name
+	}
+	$.post("/chat/data", {room: room, writer: user_num, content: mo.value}, 
+	function() {
+		
 	});
-});
+	socket.send(JSON.stringify(messageO));
+	mo.value="";
+}
+
+function showChatRoomForm() {
+	
+}
+
+function createChatRoom() {
+	
+}

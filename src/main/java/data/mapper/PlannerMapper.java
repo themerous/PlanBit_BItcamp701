@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -16,6 +17,14 @@ public interface PlannerMapper {
 	// Create
 	@Insert("insert into planner_page (page_num, planner_num, page_date, content) value (#{page_num},#{planner_num}, now(), #{content})")
 	public void createPage(int page_num, int planner_num, String content);
+	@Insert("insert into planner_participent (planner_num, participent) value (#{planner_num}, #{user_num})")
+	public void setParticipent(int planner_num, int user_num);
+	@Insert("""
+			insert into planner_board (planner_title, planner_detail, planner_creator, last_update)
+			value (#{planner_title}, #{planner_detail}, #{planner_creator}, now())
+			""")
+	@Options(useGeneratedKeys = true, keyProperty = "planner_num") 
+	public void createPlanner(PlannerDto dto);
 	
 	
 	// Read

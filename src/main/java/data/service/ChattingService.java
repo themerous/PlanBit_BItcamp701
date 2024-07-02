@@ -16,19 +16,13 @@ public class ChattingService {
 	ChattingMapper mapper;
 
 	// Mapper service
-	public List<RoomDto> getAllChatRooms(String name) {
-		return mapper.getAllChatRooms(name);
+	public List<RoomDto> getAllChatRooms(int num) {
+		return mapper.getAllChatRooms(Integer.toString(num));
 	}
-	
 	public List<MessageDto> getAllMessage(int room_num) {
 		return mapper.getAllMessage(room_num);
 	}
-	
 	public void insertChat(MessageDto dto) {
 		mapper.insertChat(dto);
-	}
-	
-	public void insertChatroom(RoomDto dto) {
-		mapper.insertChatroom(dto);
 	}
 }

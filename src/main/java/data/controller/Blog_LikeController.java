@@ -41,7 +41,7 @@ public class Blog_LikeController {
 
         int likeCount = blogLikeService.getLikeCount(board_num);
 
-        System.out.println(likeCount);
+
         Map<String, Integer> response = new HashMap<>();
         try {
 

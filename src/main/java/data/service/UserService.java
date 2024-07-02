@@ -41,4 +41,8 @@ public class UserService {
 	{
 		return uInter.getUserNum(id, provider);
 	}
+	
+	public UserDto getUser(int num) {
+		return uInter.getUser(num);
+	}
 }

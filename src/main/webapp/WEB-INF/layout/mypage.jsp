@@ -57,6 +57,24 @@
         padding: 8px 10px;
         text-decoration: none;
     }
+	.btn-btn-primary1 {
+		background-color: #51e3d4;
+		border: 1px solid #51e3d4;
+		border-radius: 4px;
+		color: white;
+		padding: 8px 10px;
+		text-decoration: none;
+		margin-bottom: 10px;
+
+	}
+	.btn-btn-danger {
+		background-color: #d95050;
+		border: 1px solid #d95050;
+		border-radius: 4px;
+		color: white;
+		padding: 8px 10px;
+		text-decoration: none;
+	}
     .c-box li {
         list-style: none;
     }
@@ -158,11 +176,13 @@
     /*selectButton css*/
     .selectButtonAbsoluteSize {
         width: 100%;
+		height: 6vh;
     }
 
     .selectButton {
         display: flex;
         margin: 0 auto;
+		float: right;
     }
 
     .tourList {
@@ -187,6 +207,18 @@
         padding-left: 20px;
         font-size: 20px;
     }
+
+	.myPageTourFav{
+		border: none;
+		background-color: transparent;
+		width: 80px;
+		height: 80px;
+		font-size: 50px;
+	}
+	.myPageTourFav:hover {
+		background-color: lightgray;
+	}
+
     #row3 {
         display: flex;
         flex-direction: column;
@@ -249,9 +281,9 @@
 <div class="container">
     <div class="selectButtonAbsoluteSize">
         <div class="selectButton">
-            <button type="button" id="showMyBlog" onclick="myPageLoad(1)">내 블로그</button>
-            <button type="button" id="showFavoritesBlog" onclick="myPageLoad(2)">블로그 즐겨찾기</button>
-            <button type="button" id="showFavoritesTour" onclick="myPageLoad(3)">투어 즐겨찾기</button>
+            <button type="button" class="btn-btn-primary1" id="showMyBlog" onclick="myPageLoad(1)">내 블로그</button>
+            <button type="button" class="btn-btn-primary1" id="showFavoritesBlog" onclick="myPageLoad(2)">블로그 즐겨찾기</button>
+            <button type="button" class="btn-btn-primary1" id="showFavoritesTour" onclick="myPageLoad(3)">투어 즐겨찾기</button>
         </div>
     </div>
     <c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>

@@ -32,8 +32,6 @@ public class Blog_ReCommentController {
         //아이디에 해당하는 이름 얻기
         String writer=userService.databyid(user_id).getName();
         //dto 에 필요한 데이터 넣기
-        System.out.println(comment_num);
-        System.out.println(content);
         Blog_ReCommentDto dto=Blog_ReCommentDto.builder()
                 .user_id(user_id)
                 .content(content)

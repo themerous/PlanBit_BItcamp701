@@ -10,14 +10,16 @@
 	#planner-list-execute {
 		width: 90%;
 		margin: 20px auto;
-		display: flex;
-		gap: 50px;
+		display: block;
 	}
 	.planner-choice {
-		position: relative;
+		display: inline-block;
+		margin: 0 25px 25px 0;
+		position: ;
 		width: 300px;
 		height: 450px;
-		border: 1px solid black;
+		background-color: rgba(81,227,212);
+		color: white;
 		border-radius: 10px;
 	}
 	.planner-choice-title {
@@ -29,7 +31,8 @@
 		width: 260px;
 		height: 320px;
 		margin: 20px auto 0;
-		border: 1px solid black;
+		background-color: white;
+		color: black;
 		border-radius: 10px;
 		padding: 10px;
 		font-size: 16px;
@@ -51,10 +54,19 @@
 		font-size: 12px;
 		padding: 20px;
 	}
+	#planner-title-area{
+		width: 95%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100px;
+		border-bottom: 1px solid black;
+		margin: 30px auto;
+	}
 </style>
 <div>
-	<div>
-		타이틀 내역들 들어가는 공간입니다
+	<div id="planner-title-area">
+		<h3><b>${user_id}</b>님의 플래너</h3>
 	</div>
 	<div id="planner-list-execute">
 		리스트가 출력될 공간입니다.
