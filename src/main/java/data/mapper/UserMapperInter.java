@@ -29,6 +29,6 @@ public interface UserMapperInter {
 	public void updatepw(String pw,String id);
 
 	@Select("select user_num from user where id = #{id} and provider = #{provider}")
-	public int getUserNum(String id,String provider);
+	public int getUserNum(String id, String provider);
 
 }

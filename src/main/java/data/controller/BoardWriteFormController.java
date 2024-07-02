@@ -42,7 +42,7 @@ public class BoardWriteFormController {
         String board_title = "";
 
         String id = (String)session.getAttribute("loginid");
-        System.out.println(id);
+
         Blog_BoardDto dto = Blog_BoardDto.builder().user_id(id).build();
 
         model.addAttribute("currentPage", currentPage);
@@ -82,11 +82,11 @@ public class BoardWriteFormController {
         // 로그인 아이디 값 확인
         String id = (String) session.getAttribute("loginid");
         dto.setUser_id(id);
-        System.out.println(id);
+
 
         // 로그인 provider 확인
         String provider = (String) session.getAttribute("role");
-        System.out.println(provider);
+
 
         int user_num = userService.getUserNum(id, provider);
         dto.setUser_num(user_num);
@@ -96,7 +96,6 @@ public class BoardWriteFormController {
 
         // 추가된 게시물의 시퀀스 번호 확인
         int board_num = dto.getBoard_num();
-        System.out.println("board_num=" + board_num);
 
         // 장소 정보 저장 (쉼표로 구분된 문자열 그대로 저장)
         if (placeNamesStr != null && placeAddressStr != null && placeLatitudesStr != null && placeLongitudesStr != null) {

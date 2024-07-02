@@ -36,31 +36,31 @@ public class BoardDetailController {
     @ResponseBody
     @GetMapping("/detail/likes")
     public void detailLikeCount(
-    		@RequestParam int board_num) {
-    	// 1. 세션에 저장된 정보로 user_num값 가져오기
-    	
-    	// 2. user_num과 board_num값을 이용하여 likeCount 증가시키기
+            @RequestParam int board_num) {
+        // 1. 세션에 저장된 정보로 user_num값 가져오기
+
+        // 2. user_num과 board_num값을 이용하여 likeCount 증가시키기
     }
-    
+
     @GetMapping("/detail")
-    public String detail(@RequestParam int board_num,
-                         @RequestParam int currentPage,
-                         Model model,
-                         HttpSession session) {
+    public String detail(
+            @RequestParam int board_num,
+            @RequestParam int currentPage,
+            Model model,
+            HttpSession session
+    ) {
 
         // 조회수 증가
         boardService.updateReadcount(board_num);
 
         // num 에 해당하는 글 가져오기
         Blog_BoardDto dto = boardService.getData(board_num);
-        
         int like = blogService.getLikeCount(board_num);
         // 해당 아이디가 갖고 있는 프로필 사진 가져오기
         UserDto memberDto = userService.databyid(dto.getUser_id());
-
         String profile_photo = memberDto.getPhoto();
         String provider2 = memberDto.getProvider();
-        System.out.println(memberDto);
+
 
         // 지도 데이터 가져오기
         int map_num = board_num;
@@ -72,7 +72,7 @@ public class BoardDetailController {
             String placeAddress = mdto.getPlaceAddress();
             String placeLatitudes = mdto.getPlaceLatitudes();
             String placeLongitudes = mdto.getPlaceLongitudes();
-            System.out.println(placeNames);
+
 
             // 지도 데이터를 모델에 추가
             model.addAttribute("placeNames", placeNames);
@@ -80,7 +80,6 @@ public class BoardDetailController {
             model.addAttribute("placeLatitudes", placeLatitudes);
             model.addAttribute("placeLongitudes", placeLongitudes);
         }
-
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
         model.addAttribute("provider2",provider2);
