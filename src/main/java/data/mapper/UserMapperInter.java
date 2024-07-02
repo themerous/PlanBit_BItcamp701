@@ -30,5 +30,7 @@ public interface UserMapperInter {
 
 	@Select("select user_num from user where id = #{id} and provider = #{provider}")
 	public int getUserNum(String id,String provider);
-
+	
+	@Select("select * from user where user_num = #{num}")
+	public UserDto getUser(int num);
 }
