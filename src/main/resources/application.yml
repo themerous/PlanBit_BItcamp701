@@ -11,7 +11,13 @@ spring:
     url: jdbc:mysql://db-n9jfu-kr.vpc-pub-cdb.ntruss.com:3306/studyDB?serverTimezone=Asia/Seoul
     username: study
     password: mike@1430
-    
+
+#파일사이즈
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
   #(email)
   mail:
     # Google smtp server 사용
