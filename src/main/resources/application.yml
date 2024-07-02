@@ -1,7 +1,9 @@
 #Port Setting
 server:
   port: 8081
-  
+  tomcat:
+    max-http-form-post-size: 5024MB
+
 #JSP Setting
 spring:
     
@@ -15,8 +17,8 @@ spring:
 #파일사이즈
   servlet:
     multipart:
-      max-file-size: 50MB
-      max-request-size: 50MB
+      max-file-size: 5000MB
+      max-request-size: 5000MB
 
   #(email)
   mail:
