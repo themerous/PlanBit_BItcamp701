@@ -61,6 +61,13 @@ public class BoardDetailController {
         String profile_photo = memberDto.getPhoto();
         String provider2 = memberDto.getProvider();
 
+        String loginok = (String) session.getAttribute("loginok");
+        String loginid = (String) session.getAttribute("loginid");
+        String role = (String) session.getAttribute("role");
+        if (loginok != null && (dto.getUser_num() == userService.getUserNum(loginid,role))) {
+            int user_num = userService.getUserNum(loginid,role);
+            model.addAttribute("user_num",user_num);
+        }
 
         // 지도 데이터 가져오기
         int map_num = board_num;
@@ -85,7 +92,6 @@ public class BoardDetailController {
         model.addAttribute("provider2",provider2);
         model.addAttribute("profile_photo",profile_photo);
         model.addAttribute("currentPage", currentPage);
-
         return "board/detail";
     }
 }
