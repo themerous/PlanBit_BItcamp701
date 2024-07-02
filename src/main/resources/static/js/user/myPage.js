@@ -44,14 +44,10 @@ $(function(){
             let s = ``;
             for (let d of data) {
                 s += `<div class="tourList">`;
-                s += `<div>`;
-                s += `<button type="button" onclick="myPageTourMarkDelete(`+d.serial_num+`)">즐찾삭제</button>`;
-                s += `</div>`;
                 s += `<div class="tourListL col-sm-4">`;
                 s += `<img class="db-pic" src="` + d.photo + `">`;
                 s += `</div>`;
-
-                s += `<div class="tourListR col-sm-8">`;
+                s += `<div class="tourListR col-sm-6">`;
                 s += `<p>` + d.title + `</p>`;
                 s += `<p>` + d.addr + `</p>`;
                 s += `<p>`;
@@ -59,12 +55,17 @@ $(function(){
                 s += `</p>`;
                 s += `<p>` + d.phone_num + `</p>`;
                 s += `</div>`;
+                s += `<div class="col-sm-2" style="display: flex; justify-content: flex-end;">`;
+                s += `<button class="myPageTourFav" type="button" onclick="myPageTourMarkDelete(`+d.serial_num+`)">`;
+                s += `<i class="bi bi-star-fill" style="color: #fce61b"></i>`;
+                s += `</button>`;
+                s += `</div>`;
                 s += `</div>`;
             }
             $("#tourFavorites").append(s);
         },
         error: function() {
-            console.log("에러임");
+
         }
     });
 });
@@ -82,7 +83,7 @@ function blogFavoriteDelete(board_num) {
         credentials: 'same-origin'
     })
         .then(response => {
-            console.log("응답 상태:", response.status);
+
             if (response.ok) {
                 window.location.reload();
             } else {
@@ -90,7 +91,6 @@ function blogFavoriteDelete(board_num) {
             }
         })
         .catch(error => {
-            console.error("에러:", error);
             alert("오류가 발생했습니다. 다시 시도해 주세요.");
         });
 }
@@ -108,7 +108,6 @@ function blogLike(board_num) {
         credentials: 'same-origin'
     })
         .then(response => {
-            console.log("응답 상태:", response.status);
             if (response.ok) {
                 alert("좋아요가 반영되었습니다.");
             } else {
@@ -116,7 +115,6 @@ function blogLike(board_num) {
             }
         })
         .catch(error => {
-            console.error("에러:", error);
             alert("오류가 발생했습니다. 다시 시도해 주세요.");
         });
 }
@@ -128,7 +126,7 @@ function myPageTourMarkDelete(serial_num) {
         data : JSON.stringify(formData),
         contentType : 'application/json; charset=utf-8',
         success : function(d) {
-            console.log("마페 삭제 성공");
+            window.location.reload();
         }
     });
 }

@@ -45,8 +45,7 @@ $(function (){
     $('#likeBtn').click(function() {
         let userId = sessionLoginId;
         let userIdok = sessionLoginOk;
-        console.log(userId);
-        console.log(userIdok);
+
         if(userId == ""){
             alert("로그인하세요");
         }
@@ -60,7 +59,6 @@ $(function (){
                 },
                 success: function(response) {
                     if (response.success) {
-                        console.log(response.success);
                         $('#likeCount').text(response.board_like);
                     } else if(response.success === 0){
                         alert('한 유저당 3번까지만 좋아요를 누를 수 있습니다.');
@@ -91,7 +89,6 @@ function answer_list() {
             s += `<div class="reply-num"><h2>`+ data.length +`개의 리뷰</h2></div>`;
             $(".answerlist").html(s);
             $.each(data, function (idx, ele) {
-                console.log("inside")
                 let s1 = `<div class="post-reply-box2">
                         <div class="post-reply">
                             <h5>${ele.user_id}</h5><span class="aday"> 작성일 : ${ele.writeday}</span>`;
@@ -118,14 +115,13 @@ function answer_list() {
 
 //대댓글
 function  recomment_list(s1, num, s2) {
-    console.log(num);
+
     $.ajax({
         type: "get",
         dataType: "json",
         data: {"num": num},
         url: "/board/rlist",
         success: function (data) {
-            console.log("successed");
             let s3 = '';
             $.each(data, function (idx, ele) {
                     s3 +=  `<div class="post-reply-reply">
@@ -145,16 +141,15 @@ function  recomment_list(s1, num, s2) {
 
 
 function commentOpen(num){
-    console.log("num : " + num);
+
     $(".comment-form2").css("display", "none");
     document.getElementById("comment-form2-"+num).style.display = "flex";
 }
 
 
 function insertComment(comment_num) {
-    console.log(comment_num);
     let content = document.getElementById(`rcontent${comment_num}`).value;
-    console.log(content);
+
     $.post("/board/rinsert", {"comment_num": comment_num, "content": content}, function(){
         answer_list();
     }, "json");

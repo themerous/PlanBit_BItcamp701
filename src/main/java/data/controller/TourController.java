@@ -45,7 +45,7 @@ public class TourController {
     @PostMapping("/insert")
     public void insert(HttpSession session,
                        @RequestBody HashMap<String, String> map) {
-        System.out.println(map.get("serial_num") + "성공??");
+
         String loginId = (String)session.getAttribute("loginid");
         String loginProvider = (String)session.getAttribute("role");
         tour_MarkService.insert(loginId, userService.getUserNum(loginId, loginProvider), map.get("title"), map.get("addr"), map.get("photo"), map.get("serial_num"), map.get("link"), map.get("phone_num"));
@@ -55,7 +55,7 @@ public class TourController {
     @PostMapping("/delete")
     public void delete(HttpSession session,
                        @RequestBody HashMap<String, String> map) {
-        System.out.println(map.get("serial_num") + "controller들어옴");
+
         String loginId = (String)session.getAttribute("loginid");
         String loginProvider = (String)session.getAttribute("role");
         tour_MarkService.deleteBySerialNum(loginId, userService.getUserNum(loginId, loginProvider), map.get("serial_num"));

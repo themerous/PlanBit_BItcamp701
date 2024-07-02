@@ -24,7 +24,6 @@
     let boardNum = ${dto.board_num};
     let sessionLoginId = '${sessionScope.loginid}';
     let sessionLoginOk = '${sessionScope.loginok}';
-    let user_num = '${dto.user_num}';
 </script>
 <script src="/js/board/detail.js"></script>
 
@@ -63,35 +62,36 @@
 			</p>
 			<c:if test="${provider2=='bit'}"> <!-- form login -->
 					<img src="${stpath}/${profile_photo}" class="dd">
-            </c:if>
-            <c:if test="${sessionScope.role!='bit' }">
-                <img src="${profile_photo}" class="dd">
-            </c:if>
-            <p>${dto.user_id}</p>
-            <i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i><p id="likeCount">${like}</p> <p>조회수:&nbsp; ${dto.board_views}</p>
-            <div class="post-info-btn">
-                <p>${user_num}</p>
-                <c:if test="${sessionScope.loginok != null and dto.user_num == user_num}">
+				</c:if>
+				<c:if test="${provider2!='bit'}"> <!--  -->
+					<img src="${profile_photo}" class="dd">
+				</c:if>
+			<p>${dto.user_id}</p>
+			<i class="bi bi-suit-heart-fill" style="color: #FF9EAA;"></i>
+			<p id="likeCount">${like}</p>
+			<p>조회수:&nbsp; ${dto.board_views}</p>
+			<div class="post-info-btn">
+				<c:if
+					test="${sessionScope.loginok!=null and dto.user_num==user_num }">
+					<button type="button" class="post-info-up"
+						onclick="location.href='./updateform?board_num=${dto.board_num}&currentPage=${currentPage}'">수정
+					</button>
+					<button type="button" class="post-info-del" onclick="del()">삭제</button>
+				</c:if>
+				<button type="button" class="post-info-list"
+					onclick="location.href='/bit/blog'">목록</button>
+			</div>
+		</div>
+		<div class="post-content">
+			<pre>${dto.board_content}</pre>
+		</div>
 
-                    <button type="button" class="post-info-up"
-                            onclick="location.href='./updateform?board_num=${dto.board_num}&currentPage=${currentPage}'">수정
-                    </button>
-                    <button type="button" class="post-info-del" onclick="del()">삭제</button>
-                </c:if>
-                <button type="button" class="post-info-list"
-                        onclick="location.href='/bit/blog'">목록
-                </button>
-            </div>
-        </div>
-        <div class="post-content">
-            <pre>${dto.board_content}</pre>
-        </div>
-
-        <%-- 카카오 맵 api detailmap.js 지도를 불러오고 게시글 작성할때 넣었던 좌표값 불러옴 --%>
-        <%-- c:if 문을 사용하여 게시글 작성했을때 지도를 포함시키지 않았다면 지도 표시 x --%>
-        <c:if test="${not empty placeNames and not empty placeLatitudes and not empty placeLongitudes}">
-            <div id="map" style="width:80%;height:350px;margin: auto;"></div>
-            <script>
+		<%-- 카카오 맵 api detailmap.js 지도를 불러오고 게시글 작성할때 넣었던 좌표값 불러옴 --%>
+		<%-- c:if 문을 사용하여 게시글 작성했을때 지도를 포함시키지 않았다면 지도 표시 x --%>
+		<c:if
+			test="${not empty placeNames and not empty placeLatitudes and not empty placeLongitudes}">
+			<div id="map" style="width: 80%; height: 350px; margin: auto;"></div>
+			<script>
                 var placeNames = '${placeNames}';
                 var placeAddresses = '${placeAddress}';
                 var placeLatitudes = '${placeLatitudes}';

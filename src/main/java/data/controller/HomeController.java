@@ -178,8 +178,7 @@ public class HomeController {
 		int user_num = userService.getUserNum(user_id, provider);
 		String name = dto.getName();
 		String photo = dto.getPhoto();
-		System.out.println(photo);
-		System.out.println(user_id);
+
 		List<Blog_BoardDto> userPost = blogService.userDataID(user_num);
 
 		List<Long> userMark = BKService.getBookmarkedBoardIds(user_num);
