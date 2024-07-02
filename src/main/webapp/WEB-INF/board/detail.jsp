@@ -61,10 +61,10 @@
 				<fmt:formatDate value="${dto.board_writeday}"
 					pattern="yyyy.MM.dd HH:mm" />
 			</p>
-			<c:if test="${provider2=='bit'}"> <!-- form login -->
+			<c:if test="${provider2=='bit'}"> 
 					<img src="${stpath}/${profile_photo}" class="dd">
 				</c:if>
-				<c:if test="${provider2!='bit'}"> <!--  -->
+				<c:if test="${provider2!='bit'}"> 
 					<img src="${profile_photo}" class="dd">
 				</c:if>
 			<p>${dto.user_id}</p>

@@ -78,6 +78,14 @@ public class BoardDetailController {
         String provider2 = memberDto.getProvider();
         System.out.println(memberDto);
 
+        String loginok = (String) session.getAttribute("loginok");
+        String loginid = (String) session.getAttribute("loginid");
+        if (loginok != null && (dto.getBoard_num() == userService.getUserNum(loginid, provider)))
+        {
+        	//자신아이디
+        	model.addAttribute("user_num",user_num);
+        }
+      
         // 지도 데이터 가져오기
         int map_num = board_num;
         Blog_MapDto mdto = mapService.selectMap(map_num);
@@ -97,7 +105,6 @@ public class BoardDetailController {
             model.addAttribute("placeLongitudes", placeLongitudes);
         }
 
-        model.addAttribute("user_num",user_num);
         model.addAttribute("like", like);
         model.addAttribute("dto", dto);
         model.addAttribute("provider2",provider2);
