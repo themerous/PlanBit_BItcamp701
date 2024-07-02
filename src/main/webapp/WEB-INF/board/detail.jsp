@@ -24,7 +24,6 @@
     let boardNum = ${dto.board_num};
     let sessionLoginId = '${sessionScope.loginid}';
     let sessionLoginOk = '${sessionScope.loginok}';
-    let user_num = '${dto.user_num}';
 </script>
 <script src="/js/board/detail.js"></script>
 
