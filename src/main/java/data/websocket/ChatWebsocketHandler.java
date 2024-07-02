@@ -5,15 +5,24 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import data.dto.MessageDto;
+import data.service.ChattingService;
+
+@Controller
 @Component
 public class ChatWebsocketHandler extends TextWebSocketHandler {
 	private static final Map<String, Set<WebSocketSession>> chatRooms = new ConcurrentHashMap<>();
-
+	@Autowired
+	private ChattingService service;
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         String room = getRoom(session);
@@ -26,7 +35,8 @@ public class ChatWebsocketHandler extends TextWebSocketHandler {
         
         for (WebSocketSession webSocketSession : chatRooms.get(room)) {
             if (webSocketSession.isOpen()) {
-                webSocketSession.sendMessage(new TextMessage(message.getPayload()));
+            	String mo = message.getPayload();
+                webSocketSession.sendMessage(new TextMessage(mo));
             }
         }
     }

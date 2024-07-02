@@ -29,8 +29,10 @@ function lastUpdateTime() {
 	});
 }
 
-page.addEventListener("keyup", () => {
-	sendContent();
+page.addEventListener("input", (e) => {
+	if(!e.isComposing) {
+		sendContent();
+	}
 });
 
 function sendContent() {
