@@ -183,6 +183,7 @@
         display: flex;
         margin: 0 auto;
 		float: right;
+		gap: 7px;
     }
 
     .tourList {
