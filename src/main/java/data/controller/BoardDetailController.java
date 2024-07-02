@@ -68,14 +68,6 @@ public class BoardDetailController {
             int user_num = userService.getUserNum(loginid,role);
             model.addAttribute("user_num",user_num);
         }
-
-        String loginok = (String) session.getAttribute("loginok");
-        String loginid = (String) session.getAttribute("loginid");
-        if (loginok != null && (dto.getBoard_num() == userService.getUserNum(loginid, provider)))
-        {
-        	//자신아이디
-        	model.addAttribute("user_num",user_num);
-        }
       
         // 지도 데이터 가져오기
         int map_num = board_num;
