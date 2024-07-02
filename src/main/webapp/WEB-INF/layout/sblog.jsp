@@ -4,164 +4,17 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="/css/board/boardList.css">
-
 <style>
-    body * {
-        font-family: "IBM Plex Sans KR", sans-serif;
-    }
-
-    #blog-title-photo {
-        width: 100%;
-        height: 400px;
-        border: none;
-        /*background-image: url('/images/e3.jpg'); !* 배경 이미지 URL *!*/
-        /*background-size: cover; !* 이미지 크기를 컨테이너에 맞게 조정 *!*/
-        /*background-position: center; !* 이미지를 중앙에 위치 *!*/
-        /*background-repeat: no-repeat; !* 이미지 반복 금지 *!*/
-        background: linear-gradient(to right, #19B3FF,#51e3d4);
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: center; /* 수평 중앙 정렬 */
-        align-items: center; /* 수직 중앙 정렬 */
-    }
-
-
-
-    #blog-title-photo h1 {
-        color: rgba(255, 255, 255, 0.9); /* 흰색을 50% 불투명도로 설정 */
-        font-size: 100px;
-        font-family: "Neuton", serif;
-        text-align: center; /* 텍스트를 중앙으로 정렬 */
-    }
-
-    .card-img-top {
-        object-fit: cover;
-        height: 300px;
-    }
-
-    .row {
-        display: flex;
-        flex-wrap: wrap; /* 요소들이 줄 바꿈되도록 설정 */
-        justify-content: flex-start; /* 요소들이 왼쪽 정렬되도록 설정 */
-    }
-
-
-
-    .col-lg-6 {
-        width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* 요소들을 수평 중앙 정렬 */
-        justify-content: center; /* 요소들을 수직 중앙 정렬 */
-        padding: 10px; /* 내부 여백 */
-        box-sizing: border-box; /* 패딩과 보더를 포함한 박스 크기 계산 */
-        flex: 0 0 calc(50% - 20px); /* 각 요소가 너비의 50%를 차지하고 간격을 포함하여 계산 */
-        margin: 10px; /* 각 요소 사이에 10px 간격을 추가 */
-
-
-    }
-
-    #plus-btn1 {
-        background-color: #51e3d4;
-        border: 1px solid #51e3d4;
-    }
-
-    .btn-btn-primary {
-        background-color: #51e3d4;
-        border: 1px solid #51e3d4;
-        border-radius: 4px;
-        color: white;
-        padding: 8px 10px;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-
-
-
-    .c-box li {
-        list-style: none;
-    }
-    .c-box a{
-        color: #51e3d4;
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    .card-blog {
-        background: linear-gradient(to right, #19B3FF,#51e3d4);
-        border-radius: 4px;
-        height: 400px;
-    }
-
-    .card-blog2 {
-
-        border-radius: 4px;
-        height: 600px;
-        margin-top: 10px;
-    }
-
-    .card-body1 {
-        font-size: 40px;
-        color: white;
-        height: auto;
-        padding: 40px;
-    }
-
-    .small-text-muted {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-    }
-    .card-body1-btn {
-        margin-top: 10px;
-        border-radius: 4px;
-        background-color: white;
-        border: none;
-        color: #51e3d4;
-        font-size: 27px;
-        padding: 5px 15px;
-        font-weight: bold;
-    }
-
-    .bottom-box {
-        display: flex;
-        justify-content: space-between; /* 아이콘과 링크를 양쪽 끝에 배치 */
-        align-items: center; /* 수직 중앙 정렬 */
-
-
-    }
-
-    .profile-img {
-        width: 35px; /* 프로필 사진의 너비 */
-        height: 35px; /* 프로필 사진의 높이 */
-        border-radius: 50%; /* 동그라미 모양으로 만드는 속성 */
-        object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
-        margin-right: 10px; /* 프로필 사진과 버튼 사이의 간격 */
-        border: 1px solid #51e3d4;
-    }
-
     .profile-img2 {
         width: 30px; /* 프로필 사진의 너비 */
         height: 30px; /* 프로필 사진의 높이 */
         object-fit: cover; /* 이미지가 너무 클 경우 잘라내기 설정 */
 
     }
-
-    .images-heart {
-        display: flex; /* Flexbox 사용 */
-        align-items: center; /* 세로 중앙 정렬 */
-    }
-
-
-    .medal {
-        position: absolute;
-        width: 140px;
-        height: 140px;
-        top: -30px;
-        left: -50px;
-    }
+        .images-heart {
+            display: flex; /* Flexbox 사용 */
+            align-items: center; /* 세로 중앙 정렬 */
+        }
 
     /* 북마크 */
     .images-bookmark {
@@ -176,9 +29,25 @@
         object-fit: cover;
         margin-top: -8px;
     }
-
-
 </style>
+<script>
+    let bookmarkedBoardIds = [];
+    window.onload = function() {
+        if(${sessionScope.loginok != null}) {
+            getBookmarkData();
+        }
+    }
+    function getBookmarkData() {
+        $.get("/bit/blog/bookmark", function(data) {
+            bookmarkedBoardIds = Object.values(data);
+            console.log(bookmarkedBoardIds);
+            updateBookmarkIcons(); // 북마크 아이콘 상태 업데이트
+        }, "json");
+    }
+
+
+</script>
+<c:set var="stpath" value="https://kr.object.ncloudstorage.com/hyunsung-bucket/blog_photo"/>
 <div class="container">
     <div class="row">
         <!-- Blog entries-->
@@ -220,6 +89,69 @@
                         </div>
                     </div>
                 </c:forEach>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    function updateBookmarkIcons() {
+        document.querySelectorAll('.images-bookmark').forEach(element => {
+            const board_num = element.dataset.boardNum;
+            if (bookmarkedBoardIds.includes(parseInt(board_num))) {
+                element.innerHTML = '<img src="/images/starr.png" class="starr" onclick="delmark(' + board_num + ')"/>';
+            } else {
+                element.innerHTML = '<i class="bi bi-star" style="color: #fce61b;" onclick="toggleBookmark(' + board_num + ')"></i>';
+            }
+        });
+    }
+
+    function toggleBookmark(board_num) {
+        if (!board_num) {
+            alert("유효하지 않은 board_num 값입니다.");
+            return;
+        }
+        fetch(`/bit/bookmark?board_num=\${board_num}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (response.ok) {
+                    getBookmarkData(); // 아이콘 상태를 갱신
+                } else {
+                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
+
+    function delmark(board_num) {
+        if (!board_num) {
+            alert("유효하지 않은 board_num 값입니다.");
+            return;
+        }
+        fetch(`/bit/delmark?board_num=\${board_num}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin'
+        })
+            .then(response => {
+                console.log("응답 상태:", response.status);
+                if (response.ok) {
+                    getBookmarkData(); // 아이콘 상태를 갱신
+                } else {
+                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                }
+            })
+            .catch(error => {
+                console.error("에러:", error);
+                alert("오류가 발생했습니다. 다시 시도해 주세요.");
+            });
+    }
+</script>
