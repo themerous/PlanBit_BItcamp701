@@ -92,6 +92,10 @@
 	            border-radius: 4px;
 	            background-color: #51e3d4;
 	        }
+
+			.planner:hover {
+				color: white;
+			}
 	
 	
 	        /*헤더 오른쪽 박스 */

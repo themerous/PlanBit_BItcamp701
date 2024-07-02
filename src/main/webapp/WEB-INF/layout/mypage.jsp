@@ -56,6 +56,7 @@
         color: white;
         padding: 8px 10px;
         text-decoration: none;
+		cursor: pointer;
     }
 	.btn-btn-primary1 {
 		background-color: #51e3d4;
