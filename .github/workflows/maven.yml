@@ -42,7 +42,7 @@ jobs:
       run: mv target/*.war target/ROOT.war
 
     - name: Build Docker image
-      run: docker build -t my-app:latest .
+      run: docker build -t ROOT:latest .
 
     - name: Log in to Naver Container Registry
       uses: docker/login-action@v1
