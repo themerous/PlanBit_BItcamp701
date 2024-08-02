@@ -82,7 +82,7 @@ jobs:
           docker pull my-app:latest
           docker stop my-app || true
           docker rm my-app || true
-          docker run -d -p 443:8080 --name my-app my-app:latest
+          docker run -d -p 80:8080 --name my-app my-app:latest
           
     - name: Remove ACG inbound rule created
       run: |
