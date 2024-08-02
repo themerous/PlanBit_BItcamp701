@@ -1,0 +1,91 @@
+name: Deploy to Docker
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DB_URL: ${{ secrets.DB_URL }}
+  DB_USERNAME: ${{ secrets.DB_USERNAME }}
+  DB_PW: ${{ secrets.DB_PW }}
+  GMAIL_SECRET: ${{ secrets.GMAIL_SECRET }}
+  GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
+  KAKAO_SECRET: ${{ secrets.KAKAO_SECRET }}
+  NAVER_SECRET: ${{ secrets.NAVER_SECRET }}
+  NAVER_AK: ${{ secrets.NAVER_AK }}
+  NAVER_PK: ${{ secrets.NAVER_PK }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+    - name: Get public IP address
+      id: get_ip
+      run: |
+        PUBLIC_IP=$(curl -s https://api.ipify.org)
+        echo "PUBLIC_IP=$PUBLIC_IP" >> $GITHUB_ENV
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Build with Maven
+      run: mvn clean package
+
+    - name: Rename WAR file to ROOT.war
+      run: mv target/my-app.war target/ROOT.war
+
+    - name: Build Docker image
+      run: docker build -t my-app:latest .
+
+    - name: Log in to Naver Container Registry
+      uses: docker/login-action@v1
+      with:
+          registry: ${{ secrets.REGISTRY_URL }}
+          username: ${{ secrets.NAVER_AK }}
+          password: ${{ secrets.NAVER_SK }}
+
+    - name: Push Docker image
+      run: docker push my-app:latest
+
+    - name: Set up Naver CLI
+      run: |
+        cd ~
+        curl -L https://www.ncloud.com/api/support/download/files/cli/CLI_1.1.20_20240620.zip -o CLI_1.1.20_20240620.zip
+        unzip CLI_1.1.20_20240620.zip
+        cd ./CLI_1.1.20_20240620/cli_linux
+        chmod +x ncloud
+        echo "${{ secrets.NAVER_ACESSKEY }}" > input.txt
+        echo "${{ secrets.NAVER_SECRETKEY }}" >> input.txt
+        echo "" >> input.txt
+        cat input.txt | ./ncloud configure
+          
+    - name: Add ACG rule for deploy server
+      run: |
+        cd ~/CLI_1.1.20_20240620/cli_linux
+        ./ncloud vserver addAccessControlGroupInboundRule --regionCode KR --vpcNo ${{ secrets.NAVER_VPC }} --accessControlGroupNo ${{ secrets.NAVER_ACG_NO }} --accessControlGroupRuleList "protocolTypeCode='TCP', ipBlock='${{ env.PUBLIC_IP }}/32', portRange='22'"
+          
+
+    - name: Deploy to server via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_URL }}
+        username: ${{ secrets.SERVER_USER }}
+        password: ${{ secrets.SERVER_PW }}
+        script: |
+          docker pull my-app:latest
+          docker stop my-app || true
+          docker rm my-app || true
+          docker run -d -p 443:8080 --name my-app my-app:latest
+          
+    - name: Remove ACG inbound rule created
+      run: |
+        cd ~/CLI_1.1.20_20240620/cli_linux
+        ./ncloud vserver removeAccessControlGroupInboundRule --regionCode KR --vpcNo ${{ secrets.NAVER_VPC }} --accessControlGroupNo ${{ secrets.NAVER_ACG_NO }} --accessControlGroupRuleList "protocolTypeCode='TCP', ipBlock='${{ env.PUBLIC_IP }}/32', portRange='22'"
+          
