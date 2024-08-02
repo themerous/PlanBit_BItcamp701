@@ -1,6 +1,6 @@
 #Port Setting
 server:
-  port: 8081
+  port: 8080
   tomcat:
     max-http-form-post-size: 5024MB
 
