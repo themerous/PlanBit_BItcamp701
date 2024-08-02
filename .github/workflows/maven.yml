@@ -36,7 +36,10 @@ jobs:
         java-version: '17'
 
     - name: Build with Maven
-      run: mvn clean package
+      run: mvn clean package -X
+
+    - name: Rename WAR file to ROOT.war
+      run: mv target/*.war target/ROOT.war
 
     - name: Rename WAR file to ROOT.war
       run: mv target/my-app.war target/ROOT.war
@@ -88,4 +91,3 @@ jobs:
       run: |
         cd ~/CLI_1.1.20_20240620/cli_linux
         ./ncloud vserver removeAccessControlGroupInboundRule --regionCode KR --vpcNo ${{ secrets.NAVER_VPC }} --accessControlGroupNo ${{ secrets.NAVER_ACG_NO }} --accessControlGroupRuleList "protocolTypeCode='TCP', ipBlock='${{ env.PUBLIC_IP }}/32', portRange='22'"
-          
