@@ -41,9 +41,6 @@ jobs:
     - name: Rename WAR file to ROOT.war
       run: mv target/*.war target/ROOT.war
 
-    - name: Rename WAR file to ROOT.war
-      run: mv target/my-app.war target/ROOT.war
-
     - name: Build Docker image
       run: docker build -t my-app:latest .
 
