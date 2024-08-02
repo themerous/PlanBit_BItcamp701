@@ -41,15 +41,15 @@ jobs:
     - name: Rename WAR file to ROOT.war
       run: mv target/*.war target/my-app.war
 
-    - name: Build Docker image
-      run: docker build -t my-app:latest .
-
     - name: Log in to Naver Container Registry
       uses: docker/login-action@v1
       with:
         registry: ${{ secrets.REGISTRY_URL }}
         username: ${{ secrets.NAVER_AK }}
         password: ${{ secrets.NAVER_SK }}
+
+    - name: Build Docker image
+      run: docker build -t ${{ secrets.REGISTRY_URL }}/my-app:latest .
 
     - name: Push Docker image
       run: docker push ${{ secrets.REGISTRY_URL }}/my-app:latest
