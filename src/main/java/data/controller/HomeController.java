@@ -135,7 +135,8 @@ public class HomeController {
 			session.setAttribute("loginid", id);
 			session.setAttribute("role", "bit");
 			session.setAttribute("img", photo);
-			session.setAttribute("user_num", userService.getUserNum((String) session.getAttribute("loginid"), (String) session.getAttribute("role")));
+			session.setAttribute("user_num", dto.getUser_num());
+			session.setAttribute("name", dto.getName());
 			System.out.println(session.getAttribute("img"));
 		}
 		else

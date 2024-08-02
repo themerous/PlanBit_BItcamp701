@@ -2,10 +2,6 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<script>
-	const user_id = "${user_id}";
-	const provider = "${provider}";
-</script>
 <style>
 	#planner-list-execute {
 		width: 90%;

@@ -3,7 +3,7 @@ const lastUpdate = document.getElementById("page_last_update");
 const page = document.getElementById("note");
 
 window.onload = () => {
-	connect();
+	pageconnect();
 	loadPageList();
 	lastUpdateTime();
 }

@@ -49,6 +49,7 @@
 	const user_id = "${sessionScope.loginid}";
 	const provider = "${sessionScope.role}";
 	const user_num = ${sessionScope.user_num};
+	const name = "${sessionScope.name}";
 	function showChatting() {
 	    const chatRoom = document.getElementById("chatting-room");
 	    

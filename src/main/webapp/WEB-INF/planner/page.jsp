@@ -5,8 +5,6 @@
 <script>
 	let planner_num = ${dto.planner_num};
 	let page_num = ${dto.page_num};
-	let id = "${sessionScope.loginid}";
-	let provider = "${sessionScope.role}";
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.css" rel="stylesheet">

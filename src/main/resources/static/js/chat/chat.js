@@ -36,10 +36,9 @@ function moveToChat(room, title) {
 					<i class="bi bi-arrow-bar-left"></i>
 				</a>
 			</div>
-			<div id="myChatRoom" style="width: 380px; height: 336px;">
+			<div id="myChatRoom" style="width: 380px; height: 336px;overflow: scroll;">
 		`;
 		for(d of data) {
-			name = d.name;
 			s += `
 				<div style="margin: 5px; display: flex;">
 					<div style="display: flex; flex-direction: column;">
@@ -58,7 +57,7 @@ function moveToChat(room, title) {
 			<div>
 				<textarea style="width: 380px; height: 100px;" id="chat-input"></textarea>
 				<div>
-					<button style="width: 380px; height: 30px" type="button" onclick="sendText(${room},'${name}')">입력</button>
+					<button style="width: 380px; height: 30px" type="button" onclick="sendText(${room})">입력</button>
 				</div>
 			</div>
 		`;
@@ -66,7 +65,7 @@ function moveToChat(room, title) {
 	})
 }
 
-function sendText(room, name) {
+function sendText(room) {
 	const mo = document.getElementById("chat-input");
 	const messageO = {
 		"content": mo.value,
@@ -76,7 +75,7 @@ function sendText(room, name) {
 	function() {
 		
 	});
-	socket.send(JSON.stringify(messageO));
+	chatsocket.send(JSON.stringify(messageO));
 	mo.value="";
 }
 

@@ -1,6 +1,6 @@
 let socket;
 
-function connect() {     
+function pageconnect() {     
     socket = new WebSocket('ws://' + window.location.host + '/page/' + planner_num + '/' + page_num);
     
 	// 연결성공
