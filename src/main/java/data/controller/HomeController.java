@@ -57,11 +57,6 @@ public class HomeController {
 		return "layout/main";
 	}
 
-	@GetMapping("/health")
-	public String getMethodName() {
-		return "ok";
-	}
-
 	// 로그인
 	@GetMapping("bit/login")
 	public String login() {
