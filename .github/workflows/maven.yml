@@ -61,8 +61,8 @@ jobs:
         unzip CLI_1.1.20_20240620.zip
         cd ./CLI_1.1.20_20240620/cli_linux
         chmod +x ncloud
-        echo "${{ secrets.NAVER_ACESSKEY }}" > input.txt
-        echo "${{ secrets.NAVER_SECRETKEY }}" >> input.txt
+        echo "${{ secrets.NAVER_AK }}" > input.txt
+        echo "${{ secrets.NAVER_SK }}" >> input.txt
         echo "" >> input.txt
         cat input.txt | ./ncloud configure
           
