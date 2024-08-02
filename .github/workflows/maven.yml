@@ -79,10 +79,11 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         password: ${{ secrets.SERVER_PW }}
         script: |
-          docker pull my-app:latest
+          docker login -u ${{ secrets.NAVER_AK }} -p ${{ secrets.NAVER_SK }} ${{ secrets.REGISTRY_URL }}
+          docker pull ${{ secrets.REGISTRY_URL }}/my-app:latest
           docker stop my-app || true
           docker rm my-app || true
-          docker run -d -p 80:8080 --name my-app my-app:latest
+          docker run -d -p 80:8080 --name ${{ secrets.REGISTRY_URL }}/my-app my-app:latest
           
     - name: Remove ACG inbound rule created
       run: |
