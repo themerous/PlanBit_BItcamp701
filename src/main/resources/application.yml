@@ -10,9 +10,9 @@ spring:
 #mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://db-n9jfu-kr.vpc-pub-cdb.ntruss.com:3306/studyDB?serverTimezone=Asia/Seoul
-    username: study
-    password: mike@1430
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PW}
 
 #파일사이즈
   servlet:
@@ -26,7 +26,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: gim28711@gmail.com #앱 비밀번호 발급받은 google 계정
-    password: vdut oret cmmp wykv #발급받은 앱 비밀번호
+    password: ${GMAIL_SECRET} #발급받은 앱 비밀번호
     properties:
       mail:
         smtp:
@@ -41,14 +41,14 @@ spring:
           google:
             client-name: google
             client-id: 971637697594-68bcvkhk30hcm3nfitdr9q0vofjagm54.apps.googleusercontent.com
-            client-secret: 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
+            client-secret: ${GOOGLE_SECRET}
             scope:
             - profile
             - email
           kakao:
             client-name: kakao
             client-id: 746dd0b3d390eeffc122a0f59031a86d
-            client-secret: 07XgJKSlgIhSvTm4BDhJds0wAfwz0nUo
+            client-secret: ${KAKAO_SECRET}
             authorization-grant-type: authorization_code
             redirect-uri: "http://bitplanner.store/login/oauth2/code/kakao"
             client-authentication-method: POST 
@@ -59,7 +59,7 @@ spring:
           naver:
             client-name: naver
             client-id: hmyfMJqTioV4b2qO9JUH # 앱키 -> REST API 키
-            client-secret: KrWKCPHzjj # 네이버 로그인 -> 보안 -> Client Secret 코드
+            client-secret: ${NAVER_SECRET} # 네이버 로그인 -> 보안 -> Client Secret 코드
             authorization-grant-type: authorization_code
             redirect-uri: "http://bitplanner.store/login/oauth2/code/naver" # yml 파일에서 {} 가 spring 특수문자로 인식되게 하기 위해 " " 사용
             scope:
